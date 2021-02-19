@@ -1,0 +1,81 @@
+﻿1: Introduction[a]
+1.1 Purpose
+        The purpose of this document is to provide a layout of Wheats and Wands. COVID-19 has made a surge in the video game industry with many people staying at home. This entails justifying the need in the larger entertainment market for said product. It also serves as an introduction to basic game structure and formalities. The product is intended for casual and experienced game consumers. The game will be a 2-D puzzle-based platformer where the user will have to solve progressively difficult puzzles and jump platforms as they progress in the game. Below are the requirements used to make Wheats and Wands, requirements to run it, and the features the game will possess. [b]
+1.2 Scope
+The project, Wheats and Wands, will provide a fun experience for both audiences without one overpowering the other. The game will deliver friendly features for casual users, and harder features for experienced users. Essentially, the game can be played in two ways as harder features are not required but optional. Wheats and Wands will be written in C# and will utilize Visual Studio 2019 as the base program to develop the entertainment product. The base program will include a game engine called Monogame XNA Framework to provide assistance and tools in video game development. Aether Physics2D Dynamics will also be utilized as a physics engine. As regards the art style, Piskel Sprite Creator will be used for pixel art. ZapSplat will be used for video game music and sound effects.[c][d]
+1.3 References
+[1]. https://www.forbes.com/sites/markbeech/2020/03/25/covid-19-pushes-up-internet-use-70-streaming-more-than-12-first-figures-reveal/?sh=2d851a683104
+[2]. https://www2.deloitte.com/us/en/insights/industry/technology/video-game-industry-trends.html
+2: Positioning
+2.1 Business opportunity
+With COVID-19 causing an increase in average time spent at home, the broader entertainment industry has seen an increase in revenue over the last 18 months. The video game industry specifically has been a significant portion of said increase. This has led to a large wave of more “casual” consumers in the game market, ones without high spec computers, expensive peripherals, or large backgrounds of market-specific tropes, and conventions that many major modern games rely on. [e]
+2.2 Problem statement 
+The problem with modern games affects casual video game consumers. The impact of the problem is a growing sense of isolation between casual and more experienced users. A successful solution would include developing games accessible to all levels of experience.[f]
+3: Stakeholder and user descriptions 
+3.1 Stakeholder Summary
+Name
+	Represents
+	Role
+	Luke Schnetlage 
+	Software Development, Art, Testing  
+	Co-Project Lead
+	Scott Lam
+	Software Development , Sound, Testing
+	Co-Project Lead
+	
+
+3.2 User Summary
+Name
+	Description
+	Stakeholder
+	Casual Game Consumers
+	Primary target demographic, plays game at leisurely pace 
+	Scott Lam
+	Experienced Game Consumers
+	Secondary target demographic, plays game at an accelerated pace.
+	Luke Schnetlage
+	
+
+4: Product overview
+4.1 Product perspective 
+The concept of the game will be influenced by Fireboy and Watergirl: The Forest Temple. The game will run on Windows as an executive file. It will require low graphic requirements to provide smoother gameplay and be more accessible to all Windows computers. [g]
+Minimum requirements include: 
+* Memory: 512 MB
+* Intel Pentium 4 2.00GHz
+* File Size: 200 MB
+4.2 Summary of capabilities      
+Wheats and Wands will be capable of interpreting WASD and arrow key input into movement for engaging and challenging platforming segments. It will also feature an interactive physics engine allowing for fun physics-based puzzles to be solved for progression. There will also be a robust tutorial to help newer users get accustomed to both systems, as well as a “cheat” system to allow users to skip levels too challenging for them to enjoy. Finally, there will be an optional collectible system for more experienced players looking for a challenge.[h]
+4.3 Assumptions and dependencies
+1. The game runs on a compatible OS, so the application is assumed to run in a Windows environment.
+2. The game can only be run on a Windows computer, so the user will need an inexpensive, sufficient Windows computer.
+3. It is assumed that the computer will meet the minimum graphical requirements for feasible gameplay.
+4. During gameplay, it is assumed the user will know the basic controls and read simple instruction[i]s.
+5: Product features
+1. Hints or a skip level system for casual consumers
+2. Collectibles to collect for experienced consumers
+3. Bonus Levels
+4. Stage Select
+5. New Game Mechanic: Double Jump
+6. Interactive UI
+7. Interactive Physics Bodies
+8. Story 
+9. Save/Load State
+10. Multiple skins for the player to unlock 
+6: Constraints
+The game is designed not to be multi-platform and will only support Windows during this time, but more portability could be added in the future. The game needs to be designed not to be too complex or too simple so that it is suitable and enjoyable by everyone, casual and experienced users. The computer system will need to meet minimum system requirements for the game to run smoothly. The game will utilize pre-built engines and existing tools to help develop the game instead of being made from scratch.[j]
+7: Other product requirements
+        As previously mentioned, the user will require a Windows computer in order to run the game with suitable system requirements. For minimum system requirements, it can be found in the product perspective section.
+[a]name luke
+Name scott
+we make game
+[b]Document here to justify the need for game, explain the requirements to run the game, and entail general form of game.
+[c]What this game provides
+[d]What applications and tools used to make this game
+[e]COVID made the world a big fuckky wucky, people be playing games
+[f]XTREME gamers be isolating n00bs, help em out
+[g]Grandmas clunker will love it
+[h]Puzzle, platform, physics, tutorial, help systems, option progression
+[i]Computer runs
+Computer runs windows
+User can press a button
+[j]Windows supported environment, game designed to be not too simple or hard, uses pre-built tools
