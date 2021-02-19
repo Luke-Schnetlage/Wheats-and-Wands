@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wheats and Wands", "Wheats and Wands\Wheats and Wands.csproj", "{587B254B-1497-43D9-9ABC-D528487300ED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{587B254B-1497-43D9-9ABC-D528487300ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{587B254B-1497-43D9-9ABC-D528487300ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{587B254B-1497-43D9-9ABC-D528487300ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{587B254B-1497-43D9-9ABC-D528487300ED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8B12A25E-C62D-4A58-9BF5-1ED7DA1C4A1C}
+	EndGlobalSection
+EndGlobal
