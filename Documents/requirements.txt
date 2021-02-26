@@ -4,7 +4,7 @@ Luke Schnetlage
 Scott Lam
 
 Purpose:
-
+This project provides a fun experience for both causal and experienced users.
 
 Requirments:
 
