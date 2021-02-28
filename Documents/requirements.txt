@@ -4,7 +4,26 @@ Luke Schnetlage
 Scott Lam
 
 Purpose:
-This project provides a fun experience for both causal and experienced users.
+This project provides a fun puzzle platforming experience for both causal and experienced users.
 
-Requirments:
+Requirments: //REMEMBER TO NUMBER LIST ONCE COMPLETE
 
+Name: update_background
+Type: functional
+Summary: Accepts level and returns string containing sprite name to update background sprite
+
+Name: update_char_sprite
+Type: functional
+Summary: Accepts user clicking on specific regions and updates character sprite
+
+Name: reset_char
+Type: functional
+Summary: Upon death or player command, character position is updated to default quardinates for a given level
+
+Name: trigger_animation
+Type: functional
+Summary: Changes display to non-interactive animation
+
+Name: platform_os
+Type: constraint
+Summary: The target platform operating system is Windows 10. 
