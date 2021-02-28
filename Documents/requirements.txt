@@ -27,3 +27,7 @@ Summary: Changes display to non-interactive animation
 Name: platform_os
 Type: constraint
 Summary: The target platform operating system is Windows 10. 
+
+Name: detect_collision
+Type: functional
+Summary: 
