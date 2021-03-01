@@ -35,7 +35,7 @@ This project provides a fun puzzle platforming experience for both causal and ex
    Type: functional
    Summary: Inputs the movement of the character if the user presses A, W, and D
    
-8. Name: update_music (May not include this)
+8. Name: update_music
    Type: functional
    Summary: Depending on the sprite background, the music will change to fit that background
 
