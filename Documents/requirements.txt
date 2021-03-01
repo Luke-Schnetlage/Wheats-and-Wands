@@ -23,22 +23,22 @@ This project provides a fun puzzle platforming experience for both causal and ex
    Type: functional
    Summary: Changes display to non-interactive animation
 
-5. Name: platform_os
-   Type: constraint
-   Summary: The target platform operating system is Windows 10. 
-
-6. Name: detect_collision
+5. Name: detect_collision
    Type: functional
    Summary: Detects if character touches a object hitbox
 
-7. Name: movement_input
+6. Name: movement_input
    Type: functional
    Summary: Inputs the movement of the character if the user presses A, W, and D
    
-8. Name: update_music
+7. Name: update_music
    Type: functional
    Summary: Depending on the sprite background, the music will change to fit that background
 
-9. Name: data_saving
+8. Name: data_saving
    Type: risk
    Summary: Saves the user's current progress
+   
+9. Name: platform_os
+   Type: constraint
+   Summary: The target platform operating system is Windows 10. 
