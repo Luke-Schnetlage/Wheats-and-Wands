@@ -6,28 +6,39 @@ Scott Lam
 Purpose:
 This project provides a fun puzzle platforming experience for both causal and experienced users.
 
-Requirments: //REMEMBER TO NUMBER LIST ONCE COMPLETE
 
-Name: update_background
-Type: functional
-Summary: Accepts level and returns string containing sprite name to update background sprite
+1. Name: update_background
+   Type: functional
+   Summary: Accepts level and returns string containing sprite name to update background sprite
 
-Name: update_char_sprite
-Type: functional
-Summary: Accepts user clicking on specific regions and updates character sprite
+2. Name: update_char_sprite
+   Type: functional
+   Summary: Accepts user clicking on specific regions and updates character sprite
 
-Name: reset_char
-Type: functional
-Summary: Upon death or player command, character position is updated to default quardinates for a given level
+3. Name: reset_char
+   Type: functional
+   Summary: Upon death or player command, character position is updated to default quardinates for a given level
 
-Name: trigger_animation
-Type: functional
-Summary: Changes display to non-interactive animation
+4. Name: trigger_animation
+   Type: functional
+   Summary: Changes display to non-interactive animation
 
-Name: platform_os
-Type: constraint
-Summary: The target platform operating system is Windows 10. 
+5. Name: platform_os
+   Type: constraint
+   Summary: The target platform operating system is Windows 10. 
 
-Name: detect_collision
-Type: functional
-Summary: 
+6. Name: detect_collision
+   Type: functional
+   Summary: Detects if character touches a object hitbox
+
+7. Name: movement_input
+   Type: functional
+   Summary: Inputs the movement of the character if the user presses A, W, and D
+   
+8. Name: update_music (May not include this)
+   Type: functional
+   Summary: Depending on the sprite background, the music will change to fit that background
+
+9. Name: data_saving
+   Type: risk
+   Summary: Saves the user's current progress
