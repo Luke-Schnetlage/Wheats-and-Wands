@@ -31,14 +31,18 @@ This project provides a fun puzzle platforming experience for both causal and ex
    Type: functional
    Summary: Inputs the movement of the character if the user presses A, W, and D
    
-7. Name: update_music
+7. Name: confirm_input
+   Type: functional
+   Summary: Accepts enter key as a way to confirm input to the interactive ui
+   
+8. Name: update_music
    Type: functional
    Summary: Depending on the sprite background, the music will change to fit that background
 
-8. Name: data_saving
+9. Name: data_saving
    Type: risk
    Summary: Saves the user's current progress
    
-9. Name: platform_os
+10.Name: platform_os
    Type: constraint
    Summary: The target platform operating system is Windows 10. 
