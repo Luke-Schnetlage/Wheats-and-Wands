@@ -33,7 +33,7 @@ This project provides a fun puzzle platforming experience for both causal and ex
    
 7. Name: confirm_input
    Type: functional
-   Summary: Accepts enter key as a way to confirm input to the interactive ui
+   Summary: Accepts mouse input as a way to confirm choices to the interactive ui
    
 8. Name: update_music
    Type: functional
