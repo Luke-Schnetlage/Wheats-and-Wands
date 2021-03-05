@@ -30,7 +30,9 @@ namespace Wheats_and_Wands
             frame.X = 0;
             frame.Y = 0;
             frame.Width = 800;
-            frame.Height = 500;
+            frame.Height = 600;
+            // Window wants to maintain a 800 x 500 aspect ratio, changing height or width strechess out art
+            //
             knightPosition = new Vector2(_graphics.PreferredBackBufferWidth / 2,
             _graphics.PreferredBackBufferHeight / 2);
             knightSpeed = 100f;
@@ -42,7 +44,7 @@ namespace Wheats_and_Wands
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             // TODO: use this.Content to load your game content here
             knightTexture = Content.Load<Texture2D>("Farmer walk cycle-1");
-            background = Content.Load<Texture2D>("Farm-2.png");
+            background = Content.Load<Texture2D>("Farmer Background 2D -1");
 
         }
 
@@ -95,6 +97,33 @@ namespace Wheats_and_Wands
                 knightPosition.Y = knightTexture.Height / 2;
             }
             //End Boundry Colision Block
+
+
+
+            // Press/Hold F1 to become a borderless window.
+            if (Keyboard.GetState().IsKeyDown(Keys.F1))
+            {
+                Window.IsBorderless = true;
+                _graphics.ApplyChanges();
+            }
+            // Press/Hold F2 to become a normal window.
+            if (Keyboard.GetState().IsKeyDown(Keys.F2))
+            {
+                Window.IsBorderless = false;
+                _graphics.ApplyChanges();
+            }
+            // Press/Hold F3 to enter fullscreen.
+            if (Keyboard.GetState().IsKeyDown(Keys.F3))
+            {
+                _graphics.IsFullScreen = true;
+                _graphics.ApplyChanges();
+            }
+            // Press/Hold F4 to exit fullscreen.
+            if (Keyboard.GetState().IsKeyDown(Keys.F4))
+            {
+                _graphics.IsFullScreen = false;
+                _graphics.ApplyChanges();
+            }
 
 
 
