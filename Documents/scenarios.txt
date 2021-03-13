@@ -5,18 +5,24 @@ Your scenarios should be saved in a document named scenarios.
 Use the same file format you used for the requirements. Spell check!
 
 Use Case 1: The casual user
-The user opens the game once, plays the tutorial, and proceeds with normal progression until reaching a point too difficult for their liking. User proceeds to intermittently skip and complete levels until either quitting or completing the final level. 
+    The user opens the game once, plays the tutorial, and proceeds with normal progression until reaching a point too difficult for their liking. User proceeds to intermittently skip 
+    and complete levels until either quitting or completing the final level. 
+
 
 Added requirement: set_level_skipped
 
 
 Use Case 2: The enthusiast
-    User opens the game, plays the tutorial, and proceeds with normal progression, all the while collecting optional reward tokens until reaching a difficulty spike. At said spike, the user may become frustrated, save, and close the game for future play. Upon reopening the game, the user may redeem optional reward tokens in exchange for different player skins, select any previously beaten level to collect missed reward tokens, or attempt their lowest unbeaten level again. Eventually, the user will complete the game, possibly collecting all optional tokens for “100%” completion
+    User opens the game, plays the tutorial, and proceeds with normal progression, all the while collecting optional reward tokens until reaching a difficulty spike. At said spike, the
+    user may become frustrated, save, and close the game for future play. Upon reopening the game, the user may redeem optional reward tokens in exchange for different player skins,
+    select any previously beaten level to collect missed reward tokens, or attempt their lowest unbeaten level again. Eventually, the user will complete the game, possibly collecting
+    all optional tokens for “100%” completion
 
 Added requirement: get_reward_token_progression%
 
 
 Use Case 3: Tester
-    Tester opens the game, activates “cheat code” to unlock all levels and reward tokens. Tester then iterates through all levels and player skins to confirm for compliance. Tester will repeatedly create and load saves to ensure file_save method is free of corruption.
+    Tester opens the game, activates “cheat code” to unlock all levels and reward tokens. Tester then iterates through all levels and player skins to confirm for compliance. Tester
+    will repeatedly create and load saves to ensure file_save method is free of corruption.
 
 Added requirement: unlock_all_progression
