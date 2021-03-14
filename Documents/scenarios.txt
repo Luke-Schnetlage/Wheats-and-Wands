@@ -16,7 +16,7 @@ Use Case 1: The Casual User
     The user opens up the game once and will be directed to the main menu screen with a couple of options. The user chooses to "Play Game" 
 and will open up to the level selection screen. If it is the user's first-time playing, the game will automatically take them to the tutorial level. When the user gets into
 a level, the system will load the background and objects that correspond to the level. The character sprite will also be loaded in which will allow the user to
-move the character. Throughout the game, the user will proceed at normal progression until have reached a point that is too difficult If a certain time has passed and
+move the character. Throughout the game, the user will proceed at a normal progression until have reached a point that is too difficult. If a certain time has passed and
 they are still stuck, a skip level option will be provided to complete the level. This will happen until either they quit or complete the final level of the game. 
 
 Added requirement: is_user_new
@@ -26,8 +26,8 @@ Added requirement: set_level_skipped
 Use Case 2: The Enthusiast
     The user opens up the game and will be directed to the main menu screen with a couple of options. The user chooses "Play Game" and will complete the tutorial level.
 Each time the user gets into a level, the system will load in the associated entities with that level. Character sprite will loaded in and will allow the user to
-move the character. Throughout the game, the user will proceed at normal progression collecting optional reward tokens until they reaching a difficulty spike. At the spike,
-the user may become frustrated, save, and close the game for future play. Upon reopening the game, the user may redeem optional reward tokens in exchange for
+move the character. Throughout the game, the user will proceed at a normal or fast progression collecting optional reward tokens until they reaching a difficulty spike.
+At the spike, the user may become frustrated, save, and close the game for future play. Upon reopening the game, the user may redeem optional reward tokens in exchange for
 different player skins, select any previously beaten level to collect missed reward tokens, or attempt their lowest unbeaten level again. Eventually, the user
 will complete the game, possibly collecting all optional tokens for “100%” completion.
 
