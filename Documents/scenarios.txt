@@ -4,25 +4,28 @@ Use these to identify additional requirements.
 Your scenarios should be saved in a document named scenarios.
 Use the same file format you used for the requirements. Spell check!
 
-Use Case 1: The casual user
-    The user opens the game once, plays the tutorial, and proceeds with normal progression until reaching a point too difficult for their liking. User proceeds to intermittently skip 
-    and complete levels until either quitting or completing the final level. 
+*****FROM SLIDES: Scenarios should include:************
+A description of the starting situation (CHECKED)
+A description of the normal flow of events (CHECKED)
+A description of what can go wrong 
+Information about other concurrent activities
+A description of the state when the scenario finishes (CHECKED?)
+
+
+Use Case 1: The Casual User
+    The user opens up the game once and will be directed to the main menu screen with a couple of options. The user chooses to "Play Game" and will open up to the level selection screen. If it is the user's first-time playing, the game will automatically take them to the tutorial level. Throughout the game, the user will proceed at normal progression until have reached a point that is too difficult If a certain time has passed and they are still stuck, a skip level option will be provided to complete the level. This will happen until either they quit or complete the final level of the game. 
 
 
 Added requirement: set_level_skipped
 
 
-Use Case 2: The enthusiast
-    User opens the game, plays the tutorial, and proceeds with normal progression, all the while collecting optional reward tokens until reaching a difficulty spike. At said spike, the
-    user may become frustrated, save, and close the game for future play. Upon reopening the game, the user may redeem optional reward tokens in exchange for different player skins,
-    select any previously beaten level to collect missed reward tokens, or attempt their lowest unbeaten level again. Eventually, the user will complete the game, possibly collecting
-    all optional tokens for “100%” completion
+Use Case 2: The Enthusiast
+    The user opens up the game and will be directed to the main menu screen with a couple of options. The user chooses "Play Game" and will complete the tutorial level. Throughout the game, the user will proceed at normal progression collecting optional reward tokens until they reaching a difficulty spike. At the spike, the user may become frustrated, save, and close the game for future play. Upon reopening the game, the user may redeem optional reward tokens in exchange for different player skins, select any previously beaten level to collect missed reward tokens or attempt their lowest unbeaten level again. Eventually, the user will complete the game, possibly collecting all optional tokens for “100%” completion.
 
 Added requirement: get_reward_token_progression%
 
 
 Use Case 3: Tester
-    Tester opens the game, activates “cheat code” to unlock all levels and reward tokens. Tester then iterates through all levels and player skins to confirm for compliance. Tester
-    will repeatedly create and load saves to ensure file_save method is free of corruption.
+    The Tester opens up the game and will be directed to the main menu screen. Tester will input a “cheat code” to unlock all levels and reward tokens on the main menu screen. Tester then iterates through all levels and player skins to confirm for compliance, bugs, and glitches. Tester will repeatedly create and load saves to ensure file_save method is free of corruption.
 
 Added requirement: unlock_all_progression
