@@ -18,7 +18,7 @@ and will open up to the level selection screen. If it is the user's first-time p
 Throughout the game, the user will proceed at normal progression until have reached a point that is too difficult If a certain time has passed and
 they are still stuck, a skip level option will be provided to complete the level. This will happen until either they quit or complete the final level of the game. 
 
-
+Added requirement: is_user_new
 Added requirement: set_level_skipped
 
 
