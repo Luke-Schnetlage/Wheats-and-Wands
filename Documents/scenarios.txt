@@ -1,17 +1,3 @@
-Write 3 scenarios describing how a user may use your app.
-Each scenario should be 1 - 2 paragraphs.
-Use these to identify additional requirements.
-Your scenarios should be saved in a document named scenarios.
-Use the same file format you used for the requirements. Spell check!
-
-*****FROM SLIDES: Scenarios should include:************
-A description of the starting situation (CHECKED)
-A description of the normal flow of events (CHECKED)
-A description of what can go wrong (CHECKED)
-Information about other concurrent activities (CHECKED)
-A description of the state when the scenario finishes (CHECKED)
-
-
 Use Case 1: The Casual User
     The user opens up the game once and will be directed to the main menu screen with a couple of options. The user chooses to "Play Game" 
 and will open up to the level selection screen. If it is the user's first-time playing, the game will automatically take them to the tutorial level. When the user gets into
