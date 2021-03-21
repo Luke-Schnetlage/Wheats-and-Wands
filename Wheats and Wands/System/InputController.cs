@@ -55,6 +55,7 @@ namespace Wheats_and_Wands.System
                     
                 }
                 _farmer.State = FarmerState.Running;
+                
             }
             //move left
             if (keyboardState.IsKeyDown(Keys.Left))
@@ -71,7 +72,9 @@ namespace Wheats_and_Wands.System
                 _farmer.State = FarmerState.Running;
             }
             
-            if (keyboardState.GetPressedKeyCount() == 0 && _farmer.State != FarmerState.Falling && _farmer.State != FarmerState.Jumping && _farmer.State != FarmerState.Running)
+            if (keyboardState.GetPressedKeyCount() == 0 && _farmer.State != FarmerState.Falling && _farmer.State != FarmerState.Jumping 
+               // && _farmer.State != FarmerState.Running
+                && ( _previousKeyboardState.IsKeyDown(Keys.Left) || _previousKeyboardState.IsKeyDown(Keys.Right)))
             {
                 _farmer.State = FarmerState.Idle;
             }
