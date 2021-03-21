@@ -13,8 +13,8 @@ namespace Wheats_and_Wands
         public const int WINDOW_WIDTH = 800;
         public const int WINDOW_HEIGHT = 600;
 
-
-        Texture2D _background;
+        Texture2D _titleScreenSprite;
+        Texture2D _tutorialFarmBackground;
         Texture2D _farmerSpriteSheet;
         Vector2 playerPosition;
         //float playerSpeed;
@@ -43,7 +43,6 @@ namespace Wheats_and_Wands
             _graphics.ApplyChanges();
 
             playerPosition = new Vector2(_graphics.PreferredBackBufferWidth / 2, (_graphics.PreferredBackBufferHeight / 2) + 60); //defaults player to center of the screen
-            //playerSpeed = 100f;
             base.Initialize();
         }
 
@@ -52,7 +51,9 @@ namespace Wheats_and_Wands
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             // TODO: use this.Content to load your game content here
 
-            _background = Content.Load<Texture2D>("Farmer Background 2D -1");
+            _titleScreenSprite = Content.Load<Texture2D>("Title screen-1.png");
+            _tutorialFarmBackground = Content.Load<Texture2D>("Farmer Background 2D -1");
+            
             _farmerSpriteSheet = Content.Load<Texture2D>("Farmer walk cycle");
 
             _farmer = new Farmer(_farmerSpriteSheet, playerPosition);
@@ -86,7 +87,7 @@ namespace Wheats_and_Wands
             // TODO: Add your drawing code here
             _spriteBatch.Begin();
             GraphicsDevice.Clear(Color.White);
-            _spriteBatch.Draw(_background, new Rectangle(0,0,WINDOW_WIDTH, WINDOW_HEIGHT), Color.White);
+            _spriteBatch.Draw(_tutorialFarmBackground, new Rectangle(0,0,WINDOW_WIDTH, WINDOW_HEIGHT), Color.White);
 
             _farmer.Draw(_spriteBatch, gameTime);
 

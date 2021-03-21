@@ -14,6 +14,7 @@ namespace Wheats_and_Wands.Graphics
         public int Width { get; set; }
         public int Height { get; set; }
         public Color TintColor { get; set; } = Color.White;
+        public SpriteEffects SpriteEffects { get; set; } = SpriteEffects.None;
 
         public Sprite(Texture2D texture, int x, int y, int width, int height)
         {
@@ -26,7 +27,7 @@ namespace Wheats_and_Wands.Graphics
 
         public void Draw(SpriteBatch spriteBatch, Vector2 position )
         {
-            spriteBatch.Draw(Texture, position, new Rectangle(X, Y, Width, Height), TintColor);
+            spriteBatch.Draw(Texture, position, new Rectangle(X, Y, Width, Height), TintColor); //, SpriteEffects
         }
 
     }
