@@ -38,11 +38,11 @@ namespace Wheats_and_Wands.System
                 {
                     _farmer.BeginJump(); //state = jumping
                 }
-            }
+            } //jump
             else if (!keyboardState.IsKeyDown(Keys.Up) && _farmer.State == FarmerState.Jumping)
             {
                 _farmer.CancelJump(); // FarmerState = falling
-            }
+            } // cancel jump
             //move right
             if (keyboardState.IsKeyDown(Keys.Right))
             {
@@ -56,7 +56,7 @@ namespace Wheats_and_Wands.System
                 }
                 _farmer.State = FarmerState.Running;
                 
-            }
+            } //move right
             //move left
             if (keyboardState.IsKeyDown(Keys.Left))
             {
@@ -70,20 +70,20 @@ namespace Wheats_and_Wands.System
                    
                 }
                 _farmer.State = FarmerState.Running;
-            }
+            } //move left
             
-            if (keyboardState.GetPressedKeyCount() == 0 && _farmer.State != FarmerState.Falling && _farmer.State != FarmerState.Jumping 
-               // && _farmer.State != FarmerState.Running
-                && ( _previousKeyboardState.IsKeyDown(Keys.Left) || _previousKeyboardState.IsKeyDown(Keys.Right)))
+            if (keyboardState.GetPressedKeyCount() == 0 && _farmer.OnGround) 
+                //&& _farmer.State != FarmerState.Running)
+               // && ( _previousKeyboardState.IsKeyDown(Keys.Left) || _previousKeyboardState.IsKeyDown(Keys.Right)))
             {
                 _farmer.State = FarmerState.Idle;
-            }
+            } //idle trigger block
 
             if (keyboardState.IsKeyDown(Keys.F4))
             {
                 _displayOptions.FullScreenMode();
 
-            }
+            } //fullscreen toggle
             
             _previousKeyboardState = keyboardState;
 

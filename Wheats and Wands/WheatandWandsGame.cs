@@ -37,7 +37,6 @@ namespace Wheats_and_Wands
         protected override void Initialize()
         {
 
-
             _graphics.PreferredBackBufferHeight = WINDOW_HEIGHT;
             _graphics.PreferredBackBufferWidth = WINDOW_WIDTH;
             _graphics.ApplyChanges();
@@ -69,9 +68,6 @@ namespace Wheats_and_Wands
             }
             
 
-            
-
-
             base.Update(gameTime);
             _inputController.ProcessControls(gameTime);
 
@@ -87,8 +83,8 @@ namespace Wheats_and_Wands
             // TODO: Add your drawing code here
             _spriteBatch.Begin();
             GraphicsDevice.Clear(Color.White);
-            _spriteBatch.Draw(_tutorialFarmBackground, new Rectangle(0,0,WINDOW_WIDTH, WINDOW_HEIGHT), Color.White);
 
+            _spriteBatch.Draw(_tutorialFarmBackground, new Rectangle(0,0,WINDOW_WIDTH, WINDOW_HEIGHT), Color.White);
             _farmer.Draw(_spriteBatch, gameTime);
 
            
