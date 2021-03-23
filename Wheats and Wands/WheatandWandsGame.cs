@@ -19,6 +19,14 @@ namespace Wheats_and_Wands
         Vector2 playerPosition;
         //float playerSpeed;
 
+        Texture2D _creditScreenSprite; //Added
+        SpriteFont _creditFont; //Added
+        //SpriteFont _artFont; //Added, Not implemented
+        //SpriteFont _musicFont; //Added, Not implemented
+        //SpriteFont _programFont; //Added, Not implemented
+        //SpriteFont _scottFont; //Added, Not implemented
+        //SpriteFont _lukeFont; //Added, Not implemented
+
         InputController _inputController;
         Display_Options _displayOptions;
 
@@ -52,7 +60,10 @@ namespace Wheats_and_Wands
 
             _titleScreenSprite = Content.Load<Texture2D>("Title screen-1.png");
             _tutorialFarmBackground = Content.Load<Texture2D>("Farmer Background 2D -1");
-            
+
+            _creditScreenSprite = Content.Load<Texture2D>("Credits Screen"); //Added
+            _creditFont = Content.Load<SpriteFont>("Credits"); //Added
+
             _farmerSpriteSheet = Content.Load<Texture2D>("Farmer walk cycle");
 
             _farmer = new Farmer(_farmerSpriteSheet, playerPosition);
@@ -87,7 +98,9 @@ namespace Wheats_and_Wands
             _spriteBatch.Draw(_tutorialFarmBackground, new Rectangle(0,0,WINDOW_WIDTH, WINDOW_HEIGHT), Color.White);
             _farmer.Draw(_spriteBatch, gameTime);
 
-           
+            //DrawString commands
+            _spriteBatch.DrawString(_creditFont, "Credits", new Vector2(100, 20), Color.White); //Added
+
             _spriteBatch.End();
             base.Draw(gameTime);
         }
