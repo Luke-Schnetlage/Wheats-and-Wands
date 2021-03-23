@@ -17,7 +17,7 @@ namespace Wheats_and_Wands.Entities
 
         private const float CANCEL_JUMP_VELOCITY = -100f;
        
-        private const float WALK_SPEED = 100f;
+        //private const float WALK_SPEED = 100f;
 
 
         public FarmerState State { get; set; }
@@ -92,7 +92,7 @@ namespace Wheats_and_Wands.Entities
                 Position = new Vector2(Position.X, Position.Y + _verticalVelocity * (float)gameTime.ElapsedGameTime.TotalSeconds);
                 _verticalVelocity += GRAVITY * (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-                if (_verticalVelocity >= 0)
+                if (_verticalVelocity <= 0)
                 {
                     State = FarmerState.Falling;
                 }
@@ -124,7 +124,7 @@ namespace Wheats_and_Wands.Entities
             _verticalVelocity = JUMP_START_VELOCITY;
             return true;
         }
-
+        
         public bool CancelJump()
         {
 
@@ -138,7 +138,7 @@ namespace Wheats_and_Wands.Entities
             _verticalVelocity = _verticalVelocity < CANCEL_JUMP_VELOCITY ? CANCEL_JUMP_VELOCITY : 0;
             return true;
         }
-
+        
         /*
         public void MoveLeft()
         {
