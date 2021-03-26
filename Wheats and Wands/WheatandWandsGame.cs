@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
 using Wheats_and_Wands.Entities;
 using Wheats_and_Wands.Levels;
 using Wheats_and_Wands.System;
@@ -18,7 +19,6 @@ namespace Wheats_and_Wands
         Level _level;
         TitleScreen _titleScreen;
         TutorialFarm _tutorial;
-
 
 
         Texture2D _titleScreenSprite;
@@ -83,6 +83,7 @@ namespace Wheats_and_Wands
 
             _levelVal = 0;
             _titleScreen = new TitleScreen(_titleScreenSprite);
+
             _tutorial = new TutorialFarm(_tutorialFarmBackground);
 
         }
@@ -103,8 +104,7 @@ namespace Wheats_and_Wands
                 _level = _tutorial;
             }
 
-
-
+            _titleScreen.Update(gameTime);
 
                 base.Update(gameTime);
             _inputController.ProcessControls(gameTime);
@@ -118,6 +118,7 @@ namespace Wheats_and_Wands
             // TODO: Add your drawing code here
             _spriteBatch.Begin();
             GraphicsDevice.Clear(Color.White);
+            _titleScreen.Draw(_spriteBatch);
 
             _level.Draw(_spriteBatch);
             //_tutorial.Draw(_spriteBatch);

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Wheats_and_Wands.Graphics;
+using Wheats_and_Wands.System;
 
 namespace Wheats_and_Wands.Levels
 {
@@ -20,6 +21,8 @@ namespace Wheats_and_Wands.Levels
         Sprite _creditsButton;
         Sprite _quitButton;
 
+        private List<Component> _buttonList;
+
 
         public TitleScreen (Texture2D spriteSheet)
         {
@@ -32,7 +35,45 @@ namespace Wheats_and_Wands.Levels
             _optionsButton = new Sprite(spriteSheet, 590, 800, 250, 70);
             _creditsButton = new Sprite(spriteSheet, 590, 885, 250, 70);
             _quitButton = new Sprite(spriteSheet, 355, 970, 250, 70);
+
+            var newButton = new Button(_newButton.Texture)
+            {
+                Position = new Vector2(120, 8000) //Don't need to put these lines here just for testing
+            };
+            newButton.Click += NewButton_Click;
+            var loadButton = new Button(_loadButton.Texture)
+            {
+                Position = new Vector2(120, 885)
+            };
+            loadButton.Click += LoadButton_Click;
+            var optionsButton = new Button(_optionsButton.Texture)
+            {
+                Position = new Vector2(590, 800)
+            };
+            optionsButton.Click += OptionsButton_Click;
+            var creditsButton = new Button(_creditsButton.Texture)
+            {
+                Position = new Vector2(590, 885)
+            };
+            creditsButton.Click += CreditsButton_Click;
+            var quitButton = new Button(_quitButton.Texture)
+            {
+                Position = new Vector2(355, 970)
+            };
+            quitButton.Click += QuitButton_Click;
+
+            _buttonList = new List<Component>()
+            {
+                newButton,
+                loadButton,
+                optionsButton,
+                creditsButton,
+                quitButton,
+            };
+
         }
+
+        
 
         public override void Draw(SpriteBatch spriteBatch)
         {
@@ -45,11 +86,46 @@ namespace Wheats_and_Wands.Levels
             _optionsButton.Draw(spriteBatch, new Vector2(590, 260));
             _creditsButton.Draw(spriteBatch, new Vector2(590, 345));
             _quitButton.Draw(spriteBatch, new Vector2(355, 425));
+
+            foreach(var component in _buttonList)
+            {
+                component.Draw(spriteBatch);
+            }
+
+
         }
 
-        public void Update(GameTime gameTime)
+        public void NewButton_Click(object sender, EventArgs e)
         {
-            
+            //Add new button stuff here
+        }
+
+        public void LoadButton_Click(object sender, EventArgs e)
+        {
+            //Load game stuff here
+        }
+
+        public void OptionsButton_Click(object sender, EventArgs e)
+        {
+            //Options stuff here
+        }
+
+        public void CreditsButton_Click(object sender, EventArgs e)
+        {
+            //Credits stuff
+        }
+
+        public void QuitButton_Click(object sender, EventArgs e)
+        {
+            //Quit game
+            _game.Exit();
+        }
+
+        public override void Update(GameTime gameTime)
+        {
+            foreach (var componenet in _buttonList)
+                componenet.Update(gameTime);
+
         }
     }
 }
