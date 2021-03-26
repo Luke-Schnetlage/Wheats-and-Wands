@@ -11,6 +11,7 @@ namespace Wheats_and_Wands.Graphics
         public Texture2D Texture { get; private set; } 
         public int X { get; set; }
         public int Y { get; set; }
+        public Vector2 position { get; set; }
         public int Width { get; set; }
         public int Height { get; set; }
         public Color TintColor { get; set; } = Color.White;
@@ -18,11 +19,12 @@ namespace Wheats_and_Wands.Graphics
 
         public Sprite(Texture2D texture, int x, int y, int width, int height)
         {
-            Texture = texture;
-            X = x;
-            Y = y;
-            Width = width;
-            Height = height;
+            this.Texture = texture;
+            this.X = x;
+            this.Y = y;
+            this.Width = width;
+            this.Height = height;
+            this.position = new Vector2(x, y);
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 position )
