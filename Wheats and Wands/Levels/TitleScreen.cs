@@ -2,7 +2,6 @@
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using Wheats_and_Wands.Graphics;
 using Wheats_and_Wands.System;
 
@@ -31,8 +30,7 @@ namespace Wheats_and_Wands.Levels
 
         private List<Component> _buttonList;
 
-
-        public TitleScreen (Texture2D spriteSheet, GameState gameState)
+        public TitleScreen(Texture2D spriteSheet, GameState gameState)
         {
             _spriteSheet = spriteSheet;
             _gameState = gameState;

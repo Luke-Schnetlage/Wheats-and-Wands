@@ -17,9 +17,9 @@ namespace Wheats_and_Wands.Levels
         public Rectangle _frame = new Rectangle(0, 0, WheatandWandsGame.WINDOW_WIDTH, WheatandWandsGame.WINDOW_HEIGHT);
         SpriteBatch _spriteBatch;
 
-        Level(Game game)
+        public Level()
         {
-            _game = game;
+            //_game = game;
         }
         public virtual void Update(GameTime gameTime)
         {

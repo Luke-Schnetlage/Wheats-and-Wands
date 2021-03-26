@@ -69,7 +69,7 @@ namespace Wheats_and_Wands
             // TODO: use this.Content to load your game content here
 
             _titleScreenSprite = Content.Load<Texture2D>("Title screen");
-            _tutorialFarmBackground = Content.Load<Texture2D>("Farmer Background 2D -1");
+            _tutorialFarmBackground = Content.Load<Texture2D>("FarmerBackground2D");
 
             _creditScreenSprite = Content.Load<Texture2D>("Credits Screen"); //Added
             _creditFont = Content.Load<SpriteFont>("Credits"); //Added
