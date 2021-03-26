@@ -13,7 +13,6 @@ namespace Wheats_and_Wands.System
         private MouseState _currentMouse;
         private bool isHovering;
         private MouseState _previousMouse; //Checks left clicking?
-        //private Texture2D _texture;
         private Sprite _sprite;
         public event EventHandler Click;
         public float X;
@@ -31,16 +30,12 @@ namespace Wheats_and_Wands.System
             }
         }
 
-        public Button(Sprite sprite, float x, float y)
+        public Button(Sprite sprite)
         {
             _sprite = sprite;
-            X = x;
-            Y = y;
-            //Position = new Vector2((float)_sprite.X, (float)_sprite.Y);
         }
         public override void Draw(SpriteBatch spriteBatch)
         {
-            //Color color = Color.White;
             if (this.isHovering) //If the mouse is hovering over the button
                 _sprite.TintColor = Color.Gray;
             else
