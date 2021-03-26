@@ -15,7 +15,7 @@ namespace Wheats_and_Wands
         public const int WINDOW_WIDTH = 960;
         public const int WINDOW_HEIGHT = 540;
 
-        public int _levelVal;
+        GameState _gameState;
         Level _level;
         TitleScreen _titleScreen;
         TutorialFarm _tutorial;
@@ -57,7 +57,7 @@ namespace Wheats_and_Wands
             _graphics.PreferredBackBufferWidth = WINDOW_WIDTH;
             _graphics.ApplyChanges();
 
-            
+            _gameState = new GameState();
 
             playerPosition = new Vector2(_graphics.PreferredBackBufferWidth / 2, (_graphics.PreferredBackBufferHeight / 2) + 15 ); //defaults player to center of the screen
             base.Initialize();
@@ -81,8 +81,8 @@ namespace Wheats_and_Wands
             _inputController = new InputController(_farmer, _displayOptions);
 
 
-            _levelVal = 0;
-            _titleScreen = new TitleScreen(_titleScreenSprite);
+            
+            _titleScreen = new TitleScreen(_titleScreenSprite, _gameState);
 
             _tutorial = new TutorialFarm(_tutorialFarmBackground);
 
@@ -95,11 +95,12 @@ namespace Wheats_and_Wands
             }
 
 
-            
-            
+
+            if (_gameState.state == States.TitleScreen)
+            {
                 _level = _titleScreen;
-            
-            if (_levelVal == 1)
+            }
+            if (_gameState.state == States.Tutorial)
             {
                 _level = _tutorial;
             }

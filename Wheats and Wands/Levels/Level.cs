@@ -16,6 +16,11 @@ namespace Wheats_and_Wands.Levels
         //Farmer _farmer { get; set; }
         public Rectangle _frame = new Rectangle(0, 0, WheatandWandsGame.WINDOW_WIDTH, WheatandWandsGame.WINDOW_HEIGHT);
         SpriteBatch _spriteBatch;
+
+        Level(Game game)
+        {
+            _game = game;
+        }
         public virtual void Update(GameTime gameTime)
         {
 
