@@ -42,19 +42,19 @@ namespace Wheats_and_Wands.Levels
             _creditsButtonSprite = new Sprite(spriteSheet, 590, 885, 250, 70);
             _quitButtonSprite = new Sprite(spriteSheet, 355, 970, 250, 70);
 
-            _newButton = new Button(_newButtonSprite, 120, 800);
+            _newButton = new Button(_newButtonSprite);
             _newButton.Click += NewButton_Click;
             
-            _loadButton = new Button(_loadButtonSprite, 120, 885);
+            _loadButton = new Button(_loadButtonSprite);
             _loadButton.Click += LoadButton_Click;
 
-            _optionsButton = new Button(_optionsButtonSprite, 590, 800);
+            _optionsButton = new Button(_optionsButtonSprite);
             _optionsButton.Click += OptionsButton_Click;
 
-            _creditsButton = new Button(_creditsButtonSprite, 590, 885);
+            _creditsButton = new Button(_creditsButtonSprite);
             _creditsButton.Click += CreditsButton_Click;
 
-            _quitButton = new Button(_quitButtonSprite, 355, 970);
+            _quitButton = new Button(_quitButtonSprite);
             _quitButton.Click += QuitButton_Click;
             
             _buttonList = new List<Component>()
@@ -74,19 +74,10 @@ namespace Wheats_and_Wands.Levels
         {
             _spriteBatch = spriteBatch;
             _backGround.Draw(spriteBatch, new Vector2(0, 0));
-
-            /*
-            _newButton.Draw(spriteBatch, new Vector2(120, 260));
-            _loadButton.Draw(spriteBatch, new Vector2(120, 345));
-            _optionsButton.Draw(spriteBatch, new Vector2(590, 260));
-            _creditsButton.Draw(spriteBatch, new Vector2(590, 345));
-            _quitButton.Draw(spriteBatch, new Vector2(355, 425));
-            */
             foreach(Button button in _buttonList)
             {
                 button.Draw(spriteBatch);
             }
-
 
         }
 
