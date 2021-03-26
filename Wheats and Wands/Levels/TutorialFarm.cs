@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Wheats_and_Wands.Entities;
+using Wheats_and_Wands.System;
 
 namespace Wheats_and_Wands.Levels
 {
@@ -13,7 +14,7 @@ namespace Wheats_and_Wands.Levels
         public Texture2D _backGround { get ; set ; }
         public Farmer _farmer { get ; set ; }
         SpriteBatch _spriteBatch;
-        public TutorialFarm(Texture2D backGround)
+        public TutorialFarm(Texture2D backGround, GameState gameState)
         {
             _backGround = backGround;
         }
