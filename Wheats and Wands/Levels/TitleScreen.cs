@@ -12,6 +12,8 @@ namespace Wheats_and_Wands.Levels
     {
         Texture2D _spriteSheet { get; set; }
         SpriteBatch _spriteBatch { get; set; }
+
+        GameState _gameState;
         Rectangle _frame = new Rectangle(0, 0, WheatandWandsGame.WINDOW_WIDTH, WheatandWandsGame.WINDOW_HEIGHT);
         Sprite _backGround;
 
@@ -30,9 +32,10 @@ namespace Wheats_and_Wands.Levels
         private List<Component> _buttonList;
 
 
-        public TitleScreen (Texture2D spriteSheet)
+        public TitleScreen (Texture2D spriteSheet, GameState gameState)
         {
             _spriteSheet = spriteSheet;
+            _gameState = gameState;
             _backGround = new Sprite(spriteSheet, 0, 0, 960, 540);
 
 
@@ -83,7 +86,7 @@ namespace Wheats_and_Wands.Levels
 
         public void NewButton_Click(object sender, EventArgs e)
         {
-            //Add new button stuff here
+            _gameState.state = States.Tutorial;
         }
 
         public void LoadButton_Click(object sender, EventArgs e)
@@ -104,7 +107,8 @@ namespace Wheats_and_Wands.Levels
         public void QuitButton_Click(object sender, EventArgs e)
         {
             //Quit game
-            _game.Exit();
+            
+            _game.Exit(); //_game is a null in the abstract class, this no worky
         }
 
         public override void Update(GameTime gameTime)

@@ -79,7 +79,7 @@ namespace Wheats_and_Wands.System
                 _farmer.State = FarmerState.Idle;
             } //idle trigger block
 
-            if (keyboardState.IsKeyDown(Keys.F4))
+            if (keyboardState.IsKeyDown(Keys.F3))
             {
                 _displayOptions.FullScreenMode();
 
