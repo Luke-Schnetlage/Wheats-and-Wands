@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Media;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,10 +14,12 @@ namespace Wheats_and_Wands.Levels
         public Texture2D _backGround { get ; set ; }
         public Farmer _farmer { get ; set ; }
         SpriteBatch _spriteBatch;
-        public TutorialFarm(Texture2D backGround, Farmer farmer)
+        Song _theme;
+        public TutorialFarm(Texture2D backGround, Farmer farmer, Song theme)
         {
             _backGround = backGround;
             _farmer = farmer;
+            _theme = theme;
         }
 
         public override void Draw(SpriteBatch spriteBatch, GameTime gameTime)
@@ -24,6 +27,12 @@ namespace Wheats_and_Wands.Levels
             _spriteBatch = spriteBatch;
             _spriteBatch.Draw(_backGround, _frame, Color.White);
             _farmer.Draw(spriteBatch, gameTime);
+        }
+        public override void PlayMusic()
+        {
+
+            MediaPlayer.Play(_theme);
+            MediaPlayer.Volume -= 0.5f;
         }
 
         public override void Update(GameTime gameTime)
