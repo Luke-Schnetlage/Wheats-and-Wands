@@ -68,6 +68,18 @@
 /processorParam:TextureFormat=Color
 /build:Farmer walk cycle.png
 
+#begin music_orlamusic_Happy+006.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:music_orlamusic_Happy+006.mp3
+
+#begin music_zapsplat_game_music_zen_calm_soft_arpeggios_013.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:music_zapsplat_game_music_zen_calm_soft_arpeggios_013.mp3
+
 #begin Title screen.png
 /importer:TextureImporter
 /processor:TextureProcessor
