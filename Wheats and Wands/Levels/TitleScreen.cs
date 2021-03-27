@@ -41,8 +41,8 @@ namespace Wheats_and_Wands.Levels
 
             _newButtonSprite = new Sprite(spriteSheet, 120, 800, 250, 70);
             _loadButtonSprite = new Sprite(spriteSheet, 120, 885, 250, 70);
-            _optionsButtonSprite = new Sprite(spriteSheet, 590, 800, 250, 70);
-            _creditsButtonSprite = new Sprite(spriteSheet, 590, 885, 250, 70);
+            _creditsButtonSprite = new Sprite(spriteSheet, 590, 800, 250, 70);
+            _optionsButtonSprite = new Sprite(spriteSheet, 590, 885, 250, 70);
             _quitButtonSprite = new Sprite(spriteSheet, 355, 970, 250, 70);
 
             _newButton = new Button(_newButtonSprite);
@@ -73,7 +73,7 @@ namespace Wheats_and_Wands.Levels
 
         
 
-        public override void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
             _spriteBatch = spriteBatch;
             _backGround.Draw(spriteBatch, new Vector2(0, 0));
@@ -101,7 +101,7 @@ namespace Wheats_and_Wands.Levels
 
         public void CreditsButton_Click(object sender, EventArgs e)
         {
-            //Credits stuff
+            _gameState.state = States.CreditScreen;
         }
 
         public void QuitButton_Click(object sender, EventArgs e)

@@ -17,16 +17,16 @@ namespace Wheats_and_Wands.Levels
         public Rectangle _frame = new Rectangle(0, 0, WheatandWandsGame.WINDOW_WIDTH, WheatandWandsGame.WINDOW_HEIGHT);
         SpriteBatch _spriteBatch;
 
-        Level(Game game)
-        {
-            _game = game;
-        }
+        //Level(Game game)
+        //{
+        //    _game = game;
+        //}
         public virtual void Update(GameTime gameTime)
         {
 
         }
 
-        public virtual void Draw(SpriteBatch spriteBatch)
+        public virtual void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
             _spriteBatch = spriteBatch;
             _spriteBatch.Draw(_backGround, _frame, Color.White);

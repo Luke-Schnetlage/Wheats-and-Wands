@@ -13,20 +13,22 @@ namespace Wheats_and_Wands.Levels
         public Texture2D _backGround { get ; set ; }
         public Farmer _farmer { get ; set ; }
         SpriteBatch _spriteBatch;
-        public TutorialFarm(Texture2D backGround)
+        public TutorialFarm(Texture2D backGround, Farmer farmer)
         {
             _backGround = backGround;
+            _farmer = farmer;
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
             _spriteBatch = spriteBatch;
             _spriteBatch.Draw(_backGround, _frame, Color.White);
+            _farmer.Draw(spriteBatch, gameTime);
         }
 
-        public void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime)
         {
-            throw new NotImplementedException();
+            _farmer.Update(gameTime);
         }
     }
 }
