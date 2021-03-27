@@ -19,13 +19,13 @@ namespace Wheats_and_Wands
         Level _level;
         TitleScreen _titleScreen;
         TutorialFarm _tutorial;
+        CreditScreen _creditScreen;
 
 
         Texture2D _titleScreenSprite;
         Texture2D _tutorialFarmBackground;
         Texture2D _farmerSpriteSheet;
         Vector2 playerPosition;
-        //float playerSpeed;
 
         Texture2D _creditScreenSprite; //Added
         SpriteFont _creditFont; //Added
@@ -83,9 +83,9 @@ namespace Wheats_and_Wands
 
             
             _titleScreen = new TitleScreen(_titleScreenSprite, _gameState);
+            _creditScreen = new CreditScreen(_creditScreenSprite,_creditFont );
 
-            _tutorial = new TutorialFarm(_tutorialFarmBackground);
-
+            _tutorial = new TutorialFarm(_tutorialFarmBackground, _farmer);
         }
 
         protected override void Update(GameTime gameTime)
@@ -104,12 +104,15 @@ namespace Wheats_and_Wands
             {
                 _level = _tutorial;
             }
+            if (_gameState.state == States.CreditScreen)
+            {
+                _level = _creditScreen;
+            }
 
-            _titleScreen.Update(gameTime);
+            _level.Update(gameTime);
 
-                base.Update(gameTime);
+            base.Update(gameTime);
             _inputController.ProcessControls(gameTime);
-            _farmer.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
@@ -119,14 +122,8 @@ namespace Wheats_and_Wands
             // TODO: Add your drawing code here
             _spriteBatch.Begin();
             GraphicsDevice.Clear(Color.White);
-            _titleScreen.Draw(_spriteBatch);
 
-            _level.Draw(_spriteBatch);
-            //_tutorial.Draw(_spriteBatch);
-            _farmer.Draw(_spriteBatch, gameTime);
-
-            //DrawString commands
-            //_spriteBatch.DrawString(_creditFont, "Credits", new Vector2(100, 20), Color.White); //Added
+            _level.Draw(_spriteBatch,gameTime);
 
             _spriteBatch.End();
             base.Draw(gameTime);
