@@ -15,8 +15,6 @@ namespace Wheats_and_Wands.System
         private MouseState _previousMouse; //Checks left clicking?
         private Sprite _sprite;
         public event EventHandler Click;
-        public float X;
-        public float Y;
 
         public bool Clicked { get; private set; }
         public Color PenColor { get; set; } //Color of the font
