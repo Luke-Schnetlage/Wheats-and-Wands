@@ -76,7 +76,7 @@ namespace Wheats_and_Wands
             _titleScreenSprite = Content.Load<Texture2D>("Title screen");
             _titleTheme = Content.Load<Song>("music_zapsplat_game_music_zen_calm_soft_arpeggios_013");
 
-            _tutorialFarmBackground = Content.Load<Texture2D>("Farmer Background 2D -1");
+            _tutorialFarmBackground = Content.Load<Texture2D>("FarmerBackground2D");
             _tutorialTheme = Content.Load<Song>("music_orlamusic_Happy+006");
 
             _creditScreenSprite = Content.Load<Texture2D>("Credits Screen"); //Added
