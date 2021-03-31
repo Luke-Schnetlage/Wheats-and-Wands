@@ -21,6 +21,7 @@ namespace Wheats_and_Wands.System
 
 		public void Play()
         {
+			MediaPlayer.Volume = 0.3f;
 			Song temp = _song;
 			if (_gameState.state == States.TitleScreen || _gameState.state == States.CreditScreen)
             {
