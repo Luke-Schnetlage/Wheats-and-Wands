@@ -25,7 +25,7 @@ namespace Wheats_and_Wands.Levels
             spriteBatch.DrawString(_font, "Credits", new Vector2(900 /2, 20), Color.White); //Added
             spriteBatch.DrawString(_font, "Coding by Luke Schnetlage & Scott Lam", new Vector2(80, 100), Color.White);
             spriteBatch.DrawString(_font, "Lead artist: Scott Lam", new Vector2(80, 200), Color.White);
-            spriteBatch.DrawString(_font, "Lead architect:", new Vector2(80, 300), Color.White);
+            spriteBatch.DrawString(_font, "Lead architect: Luke Schnetlage", new Vector2(80, 300), Color.White);
             spriteBatch.DrawString(_font, "Music and sound effects courtesy of Zapsplat.com", new Vector2(80, 400), Color.White);
             spriteBatch.DrawString(_font, "Created using the MonoGame Framework", new Vector2(80, 500), Color.White);
         }
