@@ -16,7 +16,6 @@ namespace Wheats_and_Wands.Levels
         Texture2D _backGround { get; set; }
         public Rectangle _frame = new Rectangle(0, 0, WheatandWandsGame.WINDOW_WIDTH, WheatandWandsGame.WINDOW_HEIGHT);
         SpriteBatch _spriteBatch;
-        Song _theme;
 
         public virtual void Update(GameTime gameTime)
         {
@@ -29,10 +28,5 @@ namespace Wheats_and_Wands.Levels
             _spriteBatch.Draw(_backGround, _frame, Color.White);
         }
 
-        public virtual void PlayMusic()
-        {
-            
-            MediaPlayer.Play(_theme);
-        }
     }
 }

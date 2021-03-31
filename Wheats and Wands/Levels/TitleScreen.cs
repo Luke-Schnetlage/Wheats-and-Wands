@@ -17,7 +17,6 @@ namespace Wheats_and_Wands.Levels
 
         //static Game _game;
 
-        //Song _theme;
 
         GameState _gameState;
         Rectangle _frame = new Rectangle(0, 0, WheatandWandsGame.WINDOW_WIDTH, WheatandWandsGame.WINDOW_HEIGHT);
@@ -43,8 +42,6 @@ namespace Wheats_and_Wands.Levels
             _spriteSheet = spriteSheet;
             _gameState = gameState;
 
-            //_theme = theme;
-            //MediaPlayer.Play(_theme);
 
             _backGround = new Sprite(spriteSheet, 0, 0, 960, 540);
 

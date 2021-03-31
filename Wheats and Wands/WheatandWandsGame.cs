@@ -96,7 +96,7 @@ namespace Wheats_and_Wands
             _titleScreen = new TitleScreen(_titleScreenSprite, _gameState);
             _creditScreen = new CreditScreen(_creditScreenSprite,_creditFont );
 
-            _tutorial = new TutorialFarm(_tutorialFarmBackground, _farmer, _tutorialTheme);
+            _tutorial = new TutorialFarm(_tutorialFarmBackground, _farmer);
         }
 
         protected override void Update(GameTime gameTime)
