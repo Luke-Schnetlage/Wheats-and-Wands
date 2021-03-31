@@ -50,15 +50,8 @@
 /build:Backgrounds/FarmerBackground2D.png
 
 #begin Backgrounds/Title screen.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/importer:
+/processor:
 /build:Backgrounds/Title screen.png
 
 #begin Farmer walk cycle.png
