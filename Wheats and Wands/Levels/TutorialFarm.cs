@@ -32,7 +32,7 @@ namespace Wheats_and_Wands.Levels
         {
 
             MediaPlayer.Play(_theme);
-            MediaPlayer.Volume -= 0.5f;
+            MediaPlayer.Volume = 0.3f;
         }
 
         public override void Update(GameTime gameTime)
