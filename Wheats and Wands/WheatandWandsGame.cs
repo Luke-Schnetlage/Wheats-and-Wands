@@ -36,6 +36,8 @@ namespace Wheats_and_Wands
         //SpriteFont _scottFont; //Added, Not implemented
         //SpriteFont _lukeFont; //Added, Not implemented
 
+
+        MusicManager _musicManager;
         Song _titleTheme;
         Song _tutorialTheme;
 
@@ -73,14 +75,14 @@ namespace Wheats_and_Wands
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             // TODO: use this.Content to load your game content here
 
-            _titleScreenSprite = Content.Load<Texture2D>("Title screen");
+            _titleScreenSprite = Content.Load<Texture2D>("Backgrounds/Title screen");
             _titleTheme = Content.Load<Song>("music_zapsplat_game_music_zen_calm_soft_arpeggios_013");
 
-            _tutorialFarmBackground = Content.Load<Texture2D>("FarmerBackground2D");
+            _tutorialFarmBackground = Content.Load<Texture2D>("Backgrounds/FarmerBackground2D");
             _tutorialTheme = Content.Load<Song>("music_orlamusic_Happy+006");
 
-            _creditScreenSprite = Content.Load<Texture2D>("Credits Screen"); //Added
-            _creditFont = Content.Load<SpriteFont>("Credits"); //Added
+            _creditScreenSprite = Content.Load<Texture2D>("Backgrounds/Credits Screen"); //Added
+            _creditFont = Content.Load<SpriteFont>("Spritefonts/Credits"); //Added
 
             _farmerSpriteSheet = Content.Load<Texture2D>("Farmer walk cycle");
 
@@ -88,10 +90,10 @@ namespace Wheats_and_Wands
             _displayOptions = new Display_Options(_graphics);
             _inputController = new InputController(_farmer, _displayOptions);
 
+            _musicManager = new MusicManager(_gameState, _titleTheme, _tutorialTheme);
 
 
-            
-            _titleScreen = new TitleScreen(_titleScreenSprite, _gameState, _titleTheme);
+            _titleScreen = new TitleScreen(_titleScreenSprite, _gameState);
             _creditScreen = new CreditScreen(_creditScreenSprite,_creditFont );
 
             _tutorial = new TutorialFarm(_tutorialFarmBackground, _farmer, _tutorialTheme);
@@ -122,6 +124,7 @@ namespace Wheats_and_Wands
             
             base.Update(gameTime);
             _inputController.ProcessControls(gameTime);
+            _musicManager.Play();
         }
 
         protected override void Draw(GameTime gameTime)
@@ -137,5 +140,6 @@ namespace Wheats_and_Wands
             _spriteBatch.End();
             base.Draw(gameTime);
         }
+
     }
 }
