@@ -26,10 +26,13 @@ namespace Wheats_and_Wands
         Texture2D _titleScreenSprite;
         Texture2D _tutorialFarmBackground;
         Texture2D _farmerSpriteSheet;
+        Texture2D _hayBale;
+
+
         Vector2 playerPosition;
 
         Texture2D _creditScreenSprite; //Added
-        SpriteFont _creditFont; //Added
+        public SpriteFont _creditFont { get; private set; } //Added
         //SpriteFont _artFont; //Added, Not implemented
         //SpriteFont _musicFont; //Added, Not implemented
         //SpriteFont _programFont; //Added, Not implemented
@@ -79,6 +82,7 @@ namespace Wheats_and_Wands
             _titleTheme = Content.Load<Song>("music_zapsplat_game_music_zen_calm_soft_arpeggios_013");
 
             _tutorialFarmBackground = Content.Load<Texture2D>("Backgrounds/FarmerBackground2D");
+            _hayBale = Content.Load<Texture2D>("PNG Objects/HayBale-1");
             _tutorialTheme = Content.Load<Song>("music_orlamusic_Happy+006");
 
             _creditScreenSprite = Content.Load<Texture2D>("Backgrounds/Credits Screen"); //Added

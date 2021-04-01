@@ -7,7 +7,7 @@ using Wheats_and_Wands.Graphics;
 
 namespace Wheats_and_Wands.Entities
 {
-    class Farmer : IGameEntity
+    public class Farmer : IGameEntity
     {
 
         private const float MIN_JUMP_HEIGHT = 20f;
@@ -17,13 +17,11 @@ namespace Wheats_and_Wands.Entities
 
         private const float CANCEL_JUMP_VELOCITY = -100f;
        
-        //private const float WALK_SPEED = 100f;
 
 
         public FarmerState State { get; set; }
         public Vector2 Position { get; set; }
-        public bool IsAlive { get; private set; }
-        //public float Speed { get; private set; } = 100;
+        //public bool IsAlive { get; private set; }
         public int DrawOrder { set; get; }
         public bool OnGround { get; set; }
 
@@ -104,6 +102,8 @@ namespace Wheats_and_Wands.Entities
                     OnGround = true;
                     State = FarmerState.Idle;
                 }
+
+
             }
             else if (State == FarmerState.Running)
             {
