@@ -32,7 +32,7 @@ namespace Wheats_and_Wands.System
         {
             _sprite = sprite;
         }
-        public override void Draw(SpriteBatch spriteBatch)
+        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
             if (this.isHovering) //If the mouse is hovering over the button
                 _sprite.TintColor = Color.Gray;

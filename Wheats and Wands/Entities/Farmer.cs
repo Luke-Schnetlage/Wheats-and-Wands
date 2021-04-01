@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -16,8 +17,8 @@ namespace Wheats_and_Wands.Entities
         private const float JUMP_START_VELOCITY = -480f;
 
         private const float CANCEL_JUMP_VELOCITY = -100f;
-       
 
+        public Vector2 HorizontalVelocity;
 
         public FarmerState State { get; set; }
         public Vector2 Position { get; set; }
@@ -109,6 +110,13 @@ namespace Wheats_and_Wands.Entities
             {
                 _farmerWalkCycle.Update(gameTime);
             }
+
+            if (Keyboard.GetState().IsKeyDown(Keys.A))
+                HorizontalVelocity.X = -3f;
+            else if (Keyboard.GetState().IsKeyDown(Keys.D))
+                HorizontalVelocity.X = 3f;
+            else
+                HorizontalVelocity.X = 0f;
         }
 
 

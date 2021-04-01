@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using System.Collections.Generic;
 using Wheats_and_Wands.Entities;
+using Wheats_and_Wands.Graphics;
 using Wheats_and_Wands.Levels;
 using Wheats_and_Wands.System;
 
@@ -28,6 +29,7 @@ namespace Wheats_and_Wands
         Texture2D _farmerSpriteSheet;
         Texture2D _hayBale;
 
+        List<ScrollBackground> _scrollBackgrounds;
 
         Vector2 playerPosition;
 
@@ -81,7 +83,6 @@ namespace Wheats_and_Wands
             _titleScreenSprite = Content.Load<Texture2D>("Backgrounds/Title screen");
             _titleTheme = Content.Load<Song>("music_zapsplat_game_music_zen_calm_soft_arpeggios_013");
 
-            _tutorialFarmBackground = Content.Load<Texture2D>("Backgrounds/FarmerBackground2D");
             _hayBale = Content.Load<Texture2D>("PNG Objects/HayBale-1");
             _tutorialTheme = Content.Load<Song>("music_orlamusic_Happy+006");
 
@@ -89,6 +90,21 @@ namespace Wheats_and_Wands
             _creditFont = Content.Load<SpriteFont>("Spritefonts/Credits"); //Added
 
             _farmerSpriteSheet = Content.Load<Texture2D>("Farmer walk cycle");
+            _tutorialFarmBackground = Content.Load<Texture2D>("Backgrounds/FarmerBackground2D1");
+
+            var farmerSpriteSheet = Content.Load<Texture2D>("Farmer walk cycle");
+            _farmer = new Farmer(farmerSpriteSheet, new Vector2(50, (WINDOW_HEIGHT-farmerSpriteSheet.Height) - 20 ));
+            _scrollBackgrounds = new List<ScrollBackground>()
+            {
+                new ScrollBackground(Content.Load<Texture2D>("Backgrounds/FarmLayer/FastClouds"), _farmer, 5f, true)
+                {
+                    Layer = 1f //close to front layer
+                },
+                new ScrollBackground(Content.Load<Texture2D>("Backgrounds/FarmLayer/FarClouds"), _farmer, 1f, true)
+                {
+                    Layer = 1f
+                }
+            };
 
             _farmer = new Farmer(_farmerSpriteSheet, playerPosition);
             _displayOptions = new Display_Options(_graphics);
@@ -118,6 +134,8 @@ namespace Wheats_and_Wands
             if (_gameState.state == States.Tutorial)
             {
                 _level = _tutorial;
+                foreach (var scrollBackground in _scrollBackgrounds)
+                    scrollBackground.Update(gameTime);
             }
             if (_gameState.state == States.CreditScreen)
             {
@@ -136,10 +154,15 @@ namespace Wheats_and_Wands
 
 
             // TODO: Add your drawing code here
-            _spriteBatch.Begin();
+            _spriteBatch.Begin(SpriteSortMode.FrontToBack);
             GraphicsDevice.Clear(Color.White);
-            
+
+
             _level.Draw(_spriteBatch,gameTime);
+
+            if (_level == _tutorial) //Tutorial entities will spawn in the tutorial screen
+                foreach (var scrollBackground in _scrollBackgrounds)
+                    scrollBackground.Draw(gameTime, _spriteBatch);
 
             _spriteBatch.End();
             base.Draw(gameTime);

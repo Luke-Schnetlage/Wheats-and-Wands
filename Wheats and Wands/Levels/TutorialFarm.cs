@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Wheats_and_Wands.Entities;
+using Wheats_and_Wands.Graphics;
 
 namespace Wheats_and_Wands.Levels
 {
@@ -18,6 +19,7 @@ namespace Wheats_and_Wands.Levels
         {
             _backGround = backGround;
             _farmer = farmer;
+
         }
 
         public override void Draw(SpriteBatch spriteBatch, GameTime gameTime)

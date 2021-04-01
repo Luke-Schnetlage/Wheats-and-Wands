@@ -85,7 +85,7 @@ namespace Wheats_and_Wands.Levels
             _backGround.Draw(spriteBatch, new Vector2(0, 0));
             foreach(Button button in _buttonList)
             {
-                button.Draw(spriteBatch);
+                button.Draw(gameTime, spriteBatch);
             }
 
         }
