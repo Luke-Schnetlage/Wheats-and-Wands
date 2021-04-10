@@ -41,13 +41,12 @@ namespace Wheats_and_Wands.Graphics
                 return _frames.Max(f => f.TimeStamp);
             }
         }
-
-        public bool IsPlaying { get; private set; }
-
         public float PlaybackProgress { get; private set; }
 
+        public bool IsPlaying { get; private set; }
         public bool ShouldLoop { get; set; } = true;
 
+        
         public void AddFrame(Sprite sprite, float timeStamp)
         {
             SpriteAnimationFrame frame = new SpriteAnimationFrame(sprite, timeStamp);

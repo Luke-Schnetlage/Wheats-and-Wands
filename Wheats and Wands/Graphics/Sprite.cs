@@ -33,6 +33,13 @@ namespace Wheats_and_Wands.Graphics
         {
             spriteBatch.Draw(Texture, position, new Rectangle(X, Y, Width, Height), TintColor); //, SpriteEffects
         }
-        
+
+        /*
+        public void Draw(SpriteBatch spriteBatch, Vector2 position, SpriteEffects effect)
+        {
+            spriteBatch.Draw(Texture,position, new Rectangle(X, Y, Width, Height), TintColor,0f,new Vector2(Width/2,Height/2), effect,1);
+            
+        }
+        */
     }
 }

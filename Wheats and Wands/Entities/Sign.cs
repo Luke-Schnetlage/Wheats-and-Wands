@@ -18,16 +18,24 @@ namespace Wheats_and_Wands.Entities
             _sprite = sprite;
             _messageBox = new MessageBox(new Sprite(msgbox, 0, 0, 347, 77), font);
             _message = message;
+            collision = false;
         }
-        public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
+        public void Draw(SpriteBatch spriteBatch, Vector2 position)
         {
-            _sprite.Draw(spriteBatch, new Vector2(_sprite.X, _sprite.Y));
+            _sprite.Draw(spriteBatch, position);
             if (collision)
-                _messageBox.Draw(spriteBatch, gameTime, _message);
+            {
+                _messageBox.Draw(spriteBatch, _message);
+            }
+                
         }
 
-        public void Update(GameTime gameTime)
+        public void Update(GameTime gameTime, Farmer farmer)
         {
+
+            collision = (LeftCollision(farmer._sprite)); //|| RightCollision(farmer.rectangle) ||
+                //TopCollision(farmer.rectangle) || BottomCollision(farmer.rectangle);
+            
             
         }
     }

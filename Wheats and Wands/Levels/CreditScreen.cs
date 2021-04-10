@@ -9,9 +9,7 @@ namespace Wheats_and_Wands.Levels
     public class CreditScreen : Level
     {
         Texture2D _creditScreen { get; set; }
-
         SpriteFont _font { get; set; }
-
         public CreditScreen(Texture2D creditScreen, SpriteFont font)//GameTime gameTime, Texture2D creditsScreen)
         {
             _font = font;

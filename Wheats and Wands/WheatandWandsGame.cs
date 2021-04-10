@@ -28,6 +28,8 @@ namespace Wheats_and_Wands
         Texture2D _tutorialFarmBackground;
         Texture2D _farmerSpriteSheet;
         Texture2D _hayBale;
+        Texture2D _sign;
+        Texture2D _textbox;
 
         List<ScrollBackground> _scrollBackgrounds;
 
@@ -84,6 +86,8 @@ namespace Wheats_and_Wands
             _titleTheme = Content.Load<Song>("music_zapsplat_game_music_zen_calm_soft_arpeggios_013");
 
             _hayBale = Content.Load<Texture2D>("PNG Objects/HayBale-1");
+            _sign = Content.Load<Texture2D>("PNG Objects/Sign");
+            _textbox = Content.Load<Texture2D>("PNG Objects/TextBox");
             _tutorialTheme = Content.Load<Song>("music_orlamusic_Happy+006");
 
             _creditScreenSprite = Content.Load<Texture2D>("Backgrounds/Credits Screen"); //Added
@@ -91,6 +95,8 @@ namespace Wheats_and_Wands
 
             _farmerSpriteSheet = Content.Load<Texture2D>("Farmer walk cycle");
             _tutorialFarmBackground = Content.Load<Texture2D>("Backgrounds/FarmerBackground2D1");
+
+
 
             var farmerSpriteSheet = Content.Load<Texture2D>("Farmer walk cycle");
             _farmer = new Farmer(farmerSpriteSheet, new Vector2(50, (WINDOW_HEIGHT-farmerSpriteSheet.Height) - 20 ));
@@ -116,7 +122,7 @@ namespace Wheats_and_Wands
             _titleScreen = new TitleScreen(_titleScreenSprite, _gameState);
             _creditScreen = new CreditScreen(_creditScreenSprite,_creditFont );
 
-            _tutorial = new TutorialFarm(_tutorialFarmBackground, _farmer);
+            _tutorial = new TutorialFarm(_tutorialFarmBackground, _farmer, _sign, _textbox, _creditFont);
         }
 
         protected override void Update(GameTime gameTime)

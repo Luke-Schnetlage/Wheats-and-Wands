@@ -7,6 +7,7 @@ namespace Wheats_and_Wands.Graphics
     public class SpriteAnimationFrame
     {
         private Sprite _sprite;
+        public float TimeStamp { get; }
 
         public Sprite Sprite
         {
@@ -24,8 +25,6 @@ namespace Wheats_and_Wands.Graphics
                 _sprite = value;
             }
         }
-
-        public float TimeStamp { get; }
 
         public SpriteAnimationFrame(Sprite sprite, float timestamp)
         {

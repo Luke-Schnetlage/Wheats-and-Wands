@@ -22,12 +22,14 @@ namespace Wheats_and_Wands.Entities
 
         public FarmerState State { get; set; }
         public Vector2 Position { get; set; }
+        public Rectangle rectangle { get; set; }
         //public bool IsAlive { get; private set; }
         public int DrawOrder { set; get; }
         public bool OnGround { get; set; }
 
         private Sprite _FarmerIdlePose;
         private SpriteAnimation _farmerWalkCycle;
+        public Sprite _sprite { get; private set; }
 
 
         private float _verticalVelocity;
@@ -41,6 +43,8 @@ namespace Wheats_and_Wands.Entities
             Position = position;
 
             _FarmerIdlePose = new Sprite(spriteSheet, 0, 0, 64, 128);
+            _sprite = _FarmerIdlePose;
+            rectangle = new Rectangle((int)Position.X, (int)Position.Y, 64, 128);
             State = FarmerState.Idle;
             _startPosY = position.Y;
 
@@ -68,15 +72,18 @@ namespace Wheats_and_Wands.Entities
             if (State == FarmerState.Idle)
             {
                 _FarmerIdlePose.Draw(spriteBatch, this.Position);
+                _sprite = _FarmerIdlePose;
 
             }
             else if (State == FarmerState.Jumping || State == FarmerState.Falling)
             {
                 _FarmerIdlePose.Draw(spriteBatch, Position);
+                _sprite = _FarmerIdlePose;
             }
             else if (State == FarmerState.Running)
             {
                 _farmerWalkCycle.Draw(spriteBatch, Position);
+                _sprite = _farmerWalkCycle.CurrentFrame.Sprite;
             }
         }
 
@@ -117,6 +124,8 @@ namespace Wheats_and_Wands.Entities
                 HorizontalVelocity.X = 3f;
             else
                 HorizontalVelocity.X = 0f;
+            
+            rectangle = new Rectangle((int)Position.X, (int)Position.Y, 64, 128);
         }
 
 

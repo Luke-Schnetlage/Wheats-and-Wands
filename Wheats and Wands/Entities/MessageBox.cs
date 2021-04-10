@@ -7,22 +7,24 @@ using Wheats_and_Wands.Graphics;
 
 namespace Wheats_and_Wands.Entities
 {
-    class MessageBox// : IGameEntity
+    class MessageBox : IGameEntity
     {
         public int DrawOrder { get; set; }
         Sprite _sprite;
         SpriteFont _font;
+        string _messsage;
 
-        public MessageBox(Sprite sprite, SpriteFont font)
+        public MessageBox(Sprite sprite, SpriteFont font, string message)
         {
             _sprite = sprite;
             _font = font;
+            _messsage = message;
         }
 
-        public void Draw(SpriteBatch spriteBatch, GameTime gameTime, string messsage)
+        public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
-            _sprite.Draw(spriteBatch, new Vector2(_sprite.X, _sprite.Y));
-            spriteBatch.DrawString(_font, messsage, new Vector2(_sprite.X + 15, _sprite.Y- 50), Color.White);
+            _sprite.Draw(spriteBatch, new Vector2((WheatandWandsGame.WINDOW_WIDTH/2) - (_sprite.Width/2), 75));
+            spriteBatch.DrawString(_font, _messsage, new Vector2((WheatandWandsGame.WINDOW_WIDTH / 2), 75), Color.White);
 
         }
 
@@ -30,5 +32,7 @@ namespace Wheats_and_Wands.Entities
         {
             
         }
+
+        
     }
 }

@@ -12,13 +12,9 @@ namespace Wheats_and_Wands.System
     {
 
         const float PLAYER_SPEED = 250f;
-
         Vector2 position = new Vector2(0,0);
-
         private Farmer _farmer;
-
         private KeyboardState _previousKeyboardState;
-
         private Display_Options _displayOptions;
 
 

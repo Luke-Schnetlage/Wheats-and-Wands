@@ -33,34 +33,34 @@ namespace Wheats_and_Wands.Entities
         
         public bool LeftCollision(Sprite sprite)
         {
-            return this._sprite.rectangle.Right  > sprite.rectangle.Left &&
-                   this._sprite.rectangle.Left < sprite.rectangle.Left &&
-                   this._sprite.rectangle.Bottom > sprite.rectangle.Top &&
-                   this._sprite.rectangle.Top < sprite.rectangle.Bottom;
+            return _sprite.X + _sprite.Width > sprite.X && //right edge greater than left edge
+                   _sprite.X < sprite.X + sprite.Width&& //left edge less than right edge
+                   _sprite.Y + _sprite.Height > sprite.Y &&
+                   _sprite.Y < sprite.Y + sprite.Height;
         }
 
-        public bool RightCollision(Sprite sprite)
+        public bool RightCollision(Rectangle rectangle)
         {
-            return this._sprite.rectangle.Left < sprite.rectangle.Right &&
-                   this._sprite.rectangle.Right > sprite.rectangle.Right &&
-                   this._sprite.rectangle.Bottom > sprite.rectangle.Top &&
-                   this._sprite.rectangle.Top < sprite.rectangle.Bottom;
+            return this._sprite.rectangle.Left < rectangle.Right &&
+                   this._sprite.rectangle.Right > rectangle.Right &&
+                   this._sprite.rectangle.Bottom > rectangle.Top &&
+                   this._sprite.rectangle.Top < rectangle.Bottom;
         }
 
-        public bool TopCollision(Sprite sprite)
+        public bool TopCollision(Rectangle rectangle)
         {
-            return this._sprite.rectangle.Bottom > sprite.rectangle.Top &&
-                   this._sprite.rectangle.Top < sprite.rectangle.Top &&
-                   this._sprite.rectangle.Right > sprite.rectangle.Left &&
-                   this._sprite.rectangle.Left < sprite.rectangle.Right;
+            return this._sprite.rectangle.Bottom > rectangle.Top &&
+                   this._sprite.rectangle.Top < rectangle.Top &&
+                   this._sprite.rectangle.Right > rectangle.Left &&
+                   this._sprite.rectangle.Left < rectangle.Right;
         }
 
-        public bool BottomCollision(Sprite sprite)
+        public bool BottomCollision(Rectangle rectangle)
         {
-            return this._sprite.rectangle.Top  < sprite.rectangle.Bottom &&
-                   this._sprite.rectangle.Bottom > sprite.rectangle.Bottom &&
-                   this._sprite.rectangle.Right > sprite.rectangle.Left &&
-                   this._sprite.rectangle.Left < sprite.rectangle.Right;
+            return this._sprite.rectangle.Top  < rectangle.Bottom &&
+                   this._sprite.rectangle.Bottom > rectangle.Bottom &&
+                   this._sprite.rectangle.Right > rectangle.Left &&
+                   this._sprite.rectangle.Left < rectangle.Right;
         }
     }
 }
