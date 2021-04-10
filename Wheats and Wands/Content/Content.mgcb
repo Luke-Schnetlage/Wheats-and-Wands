@@ -37,7 +37,7 @@
 /processorParam:TextureFormat=Color
 /build:Backgrounds/Credits Screen.png
 
-#begin Backgrounds/FarmerBackground2D.png
+#begin Backgrounds/FarmLayer/Barn.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -47,19 +47,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Backgrounds/FarmerBackground2D.png
-
-#begin Backgrounds/FarmerBackground2D1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Backgrounds/FarmerBackground2D1.png
+/build:Backgrounds/FarmLayer/Barn.png
 
 #begin Backgrounds/FarmLayer/FarClouds.png
 /importer:TextureImporter
@@ -72,6 +60,54 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Backgrounds/FarmLayer/FarClouds.png
+
+#begin Backgrounds/FarmLayer/FarmerBackground2D2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Backgrounds/FarmLayer/FarmerBackground2D2.png
+
+#begin Backgrounds/FarmLayer/FarmLastLayer.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Backgrounds/FarmLayer/FarmLastLayer.png
+
+#begin Backgrounds/FarmLayer/FarmSecondLayer.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Backgrounds/FarmLayer/FarmSecondLayer.png
+
+#begin Backgrounds/FarmLayer/FarmThirdLayer.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Backgrounds/FarmLayer/FarmThirdLayer.png
 
 #begin Backgrounds/FarmLayer/FastClouds.png
 /importer:TextureImporter
