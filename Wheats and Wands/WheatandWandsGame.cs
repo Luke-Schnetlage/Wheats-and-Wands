@@ -29,7 +29,8 @@ namespace Wheats_and_Wands
         Texture2D _farmerSpriteSheet;
         Texture2D _hayBale;
 
-        List<ScrollBackground> _scrollBackgrounds;
+        List<ScrollBackground> _farmScrollBackgrounds;
+        Farmer _player;
 
         Vector2 playerPosition;
 
@@ -90,19 +91,35 @@ namespace Wheats_and_Wands
             _creditFont = Content.Load<SpriteFont>("Spritefonts/Credits"); //Added
 
             _farmerSpriteSheet = Content.Load<Texture2D>("Farmer walk cycle");
-            _tutorialFarmBackground = Content.Load<Texture2D>("Backgrounds/FarmerBackground2D1");
+            _tutorialFarmBackground = Content.Load<Texture2D>("Backgrounds/FarmLayer/FarmerBackground2D2");
 
             var farmerSpriteSheet = Content.Load<Texture2D>("Farmer walk cycle");
-            _farmer = new Farmer(farmerSpriteSheet, new Vector2(50, (WINDOW_HEIGHT-farmerSpriteSheet.Height) - 20 ));
-            _scrollBackgrounds = new List<ScrollBackground>()
+            _farmer = new Farmer(farmerSpriteSheet, new Vector2(50, (WINDOW_HEIGHT - farmerSpriteSheet.Height) - 20));
+            _farmScrollBackgrounds = new List<ScrollBackground>()
             {
-                new ScrollBackground(Content.Load<Texture2D>("Backgrounds/FarmLayer/FastClouds"), _farmer, 5f, true)
+                new ScrollBackground(Content.Load<Texture2D>("Backgrounds/FarmLayer/Barn"), _farmer, 0f)
                 {
-                    Layer = 1f //close to front layer
+                    Layer = 0.1f // Front Layer
                 },
-                new ScrollBackground(Content.Load<Texture2D>("Backgrounds/FarmLayer/FarClouds"), _farmer, 1f, true)
+                new ScrollBackground(Content.Load<Texture2D>("Backgrounds/FarmLayer/FarmSecondLayer"), _farmer, 0f)
                 {
-                    Layer = 1f
+                    Layer = 0.11f
+                },
+                new ScrollBackground(Content.Load<Texture2D>("Backgrounds/FarmLayer/FarmThirdLayer"), _farmer, 0f)
+                {
+                    Layer = 0.12f
+                },
+                new ScrollBackground(Content.Load<Texture2D>("Backgrounds/FarmLayer/FastClouds"), _farmer, 3f, true)
+                {
+                    Layer = 0.4f
+                },
+                new ScrollBackground(Content.Load<Texture2D>("Backgrounds/FarmLayer/FarClouds"), _farmer, .5f, true)
+                {
+                    Layer = 0.4f
+                },
+                new ScrollBackground(Content.Load<Texture2D>("Backgrounds/FarmLayer/FarmLastLayer"), _farmer, 0f)
+                {
+                    Layer = 1f //Back Layer
                 }
             };
 
@@ -134,7 +151,7 @@ namespace Wheats_and_Wands
             if (_gameState.state == States.Tutorial)
             {
                 _level = _tutorial;
-                foreach (var scrollBackground in _scrollBackgrounds)
+                foreach (var scrollBackground in _farmScrollBackgrounds)
                     scrollBackground.Update(gameTime);
             }
             if (_gameState.state == States.CreditScreen)
@@ -154,14 +171,14 @@ namespace Wheats_and_Wands
 
 
             // TODO: Add your drawing code here
-            _spriteBatch.Begin(SpriteSortMode.FrontToBack);
+            _spriteBatch.Begin(SpriteSortMode.BackToFront);
             GraphicsDevice.Clear(Color.White);
 
 
             _level.Draw(_spriteBatch,gameTime);
 
             if (_level == _tutorial) //Tutorial entities will spawn in the tutorial screen
-                foreach (var scrollBackground in _scrollBackgrounds)
+                foreach (var scrollBackground in _farmScrollBackgrounds)
                     scrollBackground.Draw(gameTime, _spriteBatch);
 
             _spriteBatch.End();
