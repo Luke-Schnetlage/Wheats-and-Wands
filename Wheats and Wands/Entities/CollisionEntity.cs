@@ -34,15 +34,9 @@ namespace Wheats_and_Wands.Entities
         
         public void RejectMovment(Farmer _farmer,GameTime gameTime)
         {
-            if (_farmer.Position.Y < _farmer._startPosY)
-            {
-                _farmer.Position = new Vector2(_farmer.Position.X, _farmer.Position.Y + 1);
-            }
+            Vector2 position = _farmer.Position;
             if (Collision(_farmer))
             {
-                
-                Vector2 position = _farmer.Position;
-
                 if (LeftCollision(_farmer))
                 {
                     position.X = _farmer.Position.X - (250f * (float)gameTime.ElapsedGameTime.TotalSeconds);
@@ -53,18 +47,23 @@ namespace Wheats_and_Wands.Entities
                     position.X = _farmer.Position.X + (250f * (float)gameTime.ElapsedGameTime.TotalSeconds);
                     
                 }
-                if (BottomCollision(_farmer))
-                {
-                    _farmer.CancelJump();
-                } 
                 if (TopCollision(_farmer))
                 {
                     _farmer.OnGround = true;
-                    
+                    _farmer._groundY = _sprite.position.Y ;
+                    //position.Y = 
+                    position.Y = _sprite.position.Y - 2* _sprite.Height;
                 }
-                _farmer.Position = position;
+                else if (BottomCollision(_farmer))
+                {
+                    //_farmer.CancelJump();
+                } 
+                else
+                {
+                    _farmer._groundY = _farmer._groundY;
+                }
             }
-            
+            _farmer.Position = position;
         }
 
         public bool Collision(Farmer _farmer)
@@ -87,8 +86,8 @@ namespace Wheats_and_Wands.Entities
 
         private bool TopCollision(Farmer _farmer)
         {
-            return _farmer.Position.Y + _farmer._sprite.Height > this._sprite.position.Y;// &&
-                //_farmer.Position.Y > _sprite.position.Y ;
+            return _farmer.Position.Y + _farmer._sprite.Height > this._sprite.position.Y &&
+                !LeftCollision(_farmer) && !RightCollision(_farmer);
         }
 
         private bool BottomCollision(Farmer _farmer)

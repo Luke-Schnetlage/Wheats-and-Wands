@@ -153,7 +153,7 @@ namespace Wheats_and_Wands
             Exit();
             }
 
-
+            
 
             if (_gameState.state == States.TitleScreen)
             {
@@ -169,11 +169,11 @@ namespace Wheats_and_Wands
             {
                 _level = _creditScreen;
             }
-
+            _inputController.ProcessControls(gameTime);
             _level.Update(gameTime);
             
             base.Update(gameTime);
-            _inputController.ProcessControls(gameTime);
+            
             _musicManager.Play();
         }
 

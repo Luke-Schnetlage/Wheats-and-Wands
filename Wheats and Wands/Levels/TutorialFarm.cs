@@ -50,17 +50,21 @@ namespace Wheats_and_Wands.Levels
 
         public override void Update(GameTime gameTime)
         {
-            _farmer._startPosY = _farmerStartPos.Y;
             _farmer.Update(gameTime);
-            
-            foreach (HayBale haybale in hayBales)
+            if (!_hayBale1.Collision(_farmer) && !_hayBale2.Collision(_farmer) && !_hayBale3.Collision(_farmer))
             {
-                if (haybale.Collision(_farmer))
-                    haybale.RejectMovment(_farmer, gameTime);
-
+                _farmer._groundY = _farmerStartPos.Y;
             }
             
-
+            {
+                foreach (HayBale haybale in hayBales)
+                {
+                    if (haybale.Collision(_farmer))
+                    {
+                        haybale.RejectMovment(_farmer, gameTime);
+                    }
+                }
+            }
             
             _sign.Update(gameTime, _farmer);
         }

@@ -40,7 +40,7 @@ namespace Wheats_and_Wands.System
             //cancel jump
             else if (!keyboardState.IsKeyDown(Keys.Up) && _farmer.State == FarmerState.Jumping) 
             {
-                _farmer.CancelJump(); // FarmerState = falling
+                //_farmer.CancelJump(); // FarmerState = falling
             }
 
             //move right
@@ -88,7 +88,6 @@ namespace Wheats_and_Wands.System
 
             }
 
-            
 
             _previousKeyboardState = keyboardState;
 
