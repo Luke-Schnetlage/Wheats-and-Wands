@@ -33,7 +33,7 @@ namespace Wheats_and_Wands.Entities
 
 
         private float _verticalVelocity;
-        private float _startPosY;
+        public float _startPosY { get; set; }
 
 
 
@@ -48,7 +48,7 @@ namespace Wheats_and_Wands.Entities
             State = FarmerState.Idle;
             _startPosY = position.Y;
 
-            OnGround = true;
+            OnGround = false;
 
 
             _farmerWalkCycle = new SpriteAnimation();
@@ -89,11 +89,7 @@ namespace Wheats_and_Wands.Entities
 
         public void Update(GameTime gameTime)
         {
-            if (State == FarmerState.Idle)
-            {
-
-            }
-            else if (!OnGround)
+            if (!OnGround)
             {
                 Position = new Vector2(Position.X, Position.Y + _verticalVelocity * (float)gameTime.ElapsedGameTime.TotalSeconds);
                 _verticalVelocity += GRAVITY * (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -110,14 +106,12 @@ namespace Wheats_and_Wands.Entities
                     OnGround = true;
                     State = FarmerState.Idle;
                 }
-
-
             }
             else if (State == FarmerState.Running)
             {
                 _farmerWalkCycle.Update(gameTime);
             }
-
+            
             if (Keyboard.GetState().IsKeyDown(Keys.A))
                 HorizontalVelocity.X = -3f;
             else if (Keyboard.GetState().IsKeyDown(Keys.D))
@@ -126,16 +120,18 @@ namespace Wheats_and_Wands.Entities
                 HorizontalVelocity.X = 0f;
             
             rectangle = new Rectangle((int)Position.X, (int)Position.Y, 64, 128);
+            
         }
 
 
         public bool BeginJump()
         {
+            /*
             if (State == FarmerState.Jumping || State == FarmerState.Falling)
             {
                 return false;
             }
-
+            */
             State = FarmerState.Jumping;
             OnGround = false;
             _verticalVelocity = JUMP_START_VELOCITY;
@@ -145,7 +141,7 @@ namespace Wheats_and_Wands.Entities
         public bool CancelJump()
         {
 
-            if (State != FarmerState.Jumping || (_startPosY - Position.Y) < MIN_JUMP_HEIGHT)
+            if (OnGround || (_startPosY - Position.Y) < MIN_JUMP_HEIGHT)
             {
                 return false;
             }
@@ -156,17 +152,7 @@ namespace Wheats_and_Wands.Entities
             return true;
         }
         
-        /*
-        public void MoveLeft()
-        {
-
-            //Position = new Vector2(Position.X - (PLAYER_SPEED * (float)gameTime.ElapsedGameTime.TotalSeconds), Position.Y);
-
-            //this.Position.X -= Speed;// * (float)gameTime.ElapsedGameTime.TotalSeconds;
-            //position.X -= WALK_SPEED * (float)gameTime.ElapsedGameTime.TotalSeconds;
-            State = FarmerState.Running;
-        }
-        */
+       
 
     }
 }

@@ -25,9 +25,19 @@ namespace Wheats_and_Wands.Graphics
             this.Y = y;
             this.Width = width;
             this.Height = height;
-            this.position = new Vector2(x, y);
-            this.rectangle = new Rectangle(x, y, width, height);
         }
+        
+        public Sprite(Texture2D texture, int x, int y, int width, int height, Vector2 vector)
+        {
+            this.Texture = texture;
+            this.X = x;
+            this.Y = y;
+            this.Width = width;
+            this.Height = height;
+            this.position = vector;
+            this.rectangle = new Rectangle((int)vector.X, (int)vector.Y, width, height);
+        }
+
 
         public void Draw(SpriteBatch spriteBatch, Vector2 position )
         {

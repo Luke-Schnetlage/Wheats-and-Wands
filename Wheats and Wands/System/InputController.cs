@@ -11,7 +11,7 @@ namespace Wheats_and_Wands.System
     class InputController
     {
 
-        const float PLAYER_SPEED = 250f;
+        public const float PLAYER_SPEED = 250f;
         Vector2 position = new Vector2(0,0);
         private Farmer _farmer;
         private KeyboardState _previousKeyboardState;
@@ -28,19 +28,23 @@ namespace Wheats_and_Wands.System
         {
             KeyboardState keyboardState = Keyboard.GetState();
 
-            if (keyboardState.IsKeyDown(Keys.Up) && !_previousKeyboardState.IsKeyDown(Keys.Up))
+            //jump
+            if (keyboardState.IsKeyDown(Keys.Up)) //&& !_previousKeyboardState.IsKeyDown(Keys.Up))
             {
-                if (_farmer.OnGround && _farmer.Position.Y >= 0)
+                if (_farmer.OnGround )//&& _farmer.Position.Y >= 0)
                 {
                     _farmer.BeginJump(); //state = jumping
                 }
-            } //jump
-            else if (!keyboardState.IsKeyDown(Keys.Up) && _farmer.State == FarmerState.Jumping)
+            }
+
+            //cancel jump
+            else if (!keyboardState.IsKeyDown(Keys.Up) && _farmer.State == FarmerState.Jumping) 
             {
                 _farmer.CancelJump(); // FarmerState = falling
-            } // cancel jump
+            }
+
             //move right
-            if (keyboardState.IsKeyDown(Keys.Right))
+            if (keyboardState.IsKeyDown(Keys.Right)) 
             {
                 if (_farmer.Position.X <= WheatandWandsGame.WINDOW_WIDTH - 64 )
                 {
@@ -52,7 +56,8 @@ namespace Wheats_and_Wands.System
                 }
                 _farmer.State = FarmerState.Running;
                 
-            } //move right
+            } 
+
             //move left
             if (keyboardState.IsKeyDown(Keys.Left))
             {
@@ -66,21 +71,25 @@ namespace Wheats_and_Wands.System
                    
                 }
                 _farmer.State = FarmerState.Running;
-            } //move left
-            
+            }
+
+            //idle trigger block            
             if (keyboardState.GetPressedKeyCount() == 0 && _farmer.OnGround) 
                 //&& _farmer.State != FarmerState.Running)
                // && ( _previousKeyboardState.IsKeyDown(Keys.Left) || _previousKeyboardState.IsKeyDown(Keys.Right)))
             {
                 _farmer.State = FarmerState.Idle;
-            } //idle trigger block
+            }
 
+            //fullscreen toggle
             if (keyboardState.IsKeyDown(Keys.F3))
             {
                 _displayOptions.FullScreenMode();
 
-            } //fullscreen toggle
+            }
+
             
+
             _previousKeyboardState = keyboardState;
 
         }

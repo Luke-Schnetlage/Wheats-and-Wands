@@ -74,7 +74,7 @@ namespace Wheats_and_Wands
 
             _gameState = new GameState();
 
-            playerPosition = new Vector2(_graphics.PreferredBackBufferWidth / 2, (_graphics.PreferredBackBufferHeight / 2) + 15 ); //defaults player to center of the screen
+            playerPosition = new Vector2(100 , (_graphics.PreferredBackBufferHeight / 2) + 15 ); //defaults player to center of the screen
             base.Initialize();
         }
 
@@ -107,6 +107,10 @@ namespace Wheats_and_Wands
                 {
                     Layer = 0.1f // Front Layer
                 },
+                new ScrollBackground(Content.Load<Texture2D>("Backgrounds/FarmLayer/FarmerBackground2D2"), _farmer, 0f)
+                {
+                    Layer = 0.1f
+                },
                 new ScrollBackground(Content.Load<Texture2D>("Backgrounds/FarmLayer/FarmSecondLayer"), _farmer, 0f)
                 {
                     Layer = 0.11f
@@ -130,6 +134,7 @@ namespace Wheats_and_Wands
             };
 
             _farmer = new Farmer(_farmerSpriteSheet, playerPosition);
+
             _displayOptions = new Display_Options(_graphics);
             _inputController = new InputController(_farmer, _displayOptions);
 
@@ -139,7 +144,7 @@ namespace Wheats_and_Wands
             _titleScreen = new TitleScreen(_titleScreenSprite, _gameState);
             _creditScreen = new CreditScreen(_creditScreenSprite,_creditFont );
 
-            _tutorial = new TutorialFarm(_tutorialFarmBackground, _farmer, _sign, _textbox, _creditFont);
+            _tutorial = new TutorialFarm( _farmer, _sign, _textbox, _hayBale ,_creditFont);
         }
 
         protected override void Update(GameTime gameTime)
@@ -181,11 +186,13 @@ namespace Wheats_and_Wands
             GraphicsDevice.Clear(Color.White);
 
 
-            _level.Draw(_spriteBatch,gameTime);
+            _level.Draw(_spriteBatch, gameTime);
 
             if (_level == _tutorial) //Tutorial entities will spawn in the tutorial screen
                 foreach (var scrollBackground in _farmScrollBackgrounds)
                     scrollBackground.Draw(gameTime, _spriteBatch);
+
+            
 
             _spriteBatch.End();
             base.Draw(gameTime);
