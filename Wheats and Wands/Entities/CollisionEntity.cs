@@ -49,9 +49,9 @@ namespace Wheats_and_Wands.Entities
                 }
                 if (TopCollision(_farmer))
                 {
-                    _farmer.OnGround = true;
+                    
                     _farmer._groundY = _sprite.position.Y ;
-                    //position.Y = 
+                    _farmer.Land();
                     position.Y = _sprite.position.Y - 2* _sprite.Height;
                 }
                 else if (BottomCollision(_farmer))

@@ -13,8 +13,8 @@ namespace Wheats_and_Wands.Entities
 
         private const float MIN_JUMP_HEIGHT = 20f;
 
-        private const float GRAVITY = 1600f;
-        private const float JUMP_START_VELOCITY = -480f;
+        private const float GRAVITY = 1600f;//1600
+        private const float JUMP_START_VELOCITY = -480f;//480
 
         private const float CANCEL_JUMP_VELOCITY = -100f;
 
@@ -95,9 +95,9 @@ namespace Wheats_and_Wands.Entities
             }
             if (!OnGround)
             {
+
                 Fall(gameTime);
             }
-
             if (State != FarmerState.Idle)
             {
                 _farmerWalkCycle.Update(gameTime);
@@ -109,12 +109,9 @@ namespace Wheats_and_Wands.Entities
             else
                 HorizontalVelocity.X = 0f;
 
-            if (Position.Y >= _groundY)
+            if (Position.Y > _groundY)
             {
-                Position = new Vector2(Position.X, _groundY);
-                _verticalVelocity = 0;
-                OnGround = true;
-                State = FarmerState.Idle;
+                Land();
             }
 
             rectangle = new Rectangle((int)Position.X, (int)Position.Y, 64, 128);
@@ -152,11 +149,16 @@ namespace Wheats_and_Wands.Entities
         {
             _verticalVelocity += GRAVITY * (float)gameTime.ElapsedGameTime.TotalSeconds;
             Position = new Vector2(Position.X, Position.Y + _verticalVelocity * (float)gameTime.ElapsedGameTime.TotalSeconds);
-            
-            
         }
-        
-       
+
+        public void Land()
+        {
+            Position = new Vector2(Position.X, _groundY);
+            _verticalVelocity = 0;
+            OnGround = true;
+            State = FarmerState.Idle;
+        }
+         
 
     }
 }

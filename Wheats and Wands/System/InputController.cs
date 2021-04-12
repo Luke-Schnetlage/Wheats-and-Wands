@@ -76,7 +76,6 @@ namespace Wheats_and_Wands.System
             //idle trigger block            
             if (keyboardState.GetPressedKeyCount() == 0 && _farmer.OnGround) 
                 //&& _farmer.State != FarmerState.Running)
-               // && ( _previousKeyboardState.IsKeyDown(Keys.Left) || _previousKeyboardState.IsKeyDown(Keys.Right)))
             {
                 _farmer.State = FarmerState.Idle;
             }
