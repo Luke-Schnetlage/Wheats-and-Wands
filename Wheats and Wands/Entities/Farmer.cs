@@ -80,7 +80,7 @@ namespace Wheats_and_Wands.Entities
                 _FarmerIdlePose.Draw(spriteBatch, Position);
                 _sprite = _FarmerIdlePose;
             }
-            else if (State == FarmerState.Running)
+            if (State == FarmerState.Running)
             {
                 _farmerWalkCycle.Draw(spriteBatch, Position);
                 _sprite = _farmerWalkCycle.CurrentFrame.Sprite;
@@ -98,7 +98,7 @@ namespace Wheats_and_Wands.Entities
                 Fall(gameTime);
             }
 
-            if (State == FarmerState.Running)
+            if (State != FarmerState.Idle)
             {
                 _farmerWalkCycle.Update(gameTime);
             }
@@ -122,12 +122,12 @@ namespace Wheats_and_Wands.Entities
         }
         public bool BeginJump()
         {
-            /*
+            
             if (State == FarmerState.Jumping || State == FarmerState.Falling)
             {
                 return false;
             }
-            */
+            
             State = FarmerState.Jumping;
             OnGround = false;
             _verticalVelocity = JUMP_START_VELOCITY;
