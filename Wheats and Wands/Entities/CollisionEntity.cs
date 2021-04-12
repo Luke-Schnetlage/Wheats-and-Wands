@@ -16,12 +16,6 @@ namespace Wheats_and_Wands.Entities
         bool collision;
         //private Sprite sprite;
 
-        public CollisionEntity(Sprite sprite, Farmer farmer)
-        {
-            _sprite = sprite;
-            //_farmer = farmer;
-        }
-
         public CollisionEntity(Sprite sprite)
         {
             this._sprite = sprite;
@@ -38,9 +32,12 @@ namespace Wheats_and_Wands.Entities
         }
 
         
-
         public void RejectMovment(Farmer _farmer,GameTime gameTime)
         {
+            if (_farmer.Position.Y < _farmer._startPosY)
+            {
+                _farmer.Position = new Vector2(_farmer.Position.X, _farmer.Position.Y + 1);
+            }
             if (Collision(_farmer))
             {
                 
@@ -56,46 +53,47 @@ namespace Wheats_and_Wands.Entities
                     position.X = _farmer.Position.X + (250f * (float)gameTime.ElapsedGameTime.TotalSeconds);
                     
                 }
-                else if (BottomCollision(_farmer))
+                if (BottomCollision(_farmer))
                 {
                     _farmer.CancelJump();
-                }
-                else if (TopCollision(_farmer))
+                } 
+                if (TopCollision(_farmer))
                 {
                     _farmer.OnGround = true;
+                    
                 }
-                
-
                 _farmer.Position = position;
             }
+            
         }
 
         public bool Collision(Farmer _farmer)
         {
-            return (_farmer.Position.X + _farmer._sprite.Width >= _sprite.position.X                    //farmer right edge greater than object left edge 
-                                         && _farmer.Position.X <= _sprite.position.X + _sprite.Width && //farmer left edge less than object right edge 
-                   _farmer.Position.Y + _farmer._sprite.Height >= _sprite.position.Y                    //farmer bottom edge greater than object top edge  
-                                         && _farmer.Position.Y <= _sprite.position.Y + _sprite.Height); //farmer top edge less than object bottom edge
+            return (_farmer.Position.X + _farmer._sprite.Width >= this._sprite.position.X                    //farmer right edge greater than object left edge 
+                                         && _farmer.Position.X <= this._sprite.position.X + _sprite.Width && //farmer left edge less than object right edge 
+                   _farmer.Position.Y + _farmer._sprite.Height > this._sprite.position.Y                    //farmer bottom edge greater than object top edge  
+                                         && _farmer.Position.Y < this._sprite.position.Y + _sprite.Height); //farmer top edge less than object bottom edge
         }
 
         private bool LeftCollision(Farmer _farmer) //checks if farmer right edge behind center of sprite
         {
-            return _farmer.Position.X + _farmer._sprite.Width < _sprite.position.X + (_sprite.Width / 2);
+            return _farmer.Position.X + _farmer._sprite.Width < this._sprite.position.X + (this._sprite.Width / 2);
         }
 
         private bool RightCollision(Farmer _farmer)
         {
-            return _farmer.Position.X > _sprite.position.X + (_sprite.Width / 2);
+            return _farmer.Position.X > this._sprite.position.X + (this._sprite.Width / 2);
         }
 
         private bool TopCollision(Farmer _farmer)
         {
-            return _farmer.Position.Y + _farmer._sprite.Height >= _sprite.position.Y;
+            return _farmer.Position.Y + _farmer._sprite.Height > this._sprite.position.Y;// &&
+                //_farmer.Position.Y > _sprite.position.Y ;
         }
 
         private bool BottomCollision(Farmer _farmer)
         {
-            return _farmer.Position.Y  < _sprite.position.Y +_sprite.Height;
+            return _farmer.Position.Y  < this._sprite.position.Y + this._sprite.Height;
         }
         
     }
