@@ -13,8 +13,8 @@ namespace Wheats_and_Wands.Levels
     class TutorialFarm : Level
     {
         private Vector2 _farmerStartPos = new Vector2(200, 325);
-        public Farmer _farmer { get ; set ; }
-        SpriteBatch _spriteBatch;
+        private Farmer _farmer { get ; set ; }
+        //SpriteBatch _spriteBatch;
         Sign _sign;
         HayBale _hayBale1;
         HayBale _hayBale2;
@@ -41,7 +41,7 @@ namespace Wheats_and_Wands.Levels
 
         public override void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
-            _spriteBatch = spriteBatch;
+            //_spriteBatch = spriteBatch;
             _farmer.Draw(spriteBatch, gameTime);
             _sign.Draw(spriteBatch);
             foreach (HayBale haybale in hayBales)
@@ -75,7 +75,8 @@ namespace Wheats_and_Wands.Levels
 
             if( _farmer.Position.X + _farmer._sprite.Width > WheatandWandsGame.WINDOW_WIDTH - 10)
             {
-                //_gameState.state = States.CreditScreen;
+                _gameState.state = States.Cave;
+                _farmer.Position = new Vector2(50, 325);
             }
 
 

@@ -17,27 +17,29 @@ namespace Wheats_and_Wands
         public const int WINDOW_WIDTH = 960;
         public const int WINDOW_HEIGHT = 540;
 
+        //level systems
         GameState _gameState;
         Level _level;
         TitleScreen _titleScreen;
-        TutorialFarm _tutorial;
         CreditScreen _creditScreen;
         OptionScreen _optionScreen;
+        TutorialFarm _tutorial;
+        Cave _cave;
 
 
         Texture2D _titleScreenSprite;
         Texture2D _tutorialFarmBackground;
+        Texture2D _creditScreenSprite;
+        Texture2D _caveBackGround;
         Texture2D _farmerSpriteSheet;
         Texture2D _hayBale;
         Texture2D _sign;
         Texture2D _textbox;
 
         List<ScrollBackground> _farmScrollBackgrounds;
-        Farmer _player;
-
         Vector2 playerPosition;
 
-        Texture2D _creditScreenSprite; //Added
+        
         public SpriteFont _creditFont { get; private set; } //Added
         //SpriteFont _artFont; //Added, Not implemented
         //SpriteFont _musicFont; //Added, Not implemented
@@ -82,25 +84,27 @@ namespace Wheats_and_Wands
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            // TODO: use this.Content to load your game content here
-
+            
+            //backgrounds
             _titleScreenSprite = Content.Load<Texture2D>("Backgrounds/Title screen");
-            _titleTheme = Content.Load<Song>("music_zapsplat_game_music_zen_calm_soft_arpeggios_013");
-
+            _creditScreenSprite = Content.Load<Texture2D>("Backgrounds/Credits Screen"); 
+            _tutorialFarmBackground = Content.Load<Texture2D>("Backgrounds/FarmLayer/FarmerBackground2D2");
+            _caveBackGround = Content.Load<Texture2D>("Backgrounds/Cave Background");
+            //entities
             _hayBale = Content.Load<Texture2D>("PNG Objects/HayBale-1");
             _sign = Content.Load<Texture2D>("PNG Objects/Sign");
             _textbox = Content.Load<Texture2D>("PNG Objects/TextBox");
-            _tutorialTheme = Content.Load<Song>("music_orlamusic_Happy+006");
-
-            _creditScreenSprite = Content.Load<Texture2D>("Backgrounds/Credits Screen"); //Added
-            _creditFont = Content.Load<SpriteFont>("Spritefonts/Credits"); //Added
-
+            //farmer animations
             _farmerSpriteSheet = Content.Load<Texture2D>("Farmer walk cycle");
-            _tutorialFarmBackground = Content.Load<Texture2D>("Backgrounds/FarmLayer/FarmerBackground2D2");
+            //fonts
+            _creditFont = Content.Load<SpriteFont>("Spritefonts/Credits"); 
+            //music
+            _tutorialTheme = Content.Load<Song>("music_orlamusic_Happy+006");
+            _titleTheme = Content.Load<Song>("music_zapsplat_game_music_zen_calm_soft_arpeggios_013");
 
 
+            var farmerSpriteSheet = Content.Load<Texture2D>("Farmer walk cycle"); //Why is this a thing? _farmerSpriteSheet already exists
 
-            var farmerSpriteSheet = Content.Load<Texture2D>("Farmer walk cycle");
             _farmer = new Farmer(farmerSpriteSheet, new Vector2(50, (WINDOW_HEIGHT - farmerSpriteSheet.Height) - 20));
             _farmScrollBackgrounds = new List<ScrollBackground>()
             {
@@ -136,17 +140,17 @@ namespace Wheats_and_Wands
 
             _farmer = new Farmer(_farmerSpriteSheet, playerPosition);
 
+            //system controls
             _displayOptions = new Display_Options(_graphics);
             _inputController = new InputController(_farmer, _displayOptions);
-
             _musicManager = new MusicManager(_gameState, _titleTheme, _tutorialTheme);
 
-
+            //levels
             _titleScreen = new TitleScreen(_titleScreenSprite, _gameState);
             _creditScreen = new CreditScreen(_creditScreenSprite,_creditFont );
             _optionScreen = new OptionScreen(_gameState,_creditScreenSprite, _titleScreenSprite, _creditFont);
-
             _tutorial = new TutorialFarm( _farmer, _sign, _textbox, _hayBale ,_creditFont,_gameState);
+            _cave = new Cave(_farmer, _gameState, _caveBackGround);
         }
 
         protected override void Update(GameTime gameTime)
@@ -175,6 +179,11 @@ namespace Wheats_and_Wands
             {
                 _level = _optionScreen;
             }
+            if (_gameState.state == States.Cave)
+            {
+                _level = _cave;
+            }
+
             _inputController.ProcessControls(gameTime);
             _level.Update(gameTime);
             
