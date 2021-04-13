@@ -76,7 +76,8 @@ namespace Wheats_and_Wands.Levels
 
             if (_farmer.Position.X + _farmer._sprite.Width > WheatandWandsGame.WINDOW_WIDTH - 10)
             {
-                //_gameState.state = States.CreditScreen;
+                _gameState.state = States.Castle;
+                _farmer.Position = new Vector2(50, 325);
             }
 
             foreach (var scrollBackground in _scrollBackgrounds)
