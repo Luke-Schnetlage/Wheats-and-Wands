@@ -16,6 +16,8 @@ namespace Wheats_and_Wands
 
         public const int WINDOW_WIDTH = 960;
         public const int WINDOW_HEIGHT = 540;
+        
+        public static Game _game;
 
         //level systems
         GameState _gameState;
@@ -37,6 +39,9 @@ namespace Wheats_and_Wands
         Texture2D _textbox;
 
         List<ScrollBackground> _farmScrollBackgrounds;
+        Farmer _player;
+        bool exitGame = false;
+
         Vector2 playerPosition;
 
         
@@ -66,6 +71,7 @@ namespace Wheats_and_Wands
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+            _game = this;
         }
 
         protected override void Initialize()
@@ -158,7 +164,6 @@ namespace Wheats_and_Wands
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape)) { 
             Exit();
             }
-
             
 
             if (_gameState.state == States.TitleScreen)
@@ -186,7 +191,7 @@ namespace Wheats_and_Wands
 
             _inputController.ProcessControls(gameTime);
             _level.Update(gameTime);
-            
+
             base.Update(gameTime);
             
             _musicManager.Play();

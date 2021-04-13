@@ -30,6 +30,7 @@ namespace Wheats_and_Wands.Levels
         Button _creditsButton;
         Button _quitButton;
 
+
         private List<Component> _buttonList;
 
 
@@ -99,9 +100,7 @@ namespace Wheats_and_Wands.Levels
 
         public void QuitButton_Click(object sender, EventArgs e)
         {
-            //Quit game
-            
-            //_game.Exit(); //_game is a null in the abstract class, this no worky
+            WheatandWandsGame._game.Exit();
         }
 
         public override void Update(GameTime gameTime)
@@ -112,5 +111,6 @@ namespace Wheats_and_Wands.Levels
             }
             
         }
+
     }
 }
