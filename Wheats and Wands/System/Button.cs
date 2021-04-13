@@ -24,7 +24,7 @@ namespace Wheats_and_Wands.System
         {
            get
             {
-                return new Rectangle(_sprite.X , _sprite.Y - 540, _sprite.Width, _sprite.Height);
+                return new Rectangle((int)_sprite.position.X , (int)_sprite.position.Y - 540, _sprite.Width, _sprite.Height);
             }
         }
 
@@ -41,7 +41,7 @@ namespace Wheats_and_Wands.System
                 _sprite.TintColor = Color.White;
             }
 
-            _sprite.Draw(spriteBatch, new Vector2(_sprite.X, _sprite.Y - 540));
+            _sprite.Draw(spriteBatch, new Vector2(_sprite.position.X, _sprite.position.Y - 540));
         }
 
         public override void Update(GameTime gameTime)

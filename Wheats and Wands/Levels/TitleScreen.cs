@@ -15,21 +15,17 @@ namespace Wheats_and_Wands.Levels
         Texture2D _spriteSheet { get; set; }
         SpriteBatch _spriteBatch { get; set; }
 
-        //static Game _game;
-
 
         GameState _gameState;
         Rectangle _frame = new Rectangle(0, 0, WheatandWandsGame.WINDOW_WIDTH, WheatandWandsGame.WINDOW_HEIGHT);
         Sprite _backGround;
 
         Sprite _newButtonSprite;
-        Sprite _loadButtonSprite;
         Sprite _optionsButtonSprite;
         Sprite _creditsButtonSprite;
         Sprite _quitButtonSprite;
 
         Button _newButton;
-        Button _loadButton;
         Button _optionsButton;
         Button _creditsButton;
         Button _quitButton;
@@ -46,17 +42,14 @@ namespace Wheats_and_Wands.Levels
             _backGround = new Sprite(spriteSheet, 0, 0, 960, 540);
 
 
-            _newButtonSprite = new Sprite(spriteSheet, 120, 800, 250, 70);
-            _loadButtonSprite = new Sprite(spriteSheet, 120, 885, 250, 70);
-            _creditsButtonSprite = new Sprite(spriteSheet, 590, 800, 250, 70);
-            _optionsButtonSprite = new Sprite(spriteSheet, 590, 885, 250, 70);
-            _quitButtonSprite = new Sprite(spriteSheet, 355, 970, 250, 70);
+            _newButtonSprite = new Sprite(spriteSheet, 120, 800, 250, 70, new Vector2(120, 800));
+            _creditsButtonSprite = new Sprite(spriteSheet, 590, 800, 250, 70, new Vector2(590, 800));
+            _optionsButtonSprite = new Sprite(spriteSheet, 590, 885, 250, 70, new Vector2(590, 885));
+            _quitButtonSprite = new Sprite(spriteSheet, 120, 885, 250, 70, new Vector2(120, 885));
 
             _newButton = new Button(_newButtonSprite);
             _newButton.Click += NewButton_Click;
             
-            _loadButton = new Button(_loadButtonSprite);
-            _loadButton.Click += LoadButton_Click;
 
             _optionsButton = new Button(_optionsButtonSprite);
             _optionsButton.Click += OptionsButton_Click;
@@ -70,7 +63,6 @@ namespace Wheats_and_Wands.Levels
             _buttonList = new List<Component>()
             {
                 _newButton,
-                _loadButton,
                 _optionsButton,
                 _creditsButton,
                 _quitButton,
@@ -95,14 +87,9 @@ namespace Wheats_and_Wands.Levels
             _gameState.state = States.Tutorial;
         }
 
-        public void LoadButton_Click(object sender, EventArgs e)
-        {
-            //Load game stuff here
-        }
-
         public void OptionsButton_Click(object sender, EventArgs e)
         {
-            //Options stuff here
+            _gameState.state = States.OptionsScreen;
         }
 
         public void CreditsButton_Click(object sender, EventArgs e)

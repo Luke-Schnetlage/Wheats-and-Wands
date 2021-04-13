@@ -23,7 +23,7 @@ namespace Wheats_and_Wands.Entities
         public FarmerState State { get; set; }
         public Vector2 Position { get; set; }
         public Rectangle rectangle { get; set; }
-        //public bool IsAlive { get; private set; }
+        //public bool IsAlive { get; set; }
         public int DrawOrder { set; get; }
         public bool OnGround { get; set; }
 

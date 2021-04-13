@@ -9,12 +9,10 @@ namespace Wheats_and_Wands.Entities
     class HayBale : CollisionEntity
     {
         Sprite _sprite;
-        //Farmer _farmer;
         
         public HayBale(Sprite sprite, Farmer farmer) : base(sprite)
         {
             _sprite = sprite;
-            //_farmer = farmer;
         }
         
 

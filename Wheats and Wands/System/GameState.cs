@@ -17,5 +17,6 @@ namespace Wheats_and_Wands.System
         TitleScreen,
         CreditScreen,
         Tutorial,
+        OptionsScreen
     }
 }

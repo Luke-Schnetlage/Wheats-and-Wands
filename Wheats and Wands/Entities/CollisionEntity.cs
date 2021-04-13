@@ -52,7 +52,7 @@ namespace Wheats_and_Wands.Entities
                     
                     _farmer._groundY = _sprite.position.Y ;
                     _farmer.Land();
-                    position.Y = _sprite.position.Y - 2* _sprite.Height;
+                    position.Y = _sprite.position.Y - 128;
                 }
                 else if (BottomCollision(_farmer))
                 {

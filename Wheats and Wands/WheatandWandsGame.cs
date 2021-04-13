@@ -22,6 +22,7 @@ namespace Wheats_and_Wands
         TitleScreen _titleScreen;
         TutorialFarm _tutorial;
         CreditScreen _creditScreen;
+        OptionScreen _optionScreen;
 
 
         Texture2D _titleScreenSprite;
@@ -143,8 +144,9 @@ namespace Wheats_and_Wands
 
             _titleScreen = new TitleScreen(_titleScreenSprite, _gameState);
             _creditScreen = new CreditScreen(_creditScreenSprite,_creditFont );
+            _optionScreen = new OptionScreen(_gameState,_creditScreenSprite, _titleScreenSprite, _creditFont);
 
-            _tutorial = new TutorialFarm( _farmer, _sign, _textbox, _hayBale ,_creditFont);
+            _tutorial = new TutorialFarm( _farmer, _sign, _textbox, _hayBale ,_creditFont,_gameState);
         }
 
         protected override void Update(GameTime gameTime)
@@ -168,6 +170,10 @@ namespace Wheats_and_Wands
             if (_gameState.state == States.CreditScreen)
             {
                 _level = _creditScreen;
+            }
+            if (_gameState.state == States.OptionsScreen)
+            {
+                _level = _optionScreen;
             }
             _inputController.ProcessControls(gameTime);
             _level.Update(gameTime);
