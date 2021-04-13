@@ -28,10 +28,10 @@ namespace Wheats_and_Wands
         OptionScreen _optionScreen;
         TutorialFarm _tutorial;
         Cave _cave;
+        Castle _castle;
 
-
+        //Sprites
         Texture2D _titleScreenSprite;
-        Texture2D _tutorialFarmBackground;
         Texture2D _creditScreenSprite;
         Texture2D _caveBackGround;
         Texture2D _farmerSpriteSheet;
@@ -39,10 +39,36 @@ namespace Wheats_and_Wands
         Texture2D _sign;
         Texture2D _textbox;
 
-        List<ScrollBackground> _farmScrollBackgrounds;
+        //Tutorial and Farm Textures
+        Texture2D _barn;
+        Texture2D _tutorialFarmBackground;
+        Texture2D _tutorialSecondLayer;
+        Texture2D _tutorialThirdLayer;
+        Texture2D _tutorialLastLayer;
+        Texture2D _farClouds;
+        Texture2D _fastClouds;
+
+        //Cave Textures
+        Texture2D _caveFloor;
+        Texture2D _caveFirstLayer;
+        Texture2D _caveSecondLayer;
+        Texture2D _caveThirdLayer;
+        Texture2D _caveFourthLayer;
+        Texture2D _caveFifthLayer;
+        Texture2D _caveSixthLayer;
+
+        //Castle Textures
+        Texture2D _castleFloor;
+        Texture2D _castleFirstLayer;
+        Texture2D _castleSecondLayer;
+        Texture2D _castleThirdLayer;
+        Texture2D _castleFourthLayer;
+        Texture2D _castleFifthLayer;
+        Texture2D _castleSixthLayer;
+        Texture2D _castleSeventhLayer;
+        Texture2D _castleEighthLayer;
 
         Farmer _player;
-        bool exitGame = false;
 
          //6836f5d3a13ac8096d49dfd4fbe474f0f274e674
         Vector2 playerPosition;
@@ -97,55 +123,51 @@ namespace Wheats_and_Wands
             //backgrounds
             _titleScreenSprite = Content.Load<Texture2D>("Backgrounds/Title screen");
             _creditScreenSprite = Content.Load<Texture2D>("Backgrounds/Credits Screen"); 
-            _tutorialFarmBackground = Content.Load<Texture2D>("Backgrounds/FarmLayer/FarmerBackground2D2");
             _caveBackGround = Content.Load<Texture2D>("Backgrounds/Cave Background");
+
+            //Farm Background Layers (and Tutorial too)
+            _barn = Content.Load<Texture2D>("Backgrounds/FarmLayer/Barn");
+            _tutorialFarmBackground = Content.Load<Texture2D>("Backgrounds/FarmLayer/FarmerBackground2D2");
+            _tutorialSecondLayer = Content.Load<Texture2D>("Backgrounds/FarmLayer/FarmSecondLayer");
+            _tutorialThirdLayer = Content.Load<Texture2D>("Backgrounds/FarmLayer/FarmThirdLayer");
+            _tutorialLastLayer = Content.Load<Texture2D>("Backgrounds/FarmLayer/FarmLastLayer");
+            _farClouds = Content.Load<Texture2D>("Backgrounds/FarmLayer/FarClouds");
+            _fastClouds = Content.Load<Texture2D>("Backgrounds/FarmLayer/FastClouds");
+
+            //Cave Background Layer
+            _caveFloor = Content.Load<Texture2D>("Backgrounds/CaveLayer/Cave Floor");
+            _caveFirstLayer = Content.Load<Texture2D>("Backgrounds/CaveLayer/CaveFirstLayer");
+            _caveSecondLayer = Content.Load<Texture2D>("Backgrounds/CaveLayer/CaveSecondLayer");
+            _caveThirdLayer = Content.Load<Texture2D>("Backgrounds/CaveLayer/CaveThirdLayer");
+            _caveFourthLayer = Content.Load<Texture2D>("Backgrounds/CaveLayer/CaveFourthLayer");
+            _caveFifthLayer = Content.Load<Texture2D>("Backgrounds/CaveLayer/CaveFifthLayer");
+            _caveSixthLayer = Content.Load<Texture2D>("Backgrounds/CaveLayer/CaveSixthLayer");
+
+            //Castle Background Layer
+            _castleFloor = Content.Load<Texture2D>("Backgrounds/CastleLayer/CastleFloor");
+            _castleFirstLayer = Content.Load<Texture2D>("Backgrounds/CastleLayer/CastleFirstLayer");
+            _castleSecondLayer = Content.Load<Texture2D>("Backgrounds/CastleLayer/CastleSecondLayer");
+            _castleThirdLayer= Content.Load<Texture2D>("Backgrounds/CastleLayer/CastleThirdLayer");
+            _castleFourthLayer = Content.Load<Texture2D>("Backgrounds/CastleLayer/CastleFourthLayer");
+            _castleFifthLayer = Content.Load<Texture2D>("Backgrounds/CastleLayer/CastleFifthLayer");
+            _castleSixthLayer = Content.Load<Texture2D>("Backgrounds/CastleLayer/CastleSixthLayer");
+            _castleSeventhLayer = Content.Load<Texture2D>("Backgrounds/CastleLayer/CastleSeventhLayer");
+            _castleEighthLayer = Content.Load<Texture2D>("Backgrounds/CastleLayer/CastleLastLayer");
+
             //entities
             _hayBale = Content.Load<Texture2D>("PNG Objects/HayBale-1");
             _sign = Content.Load<Texture2D>("PNG Objects/Sign");
             _textbox = Content.Load<Texture2D>("PNG Objects/TextBox");
+
             //farmer animations
             _farmerSpriteSheet = Content.Load<Texture2D>("Farmer walk cycle");
+
             //fonts
             _creditFont = Content.Load<SpriteFont>("Spritefonts/Credits"); 
+
             //music
             _tutorialTheme = Content.Load<Song>("music_orlamusic_Happy+006");
             _titleTheme = Content.Load<Song>("music_zapsplat_game_music_zen_calm_soft_arpeggios_013");
-
-
-            var farmerSpriteSheet = Content.Load<Texture2D>("Farmer walk cycle"); //Why is this a thing? _farmerSpriteSheet already exists
-
-            _farmer = new Farmer(farmerSpriteSheet, new Vector2(50, (WINDOW_HEIGHT - farmerSpriteSheet.Height) - 20));
-            _farmScrollBackgrounds = new List<ScrollBackground>()
-            {
-                new ScrollBackground(Content.Load<Texture2D>("Backgrounds/FarmLayer/Barn"), _farmer, 0f)
-                {
-                    Layer = 0.1f // Front Layer
-                },
-                new ScrollBackground(Content.Load<Texture2D>("Backgrounds/FarmLayer/FarmerBackground2D2"), _farmer, 0f)
-                {
-                    Layer = 0.1f
-                },
-                new ScrollBackground(Content.Load<Texture2D>("Backgrounds/FarmLayer/FarmSecondLayer"), _farmer, 0f)
-                {
-                    Layer = 0.11f
-                },
-                new ScrollBackground(Content.Load<Texture2D>("Backgrounds/FarmLayer/FarmThirdLayer"), _farmer, 0f)
-                {
-                    Layer = 0.12f
-                },
-                new ScrollBackground(Content.Load<Texture2D>("Backgrounds/FarmLayer/FastClouds"), _farmer, 3f, true)
-                {
-                    Layer = 0.4f
-                },
-                new ScrollBackground(Content.Load<Texture2D>("Backgrounds/FarmLayer/FarClouds"), _farmer, .5f, true)
-                {
-                    Layer = 0.4f
-                },
-                new ScrollBackground(Content.Load<Texture2D>("Backgrounds/FarmLayer/FarmLastLayer"), _farmer, 0f)
-                {
-                    Layer = 1f //Back Layer
-                }
-            };
 
             _farmer = new Farmer(_farmerSpriteSheet, playerPosition);
 
@@ -158,8 +180,10 @@ namespace Wheats_and_Wands
             _titleScreen = new TitleScreen(_titleScreenSprite, _gameState);
             _creditScreen = new CreditScreen(_creditScreenSprite,_creditFont );
             _optionScreen = new OptionScreen(_gameState,_creditScreenSprite, _titleScreenSprite, _creditFont);
-            _tutorial = new TutorialFarm( _farmer, _sign, _textbox, _hayBale ,_creditFont,_gameState);
-            _cave = new Cave(_farmer, _gameState, _caveBackGround);
+            _tutorial = new TutorialFarm(_farmer, _sign, _textbox, _hayBale ,_creditFont,_gameState, _barn, _tutorialFarmBackground,
+                _tutorialSecondLayer, _tutorialThirdLayer, _tutorialLastLayer, _farClouds, _fastClouds);
+            _cave = new Cave(_farmer, _gameState, _caveFloor, _caveFirstLayer, _caveSecondLayer, _caveThirdLayer, _caveFourthLayer,
+                _caveFifthLayer, _caveSixthLayer);
         }
 
         protected override void Update(GameTime gameTime)
@@ -176,8 +200,8 @@ namespace Wheats_and_Wands
             if (_gameState.state == States.Tutorial)
             {
                 _level = _tutorial;
-                foreach (var scrollBackground in _farmScrollBackgrounds)
-                    scrollBackground.Update(gameTime);
+                //foreach (var scrollBackground in _farmScrollBackgrounds)
+                //    scrollBackground.Update(gameTime);
             }
             if (_gameState.state == States.CreditScreen)
             {
@@ -211,9 +235,9 @@ namespace Wheats_and_Wands
 
             _level.Draw(_spriteBatch, gameTime);
 
-            if (_level == _tutorial) //Tutorial entities will spawn in the tutorial screen
-                foreach (var scrollBackground in _farmScrollBackgrounds)
-                    scrollBackground.Draw(gameTime, _spriteBatch);
+            /*if (_level == _tutorial) *///Tutorial entities will spawn in the tutorial screen
+                //foreach (var scrollBackground in _farmScrollBackgrounds)
+                //    scrollBackground.Draw(gameTime, _spriteBatch);
 
             
 
