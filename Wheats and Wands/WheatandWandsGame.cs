@@ -16,9 +16,10 @@ namespace Wheats_and_Wands
 
         public const int WINDOW_WIDTH = 960;
         public const int WINDOW_HEIGHT = 540;
-        
+
         public static Game _game;
 
+        // 6836f5d3a13ac8096d49dfd4fbe474f0f274e674
         //level systems
         GameState _gameState;
         Level _level;
@@ -39,9 +40,11 @@ namespace Wheats_and_Wands
         Texture2D _textbox;
 
         List<ScrollBackground> _farmScrollBackgrounds;
+
         Farmer _player;
         bool exitGame = false;
 
+         //6836f5d3a13ac8096d49dfd4fbe474f0f274e674
         Vector2 playerPosition;
 
         
