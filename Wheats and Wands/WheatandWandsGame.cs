@@ -217,6 +217,12 @@ namespace Wheats_and_Wands
             {
                 _level = _cave;
             }
+            if (_gameState.state == States.Castle)
+            {
+                _level = _castle;
+            }
+
+
 
             _inputController.ProcessControls(gameTime);
             _level.Update(gameTime);
