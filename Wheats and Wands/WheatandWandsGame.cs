@@ -1,5 +1,4 @@
-﻿
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
@@ -29,6 +28,8 @@ namespace Wheats_and_Wands
         TutorialFarm _tutorial;
         Cave _cave;
         Castle _castle;
+        FarmToCave _farmToCave;
+        CaveToCastle _caveToCastle;
 
         //Sprites
         Texture2D _titleScreenSprite;
@@ -67,6 +68,11 @@ namespace Wheats_and_Wands
         Texture2D _castleSixthLayer;
         Texture2D _castleSeventhLayer;
         Texture2D _castleEighthLayer;
+
+        //Transition Textures
+        Texture2D _ftc;
+        Texture2D _ctcFront;
+        Texture2D _ctcBack;
 
         Farmer _player;
 
@@ -154,6 +160,11 @@ namespace Wheats_and_Wands
             _castleSeventhLayer = Content.Load<Texture2D>("Backgrounds/CastleLayer/CastleSeventhLayer");
             _castleEighthLayer = Content.Load<Texture2D>("Backgrounds/CastleLayer/CastleLastLayer");
 
+            //Transition Layers
+            _ftc = Content.Load<Texture2D>("Backgrounds/TransitionBackgrounds/FarmToCave");
+            _ctcFront = Content.Load<Texture2D>("Backgrounds/TransitionBackgrounds/CavetoCastleFront");
+            _ctcBack = Content.Load<Texture2D>("Backgrounds/TransitionBackgrounds/CavetoCastleBack");
+
             //entities
             _hayBale = Content.Load<Texture2D>("PNG Objects/HayBale-1");
             _sign = Content.Load<Texture2D>("PNG Objects/Sign");
@@ -186,6 +197,11 @@ namespace Wheats_and_Wands
                 _caveFifthLayer, _caveSixthLayer);
             _castle = new Castle(_farmer, _gameState, _castleFloor, _castleFirstLayer, _castleSecondLayer, _castleThirdLayer,
                 _castleFourthLayer, _castleFifthLayer, _castleSixthLayer, _castleSeventhLayer, _castleEighthLayer);
+            _farmToCave = new FarmToCave(_farmer, _gameState, _ftc, _tutorialSecondLayer, _tutorialThirdLayer, _farClouds, 
+                _fastClouds, _tutorialLastLayer);
+            _caveToCastle = new CaveToCastle(_farmer, _gameState, _ctcFront, _ctcBack, _caveSecondLayer, _caveThirdLayer, _caveFourthLayer,
+                _caveFifthLayer, _caveSixthLayer);
+
         }
 
         protected override void Update(GameTime gameTime)
@@ -202,8 +218,6 @@ namespace Wheats_and_Wands
             if (_gameState.state == States.Tutorial)
             {
                 _level = _tutorial;
-                //foreach (var scrollBackground in _farmScrollBackgrounds)
-                //    scrollBackground.Update(gameTime);
             }
             if (_gameState.state == States.CreditScreen)
             {
@@ -213,9 +227,17 @@ namespace Wheats_and_Wands
             {
                 _level = _optionScreen;
             }
+            if (_gameState.state == States.FarmToCave)
+            {
+                _level = _farmToCave;
+            }
             if (_gameState.state == States.Cave)
             {
                 _level = _cave;
+            }
+            if (_gameState.state == States.CaveToCastle)
+            {
+                _level = _caveToCastle;
             }
             if (_gameState.state == States.Castle)
             {

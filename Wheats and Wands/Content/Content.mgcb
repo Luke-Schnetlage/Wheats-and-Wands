@@ -337,6 +337,42 @@
 /processorParam:TextureFormat=Color
 /build:Backgrounds/Title screen.png
 
+#begin Backgrounds/TransitionBackgrounds/CavetoCastleBack.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Backgrounds/TransitionBackgrounds/CavetoCastleBack.png
+
+#begin Backgrounds/TransitionBackgrounds/CavetoCastleFront.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Backgrounds/TransitionBackgrounds/CavetoCastleFront.png
+
+#begin Backgrounds/TransitionBackgrounds/FarmToCave.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Backgrounds/TransitionBackgrounds/FarmToCave.png
+
 #begin Farmer walk cycle.png
 /importer:TextureImporter
 /processor:TextureProcessor

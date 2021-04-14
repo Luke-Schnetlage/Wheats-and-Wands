@@ -18,7 +18,9 @@ namespace Wheats_and_Wands.System
         CreditScreen,
         OptionsScreen,
         Tutorial,
+        FarmToCave,
         Cave,
+        CaveToCastle,
         Castle
     }
 }

@@ -124,7 +124,7 @@ namespace Wheats_and_Wands.Levels
 
             if( _farmer.Position.X + _farmer._sprite.Width > WheatandWandsGame.WINDOW_WIDTH - 10)
             {
-                _gameState.state = States.Cave;
+                _gameState.state = States.FarmToCave;
                 _farmer.Position = new Vector2(50, 325);
             }
 
