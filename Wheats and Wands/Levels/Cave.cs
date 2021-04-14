@@ -35,11 +35,11 @@ namespace Wheats_and_Wands.Levels
                 {
                     Layer = 0.11f
                 },
-                new ScrollBackground(secondLayer, _farmer, 0f)
+                new ScrollBackground(secondLayer, _farmer, 50f)
                 {
                     Layer = 0.12f
                 },
-                new ScrollBackground(thirdLayer, _farmer, 0f)
+                new ScrollBackground(thirdLayer, _farmer, 20f)
                 {
                     Layer = 0.13f
                 },
@@ -71,8 +71,17 @@ namespace Wheats_and_Wands.Levels
 
         public override void Update(GameTime gameTime)
         {
+            if (_farmer.Position.X < _farmer.prevPosition.X)
+                _farmer.HorizontalVelocity.X = -3f;
+            else if (_farmer.Position.X > _farmer.prevPosition.X)
+                _farmer.HorizontalVelocity.X = 3f;
+            else
+                _farmer.HorizontalVelocity.X = 0f;
+
             _farmer.Update(gameTime);
             _farmer._groundY = _farmerStartPos.Y;
+
+
 
             if (_farmer.Position.X + _farmer._sprite.Width > WheatandWandsGame.WINDOW_WIDTH - 10)
             {

@@ -102,14 +102,14 @@ namespace Wheats_and_Wands.Entities
 
         public void Update(GameTime gameTime)
         {
-            /*
-            if (Position.X < prevPosition.X)
-                HorizontalVelocity.X = -3f;
-            else if (Position.X > prevPosition.X)
-                HorizontalVelocity.X = 3f;
-            else
-                HorizontalVelocity.X = 0f;
-            */
+
+            //if (Position.X < prevPosition.X)
+            //    HorizontalVelocity.X = -3f;
+            //else if (Position.X > prevPosition.X)
+            //    HorizontalVelocity.X = 3f;
+            //else
+            //    HorizontalVelocity.X = 0f;
+
 
             if (Position.Y  < _groundY)
             {

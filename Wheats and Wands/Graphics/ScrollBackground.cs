@@ -69,7 +69,7 @@ namespace Wheats_and_Wands.Graphics
             _speed = (float)(_scrollingSpeed * gameTime.ElapsedGameTime.TotalSeconds);
 
             if (!_constantSpeed || _farmer.HorizontalVelocity.X != 0) //If players moves, the background will move faster
-                _speed += _farmer.HorizontalVelocity.X;
+                _speed *= _farmer.HorizontalVelocity.X;
 
             foreach (var spriteLayer in _spritesLayers) //background moves opposite of player
                 spriteLayer.Position.X -= _speed;
