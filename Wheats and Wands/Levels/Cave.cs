@@ -27,27 +27,27 @@ namespace Wheats_and_Wands.Levels
 
             _scrollBackgrounds = new List<ScrollBackground>()
             {
-                new ScrollBackground(floor, _farmer, 0f)
+                new ScrollBackground(floor, _farmer, 30f)
                 {
                     Layer = 0.1f
                 },
-                new ScrollBackground(firstLayer, _farmer, 0f)
+                new ScrollBackground(firstLayer, _farmer, 30f)
                 {
                     Layer = 0.11f
                 },
-                new ScrollBackground(secondLayer, _farmer, 50f)
+                new ScrollBackground(secondLayer, _farmer, 20f)
                 {
                     Layer = 0.12f
                 },
-                new ScrollBackground(thirdLayer, _farmer, 20f)
+                new ScrollBackground(thirdLayer, _farmer, 10f)
                 {
                     Layer = 0.13f
                 },
-                new ScrollBackground(fourthLayer, _farmer, 0f)
+                new ScrollBackground(fourthLayer, _farmer, 7f)
                 {
                     Layer = 0.14f
                 },
-                new ScrollBackground(fifthLayer, _farmer, 0f)
+                new ScrollBackground(fifthLayer, _farmer, 5f)
                 {
                     Layer = 0.15f
                 },
