@@ -16,7 +16,7 @@ namespace Wheats_and_Wands.Graphics
         public int Height { get; set; }
         public Color TintColor { get; set; } = Color.White;
         public Rectangle rectangle { get; set; }
-        public SpriteEffects SpriteEffects { get; set; } = SpriteEffects.None;
+        //public SpriteEffects SpriteEffects { get; set; } = SpriteEffects.None;
 
         public Sprite(Texture2D texture, int x, int y, int width, int height)
         {
@@ -44,12 +44,13 @@ namespace Wheats_and_Wands.Graphics
             spriteBatch.Draw(Texture, position, new Rectangle(X, Y, Width, Height), TintColor); //, SpriteEffects
         }
 
-        /*
+        
         public void Draw(SpriteBatch spriteBatch, Vector2 position, SpriteEffects effect)
         {
-            spriteBatch.Draw(Texture,position, new Rectangle(X, Y, Width, Height), TintColor,0f,new Vector2(Width/2,Height/2), effect,1);
-            
+            spriteBatch.Draw(Texture, new Rectangle((int)position.X + Width/2, (int)position.Y + Height/2, Width, Height), new Rectangle(X, Y, Width, Height), TintColor,0f,new Vector2(Width/2,Height/2), effect,0f);
+            //spriteBatch.Draw()
+            //spriteBatch.Draw(knightTexture,knightPosition,null,Color.White,0f,new Vector2(knightTexture.Width / 2, knightTexture.Height / 2),Vector2.One,effect,0f);
         }
-        */
+        
     }
 }

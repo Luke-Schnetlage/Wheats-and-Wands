@@ -13,20 +13,22 @@ namespace Wheats_and_Wands.Entities
 
         private const float MIN_JUMP_HEIGHT = 20f;
 
-        private const float GRAVITY = 1600f;//1600
-        private const float JUMP_START_VELOCITY = -480f;//480
+        private const float GRAVITY = 1600f;
+        private const float JUMP_START_VELOCITY = -480f;
 
         private const float CANCEL_JUMP_VELOCITY = -100f;
 
         public Vector2 HorizontalVelocity;
 
+        public Vector2 SpawnPosition { get; set; }
         public FarmerState State { get; set; }
         public Vector2 Position { get; set; }
         public Rectangle rectangle { get; set; }
-        //public bool IsAlive { get; set; }
+        
         public int DrawOrder { set; get; }
+        public bool IsAlive { get; set; }
         public bool OnGround { get; set; }
-
+        public bool MovingLeft { get; set; }
         private Sprite _FarmerIdlePose;
         private SpriteAnimation _farmerWalkCycle;
         public Sprite _sprite { get; private set; }
@@ -35,7 +37,7 @@ namespace Wheats_and_Wands.Entities
         private float _verticalVelocity;
         public float _groundY { get; set; }
 
-
+        public Vector2 prevPosition;
 
 
         public Farmer(Texture2D spriteSheet, Vector2 position)
@@ -49,7 +51,8 @@ namespace Wheats_and_Wands.Entities
             _groundY = position.Y;
 
             OnGround = false;
-
+            IsAlive = true;
+            MovingLeft = false;
 
             _farmerWalkCycle = new SpriteAnimation();
             _farmerWalkCycle.AddFrame(new Sprite(spriteSheet, (64 * 1)  ,0, 64, 128), 0);
@@ -69,53 +72,65 @@ namespace Wheats_and_Wands.Entities
 
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
+            SpriteEffects _effect;
+            if (MovingLeft)
+            {
+                _effect = SpriteEffects.FlipHorizontally;
+            }
+            else
+            {
+                _effect = SpriteEffects.None;
+            }
+
             if (State == FarmerState.Idle)
             {
-                _FarmerIdlePose.Draw(spriteBatch, this.Position);
+                _FarmerIdlePose.Draw(spriteBatch, Position, _effect);
                 _sprite = _FarmerIdlePose;
 
             }
             else if (State == FarmerState.Jumping || State == FarmerState.Falling)
             {
-                _FarmerIdlePose.Draw(spriteBatch, Position);
+                _FarmerIdlePose.Draw(spriteBatch, Position,_effect);
                 _sprite = _FarmerIdlePose;
             }
             if (State == FarmerState.Running)
             {
-                _farmerWalkCycle.Draw(spriteBatch, Position);
+                _farmerWalkCycle.Draw(spriteBatch, Position, _effect);
                 _sprite = _farmerWalkCycle.CurrentFrame.Sprite;
             }
         }
 
         public void Update(GameTime gameTime)
         {
+            /*
+            if (Position.X < prevPosition.X)
+                HorizontalVelocity.X = -3f;
+            else if (Position.X > prevPosition.X)
+                HorizontalVelocity.X = 3f;
+            else
+                HorizontalVelocity.X = 0f;
+            */
+
             if (Position.Y  < _groundY)
             {
                 OnGround = false;
             }
             if (!OnGround)
             {
-
                 Fall(gameTime);
             }
             if (State != FarmerState.Idle)
             {
                 _farmerWalkCycle.Update(gameTime);
             }
-            if (Keyboard.GetState().IsKeyDown(Keys.A))
-                HorizontalVelocity.X = -3f;
-            else if (Keyboard.GetState().IsKeyDown(Keys.D))
-                HorizontalVelocity.X = 3f;
-            else
-                HorizontalVelocity.X = 0f;
-
             if (Position.Y > _groundY)
             {
                 Land();
             }
+            Respawn();
 
             rectangle = new Rectangle((int)Position.X, (int)Position.Y, 64, 128);
-            
+            prevPosition = Position;
         }
         public bool BeginJump()
         {
@@ -158,7 +173,15 @@ namespace Wheats_and_Wands.Entities
             OnGround = true;
             State = FarmerState.Idle;
         }
-         
+
+        public void Respawn()
+        {
+            if(IsAlive == false)
+            {
+                Position = SpawnPosition;
+                IsAlive = true;
+            }
+        }
 
     }
 }

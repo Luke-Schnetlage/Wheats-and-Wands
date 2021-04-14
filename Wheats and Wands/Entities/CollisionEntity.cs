@@ -12,7 +12,7 @@ namespace Wheats_and_Wands.Entities
     {
         public int DrawOrder { set; get; }
         //private Farmer _farmer;
-        Sprite _sprite;
+        public Sprite _sprite;
         bool collision;
         //private Sprite sprite;
 
@@ -29,41 +29,6 @@ namespace Wheats_and_Wands.Entities
         public void Update(GameTime gameTime)
         {
             //collision = LeftCollision()
-        }
-
-        
-        public void RejectMovment(Farmer _farmer,GameTime gameTime)
-        {
-            Vector2 position = _farmer.Position;
-            if (Collision(_farmer))
-            {
-                if (LeftCollision(_farmer))
-                {
-                    position.X = _farmer.Position.X - (250f * (float)gameTime.ElapsedGameTime.TotalSeconds);
-                    
-                }
-                else if (RightCollision(_farmer))
-                {
-                    position.X = _farmer.Position.X + (250f * (float)gameTime.ElapsedGameTime.TotalSeconds);
-                    
-                }
-                if (TopCollision(_farmer))
-                {
-                    
-                    _farmer._groundY = _sprite.position.Y ;
-                    _farmer.Land();
-                    position.Y = _sprite.position.Y - 128;
-                }
-                else if (BottomCollision(_farmer))
-                {
-                    //_farmer.CancelJump();
-                } 
-                else
-                {
-                    _farmer._groundY = _farmer._groundY;
-                }
-            }
-            _farmer.Position = position;
         }
 
         public bool Collision(Farmer _farmer)
@@ -94,6 +59,48 @@ namespace Wheats_and_Wands.Entities
         {
             return _farmer.Position.Y  < this._sprite.position.Y + this._sprite.Height;
         }
-        
+        public void RejectMovment(Farmer _farmer, GameTime gameTime) //mutually exclusive with kill
+        {
+            Vector2 position = _farmer.Position;
+            if (Collision(_farmer))
+            {
+                if (LeftCollision(_farmer))
+                {
+                    position.X = _farmer.Position.X - (250f * (float)gameTime.ElapsedGameTime.TotalSeconds);
+
+                }
+                else if (RightCollision(_farmer))
+                {
+                    position.X = _farmer.Position.X + (250f * (float)gameTime.ElapsedGameTime.TotalSeconds);
+
+                }
+                if (TopCollision(_farmer))
+                {
+
+                    _farmer._groundY = _sprite.position.Y;
+                    _farmer.Land();
+                    position.Y = _sprite.position.Y - 128;
+                }
+                else if (BottomCollision(_farmer))
+                {
+                    //_farmer.CancelJump();
+                }
+                else
+                {
+                    _farmer._groundY = _farmer._groundY;
+                }
+            }
+            _farmer.Position = position;
+        }
+
+        public void Kill(Farmer _farmer) //mutually exclusive with reject movment
+        {
+            if (Collision(_farmer))
+            {
+                _farmer.IsAlive = false;
+                
+            }
+            
+        }
     }
 }

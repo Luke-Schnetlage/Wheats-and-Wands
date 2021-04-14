@@ -12,7 +12,7 @@ namespace Wheats_and_Wands.Levels
 {
     class TutorialFarm : Level
     {
-        private Vector2 _farmerStartPos = new Vector2(200, 325);
+        private Vector2 _farmerStartPos = new Vector2(150, 325);
         private Farmer _farmer { get ; set ; }
         //SpriteBatch _spriteBatch;
         Sign _sign;
@@ -30,6 +30,7 @@ namespace Wheats_and_Wands.Levels
             Texture2D farClouds, Texture2D fastClouds)
         {
             _farmer = farmer;
+            _farmer.SpawnPosition = _farmerStartPos;
             _sign = new Sign(new Sprite(signTexture, 0, 0, 83, 103, new Vector2(250, 325)), msgBoxTexture, font,_farmer, "Use WASD to move");
             _hayBale1 = new HayBale(new Sprite(haybale, 0, 0, 64, 64, new Vector2(525, 400)), farmer);
             _hayBale2 = new HayBale(new Sprite(haybale, 0, 0, 64, 64, new Vector2(650, 400)), farmer);
@@ -95,24 +96,31 @@ namespace Wheats_and_Wands.Levels
         public override void Update(GameTime gameTime)
         {
             _farmer.Update(gameTime);
-            
-            
+            if(_farmer.IsAlive == false)
+            {
+                _farmer.Position = _farmerStartPos;
+                _farmer.IsAlive = true;
+            }            
             _farmer._groundY = _farmerStartPos.Y;
-            
-            
-
             foreach (HayBale haybale in hayBales)
             {
-                if (haybale.Collision(_farmer))
-                {
                 haybale.RejectMovment(_farmer, gameTime);
-                }
             }
-
-            foreach (var scrollBackground in _scrollBackgrounds)
+            /*
+            if ((int)gameTime.TotalGameTime.TotalSeconds % 2 == 0)
+            {
+                _hayBale1._sprite.position = new Vector2(_hayBale1._sprite.position.X, _hayBale1._sprite.position.Y - 4);
+            }
+            if ((int)gameTime.TotalGameTime.TotalSeconds % 2 == 1)
+            {
+                _hayBale1._sprite.position = new Vector2(_hayBale1._sprite.position.X, _hayBale1._sprite.position.Y + 4);
+            }
+            */
+                foreach (var scrollBackground in _scrollBackgrounds)
                 scrollBackground.Update(gameTime);
 
             _sign.Update(gameTime, _farmer);
+            
 
             if( _farmer.Position.X + _farmer._sprite.Width > WheatandWandsGame.WINDOW_WIDTH - 10)
             {

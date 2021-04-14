@@ -29,7 +29,7 @@ namespace Wheats_and_Wands.System
             KeyboardState keyboardState = Keyboard.GetState();
 
             //jump
-            if (keyboardState.IsKeyDown(Keys.Up)) //&& !_previousKeyboardState.IsKeyDown(Keys.Up))
+            if ((keyboardState.IsKeyDown(Keys.Up)) || (_previousKeyboardState.IsKeyDown(Keys.W)))
             {
                 if (_farmer.OnGround )//&& _farmer.Position.Y >= 0)
                 {
@@ -44,7 +44,7 @@ namespace Wheats_and_Wands.System
             }
 
             //move right
-            if (keyboardState.IsKeyDown(Keys.Right)) 
+            if ((keyboardState.IsKeyDown(Keys.Right)) || (_previousKeyboardState.IsKeyDown(Keys.D)))
             {
                 if (_farmer.Position.X <= WheatandWandsGame.WINDOW_WIDTH - 64 )
                 {
@@ -52,14 +52,15 @@ namespace Wheats_and_Wands.System
                     position.X = _farmer.Position.X + (PLAYER_SPEED * (float)gameTime.ElapsedGameTime.TotalSeconds);
                     position.Y = _farmer.Position.Y;
                     _farmer.Position = position;
-                    
+                    _farmer.MovingLeft = false;
+
                 }
                 _farmer.State = FarmerState.Running;
                 
             } 
 
             //move left
-            if (keyboardState.IsKeyDown(Keys.Left))
+            if ((keyboardState.IsKeyDown(Keys.Left)) || (_previousKeyboardState.IsKeyDown(Keys.A)))
             {
                 if (_farmer.Position.X >= 0)
                 {
@@ -67,6 +68,7 @@ namespace Wheats_and_Wands.System
                     position.X = _farmer.Position.X - (PLAYER_SPEED * (float)gameTime.ElapsedGameTime.TotalSeconds);
                     position.Y = _farmer.Position.Y;
                     _farmer.Position = position;
+                    _farmer.MovingLeft = true;
                     
                    
                 }

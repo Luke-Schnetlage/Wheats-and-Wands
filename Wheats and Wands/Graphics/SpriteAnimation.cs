@@ -76,13 +76,14 @@ namespace Wheats_and_Wands.Graphics
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 position)
+        public void Draw(SpriteBatch spriteBatch, Vector2 position, SpriteEffects effect)
         {
             SpriteAnimationFrame frame = CurrentFrame;
 
             if(frame != null)
             {
-                frame.Sprite.Draw(spriteBatch, position);
+                frame.Sprite.Draw(spriteBatch, position,effect);
+                
             }
         }
 
