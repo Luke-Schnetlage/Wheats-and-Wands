@@ -40,6 +40,7 @@ namespace Wheats_and_Wands
         Texture2D _sign;
         Texture2D _textbox;
         Texture2D _spikes;
+        Texture2D _cavePits;
 
         //Tutorial and Farm Textures
         Texture2D _barn;
@@ -171,6 +172,7 @@ namespace Wheats_and_Wands
             _sign = Content.Load<Texture2D>("PNG Objects/Sign");
             _textbox = Content.Load<Texture2D>("PNG Objects/TextBox");
             _spikes = Content.Load<Texture2D>("PNG Objects/CaveSpike2");
+            _cavePits = Content.Load<Texture2D>("PNG Objects/CavePits");
 
 
             //farmer animations
@@ -196,8 +198,8 @@ namespace Wheats_and_Wands
             _optionScreen = new OptionScreen(_gameState,_creditScreenSprite, _titleScreenSprite, _creditFont);
             _tutorial = new TutorialFarm(_farmer, _sign, _textbox, _hayBale ,_creditFont,_gameState, _barn, _tutorialFarmBackground,
                 _tutorialSecondLayer, _tutorialThirdLayer, _tutorialLastLayer, _farClouds, _fastClouds);
-            _cave = new Cave(_farmer, _gameState, _cavePitFloor, _caveFirstLayer, _caveSecondLayer, _caveThirdLayer, _caveFourthLayer,
-                _caveFifthLayer, _caveSixthLayer,_spikes);
+            _cave = new Cave(_farmer, _gameState, _caveFloor, _caveFirstLayer, _caveSecondLayer, _caveThirdLayer, _caveFourthLayer,
+                _caveFifthLayer, _caveSixthLayer, _spikes, _cavePits);
             _castle = new Castle(_farmer, _gameState, _castleFloor, _castleFirstLayer, _castleSecondLayer, _castleThirdLayer,
                 _castleFourthLayer, _castleFifthLayer, _castleSixthLayer, _castleSeventhLayer, _castleEighthLayer);
             _farmToCave = new FarmToCave(_farmer, _gameState, _ftc, _tutorialSecondLayer, _tutorialThirdLayer, _farClouds, 
