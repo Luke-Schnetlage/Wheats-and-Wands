@@ -14,7 +14,7 @@ namespace Wheats_and_Wands.Entities
         string _message;
         bool collision;
         private Farmer _farmer;
-        public Sign(Sprite sprite, Texture2D msgbox,SpriteFont font,Farmer farmer ,string message) : base(sprite)
+        public Sign(Sprite sprite, Texture2D msgbox,SpriteFont font,Farmer farmer ,string message) : base(sprite,farmer)
         {
             _sprite = sprite;
             _messageBox = new MessageBox(new Sprite(msgbox, 0, 0, 347, 77), font);

@@ -16,11 +16,11 @@ namespace Wheats_and_Wands.Levels
         private Farmer _farmer { get ; set ; }
         //SpriteBatch _spriteBatch;
         Sign _sign;
-        HayBale _hayBale1;
-        HayBale _hayBale2;
-        HayBale _hayBale3;
-        HayBale _hayBale4;
-        List<HayBale> hayBales;
+        SquareBlock _hayBale1;
+        SquareBlock _hayBale2;
+        SquareBlock _hayBale3;
+        SquareBlock _hayBale4;
+        List<SquareBlock> hayBales;
         GameState _gameState;
 
         private List<ScrollBackground> _scrollBackgrounds;
@@ -32,11 +32,11 @@ namespace Wheats_and_Wands.Levels
             _farmer = farmer;
             _farmer.SpawnPosition = _farmerStartPos;
             _sign = new Sign(new Sprite(signTexture, 0, 0, 83, 103, new Vector2(250, 325)), msgBoxTexture, font,_farmer, "Use WASD to move");
-            _hayBale1 = new HayBale(new Sprite(haybale, 0, 0, 64, 64, new Vector2(525, 400)), farmer);
-            _hayBale2 = new HayBale(new Sprite(haybale, 0, 0, 64, 64, new Vector2(650, 400)), farmer);
-            _hayBale3 = new HayBale(new Sprite(haybale, 0, 0, 64, 64, new Vector2(650, 400-64)), farmer);
-            _hayBale4 = new HayBale(new Sprite(haybale, 0, 0, 64, 64, new Vector2(650+64, 400)), farmer);
-            hayBales = new List<HayBale>();
+            _hayBale1 = new SquareBlock(new Sprite(haybale, 0, 0, 64, 64, new Vector2(525, 400)), farmer);
+            _hayBale2 = new SquareBlock(new Sprite(haybale, 0, 0, 64, 64, new Vector2(650, 400)), farmer);
+            _hayBale3 = new SquareBlock(new Sprite(haybale, 0, 0, 64, 64, new Vector2(650, 400-64)), farmer);
+            _hayBale4 = new SquareBlock(new Sprite(haybale, 0, 0, 64, 64, new Vector2(650+64, 400)), farmer);
+            hayBales = new List<SquareBlock>();
             hayBales.Add(_hayBale1);
             hayBales.Add(_hayBale2);
             hayBales.Add(_hayBale3);
@@ -81,11 +81,11 @@ namespace Wheats_and_Wands.Levels
             //_spriteBatch = spriteBatch;
             _farmer.Draw(spriteBatch, gameTime);
             _sign.Draw(spriteBatch);
-            foreach (HayBale haybale in hayBales)
+            foreach (SquareBlock haybale in hayBales)
             {
                 haybale.Draw(spriteBatch, gameTime);
             }
-            _hayBale1.Draw(spriteBatch, gameTime);
+            //_hayBale1.Draw(spriteBatch, gameTime);
 
             foreach (var scrollBackground in _scrollBackgrounds)
                 scrollBackground.Draw(gameTime, spriteBatch);
@@ -96,16 +96,14 @@ namespace Wheats_and_Wands.Levels
         public override void Update(GameTime gameTime)
         {
             _farmer.Update(gameTime);
-            if(_farmer.IsAlive == false)
-            {
-                _farmer.Position = _farmerStartPos;
-                _farmer.IsAlive = true;
-            }            
+                       
             _farmer._groundY = _farmerStartPos.Y;
-            foreach (HayBale haybale in hayBales)
+            foreach (SquareBlock haybale in hayBales)
             {
-                haybale.RejectMovment(_farmer, gameTime);
+                haybale.Update(gameTime);
             }
+            _sign.Update(gameTime, _farmer);
+
             /*
             if ((int)gameTime.TotalGameTime.TotalSeconds % 2 == 0)
             {
@@ -116,21 +114,16 @@ namespace Wheats_and_Wands.Levels
                 _hayBale1._sprite.position = new Vector2(_hayBale1._sprite.position.X, _hayBale1._sprite.position.Y + 4);
             }
             */
-                foreach (var scrollBackground in _scrollBackgrounds)
+            foreach (var scrollBackground in _scrollBackgrounds)
                 scrollBackground.Update(gameTime);
 
-            _sign.Update(gameTime, _farmer);
             
-
+            //level leaving logic
             if( _farmer.Position.X + _farmer._sprite.Width > WheatandWandsGame.WINDOW_WIDTH - 10)
             {
                 _gameState.state = States.FarmToCave;
                 _farmer.Position = new Vector2(50, 325);
             }
-
-
-        }
-
-        
+        }  
     }
 }

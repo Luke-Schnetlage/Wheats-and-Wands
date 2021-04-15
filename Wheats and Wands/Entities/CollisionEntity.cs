@@ -8,17 +8,17 @@ using Wheats_and_Wands.Graphics;
 
 namespace Wheats_and_Wands.Entities
 {
-    public class CollisionEntity// : IGameEntity
+    public class CollisionEntity
     {
         public int DrawOrder { set; get; }
-        //private Farmer _farmer;
+        public Farmer _farmer;
         public Sprite _sprite;
-        bool collision;
-        //private Sprite sprite;
 
-        public CollisionEntity(Sprite sprite)
+
+        public CollisionEntity(Sprite sprite,Farmer farmer)
         {
             this._sprite = sprite;
+            this._farmer = farmer;
         }
 
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
@@ -26,7 +26,7 @@ namespace Wheats_and_Wands.Entities
             _sprite.Draw(spriteBatch, new Vector2(_sprite.position.X, _sprite.position.Y));
         }
 
-        public void Update(GameTime gameTime)
+        public virtual void Update(GameTime gameTime)
         {
             //collision = LeftCollision()
         }
@@ -98,7 +98,8 @@ namespace Wheats_and_Wands.Entities
             if (Collision(_farmer))
             {
                 _farmer.IsAlive = false;
-                
+                _farmer.Respawn();
+
             }
             
         }
