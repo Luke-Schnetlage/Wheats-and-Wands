@@ -121,6 +121,18 @@
 /processorParam:TextureFormat=Color
 /build:Backgrounds/CastleLayer/CastleThirdLayer.png
 
+#begin Backgrounds/CastleLayer/CaveFloorPits.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Backgrounds/CastleLayer/CaveFloorPits.png
+
 #begin Backgrounds/Cave Background.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -396,6 +408,30 @@
 /processor:SongProcessor
 /processorParam:Quality=Best
 /build:music_zapsplat_game_music_zen_calm_soft_arpeggios_013.mp3
+
+#begin PNG Objects/CaveSpike1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:PNG Objects/CaveSpike1.png
+
+#begin PNG Objects/CaveSpike2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:PNG Objects/CaveSpike2.png
 
 #begin PNG Objects/HayBale-1.png
 /importer:TextureImporter
