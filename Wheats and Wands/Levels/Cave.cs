@@ -21,7 +21,8 @@ namespace Wheats_and_Wands.Levels
         private Spike _smallSpike;
         private List<Spike> spikes;
 
-        private SquareBlock brick1;
+        //private SquareBlock brick1;
+        float _speed;
 
         private List<ScrollBackground> _scrollBackgrounds;
         public Cave(Farmer farmer, GameState gameState, Texture2D floor, Texture2D firstLayer, Texture2D secondLayer,
@@ -30,11 +31,10 @@ namespace Wheats_and_Wands.Levels
             _gameState = gameState;
             _farmer = farmer;
             _farmerStartPos = new Vector2(50, 290);
-            _bigSpike = new Spike(new Sprite(spikeTextures, 122, 0, 81, 69, new Vector2(200, 360)),_farmer);
-            _smallSpike = new Spike(new Sprite(spikeTextures, 0, 0, 87, 63, new Vector2(700, 360)),_farmer);
+            _smallSpike = new Spike(new Sprite(spikeTextures, 0, 0, 87, 63, new Vector2(603, WheatandWandsGame.WINDOW_HEIGHT-63)),_farmer);
+            _bigSpike = new Spike(new Sprite(spikeTextures, 122, 0, 81, 69, new Vector2(330, WheatandWandsGame.WINDOW_HEIGHT - 69)), _farmer);
+            //brick1 = new SquareBlock(new Sprite(floor, 495, 408, 64, 64, new Vector2(200 - 64, 290 + 64)), _farmer);
 
-            brick1 = new SquareBlock(new Sprite(floor, 495, 408, 64, 64, new Vector2(200 - 64, 290 + 64)), _farmer);
-            //495,408
 
             spikes = new List<Spike>();
             spikes.Add(_smallSpike);
@@ -42,27 +42,27 @@ namespace Wheats_and_Wands.Levels
 
             _scrollBackgrounds = new List<ScrollBackground>()
             {
-                new ScrollBackground(floor, _farmer, 30f)
+                new ScrollBackground(floor, _farmer, 0f)
                 {
                     Layer = 0.1f
                 },
-                new ScrollBackground(firstLayer, _farmer, 30f)
+                new ScrollBackground(firstLayer, _farmer, 0f)
                 {
                     Layer = 0.11f
                 },
-                new ScrollBackground(secondLayer, _farmer, 20f)
+                new ScrollBackground(secondLayer, _farmer, 20f/2)
                 {
                     Layer = 0.12f
                 },
-                new ScrollBackground(thirdLayer, _farmer, 10f)
+                new ScrollBackground(thirdLayer, _farmer, 10f/2)
                 {
                     Layer = 0.13f
                 },
-                new ScrollBackground(fourthLayer, _farmer, 7f)
+                new ScrollBackground(fourthLayer, _farmer, 7f/2)
                 {
                     Layer = 0.14f
                 },
-                new ScrollBackground(fifthLayer, _farmer, 5f)
+                new ScrollBackground(fifthLayer, _farmer, 5f/2)
                 {
                     Layer = 0.15f
                 },
@@ -83,7 +83,7 @@ namespace Wheats_and_Wands.Levels
             {
                 s.Draw(spriteBatch, gameTime);
             }
-            brick1.Draw(spriteBatch, gameTime);
+            //brick1.Draw(spriteBatch, gameTime);
 
 
             foreach (var scrollBackground in _scrollBackgrounds)
@@ -101,6 +101,18 @@ namespace Wheats_and_Wands.Levels
                 
             
             _farmer._groundY = _farmerStartPos.Y;
+            if ((_farmer.Position.X + _farmer._sprite.Width/2 > 330 &&
+                _farmer.Position.X + _farmer._sprite.Width / 2 < 405) ||
+                (_farmer.Position.X + _farmer._sprite.Width / 2 > 603 &&
+                _farmer.Position.X + _farmer._sprite.Width / 2 < 603+93))
+            {
+                _farmer._groundY = WheatandWandsGame.WINDOW_HEIGHT - 10;
+            }
+
+
+
+
+
 
             if (_farmer.Position.X < _farmer.prevPosition.X)
                 _farmer.HorizontalVelocity.X = -3f;
@@ -125,9 +137,17 @@ namespace Wheats_and_Wands.Levels
 
             foreach (Spike s in spikes)
             {
-                s.Kill(_farmer);
+                s.Update(gameTime);
             }
-            brick1.Update(gameTime);
+
+            //_speed = (float)(_farmer.HorizontalVelocity.X * gameTime.ElapsedGameTime.TotalSeconds * 30f );
+            //_speed *= _farmer.HorizontalVelocity.X;
+
+            //foreach (Spike s in spikes)
+            //{
+            //    s._sprite.position = new Vector2(s._sprite.position.X - _speed, s._sprite.position.Y);
+            //}
+            //brick1.Update(gameTime);
 
 
         }

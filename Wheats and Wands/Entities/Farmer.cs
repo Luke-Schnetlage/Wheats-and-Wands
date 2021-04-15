@@ -13,7 +13,7 @@ namespace Wheats_and_Wands.Entities
 
         private const float MIN_JUMP_HEIGHT = 20f;
 
-        private const float GRAVITY = 1600f;
+        public const float GRAVITY = 1600f;
         private const float JUMP_START_VELOCITY = -480f;
 
         private const float CANCEL_JUMP_VELOCITY = -100f;

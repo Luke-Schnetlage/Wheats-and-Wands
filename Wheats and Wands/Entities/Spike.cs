@@ -17,7 +17,7 @@ namespace Wheats_and_Wands.Entities
 
         public override void Update(GameTime gameTime)
         {
-            RejectMovment(_farmer, gameTime);
+            Kill(_farmer );
         }
     }
 }
