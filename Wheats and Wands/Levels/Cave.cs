@@ -131,14 +131,21 @@ namespace Wheats_and_Wands.Levels
             {
                 _farmer._groundY = WheatandWandsGame.WINDOW_HEIGHT - 10;
             }
-
+            if(smallPitEdge < _farmerStartPos.X + _farmer._sprite.Width && smallPitEdge + _smallPit._sprite.Width > _farmerStartPos.X) //+ _farmer._sprite.Width/2)
+            {
+                _farmerStartPos = new Vector2(smallPitEdge + _smallPit._sprite.Width + 50, _farmerStartPos.Y);
+            }
+            if (bigPitEdge < _farmerStartPos.X + _farmer._sprite.Width && bigPitEdge + _bigPit._sprite.Width > _farmerStartPos.X) //+ _farmer._sprite.Width/2)
+            {
+                _farmerStartPos = new Vector2(bigPitEdge + _bigPit._sprite.Width + 50, _farmerStartPos.Y);
+            }
 
 
 
 
 
             //if (_farmer.Position.X < _farmer.prevPosition.X)
-                //_farmer.HorizontalVelocity.X = -3f;
+            //_farmer.HorizontalVelocity.X = -3f;
             if (_farmer.Position.X > _farmer.prevPosition.X)
                 _farmer.HorizontalVelocity.X = 3f;
             else
