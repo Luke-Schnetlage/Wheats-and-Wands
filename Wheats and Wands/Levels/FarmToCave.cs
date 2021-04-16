@@ -115,27 +115,32 @@ namespace Wheats_and_Wands.Levels
 
             int movmentspeed = 0;
             
-            if ((int)gameTime.TotalGameTime.TotalSeconds % 2 == 0)
+            if ((int)gameTime.TotalGameTime.TotalSeconds % 4 == 0)
             {
                 movmentspeed = 2;
             }
-            if ((int)gameTime.TotalGameTime.TotalSeconds % 2 == 1)
+            if ((int)gameTime.TotalGameTime.TotalSeconds % 4 == 2)
             {
                 movmentspeed = -2;
             }
 
-            _floatinghayBale1._sprite.position = new Vector2(_floatinghayBale1._sprite.position.X + movmentspeed, _floatinghayBale1._sprite.position.Y);
-            _floatinghayBale2._sprite.position = new Vector2(_floatinghayBale2._sprite.position.X - movmentspeed, _floatinghayBale2._sprite.position.Y);
-
-            
+            if (_floatinghayBale1._sprite.position.X + movmentspeed > 150 + 64 + 64 && _floatinghayBale1._sprite.position.X + movmentspeed + 64 < 150 + 64 + 225 )
+            {
+                _floatinghayBale1._sprite.position = new Vector2(_floatinghayBale1._sprite.position.X + movmentspeed, _floatinghayBale1._sprite.position.Y);
                 if (_floatinghayBale1.TopCollision(_farmer))
                 {
                     _farmer.Position = new Vector2(_farmer.Position.X + movmentspeed, _farmer.Position.Y);
                 }
+                _floatinghayBale2._sprite.position = new Vector2(_floatinghayBale2._sprite.position.X - movmentspeed, _floatinghayBale2._sprite.position.Y);
                 if (_floatinghayBale2.TopCollision(_farmer))
                 {
                     _farmer.Position = new Vector2(_farmer.Position.X - movmentspeed, _farmer.Position.Y);
                 }
+            }
+            
+
+            
+            
             
 
 
