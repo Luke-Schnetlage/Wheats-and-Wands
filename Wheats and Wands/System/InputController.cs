@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
@@ -16,12 +17,13 @@ namespace Wheats_and_Wands.System
         private Farmer _farmer;
         private KeyboardState _previousKeyboardState;
         private Display_Options _displayOptions;
+        SoundEffect _jumpSound;
 
-
-        public InputController(Farmer farmer ,Display_Options displayOptions)
+        public InputController(Farmer farmer ,Display_Options displayOptions, SoundEffect jumpSound )
         {
             _farmer = farmer;
             _displayOptions = displayOptions;
+            _jumpSound = jumpSound;
         }
 
         public void ProcessControls(GameTime gameTime)
@@ -34,6 +36,7 @@ namespace Wheats_and_Wands.System
                 if (_farmer.OnGround )//&& _farmer.Position.Y >= 0)
                 {
                     _farmer.BeginJump(); //state = jumping
+                    _jumpSound.Play((float)0.2, 0, 0);
                 }
             }
 

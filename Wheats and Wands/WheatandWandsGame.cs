@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
@@ -95,6 +96,7 @@ namespace Wheats_and_Wands
         Song _caveTheme;
         Song _castleTheme;
 
+        SoundEffect _jumpSound;
 
         InputController _inputController;
         Display_Options _displayOptions;
@@ -189,11 +191,14 @@ namespace Wheats_and_Wands
             _caveTheme = Content.Load<Song>("music_zapsplat_deep_investigation_126");
             _castleTheme = Content.Load<Song>("music_zapsplat_last_chance_103");
 
+            _jumpSound = Content.Load<SoundEffect>("zapsplat_multimedia_game-sound_classic_retro_jump_006_65126");
+
+
             _farmer = new Farmer(_farmerSpriteSheet, playerPosition);
 
             //system controls
             _displayOptions = new Display_Options(_graphics);
-            _inputController = new InputController(_farmer, _displayOptions);
+            _inputController = new InputController(_farmer, _displayOptions,_jumpSound);
             _musicManager = new MusicManager(_gameState, _titleTheme, _tutorialTheme, _caveTheme, _castleTheme);
 
             //levels

@@ -31,8 +31,8 @@ namespace Wheats_and_Wands.Levels
             _farmerStartPos = new Vector2(50, 325);
 
             _wideStalactite = new FallingKillObject(new Sprite(spikes, 338, 0, 45, 44, new Vector2(290, 0)), _farmer, new TimeSpan(0,0,3));
-            _skinnyStalactite = new FallingKillObject(new Sprite(spikes, 393, 0, 41, 62, new Vector2(404, 0)), _farmer, new TimeSpan(0, 0, 2));
-            _bigStalactite = new FallingKillObject(new Sprite(spikes, 442, 0, 50, 70, new Vector2(640, 0)), _farmer, new TimeSpan(0, 0, 4));
+            _skinnyStalactite = new FallingKillObject(new Sprite(spikes, 393, 0, 41, 62, new Vector2(420, 0)), _farmer, new TimeSpan(0, 0, 2));
+            _bigStalactite = new FallingKillObject(new Sprite(spikes, 442, 0, 50, 70, new Vector2(640, 0)), _farmer, new TimeSpan(0,0,4));
 
             _scrollBackgrounds = new List<ScrollBackground>()
             {

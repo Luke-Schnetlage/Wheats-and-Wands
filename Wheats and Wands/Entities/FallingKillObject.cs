@@ -22,7 +22,7 @@ namespace Wheats_and_Wands.Entities
             falling = false;
             startPos = sprite.position;
             groundY = 400;
-            _lastFallTime = new TimeSpan(0,0,0);
+            _lastFallTime = new TimeSpan(0,0,0,0);
         }
 
         public void Update(GameTime gameTime)

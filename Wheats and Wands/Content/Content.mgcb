@@ -500,3 +500,9 @@
 /processorParam:TextureFormat=Compressed
 /build:Spritefonts/Credits.spritefont
 
+#begin zapsplat_multimedia_game-sound_classic_retro_jump_006_65126.mp3
+/importer:Mp3Importer
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:zapsplat_multimedia_game-sound_classic_retro_jump_006_65126.mp3
+
