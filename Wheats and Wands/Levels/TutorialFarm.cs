@@ -12,7 +12,7 @@ namespace Wheats_and_Wands.Levels
 {
     class TutorialFarm : Level
     {
-        private Vector2 _farmerStartPos = new Vector2(150, 325);
+        private Vector2 _farmerStartPos = new Vector2(150, 325 - 35);
         private Farmer _farmer { get ; set ; }
         //SpriteBatch _spriteBatch;
         Sign _sign;
@@ -31,11 +31,11 @@ namespace Wheats_and_Wands.Levels
         {
             _farmer = farmer;
             _farmer.SpawnPosition = _farmerStartPos;
-            _sign = new Sign(new Sprite(signTexture, 0, 0, 83, 103, new Vector2(250, 325)), msgBoxTexture, font,_farmer, "Use WASD to move");
-            _hayBale1 = new SquareBlock(new Sprite(haybale, 0, 0, 64, 64, new Vector2(525, 400)), farmer);
-            _hayBale2 = new SquareBlock(new Sprite(haybale, 0, 0, 64, 64, new Vector2(650, 400)), farmer);
-            _hayBale3 = new SquareBlock(new Sprite(haybale, 0, 0, 64, 64, new Vector2(650, 400-64)), farmer);
-            _hayBale4 = new SquareBlock(new Sprite(haybale, 0, 0, 64, 64, new Vector2(650+64, 400)), farmer);
+            _sign = new Sign(new Sprite(signTexture, 0, 0, 83, 103, new Vector2(250, 325 - 35)), msgBoxTexture, font,_farmer, "Use WASD to move");
+            _hayBale1 = new SquareBlock(new Sprite(haybale, 0, 0, 64, 64, new Vector2(525, 400 - 35)), farmer);
+            _hayBale2 = new SquareBlock(new Sprite(haybale, 0, 0, 64, 64, new Vector2(650, 400 - 35)), farmer);
+            _hayBale3 = new SquareBlock(new Sprite(haybale, 0, 0, 64, 64, new Vector2(650, 400-64 - 35)), farmer);
+            _hayBale4 = new SquareBlock(new Sprite(haybale, 0, 0, 64, 64, new Vector2(650+64, 400 - 35)), farmer);
             hayBales = new List<SquareBlock>();
             hayBales.Add(_hayBale1);
             hayBales.Add(_hayBale2);
@@ -122,7 +122,7 @@ namespace Wheats_and_Wands.Levels
             if( _farmer.Position.X + _farmer._sprite.Width > WheatandWandsGame.WINDOW_WIDTH - 10)
             {
                 _gameState.state = States.FarmToCave;
-                _farmer.Position = new Vector2(50, 325);
+                _farmer.Position = new Vector2(50, 325 - 35);
             }
         }  
     }

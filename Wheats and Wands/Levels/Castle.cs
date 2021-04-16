@@ -22,7 +22,7 @@ namespace Wheats_and_Wands.Levels
         {
             _gameState = gameState;
             _farmer = farmer;
-            _farmerStartPos = new Vector2(50, 325);
+            _farmerStartPos = new Vector2(50, 325 - 35);
 
             _scrollBackgrounds = new List<ScrollBackground>()
             {

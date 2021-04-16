@@ -35,7 +35,7 @@ namespace Wheats_and_Wands.Levels
         {
             _gameState = gameState;
             _farmer = farmer;
-            _farmerStartPos = new Vector2(50, 290);
+            _farmerStartPos = new Vector2(50, 290);//290
             _smallSpike = new Spike(new Sprite(spikeTextures, 0, 0, 87, 63, new Vector2(603, WheatandWandsGame.WINDOW_HEIGHT-63)),_farmer);
             _bigSpike = new Spike(new Sprite(spikeTextures, 122, 0, 81, 69, new Vector2(330, WheatandWandsGame.WINDOW_HEIGHT - 69)), _farmer);
 
@@ -159,7 +159,7 @@ namespace Wheats_and_Wands.Levels
             if (_farmer.Position.X + _farmer._sprite.Width > WheatandWandsGame.WINDOW_WIDTH - 10)
             {
                 _gameState.state = States.CaveToCastle;
-                _farmer.Position = new Vector2(50, 325);
+                _farmer.Position = new Vector2(50, 325 - 35);
             }
 
             foreach (var scrollBackground in _scrollBackgrounds)

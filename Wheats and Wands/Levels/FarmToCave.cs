@@ -35,16 +35,16 @@ namespace Wheats_and_Wands.Levels
         {
             _farmer = farmer;
             _gameState = gameState;
-            _farmerStartPos = new Vector2(50, 325);
+            _farmerStartPos = new Vector2(50, 325 - 35);
 
-            _hayBale1 = new SquareBlock(new Sprite(haybale, 0, 0, 64, 64, new Vector2(150, 400)), farmer);
-            _hayBale2 = new SquareBlock(new Sprite(haybale, 0, 0, 64, 64, new Vector2(150+64, 400)), farmer);
-            _hayBale3 = new SquareBlock(new Sprite(haybale, 0, 0, 64, 64, new Vector2(150+64, 400 - 64)), farmer);
-            _hayBale4 = new SquareBlock(new Sprite(haybale, 0, 0, 64, 64, new Vector2(600, 400)), farmer);
-            _hayBale5 = new SquareBlock(new Sprite(haybale, 0, 0, 64, 64, new Vector2(600 , 400 - 64)), farmer);
-            _hayBale6 = new SquareBlock(new Sprite(haybale, 0, 0, 64, 64, new Vector2(600 + 64, 400)), farmer);
-            _floatinghayBale1 = new SquareBlock(new Sprite(haybale, 0, 0, 64, 64, new Vector2(150 + 128 + 45 , 400 - 64)), farmer);//+75
-            _floatinghayBale2 = new SquareBlock(new Sprite(haybale, 0, 0, 64, 64, new Vector2(600 - 64 - 45 , 400 - 64)), farmer);//-75
+            _hayBale1 = new SquareBlock(new Sprite(haybale, 0, 0, 64, 64, new Vector2(150, 400 - 35)), farmer);
+            _hayBale2 = new SquareBlock(new Sprite(haybale, 0, 0, 64, 64, new Vector2(150+64, 400 - 35)), farmer);
+            _hayBale3 = new SquareBlock(new Sprite(haybale, 0, 0, 64, 64, new Vector2(150+64, 400 - 64 - 35)), farmer);
+            _hayBale4 = new SquareBlock(new Sprite(haybale, 0, 0, 64, 64, new Vector2(600, 400 - 35)), farmer);
+            _hayBale5 = new SquareBlock(new Sprite(haybale, 0, 0, 64, 64, new Vector2(600 , 400 - 64 - 35)), farmer);
+            _hayBale6 = new SquareBlock(new Sprite(haybale, 0, 0, 64, 64, new Vector2(600 + 64, 400 - 35)), farmer);
+            _floatinghayBale1 = new SquareBlock(new Sprite(haybale, 0, 0, 64, 64, new Vector2(150 + 128 + 45 , 400 - 64 - 35)), farmer);//+75
+            _floatinghayBale2 = new SquareBlock(new Sprite(haybale, 0, 0, 64, 64, new Vector2(600 - 64 - 45 , 400 - 64 - 35)), farmer);//-75
 
             haybales = new List<SquareBlock>();
             haybales.Add(_hayBale1);
@@ -166,7 +166,7 @@ namespace Wheats_and_Wands.Levels
             if (_farmer.Position.X + _farmer._sprite.Width > WheatandWandsGame.WINDOW_WIDTH - 10)
             {
                 _gameState.state = States.Cave;
-                _farmer.Position = new Vector2(50, 325);
+                _farmer.Position = new Vector2(50, 325 - 35);
             }
 
             foreach (var scrollBackground in _scrollBackgrounds)

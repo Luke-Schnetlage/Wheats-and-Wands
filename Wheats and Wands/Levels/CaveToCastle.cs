@@ -28,7 +28,7 @@ namespace Wheats_and_Wands.Levels
         {
             _farmer = farmer;
             _gameState = gameState;
-            _farmerStartPos = new Vector2(50, 325);
+            _farmerStartPos = new Vector2(50, 290);
 
             _wideStalactite = new FallingKillObject(new Sprite(spikes, 338, 0, 45, 44, new Vector2(290, 0)), _farmer, new TimeSpan(0,0,3));
             _skinnyStalactite = new FallingKillObject(new Sprite(spikes, 393, 0, 41, 62, new Vector2(420, 0)), _farmer, new TimeSpan(0, 0, 2));
@@ -89,7 +89,7 @@ namespace Wheats_and_Wands.Levels
             if (_farmer.Position.X + _farmer._sprite.Width > WheatandWandsGame.WINDOW_WIDTH - 10)
             {
                 _gameState.state = States.Castle;
-                _farmer.Position = new Vector2(50, 325);
+                _farmer.Position = new Vector2(50, 325 - 35);
             }
 
             foreach (var scrollBackground in _scrollBackgrounds)
