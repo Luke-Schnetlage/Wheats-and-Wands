@@ -16,14 +16,23 @@ namespace Wheats_and_Wands.Levels
         private GameState _gameState;
         private Farmer _farmer;
 
+        FallingKillObject _wideStalactite;
+        FallingKillObject _skinnyStalactite;
+        FallingKillObject _bigStalactite;
+
+
         private List<ScrollBackground> _scrollBackgrounds;
 
         public CaveToCastle(Farmer farmer, GameState gameState, Texture2D front, Texture2D back, Texture2D secondLayer, Texture2D thirdLayer,
-            Texture2D fourthLayer, Texture2D fifthLayer, Texture2D sixthLayer)
+            Texture2D fourthLayer, Texture2D fifthLayer, Texture2D sixthLayer, Texture2D spikes)
         {
             _farmer = farmer;
             _gameState = gameState;
             _farmerStartPos = new Vector2(50, 325);
+
+            _wideStalactite = new FallingKillObject(new Sprite(spikes, 338, 0, 45, 44, new Vector2(290, 0)), _farmer, new TimeSpan(0,0,3));
+            _skinnyStalactite = new FallingKillObject(new Sprite(spikes, 393, 0, 41, 62, new Vector2(404, 0)), _farmer, new TimeSpan(0, 0, 2));
+            _bigStalactite = new FallingKillObject(new Sprite(spikes, 442, 0, 50, 70, new Vector2(640, 0)), _farmer, new TimeSpan(0, 0, 4));
 
             _scrollBackgrounds = new List<ScrollBackground>()
             {
@@ -61,15 +70,22 @@ namespace Wheats_and_Wands.Levels
         {
             _farmer.Draw(spriteBatch, gameTime);
 
+            _wideStalactite.Draw(spriteBatch, gameTime);
+            _skinnyStalactite.Draw(spriteBatch, gameTime);
+            _bigStalactite.Draw(spriteBatch, gameTime);
+
             foreach (var scrollBackground in _scrollBackgrounds)
                 scrollBackground.Draw(gameTime, spriteBatch);
         }
         public override void Update(GameTime gameTime)
         {
             _farmer.Update(gameTime);
+
+            _wideStalactite.Update(gameTime);
+            _skinnyStalactite.Update(gameTime);
+            _bigStalactite.Update(gameTime);
+
             _farmer._groundY = _farmerStartPos.Y;
-
-
             if (_farmer.Position.X + _farmer._sprite.Width > WheatandWandsGame.WINDOW_WIDTH - 10)
             {
                 _gameState.state = States.Castle;
