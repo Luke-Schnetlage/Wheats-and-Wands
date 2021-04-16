@@ -92,6 +92,8 @@ namespace Wheats_and_Wands
         MusicManager _musicManager;
         Song _titleTheme;
         Song _tutorialTheme;
+        Song _caveTheme;
+        Song _castleTheme;
 
 
         InputController _inputController;
@@ -184,13 +186,15 @@ namespace Wheats_and_Wands
             //music
             _tutorialTheme = Content.Load<Song>("music_orlamusic_Happy+006");
             _titleTheme = Content.Load<Song>("music_zapsplat_game_music_zen_calm_soft_arpeggios_013");
+            _caveTheme = Content.Load<Song>("music_zapsplat_deep_investigation_126");
+            _castleTheme = Content.Load<Song>("music_zapsplat_last_chance_103");
 
             _farmer = new Farmer(_farmerSpriteSheet, playerPosition);
 
             //system controls
             _displayOptions = new Display_Options(_graphics);
             _inputController = new InputController(_farmer, _displayOptions);
-            _musicManager = new MusicManager(_gameState, _titleTheme, _tutorialTheme);
+            _musicManager = new MusicManager(_gameState, _titleTheme, _tutorialTheme, _caveTheme, _castleTheme);
 
             //levels
             _titleScreen = new TitleScreen(_titleScreenSprite, _gameState);

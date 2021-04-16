@@ -10,13 +10,17 @@ namespace Wheats_and_Wands.System
 		Song _song;
 		Song _titleTheme;
 		Song _farmTheme;
+		Song _caveTheme;
+		Song _castleTheme;
 		GameState _gameState;
 
-		public MusicManager(GameState gameState,Song titleTheme, Song farmtheme)
+		public MusicManager(GameState gameState,Song titleTheme, Song farmtheme, Song caveTheme, Song castleTheme)
 		{
 			_gameState = gameState;
 			_titleTheme = titleTheme;
 			_farmTheme = farmtheme;
+			_caveTheme = caveTheme;
+			_castleTheme = castleTheme;
 		}
 
 		public void Play()
@@ -30,6 +34,14 @@ namespace Wheats_and_Wands.System
 			else if (_gameState.state == States.Tutorial)
             {
 				_song = _farmTheme;
+            }
+			else if(_gameState.state == States.Cave)
+            {
+				_song = _caveTheme;
+            }
+			else if (_gameState.state == States.Castle)
+            {
+				_song = _castleTheme;
             }
 			if (temp != _song)
             {

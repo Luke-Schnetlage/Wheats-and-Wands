@@ -403,11 +403,23 @@
 /processorParam:Quality=Best
 /build:music_orlamusic_Happy+006.mp3
 
+#begin music_zapsplat_deep_investigation_126.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:music_zapsplat_deep_investigation_126.mp3
+
 #begin music_zapsplat_game_music_zen_calm_soft_arpeggios_013.mp3
 /importer:Mp3Importer
 /processor:SongProcessor
 /processorParam:Quality=Best
 /build:music_zapsplat_game_music_zen_calm_soft_arpeggios_013.mp3
+
+#begin music_zapsplat_last_chance_103.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:music_zapsplat_last_chance_103.mp3
 
 #begin PNG Objects/CavePits.png
 /importer:TextureImporter
