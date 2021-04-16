@@ -43,8 +43,8 @@ namespace Wheats_and_Wands.Levels
             _hayBale4 = new SquareBlock(new Sprite(haybale, 0, 0, 64, 64, new Vector2(600, 400)), farmer);
             _hayBale5 = new SquareBlock(new Sprite(haybale, 0, 0, 64, 64, new Vector2(600 , 400 - 64)), farmer);
             _hayBale6 = new SquareBlock(new Sprite(haybale, 0, 0, 64, 64, new Vector2(600 + 64, 400)), farmer);
-            _floatinghayBale1 = new SquareBlock(new Sprite(haybale, 0, 0, 64, 64, new Vector2(150 + 128 + 50 , 400 - 64)), farmer);//+75
-            _floatinghayBale2 = new SquareBlock(new Sprite(haybale, 0, 0, 64, 64, new Vector2(600 - 64 - 50 , 400 - 64)), farmer);//-75
+            _floatinghayBale1 = new SquareBlock(new Sprite(haybale, 0, 0, 64, 64, new Vector2(150 + 128 + 45 , 400 - 64)), farmer);//+75
+            _floatinghayBale2 = new SquareBlock(new Sprite(haybale, 0, 0, 64, 64, new Vector2(600 - 64 - 45 , 400 - 64)), farmer);//-75
 
             haybales = new List<SquareBlock>();
             haybales.Add(_hayBale1);
@@ -107,6 +107,9 @@ namespace Wheats_and_Wands.Levels
             //else
             //    _farmer.HorizontalVelocity.X = 0f;
 
+            
+
+
             _farmer.Update(gameTime);
             _farmer._groundY = _farmerStartPos.Y;
 
@@ -124,15 +127,28 @@ namespace Wheats_and_Wands.Levels
             _floatinghayBale1._sprite.position = new Vector2(_floatinghayBale1._sprite.position.X + movmentspeed, _floatinghayBale1._sprite.position.Y);
             _floatinghayBale2._sprite.position = new Vector2(_floatinghayBale2._sprite.position.X - movmentspeed, _floatinghayBale2._sprite.position.Y);
 
+            
+                if (_floatinghayBale1.TopCollision(_farmer))
+                {
+                    _farmer.Position = new Vector2(_farmer.Position.X + movmentspeed, _farmer.Position.Y);
+                }
+                if (_floatinghayBale2.TopCollision(_farmer))
+                {
+                    _farmer.Position = new Vector2(_farmer.Position.X - movmentspeed, _farmer.Position.Y);
+                }
+            
 
-            if (_farmer.Position.Y + _farmer._sprite.Height > 300 &&
+
+
+            
+            if (_farmer.Position.Y + _farmer._sprite.Height > 450 &&
                 _farmer.Position.X > 150 + 64 &&
                 _farmer.Position.X < 600)
             {
                 _farmer.IsAlive = false;
                 _farmer.Respawn();
             }
-
+            
 
 
 

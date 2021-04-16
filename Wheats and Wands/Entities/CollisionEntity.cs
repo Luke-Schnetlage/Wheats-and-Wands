@@ -49,7 +49,7 @@ namespace Wheats_and_Wands.Entities
             return _farmer.Position.X > this._sprite.position.X + (this._sprite.Width / 2);
         }
 
-        private bool TopCollision(Farmer _farmer)
+        public bool TopCollision(Farmer _farmer)
         {
             return _farmer.Position.Y + _farmer._sprite.Height > this._sprite.position.Y &&
                 !LeftCollision(_farmer) && !RightCollision(_farmer);
