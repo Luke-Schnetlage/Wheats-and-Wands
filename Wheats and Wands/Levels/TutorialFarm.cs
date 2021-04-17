@@ -31,7 +31,7 @@ namespace Wheats_and_Wands.Levels
         {
             _farmer = farmer;
             _farmer.SpawnPosition = _farmerStartPos;
-            _sign = new Sign(new Sprite(signTexture, 0, 0, 83, 103, new Vector2(250, 325 - 35)), msgBoxTexture, font,_farmer, "Use WASD to move");
+            _sign = new Sign(new Sprite(signTexture, 0, 0, 83, 103, new Vector2(250, 325)), msgBoxTexture, font,_farmer, "Use WASD to move");
             _hayBale1 = new SquareBlock(new Sprite(haybale, 0, 0, 64, 64, new Vector2(525, 400 - 35)), farmer);
             _hayBale2 = new SquareBlock(new Sprite(haybale, 0, 0, 64, 64, new Vector2(650, 400 - 35)), farmer);
             _hayBale3 = new SquareBlock(new Sprite(haybale, 0, 0, 64, 64, new Vector2(650, 400-64 - 35)), farmer);

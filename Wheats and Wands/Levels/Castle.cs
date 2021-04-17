@@ -26,35 +26,35 @@ namespace Wheats_and_Wands.Levels
 
             _scrollBackgrounds = new List<ScrollBackground>()
             {
-                new ScrollBackground(floor, _farmer, 0f)
+                new ScrollBackground(floor, _farmer, 30f/2)
                 {
                     Layer = 0.1f
                 },
-                new ScrollBackground(firstLayer, _farmer, 0f)
+                new ScrollBackground(firstLayer, _farmer, 30f/2)
                 {
                     Layer = 0.11f
                 },
-                new ScrollBackground(secondLayer, _farmer, 0f)
+                new ScrollBackground(secondLayer, _farmer, 12f)
                 {
                     Layer = 0.12f
                 },
-                new ScrollBackground(thirdLayer, _farmer, 0f)
+                new ScrollBackground(thirdLayer, _farmer, 10f)
                 {
                     Layer = 0.13f
                 },
-                new ScrollBackground(fourthLayer, _farmer, 0f)
+                new ScrollBackground(fourthLayer, _farmer, 8f)
                 {
                     Layer = 0.14f
                 },
-                new ScrollBackground(fifthLayer, _farmer, 0f)
+                new ScrollBackground(fifthLayer, _farmer, 6f)
                 {
                     Layer = 0.15f
                 },
-                new ScrollBackground(sixthLayer, _farmer, 0f)
+                new ScrollBackground(sixthLayer, _farmer, 4f)
                 {
                     Layer = 0.16f
                 },
-                new ScrollBackground(seventhLayer, _farmer, 0f)
+                new ScrollBackground(seventhLayer, _farmer, 3f)
                 {
                     Layer = 0.17f
                 },
@@ -75,6 +75,11 @@ namespace Wheats_and_Wands.Levels
 
         public override void Update(GameTime gameTime)
         {
+            if (_farmer.Position.X > _farmer.prevPosition.X)
+                _farmer.HorizontalVelocity.X = 3f;
+            else
+                _farmer.HorizontalVelocity.X = 0f;
+
             _farmer.Update(gameTime);
             _farmer._groundY = _farmerStartPos.Y;
 
