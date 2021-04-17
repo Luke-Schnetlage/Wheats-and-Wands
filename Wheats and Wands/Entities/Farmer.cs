@@ -14,7 +14,7 @@ namespace Wheats_and_Wands.Entities
         private const float MIN_JUMP_HEIGHT = 20f;
 
         public const float GRAVITY = 1600f;
-        private const float JUMP_START_VELOCITY = -480f;
+        private const float JUMP_START_VELOCITY = -500f;
 
         private const float CANCEL_JUMP_VELOCITY = -100f;
 
@@ -31,6 +31,7 @@ namespace Wheats_and_Wands.Entities
         public bool MovingLeft { get; set; }
         private Sprite _FarmerIdlePose;
         private SpriteAnimation _farmerWalkCycle;
+        private SpriteAnimation _deathFlash;
         public Sprite _sprite { get; private set; }
 
 
@@ -66,6 +67,11 @@ namespace Wheats_and_Wands.Entities
             _farmerWalkCycle.AddFrame(_farmerWalkCycle[0].Sprite, 8/10f);
             _farmerWalkCycle.Play();
 
+
+            _deathFlash = new SpriteAnimation();
+            _deathFlash.AddFrame(new Sprite(spriteSheet,68, 256, 60, 128), 0.5f);
+            _deathFlash.AddFrame(new Sprite(spriteSheet, 0, 0, 64, 128), 1f);
+            _deathFlash.Play();
         }
 
 
@@ -98,17 +104,20 @@ namespace Wheats_and_Wands.Entities
                 _farmerWalkCycle.Draw(spriteBatch, Position, _effect);
                 _sprite = _farmerWalkCycle.CurrentFrame.Sprite;
             }
+            /*
+            if (IsAlive == false)
+            {
+                _deathFlash.Draw(spriteBatch, Position, SpriteEffects.None);
+            }
+            _deathFlash.Draw(spriteBatch, Position, SpriteEffects.None);
+            _sprite = _deathFlash.CurrentFrame.Sprite;
+            */
         }
 
         public void Update(GameTime gameTime)
         {
 
-            //if (Position.X < prevPosition.X)
-            //    HorizontalVelocity.X = -3f;
-            //else if (Position.X > prevPosition.X)
-            //    HorizontalVelocity.X = 3f;
-            //else
-            //    HorizontalVelocity.X = 0f;
+            
 
 
             if (Position.Y  < _groundY)

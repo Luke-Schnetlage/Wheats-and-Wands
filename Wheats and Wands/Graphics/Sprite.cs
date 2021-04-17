@@ -45,12 +45,20 @@ namespace Wheats_and_Wands.Graphics
             spriteBatch.Draw(Texture, position, new Rectangle(X, Y, Width, Height), TintColor);
         }
 
-        
+        public void Draw(SpriteBatch spriteBatch, Vector2 position, Color color)
+        {
+            spriteBatch.Draw(Texture, position, new Rectangle(X, Y, Width, Height), color);
+        }
+
         public void Draw(SpriteBatch spriteBatch, Vector2 position, SpriteEffects effect)
         {
             spriteBatch.Draw(Texture, new Rectangle((int)position.X + Width/2, (int)position.Y + Height/2, Width, Height), new Rectangle(X, Y, Width, Height), TintColor,0f,new Vector2(Width/2,Height/2), effect,0f);
             
         }
-        
+        public void Draw(SpriteBatch spriteBatch, Vector2 position, SpriteEffects effect, Color color)
+        {
+            spriteBatch.Draw(Texture, new Rectangle((int)position.X + Width / 2, (int)position.Y + Height / 2, Width, Height), new Rectangle(X, Y, Width, Height), color, 0f, new Vector2(Width / 2, Height / 2), effect, 0f);
+
+        }
     }
 }

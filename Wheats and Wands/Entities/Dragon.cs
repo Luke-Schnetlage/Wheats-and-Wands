@@ -10,10 +10,14 @@ namespace Wheats_and_Wands.Entities
     class Dragon : CollisionEntity
     {
         private SpriteAnimation _blinkAnimation;
+        public bool IsAlive;
         public Dragon(Sprite sprite, Farmer farmer, Texture2D spriteSheet) : base(sprite, farmer)
         {
             //960
             //540
+            IsAlive = true;
+
+
             _blinkAnimation = new SpriteAnimation();
             _blinkAnimation.AddFrame(new Sprite(spriteSheet, 750 , 183 , 210, 222, new Vector2(750 % 960 , 183  % 540)), 0);
             _blinkAnimation.AddFrame(new Sprite(spriteSheet, 1710, 186 , 210, 222, new Vector2(1710 % 960, 186  % 540)), 1 / 10f);
@@ -31,16 +35,27 @@ namespace Wheats_and_Wands.Entities
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            _blinkAnimation.Draw(spriteBatch, _blinkAnimation.CurrentFrame.Sprite.position, SpriteEffects.None);
+            if (IsAlive)
+                _blinkAnimation.Draw(spriteBatch, _blinkAnimation.CurrentFrame.Sprite.position, SpriteEffects.None);
         }
 
         public void Update(GameTime gameTime)
         {
+            
             _blinkAnimation.Update(gameTime);
             _sprite = _blinkAnimation.CurrentFrame.Sprite;
-            if (!TopCollision(_farmer))
+            //RejectMovment(_farmer, gameTime);
+            
+            if (Collision(_farmer))
             {
-                Kill(_farmer);
+                if (!TopCollision(_farmer))
+                {
+                    Kill(_farmer);
+                }
+                else
+                {
+                    IsAlive = false;
+                }     
             }
         }
     }

@@ -41,12 +41,12 @@ namespace Wheats_and_Wands.Entities
 
         private bool LeftCollision(Farmer _farmer) //checks if farmer right edge behind center of sprite
         {
-            return _farmer.Position.X + _farmer._sprite.Width < this._sprite.position.X + (this._sprite.Width / 2);
+            return _farmer.Position.X + _farmer._sprite.Width == this._sprite.position.X + (this._sprite.Width);
         }
 
         private bool RightCollision(Farmer _farmer)
         {
-            return _farmer.Position.X > this._sprite.position.X + (this._sprite.Width / 2);
+            return _farmer.Position.X == this._sprite.position.X + (this._sprite.Width );
         }
 
         public bool TopCollision(Farmer _farmer)
@@ -57,7 +57,8 @@ namespace Wheats_and_Wands.Entities
 
         private bool BottomCollision(Farmer _farmer)
         {
-            return _farmer.Position.Y  < this._sprite.position.Y + this._sprite.Height;
+            return _farmer.Position.Y <= this._sprite.position.Y + this._sprite.Height
+                && !TopCollision(_farmer);
         }
         public void RejectMovment(Farmer _farmer, GameTime gameTime) //mutually exclusive with kill
         {
@@ -76,14 +77,13 @@ namespace Wheats_and_Wands.Entities
                 }
                 if (TopCollision(_farmer))
                 {
-
                     _farmer._groundY = _sprite.position.Y;
                     _farmer.Land();
                     position.Y = _sprite.position.Y - 128;
                 }
                 else if (BottomCollision(_farmer))
                 {
-                    //_farmer.CancelJump();
+                    Kill(_farmer);
                 }
                 else
                 {
