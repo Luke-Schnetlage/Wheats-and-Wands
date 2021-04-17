@@ -21,6 +21,7 @@ namespace Wheats_and_Wands.System
         FarmToCave,
         Cave,
         CaveToCastle,
-        Castle
+        Castle,
+        DragonLevel
     }
 }

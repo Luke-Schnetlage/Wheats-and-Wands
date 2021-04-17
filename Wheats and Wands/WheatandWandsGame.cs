@@ -31,6 +31,7 @@ namespace Wheats_and_Wands
         Castle _castle;
         FarmToCave _farmToCave;
         CaveToCastle _caveToCastle;
+        DragonLevel _dragonLevel;
 
         //Sprites
         Texture2D _titleScreenSprite;
@@ -95,6 +96,7 @@ namespace Wheats_and_Wands
         Song _tutorialTheme;
         Song _caveTheme;
         Song _castleTheme;
+        Song _dragonTheme;
 
         SoundEffect _jumpSound;
 
@@ -190,6 +192,7 @@ namespace Wheats_and_Wands
             _titleTheme = Content.Load<Song>("music_zapsplat_game_music_zen_calm_soft_arpeggios_013");
             _caveTheme = Content.Load<Song>("music_zapsplat_deep_investigation_126");
             _castleTheme = Content.Load<Song>("music_zapsplat_last_chance_103");
+            _dragonTheme = Content.Load<Song>("audio_hero_911_SIPML_J-0501");
 
             _jumpSound = Content.Load<SoundEffect>("zapsplat_multimedia_game-sound_classic_retro_jump_006_65126");
 
@@ -199,7 +202,7 @@ namespace Wheats_and_Wands
             //system controls
             _displayOptions = new Display_Options(_graphics);
             _inputController = new InputController(_farmer, _displayOptions,_jumpSound);
-            _musicManager = new MusicManager(_gameState, _titleTheme, _tutorialTheme, _caveTheme, _castleTheme);
+            _musicManager = new MusicManager(_gameState, _titleTheme, _tutorialTheme, _caveTheme, _castleTheme, _dragonTheme);
 
             //levels
             _titleScreen = new TitleScreen(_titleScreenSprite, _gameState);
@@ -215,6 +218,8 @@ namespace Wheats_and_Wands
                 _fastClouds, _tutorialLastLayer,_hayBale);
             _caveToCastle = new CaveToCastle(_farmer, _gameState, _ctcFront, _ctcBack, _caveSecondLayer, _caveThirdLayer, _caveFourthLayer,
                 _caveFifthLayer, _caveSixthLayer, _spikes);
+            _dragonLevel = new DragonLevel(_farmer, _gameState, _castleFloor, _castleFirstLayer, _castleSecondLayer, _castleThirdLayer,
+                _castleFourthLayer, _castleFifthLayer, _castleSixthLayer, _castleSeventhLayer, _castleEighthLayer);
 
         }
 
@@ -256,6 +261,10 @@ namespace Wheats_and_Wands
             if (_gameState.state == States.Castle)
             {
                 _level = _castle;
+            }
+            if (_gameState.state == States.DragonLevel)
+            {
+                _level = _dragonLevel;
             }
 
 
