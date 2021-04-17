@@ -91,9 +91,13 @@ namespace Wheats_and_Wands.Levels
             _farmer.Update(gameTime);
             _farmer._groundY = _farmerStartPos.Y;
 
+            if (_farmer.Position.X + _farmer._sprite.Width > WheatandWandsGame.WINDOW_WIDTH - 10)
+            {
+                _gameState.state = States.DragonLevel;
+                _farmer.Position = new Vector2(50, 325 - 35);
+            }
 
             _dragon.Update(gameTime);
-
             foreach (var scrollBackground in _scrollBackgrounds)
                 scrollBackground.Update(gameTime);
         }
