@@ -16,18 +16,19 @@ namespace Wheats_and_Wands.Levels
         private Farmer _farmer;
 
         private Dragon _dragon;
+        private FireBreath _fire;
 
         private List<ScrollBackground> _scrollBackgrounds;
 
         public Castle(Farmer farmer, GameState gameState, Texture2D floor, Texture2D firstLayer, Texture2D secondLayer, Texture2D thirdLayer,
-            Texture2D fourthLayer, Texture2D fifthLayer, Texture2D sixthLayer, Texture2D seventhLayer, Texture2D lastLayer, Texture2D dragonTexture)
+            Texture2D fourthLayer, Texture2D fifthLayer, Texture2D sixthLayer, Texture2D seventhLayer, Texture2D lastLayer, Texture2D dragonTexture, Texture2D firebreath)
         {
             _gameState = gameState;
             _farmer = farmer;
             _farmerStartPos = new Vector2(50, 325 - 35);
 
             _dragon = new Dragon(null, _farmer, dragonTexture);
-
+            _fire = new FireBreath(null, farmer, firebreath);
 
 
             _scrollBackgrounds = new List<ScrollBackground>()
@@ -76,6 +77,7 @@ namespace Wheats_and_Wands.Levels
             _farmer.Draw(spriteBatch, gameTime);
 
             _dragon.Draw(spriteBatch);
+            _fire.Draw(spriteBatch);
 
             foreach (var scrollBackground in _scrollBackgrounds)
                 scrollBackground.Draw(gameTime, spriteBatch);
@@ -98,6 +100,7 @@ namespace Wheats_and_Wands.Levels
             }
 
             _dragon.Update(gameTime);
+            _fire.Update(gameTime);
             foreach (var scrollBackground in _scrollBackgrounds)
                 scrollBackground.Update(gameTime);
         }

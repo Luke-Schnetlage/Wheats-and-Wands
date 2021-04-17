@@ -44,6 +44,7 @@ namespace Wheats_and_Wands
         Texture2D _spikes;
         Texture2D _cavePits;
         Texture2D _dragon;
+        Texture2D _fireBreath;
 
         //Tutorial and Farm Textures
         Texture2D _barn;
@@ -181,6 +182,7 @@ namespace Wheats_and_Wands
             _spikes = Content.Load<Texture2D>("PNG Objects/CaveSpike2");
             _cavePits = Content.Load<Texture2D>("PNG Objects/CavePits");
             _dragon = Content.Load<Texture2D>("PNG Objects/Dragon");
+            _fireBreath = Content.Load<Texture2D>("PNG Objects/FireBreath");
 
             //farmer animations
             _farmerSpriteSheet = Content.Load<Texture2D>("Farmer walk cycle");
@@ -214,7 +216,7 @@ namespace Wheats_and_Wands
             _cave = new Cave(_farmer, _gameState, _caveFloor, _caveFirstLayer, _caveSecondLayer, _caveThirdLayer, _caveFourthLayer,
                 _caveFifthLayer, _caveSixthLayer, _spikes, _cavePits);
             _castle = new Castle(_farmer, _gameState, _castleFloor, _castleFirstLayer, _castleSecondLayer, _castleThirdLayer,
-                _castleFourthLayer, _castleFifthLayer, _castleSixthLayer, _castleSeventhLayer, _castleEighthLayer, _dragon);
+                _castleFourthLayer, _castleFifthLayer, _castleSixthLayer, _castleSeventhLayer, _castleEighthLayer, _dragon, _fireBreath);
             _farmToCave = new FarmToCave(_farmer, _gameState, _ftc, _tutorialSecondLayer, _tutorialThirdLayer, _farClouds, 
                 _fastClouds, _tutorialLastLayer,_hayBale);
             _caveToCastle = new CaveToCastle(_farmer, _gameState, _ctcFront, _ctcBack, _caveSecondLayer, _caveThirdLayer, _caveFourthLayer,
