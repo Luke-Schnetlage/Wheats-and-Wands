@@ -138,15 +138,7 @@ namespace Wheats_and_Wands.Levels
                 }
             }
             
-
-            
-            
-            
-
-
-
-            
-            if (_farmer.Position.Y + _farmer._sprite.Height > 450 &&
+            if (_farmer.Position.Y + _farmer._sprite.Height > 400 &&
                 _farmer.Position.X > 150 + 64 &&
                 _farmer.Position.X < 600)
             {
@@ -154,10 +146,6 @@ namespace Wheats_and_Wands.Levels
                 _farmer.Respawn();
             }
             
-
-
-
-
             foreach (SquareBlock haybale in haybales)
             {
                 haybale.Update(gameTime);

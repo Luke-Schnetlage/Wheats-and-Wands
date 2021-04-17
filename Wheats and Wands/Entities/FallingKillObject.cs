@@ -8,7 +8,7 @@ namespace Wheats_and_Wands.Entities
 {
     class FallingKillObject : CollisionEntity
     {
-        TimeSpan _hangTime;
+        public TimeSpan _hangTime;
         TimeSpan _lastFallTime;
         float _verticalVelocity;
         bool falling;

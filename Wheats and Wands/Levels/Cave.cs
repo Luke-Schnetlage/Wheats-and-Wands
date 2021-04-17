@@ -27,6 +27,7 @@ namespace Wheats_and_Wands.Levels
 
         //private SquareBlock brick1;
         float _speed;
+        
 
         private List<ScrollBackground> _scrollBackgrounds;
         public Cave(Farmer farmer, GameState gameState, Texture2D floor, Texture2D firstLayer, Texture2D secondLayer,
@@ -140,12 +141,6 @@ namespace Wheats_and_Wands.Levels
                 _farmerStartPos = new Vector2(bigPitEdge + _bigPit._sprite.Width + 50, _farmerStartPos.Y);
             }
 
-
-
-
-
-            //if (_farmer.Position.X < _farmer.prevPosition.X)
-            //_farmer.HorizontalVelocity.X = -3f;
             if (_farmer.Position.X > _farmer.prevPosition.X)
                 _farmer.HorizontalVelocity.X = 3f;
             else
@@ -153,8 +148,6 @@ namespace Wheats_and_Wands.Levels
 
             _farmer.Update(gameTime);
             _farmer._groundY = _farmerStartPos.Y;
-
-
 
             if (_farmer.Position.X + _farmer._sprite.Width > WheatandWandsGame.WINDOW_WIDTH - 10)
             {
@@ -178,16 +171,8 @@ namespace Wheats_and_Wands.Levels
                 p._sprite.position = new Vector2(p._sprite.position.X - _speed, p._sprite.position.Y);
             }
 
-
-
             _speed = (float)(_farmer.HorizontalVelocity.X * gameTime.ElapsedGameTime.TotalSeconds * 5f);
             _speed *= _farmer.HorizontalVelocity.X;
-
-            //foreach (Spike s in spikes)
-            //{
-            //    s._sprite.position = new Vector2(s._sprite.position.X - _speed, s._sprite.position.Y);
-            //}
-            //brick1.Update(gameTime);
 
 
         }

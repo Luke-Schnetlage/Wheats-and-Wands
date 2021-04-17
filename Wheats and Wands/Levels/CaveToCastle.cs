@@ -22,6 +22,7 @@ namespace Wheats_and_Wands.Levels
 
 
         private List<ScrollBackground> _scrollBackgrounds;
+        Random rand;
 
         public CaveToCastle(Farmer farmer, GameState gameState, Texture2D front, Texture2D back, Texture2D secondLayer, Texture2D thirdLayer,
             Texture2D fourthLayer, Texture2D fifthLayer, Texture2D sixthLayer, Texture2D spikes)
@@ -30,9 +31,10 @@ namespace Wheats_and_Wands.Levels
             _gameState = gameState;
             _farmerStartPos = new Vector2(50, 290);
 
-            _wideStalactite = new FallingKillObject(new Sprite(spikes, 338, 0, 45, 44, new Vector2(290, 0)), _farmer, new TimeSpan(0,0,3));
-            _skinnyStalactite = new FallingKillObject(new Sprite(spikes, 393, 0, 41, 62, new Vector2(420, 0)), _farmer, new TimeSpan(0, 0, 2));
-            _bigStalactite = new FallingKillObject(new Sprite(spikes, 442, 0, 50, 70, new Vector2(640, 0)), _farmer, new TimeSpan(0,0,4));
+            rand = new Random();
+            _wideStalactite = new FallingKillObject(new Sprite(spikes, 338, 0, 45, 44, new Vector2(290, 0)), _farmer, new TimeSpan(0,0,rand.Next(1,3)));
+            _skinnyStalactite = new FallingKillObject(new Sprite(spikes, 393, 0, 41, 62, new Vector2(420, 0)), _farmer, new TimeSpan(0, 0, rand.Next(1, 3)));
+            _bigStalactite = new FallingKillObject(new Sprite(spikes, 442, 0, 50, 70, new Vector2(640, 0)), _farmer, new TimeSpan(0,0, rand.Next(2, 4)));
 
             _scrollBackgrounds = new List<ScrollBackground>()
             {
@@ -84,6 +86,9 @@ namespace Wheats_and_Wands.Levels
             _wideStalactite.Update(gameTime);
             _skinnyStalactite.Update(gameTime);
             _bigStalactite.Update(gameTime);
+            _wideStalactite._hangTime = new TimeSpan(0, 0, rand.Next(1, 3));
+            _skinnyStalactite._hangTime = new TimeSpan(0, 0, rand.Next(1, 3));
+            _bigStalactite._hangTime = new TimeSpan(0, 0, rand.Next(1, 3));
 
             _farmer._groundY = _farmerStartPos.Y;
             if (_farmer.Position.X + _farmer._sprite.Width > WheatandWandsGame.WINDOW_WIDTH - 10)
