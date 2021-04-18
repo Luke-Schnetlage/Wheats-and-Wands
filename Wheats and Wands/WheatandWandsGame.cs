@@ -128,7 +128,7 @@ namespace Wheats_and_Wands
             _gameState = new GameState();
 
             //IMPORTANT!!! REMOVE AFTER CASTLE TESTING
-            _gameState.state = States.Castle;
+            //_gameState.state = States.Castle;
             //IMPORTANT!!! REMOVE AFTER CASTLE TESTING
 
             playerPosition = new Vector2(100 , (_graphics.PreferredBackBufferHeight / 2) + 15 ); //defaults player to center of the screen
