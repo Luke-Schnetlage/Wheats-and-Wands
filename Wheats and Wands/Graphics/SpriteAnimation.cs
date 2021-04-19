@@ -70,9 +70,7 @@ namespace Wheats_and_Wands.Graphics
                     {
                         Stop();
                     }
-
                 }
-
             }
         }
 

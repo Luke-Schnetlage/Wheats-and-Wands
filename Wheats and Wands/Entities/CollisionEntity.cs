@@ -89,7 +89,7 @@ namespace Wheats_and_Wands.Entities
                 }
                 else if (BottomCollision(_farmer))
                 {
-                    Kill(_farmer);
+                    //Kill(_farmer);
                 }
                 else
                 {

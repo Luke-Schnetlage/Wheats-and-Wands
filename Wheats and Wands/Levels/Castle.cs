@@ -37,7 +37,7 @@ namespace Wheats_and_Wands.Levels
             _dragon = new Dragon(null, _farmer, dragonTexture);
             _fire = new FireBreath(null, farmer, firebreath);
 
-            _platform1 = new SquareBlock(new Sprite(floor, 430, 408, 145, 30, new Vector2(200, 405)), _farmer);
+            _platform1 = new SquareBlock(new Sprite(floor, 430, 408, 145, 30, new Vector2(200, 350)), _farmer);
             _platform2 = new SquareBlock(new Sprite(floor, 430, 408, 145, 30, new Vector2(425, 230)), _farmer);
             _platform3 = new SquareBlock(new Sprite(floor, 430, 408, 145, 30, new Vector2(600, 280)), _farmer);
             /*

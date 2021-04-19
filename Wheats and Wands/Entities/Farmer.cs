@@ -12,17 +12,16 @@ namespace Wheats_and_Wands.Entities
     {
 
         private const float MIN_JUMP_HEIGHT = 20f;
-
         public const float GRAVITY = 1600f;
         private const float JUMP_START_VELOCITY = -500f;
-
         private const float CANCEL_JUMP_VELOCITY = -100f;
 
         public Vector2 HorizontalVelocity;
-
         public Vector2 SpawnPosition { get; set; }
-        public FarmerState State { get; set; }
         public Vector2 Position { get; set; }
+        public Vector2 prevPosition;
+        public FarmerState State { get; set; }
+        
         public Rectangle rectangle { get; set; }
         
         public int DrawOrder { set; get; }
@@ -30,18 +29,19 @@ namespace Wheats_and_Wands.Entities
         public bool OnGround { get; set; }
         public bool MovingLeft { get; set; }
         private Sprite _FarmerIdlePose;
+        
         private SpriteAnimation _farmerWalkCycle;
-        private SpriteAnimation _deathFlash;
+        private SpriteAnimation _deathAnimation;
         public Sprite _sprite { get; private set; }
 
 
         private float _verticalVelocity;
         public float _groundY { get; set; }
 
-        public Vector2 prevPosition;
+        
 
 
-        public Farmer(Texture2D spriteSheet, Vector2 position)
+        public Farmer(Texture2D spriteSheet, Vector2 position, Texture2D _heartSheet)
         {
             Position = position;
 
@@ -68,10 +68,27 @@ namespace Wheats_and_Wands.Entities
             _farmerWalkCycle.Play();
 
 
-            _deathFlash = new SpriteAnimation();
-            _deathFlash.AddFrame(new Sprite(spriteSheet,68, 256, 60, 128), 0.5f);
-            _deathFlash.AddFrame(new Sprite(spriteSheet, 0, 0, 64, 128), 1f);
-            _deathFlash.Play();
+            _deathAnimation = new SpriteAnimation();
+
+            
+            _deathAnimation.AddFrame(new Sprite(_heartSheet, (0 * 120), (0 * 120), 120, 120), 1 / 7f);
+            _deathAnimation.AddFrame(new Sprite(_heartSheet, (1 * 120), (0 * 120), 120, 120), 2 / 7f);
+            _deathAnimation.AddFrame(new Sprite(_heartSheet, (2 * 120), (0 * 120), 120, 120), 3 / 7f);
+            _deathAnimation.AddFrame(new Sprite(_heartSheet, (3 * 120), (0 * 120), 120, 120), 4 / 7f);
+            _deathAnimation.AddFrame(new Sprite(_heartSheet, (0 * 120), (1 * 120), 120, 120), 5 / 7f);
+            _deathAnimation.AddFrame(new Sprite(_heartSheet, (1 * 120), (1 * 120), 120, 120), 6 / 7f);
+            _deathAnimation.AddFrame(new Sprite(_heartSheet, (2 * 120), (1 * 120), 120, 120), 7 / 7f);
+            _deathAnimation.AddFrame(new Sprite(_heartSheet, (3 * 120), (1 * 120), 120, 120), 8 / 7f);
+            _deathAnimation.AddFrame(new Sprite(_heartSheet, (0 * 120), (2 * 120), 120, 120), 9 / 7f);
+            _deathAnimation.AddFrame(new Sprite(_heartSheet, (1 * 120), (2 * 120), 120, 120), 10 / 7f);
+            _deathAnimation.AddFrame(new Sprite(_heartSheet, (2 * 120), (2 * 120), 120, 120), 11 / 7f);
+            _deathAnimation.AddFrame(new Sprite(_heartSheet, (3 * 120), (2 * 120), 120, 120), 12 / 7f);
+            _deathAnimation.AddFrame(new Sprite(_heartSheet, (0 * 120), (3 * 120), 120, 120), 13 / 7f);
+            _deathAnimation.AddFrame(new Sprite(_heartSheet, (1 * 120), (3 * 120), 120, 120), 14 / 7f);
+            
+            _deathAnimation.ShouldLoop = false;
+
+
         }
 
 
@@ -104,22 +121,18 @@ namespace Wheats_and_Wands.Entities
                 _farmerWalkCycle.Draw(spriteBatch, Position, _effect);
                 _sprite = _farmerWalkCycle.CurrentFrame.Sprite;
             }
-            /*
-            if (IsAlive == false)
-            {
-                _deathFlash.Draw(spriteBatch, Position, SpriteEffects.None);
-            }
-            _deathFlash.Draw(spriteBatch, Position, SpriteEffects.None);
-            _sprite = _deathFlash.CurrentFrame.Sprite;
-            */
+            
+            
+            if (_deathAnimation.PlaybackProgress == _deathAnimation.Duration )
+                _deathAnimation.Stop();
+            
+            _deathAnimation.Draw(spriteBatch, new Vector2(960 / 2 - 60, 540 / 2 - 60), SpriteEffects.None);
         }
 
         public void Update(GameTime gameTime)
         {
-
-            
-
-
+            _deathAnimation.Update(gameTime);
+            IsAlive = true;
             if (Position.Y  < _groundY)
             {
                 OnGround = false;
@@ -188,9 +201,9 @@ namespace Wheats_and_Wands.Entities
             if(IsAlive == false)
             {
                 Position = SpawnPosition;
-                IsAlive = true;
+                _deathAnimation.Stop();
+                _deathAnimation.Play();
             }
         }
-
     }
 }

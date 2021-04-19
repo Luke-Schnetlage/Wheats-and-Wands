@@ -45,6 +45,7 @@ namespace Wheats_and_Wands
         Texture2D _cavePits;
         Texture2D _dragon;
         Texture2D _fireBreath;
+        Texture2D _heartSheet;
 
         //Tutorial and Farm Textures
         Texture2D _barn;
@@ -187,6 +188,7 @@ namespace Wheats_and_Wands
             _cavePits = Content.Load<Texture2D>("PNG Objects/CavePits");
             _dragon = Content.Load<Texture2D>("PNG Objects/Dragon");
             _fireBreath = Content.Load<Texture2D>("PNG Objects/FireBreath");
+            _heartSheet = Content.Load<Texture2D>("PNG Objects/Heart");
 
             //farmer animations
             _farmerSpriteSheet = Content.Load<Texture2D>("Farmer walk cycle");
@@ -204,7 +206,7 @@ namespace Wheats_and_Wands
             _jumpSound = Content.Load<SoundEffect>("zapsplat_multimedia_game-sound_classic_retro_jump_006_65126");
 
 
-            _farmer = new Farmer(_farmerSpriteSheet, playerPosition);
+            _farmer = new Farmer(_farmerSpriteSheet, playerPosition, _heartSheet);
 
             //system controls
             _displayOptions = new Display_Options(_graphics);
