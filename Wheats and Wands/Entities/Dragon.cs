@@ -52,7 +52,6 @@ namespace Wheats_and_Wands.Entities
 
         public void Update(GameTime gameTime)
         {
-            
             _blinkAnimation.Update(gameTime);
             _sprite = _blinkAnimation.CurrentFrame.Sprite;
             //RejectMovment(_farmer, gameTime);
@@ -65,7 +64,7 @@ namespace Wheats_and_Wands.Entities
                 }
                 else
                 {
-                    IsAlive = false;
+                        IsAlive = false;
                     
                 }
             }

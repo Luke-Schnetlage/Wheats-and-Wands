@@ -129,7 +129,7 @@ namespace Wheats_and_Wands
             _gameState = new GameState();
 
             //IMPORTANT!!! REMOVE AFTER CASTLE TESTING
-            //_gameState.state = States.Castle;
+            _gameState.state = States.DragonLevel;
             //IMPORTANT!!! REMOVE AFTER CASTLE TESTING
 
             playerPosition = new Vector2(100 , (_graphics.PreferredBackBufferHeight / 2) + 15 ); //defaults player to center of the screen
@@ -228,7 +228,7 @@ namespace Wheats_and_Wands
             _caveToCastle = new CaveToCastle(_farmer, _gameState, _ctcFront, _ctcBack, _caveSecondLayer, _caveThirdLayer, _caveFourthLayer,
                 _caveFifthLayer, _caveSixthLayer, _spikes);
             _dragonLevel = new DragonLevel(_farmer, _gameState, _castleFloor, _castleFirstLayer, _castleSecondLayer, _castleThirdLayer,
-                _castleFourthLayer, _castleFifthLayer, _castleSixthLayer, _castleSeventhLayer, _castleEighthLayer);
+                _castleFourthLayer, _castleFifthLayer, _castleSixthLayer, _castleSeventhLayer, _castleEighthLayer, _dragon, _fireBreath);
 
         }
 
