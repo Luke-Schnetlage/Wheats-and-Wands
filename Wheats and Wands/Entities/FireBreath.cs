@@ -26,10 +26,13 @@ namespace Wheats_and_Wands.Entities
             _fireBreathAnimation.AddFrame(new Sprite(spriteSheet, 174 , 2496, 606, 66, new Vector2(174  % 960, 2496 % 540)), 7 / 10f);
             _fireBreathAnimation.AddFrame(new Sprite(spriteSheet, 1134, 2496, 606, 66, new Vector2(1134 % 960, 2496 % 540)), 8 / 10f);
             _fireBreathAnimation.AddFrame(_fireBreathAnimation[0].Sprite, 9 / 10f);
-            _fireBreathAnimation.Play();
+            //_fireBreathAnimation.Play();
+            _fireBreathAnimation.ShouldLoop = false;
         }
         public void Draw(SpriteBatch spriteBatch)
         {
+            if (_fireBreathAnimation.PlaybackProgress == _fireBreathAnimation.Duration)
+                _fireBreathAnimation.Stop();
             _fireBreathAnimation.Draw(spriteBatch, _fireBreathAnimation.CurrentFrame.Sprite.position, SpriteEffects.None);
         }
 
@@ -40,7 +43,10 @@ namespace Wheats_and_Wands.Entities
             
             
              Kill(_farmer);
-            
+        }
+        public void BreathFire()
+        {
+            _fireBreathAnimation.Play();
         }
     }
 }

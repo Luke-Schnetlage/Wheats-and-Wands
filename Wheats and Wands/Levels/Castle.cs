@@ -37,15 +37,10 @@ namespace Wheats_and_Wands.Levels
             _dragon = new Dragon(null, _farmer, dragonTexture);
             _fire = new FireBreath(null, farmer, firebreath);
 
-            _platform1 = new SquareBlock(new Sprite(floor, 430, 408, 145, 30, new Vector2(200, 350)), _farmer);
-            _platform2 = new SquareBlock(new Sprite(floor, 430, 408, 145, 30, new Vector2(425, 230)), _farmer);
-            _platform3 = new SquareBlock(new Sprite(floor, 430, 408, 145, 30, new Vector2(600, 280)), _farmer);
-            /*
-            objects = new List<CollisionEntity>();
-            objects.Add(_dragon);
-            objects.Add(_fire);
-            objects.Add(_platform1);
-            */
+            _platform1 = new SquareBlock(new Sprite(floor, 430, 408, 145, 30, new Vector2(200, 325)), _farmer);
+            _platform2 = new SquareBlock(new Sprite(floor, 430, 408, 145, 30, new Vector2(425, 225)), _farmer);
+            _platform3 = new SquareBlock(new Sprite(floor, 430, 408, 145, 30, new Vector2(600, 235)), _farmer);
+            
             _scrollBackgrounds = new List<ScrollBackground>()
             {
                 new ScrollBackground(floor, _farmer, 30f/2)
@@ -90,15 +85,11 @@ namespace Wheats_and_Wands.Levels
         public override void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
             _farmer.Draw(spriteBatch, gameTime);
-            /*
-            foreach (CollisionEntity c in objects){
-                c.Draw(spriteBatch,gameTime);
-            }
-            */
+            
             
             _dragon.Draw(spriteBatch);
-            //if (_dragon.IsAlive)
-            //    _fire.Draw(spriteBatch);
+            if (_dragon.IsAlive)
+                _fire.Draw(spriteBatch);
 
             _platform1.Draw(spriteBatch,gameTime);
             _platform2.Draw(spriteBatch, gameTime);
@@ -124,11 +115,14 @@ namespace Wheats_and_Wands.Levels
                 _farmer.Position = new Vector2(50, 325 - 35);
             }
 
-            
+            if((int)gameTime.TotalGameTime.TotalSeconds % 3 == 0)
+            {
+                _fire.BreathFire();
+            }
 
             _dragon.Update(gameTime);
-            //if (_dragon.IsAlive)
-            //    _fire.Update(gameTime);
+            if (_dragon.IsAlive)
+                _fire.Update(gameTime);
 
             _platform1.Update(gameTime);
             _platform2.Update(gameTime);
