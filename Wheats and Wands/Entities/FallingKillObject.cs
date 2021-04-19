@@ -33,7 +33,12 @@ namespace Wheats_and_Wands.Entities
                 _lastFallTime = gameTime.TotalGameTime;
             }
             Fall(gameTime);
+            if (Collision(_farmer))
+            {
+                _farmer.IsAlive = false;
+            }
             Kill(_farmer);
+            _farmer.Respawn();
             Reset();
         }
 
