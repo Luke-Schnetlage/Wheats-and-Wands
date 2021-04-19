@@ -15,7 +15,8 @@ namespace Wheats_and_Wands.Levels
         private Vector2 _farmerStartPos = new Vector2(150, 325 - 35);
         private Farmer _farmer { get ; set ; }
         //SpriteBatch _spriteBatch;
-        Sign _sign;
+        Sign _sign1;
+        Sign _sign2;
         SquareBlock _hayBale1;
         SquareBlock _hayBale2;
         SquareBlock _hayBale3;
@@ -31,7 +32,9 @@ namespace Wheats_and_Wands.Levels
         {
             _farmer = farmer;
             _farmer.SpawnPosition = _farmerStartPos;
-            _sign = new Sign(new Sprite(signTexture, 0, 0, 83, 103, new Vector2(250, 325)), msgBoxTexture, font,_farmer, "Use WASD to move");
+            _sign1 = new Sign(new Sprite(signTexture, 0, 0, 83, 103, new Vector2(200, 325)), msgBoxTexture, font,_farmer, "Use WASD to move");
+            _sign2 = new Sign(new Sprite(signTexture, 0, 0, 83, 103, new Vector2(400, 325)), msgBoxTexture, font, _farmer, "Where is your cow ?");
+            _hayBale1 = new SquareBlock(new Sprite(haybale, 0, 0, 64, 64, new Vector2(515, 400 - 35)), farmer);
             _hayBale1 = new SquareBlock(new Sprite(haybale, 0, 0, 64, 64, new Vector2(515, 400 - 35)), farmer);
             _hayBale2 = new SquareBlock(new Sprite(haybale, 0, 0, 64, 64, new Vector2(650, 400 - 35)), farmer);
             _hayBale3 = new SquareBlock(new Sprite(haybale, 0, 0, 64, 64, new Vector2(650, 400-64 - 35)), farmer);
@@ -80,7 +83,8 @@ namespace Wheats_and_Wands.Levels
         {
             //_spriteBatch = spriteBatch;
             _farmer.Draw(spriteBatch, gameTime);
-            _sign.Draw(spriteBatch);
+            _sign1.Draw(spriteBatch);
+            _sign2.Draw(spriteBatch);
             foreach (SquareBlock haybale in hayBales)
             {
                 haybale.Draw(spriteBatch, gameTime);
@@ -102,18 +106,8 @@ namespace Wheats_and_Wands.Levels
             {
                 haybale.Update(gameTime);
             }
-            _sign.Update(gameTime, _farmer);
-
-            /*
-            if ((int)gameTime.TotalGameTime.TotalSeconds % 2 == 0)
-            {
-                _hayBale1._sprite.position = new Vector2(_hayBale1._sprite.position.X, _hayBale1._sprite.position.Y - 4);
-            }
-            if ((int)gameTime.TotalGameTime.TotalSeconds % 2 == 1)
-            {
-                _hayBale1._sprite.position = new Vector2(_hayBale1._sprite.position.X, _hayBale1._sprite.position.Y + 4);
-            }
-            */
+            _sign1.Update(gameTime, _farmer);
+            _sign2.Update(gameTime, _farmer);
             foreach (var scrollBackground in _scrollBackgrounds)
                 scrollBackground.Update(gameTime);
 

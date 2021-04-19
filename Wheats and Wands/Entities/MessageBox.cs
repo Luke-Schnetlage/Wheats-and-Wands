@@ -23,7 +23,7 @@ namespace Wheats_and_Wands.Entities
 
         public void Draw(SpriteBatch spriteBatch, string _message)
         {
-            spriteBatch.DrawString(_font, _message, new Vector2(((WheatandWandsGame.WINDOW_WIDTH / 2) - (_sprite.Width / 3)), 108), Color.Black);
+            spriteBatch.DrawString(_font, _message, new Vector2(((WheatandWandsGame.WINDOW_WIDTH / 2) - (_sprite.Width / 2) + 10), 108), Color.Black);
             _sprite.Draw(spriteBatch, new Vector2((WheatandWandsGame.WINDOW_WIDTH/2) - (_sprite.Width/2), 75));
             
             
