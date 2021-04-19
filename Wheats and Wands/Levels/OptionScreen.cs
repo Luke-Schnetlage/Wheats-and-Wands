@@ -42,12 +42,6 @@ namespace Wheats_and_Wands.Levels
             _muteButtonSprite = new Sprite(titleScreenSheet, 357, 644, 250, 70, new Vector2(WheatandWandsGame.WINDOW_WIDTH/2 -125, 540+200));
             _muteButton = new Button(_muteButtonSprite);
             _muteButton.Click += _muteButton_Click;
-
-
-
-
-
-
         }
         public void _muteButton_Click(object sender, EventArgs e)
         {

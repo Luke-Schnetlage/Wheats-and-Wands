@@ -215,7 +215,7 @@ namespace Wheats_and_Wands
 
             //levels
             _titleScreen = new TitleScreen(_titleScreenSprite, _gameState);
-            _creditScreen = new CreditScreen(_creditScreenSprite,_creditFont );
+            _creditScreen = new CreditScreen(_creditScreenSprite,_creditFont,_titleScreenSprite,_gameState);
             _optionScreen = new OptionScreen(_gameState,_creditScreenSprite, _titleScreenSprite, _creditFont);
             _tutorial = new TutorialFarm(_farmer, _sign, _textbox, _hayBale ,_creditFont,_gameState, _barn, _tutorialFarmBackground,
                 _tutorialSecondLayer, _tutorialThirdLayer, _tutorialLastLayer, _farClouds, _fastClouds);
