@@ -27,6 +27,8 @@ namespace Wheats_and_Wands.Entities
         public int DrawOrder { set; get; }
         public bool IsAlive { get; set; }
         public bool OnGround { get; set; }
+        public bool doubleJump { get; set; }
+        public bool doubleJumpUsed { get; set; }
         public bool MovingLeft { get; set; }
         private Sprite _FarmerIdlePose;
         
@@ -54,6 +56,7 @@ namespace Wheats_and_Wands.Entities
             OnGround = false;
             IsAlive = true;
             MovingLeft = false;
+            doubleJump = false;
 
             _farmerWalkCycle = new SpriteAnimation();
             _farmerWalkCycle.AddFrame(new Sprite(spriteSheet, (64 * 1)  ,0, 64, 128), 0);
@@ -167,6 +170,25 @@ namespace Wheats_and_Wands.Entities
             _verticalVelocity = JUMP_START_VELOCITY;
             return true;
         }
+
+        public bool DoubleJump()
+        {
+
+            //if (!doubleJump || doubleJumpUsed || OnGround)
+            //{
+            //    return false;
+            //}
+
+            //State = FarmerState.Jumping;
+            //OnGround = false;
+            doubleJumpUsed = true;
+            _verticalVelocity = JUMP_START_VELOCITY;
+            return true;
+        }
+
+
+
+
         /*
         public bool CancelJump()
         {
@@ -193,6 +215,7 @@ namespace Wheats_and_Wands.Entities
             Position = new Vector2(Position.X, _groundY);
             _verticalVelocity = 0;
             OnGround = true;
+            doubleJumpUsed = false;
             State = FarmerState.Idle;
         }
 

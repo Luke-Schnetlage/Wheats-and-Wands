@@ -31,11 +31,16 @@ namespace Wheats_and_Wands.System
             KeyboardState keyboardState = Keyboard.GetState();
 
             //jump
-            if ((keyboardState.IsKeyDown(Keys.Up)) || (_previousKeyboardState.IsKeyDown(Keys.W)))
+            if ((keyboardState.IsKeyDown(Keys.Up)) || (keyboardState.IsKeyDown(Keys.W)))
             {
-                if (_farmer.OnGround )//&& _farmer.Position.Y >= 0)
+                if (_farmer.OnGround)
                 {
                     _farmer.BeginJump(); //state = jumping
+                    _jumpSound.Play((float)0.2, 0, 0);
+                }
+                else if (_farmer.doubleJump &&  !_farmer.OnGround && !_farmer.doubleJumpUsed && _previousKeyboardState.IsKeyUp(Keys.Up))
+                {//
+                    _farmer.DoubleJump(); //state = jumping
                     _jumpSound.Play((float)0.2, 0, 0);
                 }
             }
@@ -47,7 +52,7 @@ namespace Wheats_and_Wands.System
             }
 
             //move right
-            if ((keyboardState.IsKeyDown(Keys.Right)) || (_previousKeyboardState.IsKeyDown(Keys.D)))
+            if ((keyboardState.IsKeyDown(Keys.Right)) || (keyboardState.IsKeyDown(Keys.D)))
             {
                 if (_farmer.Position.X <= WheatandWandsGame.WINDOW_WIDTH - 64 )
                 {
@@ -63,7 +68,7 @@ namespace Wheats_and_Wands.System
             } 
 
             //move left
-            if ((keyboardState.IsKeyDown(Keys.Left)) || (_previousKeyboardState.IsKeyDown(Keys.A)))
+            if ((keyboardState.IsKeyDown(Keys.Left)) || (keyboardState.IsKeyDown(Keys.A)))
             {
                 if (_farmer.Position.X >= 0)
                 {

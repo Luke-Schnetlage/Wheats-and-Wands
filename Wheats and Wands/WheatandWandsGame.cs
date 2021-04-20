@@ -19,7 +19,7 @@ namespace Wheats_and_Wands
 
         public static Game _game;
 
-        // 6836f5d3a13ac8096d49dfd4fbe474f0f274e674
+        
         //level systems
         GameState _gameState;
         Level _level;
@@ -48,6 +48,7 @@ namespace Wheats_and_Wands
         Texture2D _heartSheet;
         Texture2D _lava;
         Texture2D _fireball;
+        Texture2D _totemHead;
 
         //Tutorial and Farm Textures
         Texture2D _barn;
@@ -108,7 +109,7 @@ namespace Wheats_and_Wands
         InputController _inputController;
         Display_Options _displayOptions;
 
-        private GraphicsDeviceManager _graphics;
+        public GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
         private Farmer _farmer;
@@ -131,7 +132,7 @@ namespace Wheats_and_Wands
             _gameState = new GameState();
 
             //IMPORTANT!!! REMOVE AFTER CASTLE TESTING
-            //_gameState.state = States.DragonLevel;
+            //_gameState.state = States.CaveToCastle;
             //IMPORTANT!!! REMOVE AFTER CASTLE TESTING
 
             playerPosition = new Vector2(100 , (_graphics.PreferredBackBufferHeight / 2) + 15 ); //defaults player to center of the screen
@@ -193,6 +194,7 @@ namespace Wheats_and_Wands
             _heartSheet = Content.Load<Texture2D>("PNG Objects/Heart");
             _lava = Content.Load<Texture2D>("PNG Objects/Lava texture 1.0");
             _fireball = Content.Load<Texture2D>("PNG Objects/Fireball");
+            _totemHead = Content.Load<Texture2D>("PNG Objects/Island Head");
 
             //farmer animations
             _farmerSpriteSheet = Content.Load<Texture2D>("Farmer walk cycle");
@@ -230,7 +232,7 @@ namespace Wheats_and_Wands
             _farmToCave = new FarmToCave(_farmer, _gameState, _ftc, _tutorialSecondLayer, _tutorialThirdLayer, _farClouds, 
                 _fastClouds, _tutorialLastLayer,_hayBale);
             _caveToCastle = new CaveToCastle(_farmer, _gameState, _ctcFront, _ctcBack, _caveSecondLayer, _caveThirdLayer, _caveFourthLayer,
-                _caveFifthLayer, _caveSixthLayer, _spikes);
+                _caveFifthLayer, _caveSixthLayer, _spikes, _totemHead);
             _dragonLevel = new DragonLevel(_farmer, _gameState, _castleFloor, _castleFirstLayer, _castleSecondLayer, _castleThirdLayer,
                 _castleFourthLayer, _castleFifthLayer, _castleSixthLayer, _castleSeventhLayer, _castleEighthLayer, _dragon, _fireBreath);
 

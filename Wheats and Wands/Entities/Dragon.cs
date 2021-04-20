@@ -34,6 +34,7 @@ namespace Wheats_and_Wands.Entities
             _blinkAnimation.AddFrame(new Sprite(spriteSheet, 1710, 2343, 210, 222, new Vector2(1710 % 960, 2343 % 540)), 9 / 2f);
             _blinkAnimation.AddFrame(_blinkAnimation[0].Sprite, 10 / 10f);
             _blinkAnimation.Play();
+            
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -64,7 +65,7 @@ namespace Wheats_and_Wands.Entities
                 }
                 else
                 {
-                        IsAlive = false;
+                    IsAlive = false;
                     
                 }
             }
