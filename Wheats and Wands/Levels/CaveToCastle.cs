@@ -22,11 +22,13 @@ namespace Wheats_and_Wands.Levels
 
         DoubleJumpTotem _totem;
 
+        MessageBox _jumpmessage;
+
         private List<ScrollBackground> _scrollBackgrounds;
         Random rand;
 
         public CaveToCastle(Farmer farmer, GameState gameState, Texture2D front, Texture2D back, Texture2D secondLayer, Texture2D thirdLayer,
-            Texture2D fourthLayer, Texture2D fifthLayer, Texture2D sixthLayer, Texture2D spikes, Texture2D totemHead)
+            Texture2D fourthLayer, Texture2D fifthLayer, Texture2D sixthLayer, Texture2D spikes, Texture2D totemHead,Texture2D messageBox,SpriteFont font)
         {
             _farmer = farmer;
             _gameState = gameState;
@@ -37,7 +39,7 @@ namespace Wheats_and_Wands.Levels
             _skinnyStalactite = new FallingKillObject(new Sprite(spikes, 393, 0, 41, 62, new Vector2(420, 0)), _farmer, new TimeSpan(0, 0, rand.Next(1, 3)));
             _bigStalactite = new FallingKillObject(new Sprite(spikes, 442, 0, 50, 70, new Vector2(640, 0)), _farmer, new TimeSpan(0,0, rand.Next(2, 4)));
             _totem = new DoubleJumpTotem(null, farmer, totemHead);
-
+            _jumpmessage = new MessageBox(new Sprite(messageBox,0,0,348,124),font);
 
             _scrollBackgrounds = new List<ScrollBackground>()
             {
@@ -80,7 +82,10 @@ namespace Wheats_and_Wands.Levels
             _bigStalactite.Draw(spriteBatch, gameTime);
 
             _totem.Draw(spriteBatch);
-
+            if (_totem.Collision(_farmer))
+            {
+                _jumpmessage.Draw(spriteBatch, "Double-Jump Unlocked");
+            }
             foreach (var scrollBackground in _scrollBackgrounds)
                 scrollBackground.Draw(gameTime, spriteBatch);
         }
@@ -96,6 +101,7 @@ namespace Wheats_and_Wands.Levels
             _bigStalactite._hangTime = new TimeSpan(0, 0, rand.Next(1, 3));
 
             _totem.Update(gameTime);
+            
 
             _farmer._groundY = _farmerStartPos.Y;
             if (_farmer.Position.X + _farmer._sprite.Width > WheatandWandsGame.WINDOW_WIDTH - 10)
