@@ -43,7 +43,7 @@ namespace Wheats_and_Wands.Entities
         
 
 
-        public Farmer(Texture2D spriteSheet, Vector2 position, Texture2D _heartSheet)
+        public Farmer(Texture2D spriteSheet, Vector2 position, Texture2D _heartSheet, Texture2D _fancyFarmerSheet, Texture2D _wizardFarmerSheet)
         {
             Position = position;
 

@@ -38,6 +38,8 @@ namespace Wheats_and_Wands
         Texture2D _creditScreenSprite;
         Texture2D _caveBackGround;
         Texture2D _farmerSpriteSheet;
+        Texture2D _fancyFarmerSheet;
+        Texture2D _wizardFarmerSheet;
         Texture2D _hayBale;
         Texture2D _sign;
         Texture2D _textbox;
@@ -49,6 +51,7 @@ namespace Wheats_and_Wands
         Texture2D _lava;
         Texture2D _fireball;
         Texture2D _totemHead;
+        Texture2D _orb;
 
         //Tutorial and Farm Textures
         Texture2D _barn;
@@ -195,9 +198,12 @@ namespace Wheats_and_Wands
             _lava = Content.Load<Texture2D>("PNG Objects/Lava texture 1.0");
             _fireball = Content.Load<Texture2D>("PNG Objects/Fireball");
             _totemHead = Content.Load<Texture2D>("PNG Objects/Island Head");
+            _orb = Content.Load<Texture2D>("ORB");
 
             //farmer animations
             _farmerSpriteSheet = Content.Load<Texture2D>("Farmer walk cycle");
+            _fancyFarmerSheet = Content.Load<Texture2D>("Fancy walk cycle");
+            _wizardFarmerSheet = Content.Load<Texture2D>("AltSkin walk cycle");
 
             //fonts
             _creditFont = Content.Load<SpriteFont>("Spritefonts/Credits"); 
@@ -212,7 +218,7 @@ namespace Wheats_and_Wands
             _jumpSound = Content.Load<SoundEffect>("zapsplat_multimedia_game-sound_classic_retro_jump_006_65126");
 
 
-            _farmer = new Farmer(_farmerSpriteSheet, playerPosition, _heartSheet);
+            _farmer = new Farmer(_farmerSpriteSheet, playerPosition, _heartSheet, _fancyFarmerSheet, _wizardFarmerSheet);
 
             //system controls
             _displayOptions = new Display_Options(_graphics);
