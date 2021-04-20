@@ -25,7 +25,7 @@ namespace Wheats_and_Wands.Levels
         private Pit _bigPit;
         private List<Pit> pits;
 
-        //private SquareBlock brick1;
+        
         float _speed;
         
 

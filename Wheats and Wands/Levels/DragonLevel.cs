@@ -36,7 +36,7 @@ namespace Wheats_and_Wands.Levels
             _fire = new FireBreath(null, farmer, firebreath);
 
             _platform1 = new SquareBlock(new Sprite(floor, 430, 408, 145, 30, new Vector2(200, 325)), _farmer);
-            _platform2 = new SquareBlock(new Sprite(floor, 430, 408, 145, 30, new Vector2(425, 225)), _farmer);
+            _platform2 = new SquareBlock(new Sprite(floor, 430, 408, 145, 30, new Vector2(425, 245)), _farmer);
             _platform3 = new SquareBlock(new Sprite(floor, 430, 408, 145, 30, new Vector2(600, 235)), _farmer);
 
             _scrollBackgrounds = new List<ScrollBackground>()

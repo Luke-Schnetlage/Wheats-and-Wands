@@ -46,6 +46,8 @@ namespace Wheats_and_Wands
         Texture2D _dragon;
         Texture2D _fireBreath;
         Texture2D _heartSheet;
+        Texture2D _lava;
+        Texture2D _fireball;
 
         //Tutorial and Farm Textures
         Texture2D _barn;
@@ -129,7 +131,7 @@ namespace Wheats_and_Wands
             _gameState = new GameState();
 
             //IMPORTANT!!! REMOVE AFTER CASTLE TESTING
-            _gameState.state = States.DragonLevel;
+            //_gameState.state = States.DragonLevel;
             //IMPORTANT!!! REMOVE AFTER CASTLE TESTING
 
             playerPosition = new Vector2(100 , (_graphics.PreferredBackBufferHeight / 2) + 15 ); //defaults player to center of the screen
@@ -189,6 +191,8 @@ namespace Wheats_and_Wands
             _dragon = Content.Load<Texture2D>("PNG Objects/Dragon");
             _fireBreath = Content.Load<Texture2D>("PNG Objects/FireBreath");
             _heartSheet = Content.Load<Texture2D>("PNG Objects/Heart");
+            _lava = Content.Load<Texture2D>("PNG Objects/Lava texture 1.0");
+            _fireball = Content.Load<Texture2D>("PNG Objects/Fireball");
 
             //farmer animations
             _farmerSpriteSheet = Content.Load<Texture2D>("Farmer walk cycle");
@@ -222,7 +226,7 @@ namespace Wheats_and_Wands
             _cave = new Cave(_farmer, _gameState, _caveFloor, _caveFirstLayer, _caveSecondLayer, _caveThirdLayer, _caveFourthLayer,
                 _caveFifthLayer, _caveSixthLayer, _spikes, _cavePits);
             _castle = new Castle(_farmer, _gameState, _castleFloor, _castleFirstLayer, _castleSecondLayer, _castleThirdLayer,
-                _castleFourthLayer, _castleFifthLayer, _castleSixthLayer, _castleSeventhLayer, _castleEighthLayer, _dragon, _fireBreath);
+                _castleFourthLayer, _castleFifthLayer, _castleSixthLayer, _castleSeventhLayer, _castleEighthLayer,_lava, _fireball);
             _farmToCave = new FarmToCave(_farmer, _gameState, _ftc, _tutorialSecondLayer, _tutorialThirdLayer, _farClouds, 
                 _fastClouds, _tutorialLastLayer,_hayBale);
             _caveToCastle = new CaveToCastle(_farmer, _gameState, _ctcFront, _ctcBack, _caveSecondLayer, _caveThirdLayer, _caveFourthLayer,
