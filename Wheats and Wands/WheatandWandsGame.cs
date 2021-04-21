@@ -35,6 +35,7 @@ namespace Wheats_and_Wands
         FarmToCave _farmToCave;
         CaveToCastle _caveToCastle;
         DragonLevel _dragonLevel;
+        Space _spaceLevel;
 
         //Sprites
         Texture2D _titleScreenSprite;
@@ -86,6 +87,9 @@ namespace Wheats_and_Wands
         Texture2D _castleSeventhLayer;
         Texture2D _castleEighthLayer;
 
+        //Space Texture
+        Texture2D _spaceBackground;
+
         //Transition Textures
         Texture2D _ftc;
         Texture2D _ctcFront;
@@ -95,7 +99,7 @@ namespace Wheats_and_Wands
         Vector2 playerPosition;
 
         
-        public SpriteFont _creditFont { get; private set; } //Added
+        public SpriteFont _font { get; private set; } //Added
         //SpriteFont _artFont; //Added, Not implemented
         //SpriteFont _musicFont; //Added, Not implemented
         //SpriteFont _programFont; //Added, Not implemented
@@ -184,6 +188,9 @@ namespace Wheats_and_Wands
             _castleSeventhLayer = Content.Load<Texture2D>("Backgrounds/CastleLayer/CastleSeventhLayer");
             _castleEighthLayer = Content.Load<Texture2D>("Backgrounds/CastleLayer/CastleLastLayer");
 
+            //Space Background Layer
+            _spaceBackground = Content.Load<Texture2D>("Backgrounds/SpaceBackground");
+
             //Transition Layers
             _ftc = Content.Load<Texture2D>("Backgrounds/TransitionBackgrounds/FarmToCave");
             _ctcFront = Content.Load<Texture2D>("Backgrounds/TransitionBackgrounds/CavetoCastleFront");
@@ -209,7 +216,7 @@ namespace Wheats_and_Wands
             _wizardFarmerSheet = Content.Load<Texture2D>("AltSkin walk cycle");
 
             //fonts
-            _creditFont = Content.Load<SpriteFont>("Spritefonts/Credits"); 
+            _font = Content.Load<SpriteFont>("Spritefonts/Credits"); 
 
             //music
             _tutorialTheme = Content.Load<Song>("music_orlamusic_Happy+006");
@@ -230,9 +237,9 @@ namespace Wheats_and_Wands
 
             //levels
             _titleScreen = new TitleScreen(_titleScreenSprite, _gameState);
-            _creditScreen = new CreditScreen(_creditScreenSprite,_creditFont,_titleScreenSprite,_gameState);
-            _optionScreen = new OptionScreen(_gameState,_creditScreenSprite, _titleScreenSprite, _creditFont);
-            _tutorial = new TutorialFarm(_farmer, _sign, _textbox, _hayBale ,_creditFont,_gameState, _barn, _tutorialFarmBackground,
+            _creditScreen = new CreditScreen(_creditScreenSprite,_font,_titleScreenSprite,_gameState);
+            _optionScreen = new OptionScreen(_gameState,_creditScreenSprite, _titleScreenSprite, _font);
+            _tutorial = new TutorialFarm(_farmer, _sign, _textbox, _hayBale ,_font,_gameState, _barn, _tutorialFarmBackground,
                 _tutorialSecondLayer, _tutorialThirdLayer, _tutorialLastLayer, _farClouds, _fastClouds);
             _cave = new Cave(_farmer, _gameState, _caveFloor, _caveFirstLayer, _caveSecondLayer, _caveThirdLayer, _caveFourthLayer,
                 _caveFifthLayer, _caveSixthLayer, _spikes, _cavePits,_orb);
@@ -241,9 +248,10 @@ namespace Wheats_and_Wands
             _farmToCave = new FarmToCave(_farmer, _gameState, _ftc, _tutorialSecondLayer, _tutorialThirdLayer, _farClouds, 
                 _fastClouds, _tutorialLastLayer,_hayBale);
             _caveToCastle = new CaveToCastle(_farmer, _gameState, _ctcFront, _ctcBack, _caveSecondLayer, _caveThirdLayer, _caveFourthLayer,
-                _caveFifthLayer, _caveSixthLayer, _spikes, _totemHead, _textbox, _creditFont);
+                _caveFifthLayer, _caveSixthLayer, _spikes, _totemHead, _textbox, _font);
             _dragonLevel = new DragonLevel(_farmer, _gameState, _castleFloor, _castleFirstLayer, _castleSecondLayer, _castleThirdLayer,
                 _castleFourthLayer, _castleFifthLayer, _castleSixthLayer, _castleSeventhLayer, _castleEighthLayer, _dragon, _fireBreath);
+            _spaceLevel = new Space(_spaceBackground, _farmer, _gameState, _font);
 
         }
 
@@ -290,6 +298,7 @@ namespace Wheats_and_Wands
             {
                 _level = _dragonLevel;
             }
+            if (_gameState.state == States)
 
 
 
