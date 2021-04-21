@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using System;
 using System.Collections.Generic;
 using Wheats_and_Wands.Entities;
 using Wheats_and_Wands.Graphics;
@@ -26,6 +27,7 @@ namespace Wheats_and_Wands
         //level systems
         GameState _gameState;
         Level _level;
+        Level _prevLevel;
         TitleScreen _titleScreen;
         CreditScreen _creditScreen;
         OptionScreen _optionScreen;
@@ -35,6 +37,8 @@ namespace Wheats_and_Wands
         FarmToCave _farmToCave;
         CaveToCastle _caveToCastle;
         DragonLevel _dragonLevel;
+
+        Button _skipLevelButton;
 
         //Sprites
         Texture2D _titleScreenSprite;
@@ -115,6 +119,8 @@ namespace Wheats_and_Wands
         InputController _inputController;
         Display_Options _displayOptions;
 
+        double _levelTimer;
+
         public GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
@@ -130,12 +136,13 @@ namespace Wheats_and_Wands
 
         protected override void Initialize()
         {
-
+            
             _graphics.PreferredBackBufferHeight = WINDOW_HEIGHT;
             _graphics.PreferredBackBufferWidth = WINDOW_WIDTH;
             _graphics.ApplyChanges();
-
+            
             _gameState = new GameState();
+            _levelTimer = 0;
 
             //IMPORTANT!!! REMOVE AFTER CASTLE TESTING
             //_gameState.state = States.CaveToCastle;
@@ -227,6 +234,8 @@ namespace Wheats_and_Wands
             _displayOptions = new Display_Options(_graphics);
             _inputController = new InputController(_farmer, _displayOptions,_jumpSound);
             _musicManager = new MusicManager(_gameState, _titleTheme, _tutorialTheme, _caveTheme, _castleTheme, _dragonTheme);
+            _skipLevelButton = new Button(new Sprite(_titleScreenSprite, 357, 644, 250, 70, new Vector2(25, 25 + 540)));
+            _skipLevelButton.Click += _skipLevelButton_Click;
 
             //levels
             _titleScreen = new TitleScreen(_titleScreenSprite, _gameState);
@@ -252,7 +261,8 @@ namespace Wheats_and_Wands
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape)) { 
             Exit();
             }
-            
+            _prevLevel = _level;
+            _levelTimer += gameTime.ElapsedGameTime.TotalSeconds;
 
             if (_gameState.state == States.TitleScreen)
             {
@@ -291,7 +301,13 @@ namespace Wheats_and_Wands
                 _level = _dragonLevel;
             }
 
+            if (_prevLevel != _level)
+            {
+                _levelTimer = 0;
+            }
 
+            if (_gameState.state > States.OptionsScreen && _levelTimer > 10)
+                _skipLevelButton.Update(gameTime);
 
             _inputController.ProcessControls(gameTime);
             _level.Update(gameTime);
@@ -308,18 +324,26 @@ namespace Wheats_and_Wands
             // TODO: Add your drawing code here
             _spriteBatch.Begin(SpriteSortMode.BackToFront);
             GraphicsDevice.Clear(Color.Black);
-
+            
 
             _level.Draw(_spriteBatch, gameTime);
 
-            /*if (_level == _tutorial) *///Tutorial entities will spawn in the tutorial screen
-                //foreach (var scrollBackground in _farmScrollBackgrounds)
-                //    scrollBackground.Draw(gameTime, _spriteBatch);
+
+            if  (_gameState.state > States.OptionsScreen && _levelTimer > 10)
+            {
+                _skipLevelButton.Draw(gameTime, _spriteBatch);
+                _spriteBatch.DrawString(_creditFont, "SKIP", new Vector2(130, 50), Color.White);
+            }
 
             
-
             _spriteBatch.End();
             base.Draw(gameTime);
+        }
+
+        public void _skipLevelButton_Click(object sender, EventArgs e)
+        {
+            _gameState.state++;
+            _farmer.Position = new Vector2(50, 290);
         }
 
     }
