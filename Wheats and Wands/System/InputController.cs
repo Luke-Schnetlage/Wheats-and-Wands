@@ -38,8 +38,8 @@ namespace Wheats_and_Wands.System
                     _farmer.BeginJump(); //state = jumping
                     _jumpSound.Play((float)0.2, 0, 0);
                 }
-                else if (_farmer.doubleJump &&  !_farmer.OnGround && !_farmer.doubleJumpUsed && _previousKeyboardState.IsKeyUp(Keys.Up))
-                {//
+                else if (_farmer.doubleJump &&  !_farmer.OnGround && !_farmer.doubleJumpUsed && (_previousKeyboardState.IsKeyUp(Keys.Up) && _previousKeyboardState.IsKeyUp(Keys.W)))
+                {
                     _farmer.DoubleJump(); //state = jumping
                     _jumpSound.Play((float)0.2, 0, 0);
                 }

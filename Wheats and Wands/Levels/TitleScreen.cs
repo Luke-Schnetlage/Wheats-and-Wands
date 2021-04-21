@@ -24,12 +24,13 @@ namespace Wheats_and_Wands.Levels
         Sprite _optionsButtonSprite;
         Sprite _creditsButtonSprite;
         Sprite _quitButtonSprite;
+        Sprite _stageSelectSprite;
 
         Button _newButton;
         Button _optionsButton;
         Button _creditsButton;
         Button _quitButton;
-
+        Button _stageSelectButton;
 
         private List<Component> _buttonList;
 
@@ -47,6 +48,8 @@ namespace Wheats_and_Wands.Levels
             _creditsButtonSprite = new Sprite(spriteSheet, 590, 800, 250, 70, new Vector2(590, 800));
             _optionsButtonSprite = new Sprite(spriteSheet, 590, 885, 250, 70, new Vector2(590, 885));
             _quitButtonSprite = new Sprite(spriteSheet, 120, 885, 250, 70, new Vector2(120, 885));
+            _stageSelectSprite = new Sprite(spriteSheet, 59, 637, 250, 70, new Vector2(960/2 - 125 , 885 + 85));
+
 
             _newButton = new Button(_newButtonSprite);
             _newButton.Click += NewButton_Click;
@@ -60,13 +63,17 @@ namespace Wheats_and_Wands.Levels
 
             _quitButton = new Button(_quitButtonSprite);
             _quitButton.Click += QuitButton_Click;
-            
+
+            _stageSelectButton = new Button(_stageSelectSprite);
+            _stageSelectButton.Click += _stageSelectButton_Click;
+
             _buttonList = new List<Component>()
             {
                 _newButton,
                 _optionsButton,
                 _creditsButton,
                 _quitButton,
+                _stageSelectButton
             };
 
         }
@@ -102,7 +109,10 @@ namespace Wheats_and_Wands.Levels
         {
             WheatandWandsGame._game.Exit();
         }
-
+        public void _stageSelectButton_Click(object sender, EventArgs e)
+        {
+            _gameState.state = States.StageSelectMenu;
+        }
         public override void Update(GameTime gameTime)
         {
             foreach (var componenet in _buttonList)

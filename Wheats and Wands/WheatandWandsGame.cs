@@ -30,6 +30,7 @@ namespace Wheats_and_Wands
         Level _prevLevel;
         TitleScreen _titleScreen;
         CreditScreen _creditScreen;
+        StageSelectMenu _stageSelectMenu;
         OptionScreen _optionScreen;
         TutorialFarm _tutorial;
         Cave _cave;
@@ -98,6 +99,10 @@ namespace Wheats_and_Wands
         Texture2D _ftc;
         Texture2D _ctcFront;
         Texture2D _ctcBack;
+
+        Texture2D _miniFarm;
+        Texture2D _miniCave;
+        Texture2D _miniCastle;
 
         //Farmer _player;
         Vector2 playerPosition;
@@ -203,6 +208,13 @@ namespace Wheats_and_Wands
             _ctcFront = Content.Load<Texture2D>("Backgrounds/TransitionBackgrounds/CavetoCastleFront");
             _ctcBack = Content.Load<Texture2D>("Backgrounds/TransitionBackgrounds/CavetoCastleBack");
 
+            //mini level sprites
+            _miniFarm = Content.Load<Texture2D>("Backgrounds/PreviewFolder/FarmerBackground2DPreview");
+            _miniCave = Content.Load<Texture2D>("Backgrounds/PreviewFolder/CaveBackgroundPreview");
+            _miniCastle = Content.Load<Texture2D>("Backgrounds/PreviewFolder/CastleBackgroundPreview");
+
+
+
             //entities
             _hayBale = Content.Load<Texture2D>("PNG Objects/HayBale-1");
             _sign = Content.Load<Texture2D>("PNG Objects/Sign");
@@ -247,6 +259,7 @@ namespace Wheats_and_Wands
             //levels
             _titleScreen = new TitleScreen(_titleScreenSprite, _gameState);
             _creditScreen = new CreditScreen(_creditScreenSprite,_font,_titleScreenSprite,_gameState);
+            _stageSelectMenu = new StageSelectMenu(_gameState, _creditScreenSprite, _miniFarm, _miniCave, _miniCastle);
             _optionScreen = new OptionScreen(_gameState,_creditScreenSprite, _titleScreenSprite, _font);
             _tutorial = new TutorialFarm(_farmer, _sign, _textbox, _hayBale ,_font,_gameState, _barn, _tutorialFarmBackground,
                 _tutorialSecondLayer, _tutorialThirdLayer, _tutorialLastLayer, _farClouds, _fastClouds);
@@ -266,8 +279,8 @@ namespace Wheats_and_Wands
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape)) { 
-            Exit();
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape)) {
+                _gameState.state = States.TitleScreen;
             }
             _prevLevel = _level;
             _levelTimer += gameTime.ElapsedGameTime.TotalSeconds;
@@ -283,6 +296,10 @@ namespace Wheats_and_Wands
             if (_gameState.state == States.CreditScreen)
             {
                 _level = _creditScreen;
+            }
+            if (_gameState.state == States.StageSelectMenu)
+            {
+                _level = _stageSelectMenu;
             }
             if (_gameState.state == States.OptionsScreen)
             {
@@ -308,7 +325,10 @@ namespace Wheats_and_Wands
             {
                 _level = _dragonLevel;
             }
+
+
             if (_gameState.state == States.Space)
+
 
             if (_prevLevel != _level)
             {
