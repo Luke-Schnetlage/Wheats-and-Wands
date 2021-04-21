@@ -17,6 +17,9 @@ namespace Wheats_and_Wands
         public const int WINDOW_WIDTH = 960;
         public const int WINDOW_HEIGHT = 540;
 
+        //960x540
+
+
         public static Game _game;
 
         
@@ -304,7 +307,7 @@ namespace Wheats_and_Wands
 
             // TODO: Add your drawing code here
             _spriteBatch.Begin(SpriteSortMode.BackToFront);
-            GraphicsDevice.Clear(Color.White);
+            GraphicsDevice.Clear(Color.Black);
 
 
             _level.Draw(_spriteBatch, gameTime);
