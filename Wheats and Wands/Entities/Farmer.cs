@@ -31,8 +31,15 @@ namespace Wheats_and_Wands.Entities
         public bool doubleJumpUsed { get; set; }
         public bool MovingLeft { get; set; }
         private Sprite _FarmerIdlePose;
-        
+        private Sprite _fancyIdlePose;
+        private Sprite _wizardIdlePose;
+        private Sprite IdlePose;
+
         private SpriteAnimation _farmerWalkCycle;
+        private SpriteAnimation _fancyWalkCycle;
+        private SpriteAnimation _wizardWalkCycle;
+        private SpriteAnimation _WalkCycle;
+
         private SpriteAnimation _deathAnimation;
         public Sprite _sprite { get; private set; }
 
@@ -48,7 +55,13 @@ namespace Wheats_and_Wands.Entities
             Position = position;
 
             _FarmerIdlePose = new Sprite(spriteSheet, 0, 0, 64, 128);
-            _sprite = _FarmerIdlePose;
+            _fancyIdlePose = new Sprite(_fancyFarmerSheet, 0, 0, 64, 128);
+            _wizardIdlePose = new Sprite(_wizardFarmerSheet, 0, 0, 64, 128);
+
+            IdlePose = _FarmerIdlePose;
+            IdlePose = _fancyIdlePose;
+            _sprite = IdlePose;
+
             rectangle = new Rectangle((int)Position.X, (int)Position.Y, 64, 128);
             State = FarmerState.Idle;
             _groundY = position.Y;
@@ -70,10 +83,37 @@ namespace Wheats_and_Wands.Entities
             _farmerWalkCycle.AddFrame(_farmerWalkCycle[0].Sprite, 8/10f);
             _farmerWalkCycle.Play();
 
+            _fancyWalkCycle = new SpriteAnimation();
+            _fancyWalkCycle.AddFrame(new Sprite(_fancyFarmerSheet, (64 * 1), 0, 64, 128), 0);
+            _fancyWalkCycle.AddFrame(new Sprite(_fancyFarmerSheet, (64 * 2), 0, 64, 128), 1 / 10f);
+            _fancyWalkCycle.AddFrame(new Sprite(_fancyFarmerSheet, (64 * 3), 0, 64, 128), 2 / 10f);
+            _fancyWalkCycle.AddFrame(new Sprite(_fancyFarmerSheet, (64 * 0), (128 * 1), 64, 128), 3 / 10f);
+            _fancyWalkCycle.AddFrame(new Sprite(_fancyFarmerSheet, (64 * 1), (128 * 1), 64, 128), 4 / 10f);
+            _fancyWalkCycle.AddFrame(new Sprite(_fancyFarmerSheet, (64 * 2), (128 * 1), 64, 128), 5 / 10f);
+            _fancyWalkCycle.AddFrame(new Sprite(_fancyFarmerSheet, (64 * 3), (128 * 1), 64, 128), 6 / 10f);
+            _fancyWalkCycle.AddFrame(new Sprite(_fancyFarmerSheet, (64 * 0), (128 * 2), 64, 128), 7 / 10f);
+            _fancyWalkCycle.AddFrame(_fancyWalkCycle[0].Sprite, 8 / 10f);
+            _fancyWalkCycle.Play();
+
+            _wizardWalkCycle = new SpriteAnimation();
+            _wizardWalkCycle.AddFrame(new Sprite(_wizardFarmerSheet, (64 * 1), 0, 64, 128), 0);
+            _wizardWalkCycle.AddFrame(new Sprite(_wizardFarmerSheet, (64 * 2), 0, 64, 128), 1 / 10f);
+            _wizardWalkCycle.AddFrame(new Sprite(_wizardFarmerSheet, (64 * 3), 0, 64, 128), 2 / 10f);
+            _wizardWalkCycle.AddFrame(new Sprite(_wizardFarmerSheet, (64 * 0), (128 * 1), 64, 128), 3 / 10f);
+            _wizardWalkCycle.AddFrame(new Sprite(_wizardFarmerSheet, (64 * 1), (128 * 1), 64, 128), 4 / 10f);
+            _wizardWalkCycle.AddFrame(new Sprite(_wizardFarmerSheet, (64 * 2), (128 * 1), 64, 128), 5 / 10f);
+            _wizardWalkCycle.AddFrame(new Sprite(_wizardFarmerSheet, (64 * 3), (128 * 1), 64, 128), 6 / 10f);
+            _wizardWalkCycle.AddFrame(new Sprite(_wizardFarmerSheet, (64 * 0), (128 * 2), 64, 128), 7 / 10f);
+            _wizardWalkCycle.AddFrame(_wizardWalkCycle[0].Sprite, 8 / 10f);
+            _wizardWalkCycle.Play();
+
+            _WalkCycle = _farmerWalkCycle;
+            _WalkCycle = _fancyWalkCycle;
+
+
+
 
             _deathAnimation = new SpriteAnimation();
-
-            
             _deathAnimation.AddFrame(new Sprite(_heartSheet, (0 * 120), (0 * 120), 120, 120), 1 / 7f);
             _deathAnimation.AddFrame(new Sprite(_heartSheet, (1 * 120), (0 * 120), 120, 120), 2 / 7f);
             _deathAnimation.AddFrame(new Sprite(_heartSheet, (2 * 120), (0 * 120), 120, 120), 3 / 7f);
@@ -110,19 +150,19 @@ namespace Wheats_and_Wands.Entities
 
             if (State == FarmerState.Idle)
             {
-                _FarmerIdlePose.Draw(spriteBatch, Position, _effect);
-                _sprite = _FarmerIdlePose;
+                IdlePose.Draw(spriteBatch, Position, _effect);
+                _sprite = IdlePose;
 
             }
             else if (State == FarmerState.Jumping || State == FarmerState.Falling)
             {
-                _FarmerIdlePose.Draw(spriteBatch, Position,_effect);
-                _sprite = _FarmerIdlePose;
+                IdlePose.Draw(spriteBatch, Position,_effect);
+                _sprite = IdlePose;
             }
             if (State == FarmerState.Running)
             {
-                _farmerWalkCycle.Draw(spriteBatch, Position, _effect);
-                _sprite = _farmerWalkCycle.CurrentFrame.Sprite;
+                _WalkCycle.Draw(spriteBatch, Position, _effect);
+                _sprite = _WalkCycle.CurrentFrame.Sprite;
             }
             
             
@@ -146,7 +186,7 @@ namespace Wheats_and_Wands.Entities
             }
             if (State != FarmerState.Idle)
             {
-                _farmerWalkCycle.Update(gameTime);
+                _WalkCycle.Update(gameTime);
             }
             if (Position.Y > _groundY)
             {
