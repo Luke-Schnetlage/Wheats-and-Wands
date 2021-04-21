@@ -308,7 +308,7 @@ namespace Wheats_and_Wands
             {
                 _level = _dragonLevel;
             }
-            if (_gameState.state == States)
+            if (_gameState.state == States.Space)
 
             if (_prevLevel != _level)
             {
@@ -341,7 +341,7 @@ namespace Wheats_and_Wands
             if  (_gameState.state > States.OptionsScreen && _levelTimer > 10)
             {
                 _skipLevelButton.Draw(gameTime, _spriteBatch);
-                _spriteBatch.DrawString(_creditFont, "SKIP", new Vector2(130, 50), Color.White);
+                _spriteBatch.DrawString(_font, "SKIP", new Vector2(130, 50), Color.White);
             }
 
             

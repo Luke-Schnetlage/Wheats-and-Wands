@@ -355,6 +355,42 @@
 /processorParam:TextureFormat=Color
 /build:Backgrounds/FarmLayer/WheatField.png
 
+#begin Backgrounds/PreviewFolder/CastleBackgroundPreview.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Backgrounds/PreviewFolder/CastleBackgroundPreview.png
+
+#begin Backgrounds/PreviewFolder/CaveBackgroundPreview.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Backgrounds/PreviewFolder/CaveBackgroundPreview.png
+
+#begin Backgrounds/PreviewFolder/FarmerBackground2DPreview.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Backgrounds/PreviewFolder/FarmerBackground2DPreview.png
+
 #begin Backgrounds/SpaceBackground.png
 /importer:TextureImporter
 /processor:TextureProcessor
