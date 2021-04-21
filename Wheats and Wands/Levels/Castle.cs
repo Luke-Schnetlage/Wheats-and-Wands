@@ -132,6 +132,7 @@ namespace Wheats_and_Wands.Levels
             else
                 _farmer.HorizontalVelocity.X = 0f;
 
+            _farmer.doubleJump = true;
             _farmer.Update(gameTime);
             _farmer._groundY = _farmerStartPos.Y;
 
