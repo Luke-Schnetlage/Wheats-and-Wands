@@ -16,7 +16,8 @@ namespace Wheats_and_Wands.System
     {
         TitleScreen,
         CreditScreen,
-        OptionsScreen,
+        StageSelectMenu,
+        OptionsScreen, //this is the boundry between skip button and none, no unskipable leves past this point
         Tutorial,
         FarmToCave,
         Cave,
