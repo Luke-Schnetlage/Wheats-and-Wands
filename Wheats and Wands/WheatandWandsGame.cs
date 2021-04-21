@@ -308,7 +308,7 @@ namespace Wheats_and_Wands
             {
                 _level = _dragonLevel;
             }
-            //if (_gameState.state == States)
+            if (_gameState.state == States.Space)
 
             if (_prevLevel != _level)
             {
