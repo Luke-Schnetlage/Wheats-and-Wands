@@ -355,6 +355,18 @@
 /processorParam:TextureFormat=Color
 /build:Backgrounds/FarmLayer/WheatField.png
 
+#begin Backgrounds/SpaceBackground.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Backgrounds/SpaceBackground.png
+
 #begin Backgrounds/Title screen.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -504,6 +516,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:PNG Objects/CaveSpike2.png
+
+#begin PNG Objects/Cow.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:PNG Objects/Cow.png
 
 #begin PNG Objects/Dragon.png
 /importer:TextureImporter
