@@ -21,7 +21,7 @@ namespace Wheats_and_Wands.Entities
         public Vector2 Position { get; set; }
         public Vector2 prevPosition;
         public FarmerState State { get; set; }
-        
+        public Skins skin { get; set; }
         public Rectangle rectangle { get; set; }
         
         public int DrawOrder { set; get; }
@@ -59,7 +59,6 @@ namespace Wheats_and_Wands.Entities
             _wizardIdlePose = new Sprite(_wizardFarmerSheet, 0, 0, 64, 128);
 
             IdlePose = _FarmerIdlePose;
-            IdlePose = _fancyIdlePose;
             _sprite = IdlePose;
 
             rectangle = new Rectangle((int)Position.X, (int)Position.Y, 64, 128);
@@ -70,6 +69,7 @@ namespace Wheats_and_Wands.Entities
             IsAlive = true;
             MovingLeft = false;
             doubleJump = false;
+            skin = Skins.farmer;
 
             _farmerWalkCycle = new SpriteAnimation();
             _farmerWalkCycle.AddFrame(new Sprite(spriteSheet, (64 * 1)  ,0, 64, 128), 0);
@@ -108,9 +108,6 @@ namespace Wheats_and_Wands.Entities
             _wizardWalkCycle.Play();
 
             _WalkCycle = _farmerWalkCycle;
-            _WalkCycle = _fancyWalkCycle;
-
-
 
 
             _deathAnimation = new SpriteAnimation();
@@ -174,6 +171,22 @@ namespace Wheats_and_Wands.Entities
 
         public void Update(GameTime gameTime)
         {
+            if (skin == Skins.farmer)
+            {
+                IdlePose = _FarmerIdlePose;
+                _WalkCycle = _farmerWalkCycle;
+            }
+            else if (skin == Skins.fancy)
+            {
+                IdlePose = _fancyIdlePose;
+                _WalkCycle = _fancyWalkCycle;
+            }
+            else if (skin == Skins.wizard)
+            {
+                IdlePose = _wizardIdlePose;
+                _WalkCycle = _wizardWalkCycle;
+            }
+
             _deathAnimation.Update(gameTime);
             IsAlive = true;
             if (Position.Y  < _groundY)
@@ -268,5 +281,15 @@ namespace Wheats_and_Wands.Entities
                 _deathAnimation.Play();
             }
         }
+
+        public enum Skins
+        {
+            farmer,
+            fancy,
+            wizard
+        }
+
+
+
     }
 }
