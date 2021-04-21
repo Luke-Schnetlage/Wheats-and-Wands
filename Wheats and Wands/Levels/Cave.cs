@@ -52,7 +52,7 @@ namespace Wheats_and_Wands.Levels
             spikes.Add(_smallSpike);
             spikes.Add(_bigSpike);
 
-            _orb = new SkinSwapOrb(new Sprite(orb, 0, 0, 64, 64, new Vector2(470, 310)), farmer, Farmer.Skins.fancy);
+            _orb = new SkinSwapOrb(new Sprite(orb, 0, 0, 64, 64, new Vector2(615, 410)), farmer, Farmer.Skins.fancy);
 
 
 
@@ -95,7 +95,7 @@ namespace Wheats_and_Wands.Levels
         {
             _farmer.Draw(spriteBatch, gameTime);
 
-
+            _orb.Draw(spriteBatch);
             foreach (Spike s in spikes)
             {
                 s.Draw(spriteBatch, gameTime);
@@ -106,7 +106,7 @@ namespace Wheats_and_Wands.Levels
                 p.Draw(spriteBatch, gameTime);
 
             }
-            _orb.Draw(spriteBatch);
+            
 
 
 

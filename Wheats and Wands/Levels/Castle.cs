@@ -62,7 +62,7 @@ namespace Wheats_and_Wands.Levels
             fireball1 = new JumpingKillEntity(new Sprite(fireball, 16, 8, 32, 37, new Vector2(400, 412)), farmer);
             fireball2 = new JumpingKillEntity(new Sprite(fireball, 16, 8, 32, 37, new Vector2(750 + 25, 412)), farmer);
 
-            _orb = new SkinSwapOrb(new Sprite(orb, 0, 65, 64, 64, new Vector2(470, 310)), farmer, Farmer.Skins.wizard);
+            _orb = new SkinSwapOrb(new Sprite(orb, 0, 65, 64, 64, new Vector2(390, 150)), farmer, Farmer.Skins.wizard);
 
 
             _scrollBackgrounds = new List<ScrollBackground>()
