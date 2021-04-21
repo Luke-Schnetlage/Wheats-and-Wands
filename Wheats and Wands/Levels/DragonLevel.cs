@@ -105,12 +105,11 @@ namespace Wheats_and_Wands.Levels
             _farmer.Update(gameTime);
             _farmer._groundY = _farmerStartPos.Y;
 
-            //Maybe add a special level or credit screen 
-            //if (_farmer.Position.X + _farmer._sprite.Width > WheatandWandsGame.WINDOW_WIDTH - 10)
-            //{
-            //    _gameState.state = States.CaveToCastle;
-            //    _farmer.Position = new Vector2(50, 325 - 35);
-            //}
+            if (_farmer.Position.X + _farmer._sprite.Width > WheatandWandsGame.WINDOW_WIDTH - 10)
+            {
+                _gameState.state = States.Castle2;
+                _farmer.Position = new Vector2(50, 325 - 35);
+            }
 
             if ((int)gameTime.TotalGameTime.TotalSeconds % 3 == 0)
             {

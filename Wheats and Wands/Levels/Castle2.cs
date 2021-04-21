@@ -14,6 +14,7 @@ namespace Wheats_and_Wands.Levels
         private Vector2 _farmerStartPos;
         private GameState _gameState;
         private Farmer _farmer;
+        Cow _cow;
 
         private List<ScrollBackground> _scrollBackgrounds;
         public Castle2(Farmer farmer,
@@ -26,11 +27,14 @@ namespace Wheats_and_Wands.Levels
                       Texture2D fifthLayer,
                       Texture2D sixthLayer,
                       Texture2D seventhLayer,
-                      Texture2D lastLayer)
+                      Texture2D lastLayer,
+                      Texture2D cowTexture)
         {
             _gameState = gameState;
             _farmer = farmer;
             _farmerStartPos = new Vector2(50, 325 - 35);
+
+            _cow = new Cow(cowTexture, new Vector2(450, 250));
 
             _scrollBackgrounds = new List<ScrollBackground>()
             {
@@ -76,6 +80,7 @@ namespace Wheats_and_Wands.Levels
         public override void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
             _farmer.Draw(spriteBatch, gameTime);
+            _cow.Draw(spriteBatch, gameTime);
 
             foreach (var scrollBackground in _scrollBackgrounds)
                 scrollBackground.Draw(gameTime, spriteBatch);
@@ -86,6 +91,8 @@ namespace Wheats_and_Wands.Levels
         {
             _farmer.Update(gameTime);
             _farmer._groundY = _farmerStartPos.Y;
+
+
 
             foreach (var scrollBackground in _scrollBackgrounds)
                 scrollBackground.Update(gameTime);

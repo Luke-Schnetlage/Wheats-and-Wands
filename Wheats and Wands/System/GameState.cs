@@ -23,6 +23,7 @@ namespace Wheats_and_Wands.System
         CaveToCastle,
         Castle,
         DragonLevel,
+        Castle2,
         Space
     }
 }
