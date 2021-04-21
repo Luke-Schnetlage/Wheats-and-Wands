@@ -25,14 +25,27 @@ namespace Wheats_and_Wands.Levels
         JumpingKillEntity fireball1;
         JumpingKillEntity fireball2;
 
+        SkinSwapOrb _orb;
 
         float _speed;
 
 
         private List<ScrollBackground> _scrollBackgrounds;
 
-        public Castle(Farmer farmer, GameState gameState, Texture2D floor, Texture2D firstLayer, Texture2D secondLayer, Texture2D thirdLayer,
-            Texture2D fourthLayer, Texture2D fifthLayer, Texture2D sixthLayer, Texture2D seventhLayer, Texture2D lastLayer,Texture2D lava, Texture2D fireball)
+        public Castle(Farmer farmer,
+                      GameState gameState,
+                      Texture2D floor,
+                      Texture2D firstLayer,
+                      Texture2D secondLayer,
+                      Texture2D thirdLayer,
+                      Texture2D fourthLayer,
+                      Texture2D fifthLayer,
+                      Texture2D sixthLayer,
+                      Texture2D seventhLayer,
+                      Texture2D lastLayer,
+                      Texture2D lava,
+                      Texture2D fireball,
+                      Texture2D orb)
         {
             _gameState = gameState;
             _farmer = farmer;
@@ -48,6 +61,8 @@ namespace Wheats_and_Wands.Levels
 
             fireball1 = new JumpingKillEntity(new Sprite(fireball, 16, 8, 32, 37, new Vector2(400, 412)), farmer);
             fireball2 = new JumpingKillEntity(new Sprite(fireball, 16, 8, 32, 37, new Vector2(750 + 25, 412)), farmer);
+
+            _orb = new SkinSwapOrb(new Sprite(orb, 0, 65, 64, 64, new Vector2(470, 310)), farmer, Farmer.Skins.wizard);
 
 
             _scrollBackgrounds = new List<ScrollBackground>()
@@ -101,7 +116,7 @@ namespace Wheats_and_Wands.Levels
             fireball1.Draw(spriteBatch, gameTime);
             fireball2.Draw(spriteBatch, gameTime);
 
-
+            _orb.Draw(spriteBatch);
 
 
 
@@ -143,6 +158,11 @@ namespace Wheats_and_Wands.Levels
             fireball1._sprite.position = new Vector2(fireball1._sprite.position.X - _speed, fireball1._sprite.position.Y);
             fireball2.Update(gameTime);
             fireball2._sprite.position = new Vector2(fireball2._sprite.position.X - _speed, fireball2._sprite.position.Y);
+
+            _orb.Update(gameTime);
+            _orb._sprite.position = new Vector2(_orb._sprite.position.X - _speed, _orb._sprite.position.Y);
+
+
 
             if (_farmer.Position.X + _farmer._sprite.Width > WheatandWandsGame.WINDOW_WIDTH - 10)
             {

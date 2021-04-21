@@ -25,6 +25,7 @@ namespace Wheats_and_Wands.Levels
         private Pit _bigPit;
         private List<Pit> pits;
 
+        SkinSwapOrb _orb;
         
         float _speed;
         
@@ -32,7 +33,7 @@ namespace Wheats_and_Wands.Levels
         private List<ScrollBackground> _scrollBackgrounds;
         public Cave(Farmer farmer, GameState gameState, Texture2D floor, Texture2D firstLayer, Texture2D secondLayer,
             Texture2D thirdLayer, Texture2D fourthLayer, Texture2D fifthLayer, Texture2D sixthLayer, Texture2D spikeTextures,
-            Texture2D pitTextures)
+            Texture2D pitTextures, Texture2D orb)
         {
             _gameState = gameState;
             _farmer = farmer;
@@ -50,6 +51,10 @@ namespace Wheats_and_Wands.Levels
             spikes = new List<Spike>();
             spikes.Add(_smallSpike);
             spikes.Add(_bigSpike);
+
+            _orb = new SkinSwapOrb(new Sprite(orb, 0, 0, 64, 64, new Vector2(470, 310)), farmer, Farmer.Skins.fancy);
+
+
 
             _scrollBackgrounds = new List<ScrollBackground>()
             {
@@ -101,7 +106,7 @@ namespace Wheats_and_Wands.Levels
                 p.Draw(spriteBatch, gameTime);
 
             }
-            //brick1.Draw(spriteBatch, gameTime);
+            _orb.Draw(spriteBatch);
 
 
 
@@ -171,6 +176,8 @@ namespace Wheats_and_Wands.Levels
                 p._sprite.position = new Vector2(p._sprite.position.X - _speed, p._sprite.position.Y);
             }
 
+            _orb.Update(gameTime);
+            _orb._sprite.position = new Vector2(_orb._sprite.position.X - _speed, _orb._sprite.position.Y);
             _speed = (float)(_farmer.HorizontalVelocity.X * gameTime.ElapsedGameTime.TotalSeconds * 5f);
             _speed *= _farmer.HorizontalVelocity.X;
 
