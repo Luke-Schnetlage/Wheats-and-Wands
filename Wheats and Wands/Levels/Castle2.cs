@@ -87,8 +87,8 @@ namespace Wheats_and_Wands.Levels
 
             spriteBatch.DrawString(_font, "CONGRATULATIONS!", new Vector2(400, 150), Color.White);
             spriteBatch.DrawString(_font, "IT TOOK YOU", new Vector2(435, 170), Color.White);
-            spriteBatch.DrawString(_font, (gameTime.TotalGameTime - _levelTime).ToString(), new Vector2(420, 190), Color.White);
-            
+            spriteBatch.DrawString(_font, (gameTime.TotalGameTime - _levelTime).ToString(@"hh\:mm\:ss"), new Vector2(460, 190), Color.White);
+            spriteBatch.DrawString(_font, "TO FIND YOUR COW", new Vector2(400, 210), Color.White);
             foreach (var scrollBackground in _scrollBackgrounds)
                 scrollBackground.Draw(gameTime, spriteBatch);
 
