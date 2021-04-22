@@ -9,7 +9,7 @@ namespace Wheats_and_Wands.Entities
         public Sprite _asteroid;
         public Asteroid(Sprite sprite, Farmer farmer, Texture2D spriteSheet) : base(sprite, farmer)
         {
-            _asteroid = new Sprite(spriteSheet, 0, 0, 115, 98);
+            _asteroid = new Sprite(spriteSheet, 0, 0, 150, 98);
         }
 
         public override void Update(GameTime gameTime)

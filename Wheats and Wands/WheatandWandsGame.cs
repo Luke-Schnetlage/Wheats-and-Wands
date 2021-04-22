@@ -63,6 +63,7 @@ namespace Wheats_and_Wands
         Texture2D _totemHead;
         Texture2D _orb;
         Texture2D _cow;
+        Texture2D _asteroid;
 
         //Tutorial and Farm Textures
         Texture2D _barn;
@@ -157,7 +158,7 @@ namespace Wheats_and_Wands
             _levelTimer = 0;
 
             //IMPORTANT!!! REMOVE AFTER CASTLE TESTING
-            _gameState.state = States.Castle2;
+            _gameState.state = States.Space;
             //IMPORTANT!!! REMOVE AFTER CASTLE TESTING
 
             playerPosition = new Vector2(100, (_graphics.PreferredBackBufferHeight / 2) + 15); //defaults player to center of the screen
@@ -232,6 +233,7 @@ namespace Wheats_and_Wands
             _totemHead = Content.Load<Texture2D>("PNG Objects/Island Head");
             _orb = Content.Load<Texture2D>("ORB");
             _cow = Content.Load<Texture2D>("PNG Objects/Cow");
+            _asteroid = Content.Load<Texture2D>("PNG Objects/Asteroid");
 
             //farmer animations
             _farmerSpriteSheet = Content.Load<Texture2D>("Farmer walk cycle");
@@ -279,7 +281,7 @@ namespace Wheats_and_Wands
                 _castleFourthLayer, _castleFifthLayer, _castleSixthLayer, _castleSeventhLayer, _castleEighthLayer, _dragon, _fireBreath);
             _castle2 = new Castle2(_farmer, _gameState, _castleFloor, _castleFirstLayer, _castleSecondLayer, _castleThirdLayer,
                 _castleFourthLayer, _castleFifthLayer, _castleSixthLayer, _castleSeventhLayer, _castleEighthLayer, _cow);
-            _spaceLevel = new Space(_spaceBackground, _farmer, _gameState, _font);
+            _spaceLevel = new Space(_spaceBackground, _farmer, _gameState, _asteroid, _font);
 
         }
 
