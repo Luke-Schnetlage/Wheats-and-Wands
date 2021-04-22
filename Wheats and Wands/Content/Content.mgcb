@@ -145,18 +145,6 @@
 /processorParam:TextureFormat=Color
 /build:Backgrounds/CastleLayer/CastleThirdLayer.png
 
-#begin Backgrounds/CastleLayer/CaveFloorPits.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Backgrounds/CastleLayer/CaveFloorPits.png
-
 #begin Backgrounds/Cave Background.png
 /importer:TextureImporter
 /processor:TextureProcessor

@@ -6,7 +6,7 @@ namespace Wheats_and_Wands.Entities
 {
     class SkinSwapOrb : CollisionEntity
     {
-        Farmer.Skins _skin;
+        private Farmer.Skins _skin;
         public SkinSwapOrb(Sprite sprite, Farmer farmer, Farmer.Skins skin) : base(sprite, farmer)
         {
             _sprite = sprite;
@@ -20,8 +20,6 @@ namespace Wheats_and_Wands.Entities
                 _sprite.Draw(spriteBatch, _sprite.position);
 
         }
-
-
 
         public override void Update(GameTime gameTime)
         {

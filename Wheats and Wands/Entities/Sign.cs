@@ -7,9 +7,9 @@ namespace Wheats_and_Wands.Entities
     public class Sign : CollisionEntity
     {
         public Sprite _sprite;
-        MessageBox _messageBox;
+        private MessageBox _messageBox;
         string _message;
-        bool collision;
+        private bool collision;
         private Farmer _farmer;
         public Sign(Sprite sprite, Texture2D msgbox, SpriteFont font, Farmer farmer, string message) : base(sprite, farmer)
         {
@@ -35,6 +35,7 @@ namespace Wheats_and_Wands.Entities
 
         public void Update(GameTime gameTime, Farmer farmer)
         {
+
         }
     }
 }

@@ -13,7 +13,7 @@ namespace Wheats_and_Wands.Graphics
         public int Height { get; set; }
         public Color TintColor { get; set; } = Color.White;
         public Rectangle rectangle { get; set; }
-        Vector2 prevPosition;
+        public Vector2 prevPosition;
 
         public Sprite(Texture2D texture, int x, int y, int width, int height)
         {

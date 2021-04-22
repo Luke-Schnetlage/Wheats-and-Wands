@@ -41,10 +41,8 @@ namespace Wheats_and_Wands.Graphics
             }
         }
         public float PlaybackProgress { get; private set; }
-
         public bool IsPlaying { get; private set; }
         public bool ShouldLoop { get; set; } = true;
-
 
         public void AddFrame(Sprite sprite, float timeStamp)
         {

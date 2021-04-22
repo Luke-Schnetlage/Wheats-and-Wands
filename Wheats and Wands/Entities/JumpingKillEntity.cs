@@ -6,7 +6,7 @@ namespace Wheats_and_Wands.Entities
 {
     class JumpingKillEntity : CollisionEntity
     {
-        bool goingUp;
+        private bool goingUp;
         private float _verticalVelocity;
         private const float GRAVITY = 800;
         private const float JUMP_START_VELOCITY = -800f;

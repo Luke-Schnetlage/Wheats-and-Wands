@@ -8,12 +8,10 @@ namespace Wheats_and_Wands.Entities
     class Dragon : CollisionEntity
     {
         private SpriteAnimation _blinkAnimation;
-        Sprite _deadDragon;
+        private Sprite _deadDragon;
         public bool IsAlive;
         public Dragon(Sprite sprite, Farmer farmer, Texture2D spriteSheet) : base(sprite, farmer)
         {
-            //960
-            //540
             IsAlive = true;
 
             _deadDragon = new Sprite(spriteSheet, 750, 183, 210, 222, new Vector2(750 % 960, 183 % 540));
@@ -53,7 +51,6 @@ namespace Wheats_and_Wands.Entities
         {
             _blinkAnimation.Update(gameTime);
             _sprite = _blinkAnimation.CurrentFrame.Sprite;
-            //RejectMovment(_farmer, gameTime);
 
             if (Collision(_farmer))
             {

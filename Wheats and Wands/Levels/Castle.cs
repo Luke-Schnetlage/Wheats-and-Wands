@@ -13,20 +13,18 @@ namespace Wheats_and_Wands.Levels
         private GameState _gameState;
         private Farmer _farmer;
 
-        Spike _pit1;
-        Spike _pit2;
-        Spike _pit3;
+        private Spike _pit1;
+        private Spike _pit2;
+        private Spike _pit3;
 
-        List<Spike> pits;
+        private List<Spike> pits;
 
+        private JumpingKillEntity fireball1;
+        private JumpingKillEntity fireball2;
 
-        JumpingKillEntity fireball1;
-        JumpingKillEntity fireball2;
+        private SkinSwapOrb _orb;
 
-        SkinSwapOrb _orb;
-
-        float _speed;
-
+        private float _speed;
 
         private List<ScrollBackground> _scrollBackgrounds;
 
@@ -117,9 +115,6 @@ namespace Wheats_and_Wands.Levels
 
             _orb.Draw(spriteBatch);
 
-
-
-
             foreach (var scrollBackground in _scrollBackgrounds)
                 scrollBackground.Draw(gameTime, spriteBatch);
         }
@@ -134,8 +129,6 @@ namespace Wheats_and_Wands.Levels
             _farmer.doubleJump = true;
             _farmer.Update(gameTime);
             _farmer._groundY = _farmerStartPos.Y;
-
-
 
             _speed = (float)(_farmer.HorizontalVelocity.X * gameTime.ElapsedGameTime.TotalSeconds * 5f);
             _speed *= _farmer.HorizontalVelocity.X;
@@ -163,15 +156,11 @@ namespace Wheats_and_Wands.Levels
             _orb.Update(gameTime);
             _orb._sprite.position = new Vector2(_orb._sprite.position.X - _speed, _orb._sprite.position.Y);
 
-
-
             if (_farmer.Position.X + _farmer._sprite.Width > WheatandWandsGame.WINDOW_WIDTH - 10)
             {
                 _gameState.state = States.DragonLevel;
                 _farmer.Position = new Vector2(50, 325 - 35);
             }
-
-
 
             foreach (var scrollBackground in _scrollBackgrounds)
                 scrollBackground.Update(gameTime);

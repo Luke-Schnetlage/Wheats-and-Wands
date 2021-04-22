@@ -12,7 +12,7 @@ namespace Wheats_and_Wands.Levels
         private Vector2 _farmerStartPos;
         private GameState _gameState;
         private Farmer _farmer;
-        Cow _cow;
+        private Cow _cow;
 
         private List<ScrollBackground> _scrollBackgrounds;
         public Castle2(Farmer farmer,

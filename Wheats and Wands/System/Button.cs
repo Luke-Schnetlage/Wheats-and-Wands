@@ -16,7 +16,6 @@ namespace Wheats_and_Wands.System
 
         public bool Clicked { get; private set; }
         public Color PenColor { get; set; } //Color of the font
-        //public Vector2 Position { get; set; } //Position of the button
         public string Text { get; set; }
         public Rectangle Rectangle //Size of the button
         {

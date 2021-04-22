@@ -43,7 +43,6 @@ namespace Wheats_and_Wands
         //Sprites
         Texture2D _titleScreenSprite;
         Texture2D _creditScreenSprite;
-        //Texture2D _caveBackGround;
         Texture2D _farmerSpriteSheet;
         Texture2D _fancyFarmerSheet;
         Texture2D _wizardFarmerSheet;
@@ -108,8 +107,7 @@ namespace Wheats_and_Wands
         //Farmer _player;
         Vector2 playerPosition;
 
-
-        public SpriteFont _font { get; private set; } 
+        public SpriteFont _font { get; private set; }
 
         //Music/Sound System
         MusicManager _musicManager;
@@ -126,7 +124,6 @@ namespace Wheats_and_Wands
         InputController _inputController;
         Display_Options _displayOptions;
 
-        
         //graphics managment
         public GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
@@ -137,7 +134,7 @@ namespace Wheats_and_Wands
         public WheatandWandsGame()
         {
             _graphics = new GraphicsDeviceManager(this);
-            Content.RootDirectory = "Content";          
+            Content.RootDirectory = "Content";
             IsMouseVisible = true;
             _game = this;
         }
@@ -154,22 +151,17 @@ namespace Wheats_and_Wands
             _playerProgress = new GameState();
             _spriteBatch = new SpriteBatch(GraphicsDevice); //initalizes spriteBatch
 
-            //IMPORTANT!!! REMOVE AFTER CASTLE TESTING
-            //_gameState.state = States.Castle2;
-            //IMPORTANT!!! REMOVE AFTER CASTLE TESTING
-
             playerPosition = new Vector2(100, (_graphics.PreferredBackBufferHeight / 2) + 15); //defaults player to 100,495
             base.Initialize();
         }
 
         protected override void LoadContent() //this loads in content and classes that can't be initalized without content
         {
-            
+
 
             //backgrounds
             _titleScreenSprite = Content.Load<Texture2D>("Backgrounds/Title screen");
             _creditScreenSprite = Content.Load<Texture2D>("Backgrounds/Credits Screen");
-            //_caveBackGround = Content.Load<Texture2D>("Backgrounds/Cave Background");
 
             //Farm Background Layers (and Tutorial too)
             _barn = Content.Load<Texture2D>("Backgrounds/FarmLayer/Barn");
@@ -182,7 +174,6 @@ namespace Wheats_and_Wands
 
             //Cave Background Layer
             _caveFloor = Content.Load<Texture2D>("Backgrounds/CaveLayer/Cave Floor");
-            //_cavePitFloor = Content.Load<Texture2D>("Backgrounds/CastleLayer/CaveFloorPits");
             _caveFirstLayer = Content.Load<Texture2D>("Backgrounds/CaveLayer/CaveFirstLayer");
             _caveSecondLayer = Content.Load<Texture2D>("Backgrounds/CaveLayer/CaveSecondLayer");
             _caveThirdLayer = Content.Load<Texture2D>("Backgrounds/CaveLayer/CaveThirdLayer");
@@ -294,7 +285,7 @@ namespace Wheats_and_Wands
             }
             //_prevLevel is used detect if any level chanes have occured in the middle of update
             _prevLevel = _level;
-            
+
 
             if (_gameState.state == States.TitleScreen)
             {
@@ -325,7 +316,7 @@ namespace Wheats_and_Wands
                 //1 way update to unlock the 2nd load state
                 if (_playerProgress.state < States.Cave)
                 {
-                    _playerProgress.state = States.Cave; 
+                    _playerProgress.state = States.Cave;
                 }
                 _level = _cave;
             }

@@ -4,14 +4,14 @@ namespace Wheats_and_Wands.System
 {
     public class MusicManager
     {
-        Song _song;
-        Song _titleTheme;
-        Song _farmTheme;
-        Song _caveTheme;
-        Song _castleTheme;
-        Song _dragonTheme;
-        Song _cowTheme;
-        GameState _gameState;
+        private Song _song;
+        private Song _titleTheme;
+        private Song _farmTheme;
+        private Song _caveTheme;
+        private Song _castleTheme;
+        private Song _dragonTheme;
+        private Song _cowTheme;
+        private GameState _gameState;
 
         public MusicManager(GameState gameState, Song titleTheme, Song farmtheme, Song caveTheme, Song castleTheme, Song dragonTheme, Song cowTheme)
         {
@@ -48,11 +48,11 @@ namespace Wheats_and_Wands.System
             {
                 _song = _dragonTheme;
             }
-            else if(_gameState.state == States.Castle2)
+            else if (_gameState.state == States.Castle2)
             {
                 _song = _cowTheme;
             }
-            else if(_gameState.state == States.Space)
+            else if (_gameState.state == States.Space)
             {
                 _song = _titleTheme;
             }

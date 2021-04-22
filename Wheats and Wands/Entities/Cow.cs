@@ -6,12 +6,12 @@ namespace Wheats_and_Wands.Entities
 {
     class Cow : IGameEntity
     {
-       
+
         public const float GRAVITY = 1600f;
         private const float JUMP_START_VELOCITY = -500f;
 
         public Sprite _sprite;
-        SpriteEffects effect = SpriteEffects.None;
+        private SpriteEffects effect = SpriteEffects.None;
 
         public int DrawOrder { get; set; }
         public Vector2 Position { get; set; }
@@ -25,7 +25,7 @@ namespace Wheats_and_Wands.Entities
 
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
-            
+
             if (gameTime.TotalGameTime.TotalSeconds % 2 == 0)
                 if (effect == SpriteEffects.None)
                 {
@@ -40,7 +40,6 @@ namespace Wheats_and_Wands.Entities
 
         public void Update(GameTime gameTime)
         {
-            //_verticalVelocity = 0;
 
             if (_sprite.position.Y > 340)
             {

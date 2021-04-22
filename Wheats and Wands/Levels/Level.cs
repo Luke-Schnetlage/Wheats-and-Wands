@@ -6,10 +6,9 @@ namespace Wheats_and_Wands.Levels
     public abstract class Level
     {
         public double levelTime;
-
-        Texture2D _backGround { get; set; }
+        public Texture2D _backGround { get; set; }
         public Rectangle _frame = new Rectangle(0, 0, WheatandWandsGame.WINDOW_WIDTH, WheatandWandsGame.WINDOW_HEIGHT);
-        SpriteBatch _spriteBatch;
+        public SpriteBatch _spriteBatch;
 
         public virtual void Update(GameTime gameTime)
         {

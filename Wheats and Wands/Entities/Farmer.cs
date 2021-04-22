@@ -59,7 +59,7 @@ namespace Wheats_and_Wands.Entities
             _fancyIdlePose = new Sprite(_fancyFarmerSheet, 0, 0, 64, 128);
             _wizardIdlePose = new Sprite(_wizardFarmerSheet, 0, 0, 64, 128);
 
-            heart1 = new Sprite(_heartSheet,166, 396, 33, 31, new Vector2(930, 10));
+            heart1 = new Sprite(_heartSheet, 166, 396, 33, 31, new Vector2(930, 10));
             heart2 = new Sprite(_heartSheet, 166, 396, 33, 31, new Vector2(895, 10));
             heart3 = new Sprite(_heartSheet, 166, 396, 33, 31, new Vector2(860, 10));
 
@@ -243,37 +243,12 @@ namespace Wheats_and_Wands.Entities
 
         public bool DoubleJump()
         {
-
-            //if (!doubleJump || doubleJumpUsed || OnGround)
-            //{
-            //    return false;
-            //}
-
-            //State = FarmerState.Jumping;
-            //OnGround = false;
             doubleJumpUsed = true;
             _verticalVelocity = JUMP_START_VELOCITY;
             return true;
+
         }
 
-
-
-
-        /*
-        public bool CancelJump()
-        {
-
-            if (OnGround || (_startPosY - Position.Y) < MIN_JUMP_HEIGHT)
-            {
-                return false;
-            }
-
-            State = FarmerState.Falling;
-            
-            _verticalVelocity = _verticalVelocity < CANCEL_JUMP_VELOCITY ? CANCEL_JUMP_VELOCITY : 0;
-            return true;
-        }
-        */
         public void Fall(GameTime gameTime)
         {
             _verticalVelocity += GRAVITY * (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -293,7 +268,7 @@ namespace Wheats_and_Wands.Entities
         {
             if (IsAlive == false)
             {
-                
+
                 Position = SpawnPosition;
                 _deathAnimation.Stop();
                 _deathAnimation.Play();

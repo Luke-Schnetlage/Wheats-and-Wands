@@ -3,7 +3,6 @@ namespace Wheats_and_Wands
 {
     class Display_Options
     {
-
         private GraphicsDeviceManager _graphics { get; set; }
 
         public Display_Options(GraphicsDeviceManager graphics)

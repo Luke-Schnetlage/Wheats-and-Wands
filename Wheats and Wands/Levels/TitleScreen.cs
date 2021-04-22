@@ -9,25 +9,24 @@ namespace Wheats_and_Wands.Levels
 {
     public class TitleScreen : Level
     {
-        Texture2D _spriteSheet { get; set; }
-        SpriteBatch _spriteBatch { get; set; }
+        private Texture2D _spriteSheet { get; set; }
+        private SpriteBatch _spriteBatch { get; set; }
 
+        private GameState _gameState;
+        private Rectangle _frame = new Rectangle(0, 0, WheatandWandsGame.WINDOW_WIDTH, WheatandWandsGame.WINDOW_HEIGHT);
+        private Sprite _backGround;
 
-        GameState _gameState;
-        Rectangle _frame = new Rectangle(0, 0, WheatandWandsGame.WINDOW_WIDTH, WheatandWandsGame.WINDOW_HEIGHT);
-        Sprite _backGround;
+        private Sprite _newButtonSprite;
+        private Sprite _optionsButtonSprite;
+        private Sprite _creditsButtonSprite;
+        private Sprite _quitButtonSprite;
+        private Sprite _stageSelectSprite;
 
-        Sprite _newButtonSprite;
-        Sprite _optionsButtonSprite;
-        Sprite _creditsButtonSprite;
-        Sprite _quitButtonSprite;
-        Sprite _stageSelectSprite;
-
-        Button _newButton;
-        Button _optionsButton;
-        Button _creditsButton;
-        Button _quitButton;
-        Button _stageSelectButton;
+        private Button _newButton;
+        private Button _optionsButton;
+        private Button _creditsButton;
+        private Button _quitButton;
+        private Button _stageSelectButton;
 
         private List<Component> _buttonList;
 

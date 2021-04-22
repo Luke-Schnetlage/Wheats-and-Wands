@@ -16,17 +16,17 @@ namespace Wheats_and_Wands.Levels
 
         private List<ScrollBackground> _scrollBackgrounds;
 
-        SquareBlock _hayBale1;
-        SquareBlock _hayBale2;
-        SquareBlock _hayBale3;
-        SquareBlock _hayBale4;
-        SquareBlock _hayBale5;
-        SquareBlock _hayBale6;
-        SquareBlock _floatinghayBale1;
-        SquareBlock _floatinghayBale2;
+        private SquareBlock _hayBale1;
+        private SquareBlock _hayBale2;
+        private SquareBlock _hayBale3;
+        private SquareBlock _hayBale4;
+        private SquareBlock _hayBale5;
+        private SquareBlock _hayBale6;
+        private SquareBlock _floatinghayBale1;
+        private SquareBlock _floatinghayBale2;
 
-        List<SquareBlock> haybales;
-        List<SquareBlock> floatinghaybales;
+        private List<SquareBlock> haybales;
+        private List<SquareBlock> floatinghaybales;
 
         public FarmToCave(Farmer farmer, GameState gameState, Texture2D floor, Texture2D secondLayer, Texture2D thirdLayer,
             Texture2D farClouds, Texture2D fastClouds, Texture2D sky, Texture2D haybale)
@@ -98,15 +98,6 @@ namespace Wheats_and_Wands.Levels
         }
         public override void Update(GameTime gameTime)
         {
-            //if (_farmer.Position.X < _farmer.prevPosition.X)
-            //    _farmer.HorizontalVelocity.X = -3f;
-            //else if (_farmer.Position.X > _farmer.prevPosition.X)
-            //    _farmer.HorizontalVelocity.X = 3f;
-            //else
-            //    _farmer.HorizontalVelocity.X = 0f;
-
-
-
 
             _farmer.Update(gameTime);
             _farmer._groundY = _farmerStartPos.Y;

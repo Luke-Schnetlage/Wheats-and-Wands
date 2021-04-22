@@ -6,23 +6,15 @@ namespace Wheats_and_Wands.Entities
 {
     class DoubleJumpTotem : CollisionEntity
     {
-        SpriteAnimation _totemAwaken;
-        Sprite sprite1;
-        Sprite sprite2;
-        Sprite sprite3;
-        Sprite sprite4;
+        private Sprite sprite1;
+        private Sprite sprite4;
         //760,248
         public DoubleJumpTotem(Sprite sprite, Farmer farmer, Texture2D spritesheet) : base(sprite, farmer)
         {
-            //_totemAwaken = new SpriteAnimation();
-            //_sprite = new Sprite(spritesheet, 0, 0, 160, 160, new Vector2(760, 258));
+
             sprite1 = new Sprite(spritesheet, 0, 0, 160, 160, new Vector2(760, 258));
             _sprite = sprite1;
-            sprite2 = new Sprite(spritesheet, 160, 0, 160, 160, new Vector2(760, 258));
-            sprite3 = new Sprite(spritesheet, 0, 160, 160, 160, new Vector2(760, 258));
             sprite4 = new Sprite(spritesheet, 160, 160, 160, 160, new Vector2(760, 258));
-            //_totemAwaken.ShouldLoop = false;
-            //_totemAwaken.Play();
 
         }
 

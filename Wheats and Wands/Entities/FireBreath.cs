@@ -9,8 +9,6 @@ namespace Wheats_and_Wands.Entities
         private SpriteAnimation _fireBreathAnimation;
         public FireBreath(Sprite sprite, Farmer farmer, Texture2D spriteSheet) : base(sprite, farmer)
         {
-            //960
-            //540
 
             _fireBreathAnimation = new SpriteAnimation();
             _fireBreathAnimation.AddFrame(new Sprite(spriteSheet, 1698, 357, 44, 24, new Vector2(1698 % 960, 357 % 540)), 0);
@@ -23,9 +21,10 @@ namespace Wheats_and_Wands.Entities
             _fireBreathAnimation.AddFrame(new Sprite(spriteSheet, 174, 2496, 606, 66, new Vector2(174 % 960, 2496 % 540)), 7 / 10f);
             _fireBreathAnimation.AddFrame(new Sprite(spriteSheet, 1134, 2496, 606, 66, new Vector2(1134 % 960, 2496 % 540)), 8 / 10f);
             _fireBreathAnimation.AddFrame(_fireBreathAnimation[0].Sprite, 9 / 10f);
-            //_fireBreathAnimation.Play();
+
             _fireBreathAnimation.ShouldLoop = false;
         }
+
         public void Draw(SpriteBatch spriteBatch)
         {
             if (_fireBreathAnimation.PlaybackProgress == _fireBreathAnimation.Duration)
@@ -41,6 +40,7 @@ namespace Wheats_and_Wands.Entities
 
             Kill(_farmer);
         }
+
         public void BreathFire()
         {
             _fireBreathAnimation.Play();

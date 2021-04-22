@@ -10,11 +10,11 @@ namespace Wheats_and_Wands.System
     {
 
         public const float PLAYER_SPEED = 250f;
-        Vector2 position = new Vector2(0, 0);
+        private Vector2 position = new Vector2(0, 0);
         private Farmer _farmer;
         private KeyboardState _previousKeyboardState;
         private Display_Options _displayOptions;
-        SoundEffect _jumpSound;
+        private SoundEffect _jumpSound;
 
         public InputController(Farmer farmer, Display_Options displayOptions, SoundEffect jumpSound)
         {
@@ -82,7 +82,6 @@ namespace Wheats_and_Wands.System
 
             //idle trigger block            
             if (keyboardState.GetPressedKeyCount() == 0 && _farmer.OnGround)
-            //&& _farmer.State != FarmerState.Running)
             {
                 _farmer.State = FarmerState.Idle;
             }
@@ -93,7 +92,6 @@ namespace Wheats_and_Wands.System
                 _displayOptions.FullScreenMode();
 
             }
-
 
             _previousKeyboardState = keyboardState;
 

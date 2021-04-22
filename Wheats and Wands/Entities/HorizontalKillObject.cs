@@ -1,7 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using Wheats_and_Wands.Graphics;
 
 namespace Wheats_and_Wands.Entities
@@ -9,11 +7,11 @@ namespace Wheats_and_Wands.Entities
     class HorizontalKillObject : CollisionEntity
     {
         public TimeSpan _shiftTime;
-        TimeSpan _lastShiftTime;
-        float _horizontalVelocity;
-        bool shifting;
-        Vector2 startPos;
-        int leftX;
+        private TimeSpan _lastShiftTime;
+        public float _horizontalVelocity;
+        private bool shifting;
+        private Vector2 startPos;
+        private int leftX;
         public HorizontalKillObject(Sprite sprite, Farmer farmer, TimeSpan shiftTime) : base(sprite, farmer)
         {
             _sprite = sprite;
@@ -37,8 +35,8 @@ namespace Wheats_and_Wands.Entities
             {
                 _farmer.IsAlive = false;
             }
+
             Kill(_farmer);
-            //_farmer.Respawn();
             Reset();
         }
 
@@ -59,7 +57,7 @@ namespace Wheats_and_Wands.Entities
             if (shifting)
             {
                 _horizontalVelocity -= 750 * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                _sprite.position = new Vector2(_sprite.position.X +_horizontalVelocity * (float)gameTime.ElapsedGameTime.TotalSeconds, _sprite.position.Y);
+                _sprite.position = new Vector2(_sprite.position.X + _horizontalVelocity * (float)gameTime.ElapsedGameTime.TotalSeconds, _sprite.position.Y);
             }
 
         }

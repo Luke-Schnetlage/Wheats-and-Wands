@@ -14,18 +14,16 @@ namespace Wheats_and_Wands.Levels
         private GameState _gameState;
         private Farmer _farmer;
 
-        FallingKillObject _asteroid1;
-        FallingKillObject _asteroid2;
-        FallingKillObject _asteroid3;
-        FallingKillObject _asteroid4;
-        FallingKillObject _asteroid5;
+        private FallingKillObject _asteroid1;
+        private FallingKillObject _asteroid3;
+        private FallingKillObject _asteroid5;
 
-        HorizontalKillObject _a1;
-        HorizontalKillObject _a2;
+        private HorizontalKillObject _a1;
+        private HorizontalKillObject _a2;
 
         private List<ScrollBackground> _scrollBackgrounds;
 
-        Random rand;
+        private Random rand;
 
         public Space(Texture2D background, Farmer farmer, GameState gameState, Texture2D asteroid, SpriteFont font)
         {

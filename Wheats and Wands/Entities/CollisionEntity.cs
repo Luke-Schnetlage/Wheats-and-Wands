@@ -24,7 +24,7 @@ namespace Wheats_and_Wands.Entities
 
         public virtual void Update(GameTime gameTime)
         {
-            //collision = LeftCollision()
+            //
         }
 
         public bool Collision(Farmer _farmer)
@@ -37,18 +37,14 @@ namespace Wheats_and_Wands.Entities
 
         private bool LeftCollision(Farmer _farmer) //checks if farmer right edge behind center of sprite
         {
-            //return _farmer.Position.X + _farmer._sprite.Width == this._sprite.position.X - (this._sprite.Width/2);
-            return _farmer.Position.X + _farmer._sprite.Width <= this._sprite.position.X + (this._sprite.Width / 5) - 5;/* &&
-               // _farmer.Position.X + _farmer._sprite.Width <= this._sprite.position.X - (this._sprite.Width / 2);*/
+            return _farmer.Position.X + _farmer._sprite.Width <= this._sprite.position.X + (this._sprite.Width / 5) - 5;
 
         }
 
         private bool RightCollision(Farmer _farmer)
         {
-            //return _farmer.Position.X == this._sprite.position.X + (this._sprite.Width);
-            //return _farmer.Position.X + _farmer._sprite.Width < this._sprite.position.X + (this._sprite.Width);
-            return _farmer.Position.X >= this._sprite.position.X + (this._sprite.Width / (double)1.26) + 9; /* &&
-                _farmer.Position.X >= this._sprite.position.X + (this._sprite.Width / 2);*/
+            return _farmer.Position.X >= this._sprite.position.X + (this._sprite.Width / (double)1.26) + 9;
+
         }
 
         public bool TopCollision(Farmer _farmer)

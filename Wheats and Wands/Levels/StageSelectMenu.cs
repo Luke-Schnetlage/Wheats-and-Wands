@@ -8,13 +8,13 @@ namespace Wheats_and_Wands.Levels
 {
     class StageSelectMenu : Level
     {
-        GameState _gameState;
-        GameState _playerProgress;
-        Button _farmButton;
-        Button _caveButton;
-        Button _castleButton;
-        Button _spaceButton;
-        Texture2D _background;
+        private GameState _gameState;
+        private GameState _playerProgress;
+        private Button _farmButton;
+        private Button _caveButton;
+        private Button _castleButton;
+        private Button _spaceButton;
+        private Texture2D _background;
         public StageSelectMenu(GameState playerProgress, GameState gameState, Texture2D background, Texture2D farm,
             Texture2D Cave, Texture2D Castle, Texture2D Space)
         {

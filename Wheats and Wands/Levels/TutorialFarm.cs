@@ -11,15 +11,15 @@ namespace Wheats_and_Wands.Levels
     {
         private Vector2 _farmerStartPos = new Vector2(150, 325 - 35);
         private Farmer _farmer { get; set; }
-        //SpriteBatch _spriteBatch;
-        Sign _sign1;
-        Sign _sign2;
-        SquareBlock _hayBale1;
-        SquareBlock _hayBale2;
-        SquareBlock _hayBale3;
-        SquareBlock _hayBale4;
-        List<SquareBlock> hayBales;
-        GameState _gameState;
+
+        private Sign _sign1;
+        private Sign _sign2;
+        private SquareBlock _hayBale1;
+        private SquareBlock _hayBale2;
+        private SquareBlock _hayBale3;
+        private SquareBlock _hayBale4;
+        private List<SquareBlock> hayBales;
+        private GameState _gameState;
 
         private List<ScrollBackground> _scrollBackgrounds;
 
@@ -78,7 +78,6 @@ namespace Wheats_and_Wands.Levels
 
         public override void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
-            //_spriteBatch = spriteBatch;
             _farmer.Draw(spriteBatch, gameTime);
             _sign1.Draw(spriteBatch);
             _sign2.Draw(spriteBatch);
@@ -86,7 +85,6 @@ namespace Wheats_and_Wands.Levels
             {
                 haybale.Draw(spriteBatch, gameTime);
             }
-            //_hayBale1.Draw(spriteBatch, gameTime);
 
             foreach (var scrollBackground in _scrollBackgrounds)
                 scrollBackground.Draw(gameTime, spriteBatch);
@@ -107,7 +105,6 @@ namespace Wheats_and_Wands.Levels
             _sign2.Update(gameTime, _farmer);
             foreach (var scrollBackground in _scrollBackgrounds)
                 scrollBackground.Update(gameTime);
-
 
             //level leaving logic
             if (_farmer.Position.X + _farmer._sprite.Width > WheatandWandsGame.WINDOW_WIDTH - 10)

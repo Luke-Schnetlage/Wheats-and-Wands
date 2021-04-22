@@ -15,16 +15,16 @@ namespace Wheats_and_Wands.Levels
         private GameState _gameState;
         private Farmer _farmer;
 
-        FallingKillObject _wideStalactite;
-        FallingKillObject _skinnyStalactite;
-        FallingKillObject _bigStalactite;
+        private FallingKillObject _wideStalactite;
+        private FallingKillObject _skinnyStalactite;
+        private FallingKillObject _bigStalactite;
 
-        DoubleJumpTotem _totem;
+        private DoubleJumpTotem _totem;
 
-        MessageBox _jumpmessage;
+        private MessageBox _jumpmessage;
 
         private List<ScrollBackground> _scrollBackgrounds;
-        Random rand;
+        private Random rand;
 
         public CaveToCastle(Farmer farmer, GameState gameState, Texture2D front, Texture2D back, Texture2D secondLayer, Texture2D thirdLayer,
             Texture2D fourthLayer, Texture2D fifthLayer, Texture2D sixthLayer, Texture2D spikes, Texture2D totemHead, Texture2D messageBox, SpriteFont font)

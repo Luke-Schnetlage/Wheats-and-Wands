@@ -11,7 +11,6 @@ namespace Wheats_and_Wands.Entities
             _sprite = sprite;
         }
 
-
         public override void Update(GameTime gameTime)
         {
             Kill(_farmer);

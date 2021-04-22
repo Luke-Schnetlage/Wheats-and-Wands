@@ -7,11 +7,11 @@ namespace Wheats_and_Wands.Entities
     class FallingKillObject : CollisionEntity
     {
         public TimeSpan _hangTime;
-        TimeSpan _lastFallTime;
-        float _verticalVelocity;
-        bool falling;
-        Vector2 startPos;
-        int groundY;
+        private TimeSpan _lastFallTime;
+        public float _verticalVelocity;
+        private bool falling;
+        private Vector2 startPos;
+        private int groundY;
         public FallingKillObject(Sprite sprite, Farmer farmer, TimeSpan hangTime) : base(sprite, farmer)
         {
             _sprite = sprite;
@@ -35,8 +35,8 @@ namespace Wheats_and_Wands.Entities
             {
                 _farmer.IsAlive = false;
             }
+
             Kill(_farmer);
-            //_farmer.Respawn();
             Reset();
         }
 

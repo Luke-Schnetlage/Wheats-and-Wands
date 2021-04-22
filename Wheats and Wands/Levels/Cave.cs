@@ -9,7 +9,6 @@ namespace Wheats_and_Wands.Levels
 {
     class Cave : Level
     {
-        //Texture2D _background;
         private Vector2 _farmerStartPos;
 
         private GameState _gameState;
@@ -23,9 +22,9 @@ namespace Wheats_and_Wands.Levels
         private Pit _bigPit;
         private List<Pit> pits;
 
-        SkinSwapOrb _orb;
+        private SkinSwapOrb _orb;
 
-        float _speed;
+        private float _speed;
 
 
         private List<ScrollBackground> _scrollBackgrounds;
@@ -51,8 +50,6 @@ namespace Wheats_and_Wands.Levels
             spikes.Add(_bigSpike);
 
             _orb = new SkinSwapOrb(new Sprite(orb, 0, 0, 64, 64, new Vector2(615, 410)), farmer, Farmer.Skins.fancy);
-
-
 
             _scrollBackgrounds = new List<ScrollBackground>()
             {
@@ -105,25 +102,16 @@ namespace Wheats_and_Wands.Levels
 
             }
 
-
-
-
             foreach (var scrollBackground in _scrollBackgrounds)
                 scrollBackground.Draw(gameTime, spriteBatch);
-
 
         }
 
         public override void Update(GameTime gameTime)
         {
             _farmer.SpawnPosition = _farmerStartPos;
-            //_farmer.Respawn();
-            //_farmer.Position = _farmerStartPos;
-            //_farmer.IsAlive = true;
 
             _farmer._groundY = _farmerStartPos.Y;
-
-
 
             int smallPitEdge = (int)_smallPit._sprite.position.X;
             int bigPitEdge = (int)_bigPit._sprite.position.X;
