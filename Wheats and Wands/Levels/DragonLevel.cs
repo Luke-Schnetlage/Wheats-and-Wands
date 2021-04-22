@@ -22,7 +22,7 @@ namespace Wheats_and_Wands.Levels
         private SquareBlock _platform3;
         private bool goingUp;
         private List<ScrollBackground> _scrollBackgrounds;
-        TimeSpan _levelTime;
+        private TimeSpan _levelTime;
 
         public DragonLevel(Farmer farmer, GameState gameState, Texture2D floor, Texture2D firstLayer, Texture2D secondLayer, Texture2D thirdLayer,
             Texture2D fourthLayer, Texture2D fifthLayer, Texture2D sixthLayer, Texture2D seventhLayer, Texture2D lastLayer, Texture2D dragonTexture,
