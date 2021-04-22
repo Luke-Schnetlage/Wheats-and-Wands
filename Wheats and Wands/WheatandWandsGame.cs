@@ -103,6 +103,7 @@ namespace Wheats_and_Wands
         Texture2D _miniFarm;
         Texture2D _miniCave;
         Texture2D _miniCastle;
+        Texture2D _miniSpace;
 
         //Farmer _player;
         Vector2 playerPosition;
@@ -154,7 +155,7 @@ namespace Wheats_and_Wands
             _spriteBatch = new SpriteBatch(GraphicsDevice); //initalizes spriteBatch
 
             //IMPORTANT!!! REMOVE AFTER CASTLE TESTING
-            _gameState.state = States.Castle2;
+            //_gameState.state = States.Castle2;
             //IMPORTANT!!! REMOVE AFTER CASTLE TESTING
 
             playerPosition = new Vector2(100, (_graphics.PreferredBackBufferHeight / 2) + 15); //defaults player to 100,495
@@ -212,7 +213,7 @@ namespace Wheats_and_Wands
             _miniFarm = Content.Load<Texture2D>("Backgrounds/PreviewFolder/FarmerBackground2DPreview");
             _miniCave = Content.Load<Texture2D>("Backgrounds/PreviewFolder/CaveBackgroundPreview");
             _miniCastle = Content.Load<Texture2D>("Backgrounds/PreviewFolder/CastleBackgroundPreview");
-
+            _miniSpace = Content.Load<Texture2D>("Backgrounds/PreviewFolder/SpaceBackgroundPreview");
 
 
             //entities
@@ -262,7 +263,7 @@ namespace Wheats_and_Wands
             //levels
             _titleScreen = new TitleScreen(_titleScreenSprite, _gameState);
             _creditScreen = new CreditScreen(_creditScreenSprite, _font, _titleScreenSprite, _gameState);
-            _stageSelectMenu = new StageSelectMenu(_playerProgress, _gameState, _creditScreenSprite, _miniFarm, _miniCave, _miniCastle);
+            _stageSelectMenu = new StageSelectMenu(_playerProgress, _gameState, _creditScreenSprite, _miniFarm, _miniCave, _miniCastle, _miniSpace);
             _optionScreen = new OptionScreen(_gameState, _creditScreenSprite, _titleScreenSprite, _font);
             _tutorial = new TutorialFarm(_farmer, _sign, _textbox, _hayBale, _font, _gameState, _barn, _tutorialFarmBackground,
                 _tutorialSecondLayer, _tutorialThirdLayer, _tutorialLastLayer, _farClouds, _fastClouds);
@@ -347,6 +348,11 @@ namespace Wheats_and_Wands
             }
             if (_gameState.state == States.Castle2)
             {
+                //1 way update to unlock the hidden 4th load state
+                if (_playerProgress.state < States.Castle2)
+                {
+                    _playerProgress.state = States.Castle2;
+                }
                 _level = _castle2;
             }
             if (_gameState.state == States.Space)
