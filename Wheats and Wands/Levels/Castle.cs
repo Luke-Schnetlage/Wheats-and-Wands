@@ -1,8 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using Wheats_and_Wands.Entities;
 using Wheats_and_Wands.Graphics;
 using Wheats_and_Wands.System;
@@ -109,8 +107,9 @@ namespace Wheats_and_Wands.Levels
         public override void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
             _farmer.Draw(spriteBatch, gameTime);
-           
-            foreach (Spike p in pits){
+
+            foreach (Spike p in pits)
+            {
                 p.Draw(spriteBatch, gameTime);
             }
             fireball1.Draw(spriteBatch, gameTime);
@@ -172,7 +171,7 @@ namespace Wheats_and_Wands.Levels
                 _farmer.Position = new Vector2(50, 325 - 35);
             }
 
-            
+
 
             foreach (var scrollBackground in _scrollBackgrounds)
                 scrollBackground.Update(gameTime);

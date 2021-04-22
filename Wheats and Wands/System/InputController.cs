@@ -1,9 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Input;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Wheats_and_Wands.Entities;
 
 
@@ -13,13 +10,13 @@ namespace Wheats_and_Wands.System
     {
 
         public const float PLAYER_SPEED = 250f;
-        Vector2 position = new Vector2(0,0);
+        Vector2 position = new Vector2(0, 0);
         private Farmer _farmer;
         private KeyboardState _previousKeyboardState;
         private Display_Options _displayOptions;
         SoundEffect _jumpSound;
 
-        public InputController(Farmer farmer ,Display_Options displayOptions, SoundEffect jumpSound )
+        public InputController(Farmer farmer, Display_Options displayOptions, SoundEffect jumpSound)
         {
             _farmer = farmer;
             _displayOptions = displayOptions;
@@ -38,7 +35,7 @@ namespace Wheats_and_Wands.System
                     _farmer.BeginJump(); //state = jumping
                     _jumpSound.Play((float)0.2, 0, 0);
                 }
-                else if (_farmer.doubleJump &&  !_farmer.OnGround && !_farmer.doubleJumpUsed && (_previousKeyboardState.IsKeyUp(Keys.Up) && _previousKeyboardState.IsKeyUp(Keys.W)))
+                else if (_farmer.doubleJump && !_farmer.OnGround && !_farmer.doubleJumpUsed && (_previousKeyboardState.IsKeyUp(Keys.Up) && _previousKeyboardState.IsKeyUp(Keys.W)))
                 {
                     _farmer.DoubleJump(); //state = jumping
                     _jumpSound.Play((float)0.2, 0, 0);
@@ -46,7 +43,7 @@ namespace Wheats_and_Wands.System
             }
 
             //cancel jump
-            else if (!keyboardState.IsKeyDown(Keys.Up) && _farmer.State == FarmerState.Jumping) 
+            else if (!keyboardState.IsKeyDown(Keys.Up) && _farmer.State == FarmerState.Jumping)
             {
                 //_farmer.CancelJump(); // FarmerState = falling
             }
@@ -54,9 +51,9 @@ namespace Wheats_and_Wands.System
             //move right
             if ((keyboardState.IsKeyDown(Keys.Right)) || (keyboardState.IsKeyDown(Keys.D)))
             {
-                if (_farmer.Position.X <= WheatandWandsGame.WINDOW_WIDTH - 64 )
+                if (_farmer.Position.X <= WheatandWandsGame.WINDOW_WIDTH - 64)
                 {
-                    
+
                     position.X = _farmer.Position.X + (PLAYER_SPEED * (float)gameTime.ElapsedGameTime.TotalSeconds);
                     position.Y = _farmer.Position.Y;
                     _farmer.Position = position;
@@ -64,28 +61,28 @@ namespace Wheats_and_Wands.System
 
                 }
                 _farmer.State = FarmerState.Running;
-                
-            } 
+
+            }
 
             //move left
             if ((keyboardState.IsKeyDown(Keys.Left)) || (keyboardState.IsKeyDown(Keys.A)))
             {
                 if (_farmer.Position.X >= 0)
                 {
-                    
+
                     position.X = _farmer.Position.X - (PLAYER_SPEED * (float)gameTime.ElapsedGameTime.TotalSeconds);
                     position.Y = _farmer.Position.Y;
                     _farmer.Position = position;
                     _farmer.MovingLeft = true;
-                    
-                   
+
+
                 }
                 _farmer.State = FarmerState.Running;
             }
 
             //idle trigger block            
-            if (keyboardState.GetPressedKeyCount() == 0 && _farmer.OnGround) 
-                //&& _farmer.State != FarmerState.Running)
+            if (keyboardState.GetPressedKeyCount() == 0 && _farmer.OnGround)
+            //&& _farmer.State != FarmerState.Running)
             {
                 _farmer.State = FarmerState.Idle;
             }

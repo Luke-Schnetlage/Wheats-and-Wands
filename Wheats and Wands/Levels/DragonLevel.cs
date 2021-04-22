@@ -1,8 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using Wheats_and_Wands.Entities;
 using Wheats_and_Wands.Graphics;
 using Wheats_and_Wands.System;
@@ -25,7 +23,7 @@ namespace Wheats_and_Wands.Levels
         private List<ScrollBackground> _scrollBackgrounds;
 
         public DragonLevel(Farmer farmer, GameState gameState, Texture2D floor, Texture2D firstLayer, Texture2D secondLayer, Texture2D thirdLayer,
-            Texture2D fourthLayer, Texture2D fifthLayer, Texture2D sixthLayer, Texture2D seventhLayer, Texture2D lastLayer, Texture2D dragonTexture, 
+            Texture2D fourthLayer, Texture2D fifthLayer, Texture2D sixthLayer, Texture2D seventhLayer, Texture2D lastLayer, Texture2D dragonTexture,
             Texture2D firebreath)
         {
             _gameState = gameState;

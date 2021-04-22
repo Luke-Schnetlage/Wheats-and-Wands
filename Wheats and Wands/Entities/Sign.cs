@@ -1,8 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Wheats_and_Wands.Graphics;
 
 namespace Wheats_and_Wands.Entities
@@ -14,7 +11,7 @@ namespace Wheats_and_Wands.Entities
         string _message;
         bool collision;
         private Farmer _farmer;
-        public Sign(Sprite sprite, Texture2D msgbox,SpriteFont font,Farmer farmer ,string message) : base(sprite,farmer)
+        public Sign(Sprite sprite, Texture2D msgbox, SpriteFont font, Farmer farmer, string message) : base(sprite, farmer)
         {
             _sprite = sprite;
             _messageBox = new MessageBox(new Sprite(msgbox, 0, 0, 347, 77), font);

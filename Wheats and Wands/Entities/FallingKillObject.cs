@@ -1,7 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using Wheats_and_Wands.Graphics;
 
 namespace Wheats_and_Wands.Entities
@@ -22,12 +20,12 @@ namespace Wheats_and_Wands.Entities
             falling = false;
             startPos = sprite.position;
             groundY = 400;
-            _lastFallTime = new TimeSpan(0,0,0,0);
+            _lastFallTime = new TimeSpan(0, 0, 0, 0);
         }
 
         public void Update(GameTime gameTime)
         {
-            if(_lastFallTime + _hangTime < gameTime.TotalGameTime)
+            if (_lastFallTime + _hangTime < gameTime.TotalGameTime)
             {
                 falling = true;
                 _lastFallTime = gameTime.TotalGameTime;
@@ -46,22 +44,22 @@ namespace Wheats_and_Wands.Entities
         {
             if (falling)
             {
-            _verticalVelocity += 1000f * (float)gameTime.ElapsedGameTime.TotalSeconds;
-            _sprite.position = new Vector2(_sprite.position.X, _sprite.position.Y + _verticalVelocity * (float)gameTime.ElapsedGameTime.TotalSeconds);
+                _verticalVelocity += 1000f * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                _sprite.position = new Vector2(_sprite.position.X, _sprite.position.Y + _verticalVelocity * (float)gameTime.ElapsedGameTime.TotalSeconds);
             }
 
         }
 
         private void Reset()
         {
-            if (_sprite.position.Y -_sprite.Height > groundY)
+            if (_sprite.position.Y - _sprite.Height > groundY)
             {
-                
+
                 _sprite.position = startPos;
                 falling = false;
                 _verticalVelocity = 0;
             }
-            
+
         }
     }
 }

@@ -2,8 +2,6 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Media;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using Wheats_and_Wands.Graphics;
 using Wheats_and_Wands.System;
 
@@ -34,7 +32,7 @@ namespace Wheats_and_Wands.Levels
         Sprite _minusButtonSprite;
         Button _minusButton;
 
-        public OptionScreen(GameState gameState,Texture2D optionsScreen,Texture2D titleScreenSheet, SpriteFont font)
+        public OptionScreen(GameState gameState, Texture2D optionsScreen, Texture2D titleScreenSheet, SpriteFont font)
         {
             _gameState = gameState;
             _font = font;
@@ -45,7 +43,7 @@ namespace Wheats_and_Wands.Levels
             _menuButton = new Button(_menuButtonSprite);
             _menuButton.Click += _menuButton_Click;
 
-            _muteButtonSprite = new Sprite(titleScreenSheet, 357, 644, 250, 70, new Vector2(WheatandWandsGame.WINDOW_WIDTH/2 -125, 540+200));
+            _muteButtonSprite = new Sprite(titleScreenSheet, 357, 644, 250, 70, new Vector2(WheatandWandsGame.WINDOW_WIDTH / 2 - 125, 540 + 200));
             _muteButton = new Button(_muteButtonSprite);
             _muteButton.Click += _muteButton_Click;
 
@@ -64,14 +62,14 @@ namespace Wheats_and_Wands.Levels
             if (MediaPlayer.IsMuted)
             {
                 MediaPlayer.IsMuted = false;
-            } 
+            }
             else
             {
                 MediaPlayer.IsMuted = true;
             }
 
         }
-        
+
         public void _menuButton_Click(object sender, EventArgs e)
         {
             _gameState.state = States.TitleScreen;
@@ -79,22 +77,22 @@ namespace Wheats_and_Wands.Levels
 
         public void _plusButton_Click(object sender, EventArgs e)
         {
-            
+
             MediaPlayer.Volume = MediaPlayer.Volume + 0.1f;
-            
+
         }
         public void _minusButton_Click(object sender, EventArgs e)
         {
-            
-            
+
+
             MediaPlayer.Volume = MediaPlayer.Volume - 0.1f;
-            
+
         }
         public override void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
             spriteBatch.Draw(_optionsScreen, new Vector2(0, 0), Color.Black);
-            
-            _menuButton.Draw(gameTime,spriteBatch);
+
+            _menuButton.Draw(gameTime, spriteBatch);
             _muteButton.Draw(gameTime, spriteBatch);
             //_plusButton.Draw(gameTime, spriteBatch);
             //_minusButton.Draw(gameTime, spriteBatch);

@@ -1,8 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using Wheats_and_Wands.Entities;
 using Wheats_and_Wands.Graphics;
 using Wheats_and_Wands.System;
@@ -30,7 +28,7 @@ namespace Wheats_and_Wands.Levels
         List<SquareBlock> haybales;
         List<SquareBlock> floatinghaybales;
 
-        public FarmToCave(Farmer farmer, GameState gameState, Texture2D floor, Texture2D secondLayer, Texture2D thirdLayer, 
+        public FarmToCave(Farmer farmer, GameState gameState, Texture2D floor, Texture2D secondLayer, Texture2D thirdLayer,
             Texture2D farClouds, Texture2D fastClouds, Texture2D sky, Texture2D haybale)
         {
             _farmer = farmer;
@@ -38,13 +36,13 @@ namespace Wheats_and_Wands.Levels
             _farmerStartPos = new Vector2(50, 325 - 35);
 
             _hayBale1 = new SquareBlock(new Sprite(haybale, 0, 0, 64, 64, new Vector2(150, 400 - 35)), farmer);
-            _hayBale2 = new SquareBlock(new Sprite(haybale, 0, 0, 64, 64, new Vector2(150+64, 400 - 35)), farmer);
-            _hayBale3 = new SquareBlock(new Sprite(haybale, 0, 0, 64, 64, new Vector2(150+64, 400 - 64 - 35)), farmer);
+            _hayBale2 = new SquareBlock(new Sprite(haybale, 0, 0, 64, 64, new Vector2(150 + 64, 400 - 35)), farmer);
+            _hayBale3 = new SquareBlock(new Sprite(haybale, 0, 0, 64, 64, new Vector2(150 + 64, 400 - 64 - 35)), farmer);
             _hayBale4 = new SquareBlock(new Sprite(haybale, 0, 0, 64, 64, new Vector2(600, 400 - 35)), farmer);
-            _hayBale5 = new SquareBlock(new Sprite(haybale, 0, 0, 64, 64, new Vector2(600 , 400 - 64 - 35)), farmer);
+            _hayBale5 = new SquareBlock(new Sprite(haybale, 0, 0, 64, 64, new Vector2(600, 400 - 64 - 35)), farmer);
             _hayBale6 = new SquareBlock(new Sprite(haybale, 0, 0, 64, 64, new Vector2(600 + 64, 400 - 35)), farmer);
-            _floatinghayBale1 = new SquareBlock(new Sprite(haybale, 0, 0, 64, 64, new Vector2(150 + 128 + 45 , 400 - 64 - 35)), farmer);//+75
-            _floatinghayBale2 = new SquareBlock(new Sprite(haybale, 0, 0, 64, 64, new Vector2(600 - 64 - 45 , 400 - 64 - 35)), farmer);//-75
+            _floatinghayBale1 = new SquareBlock(new Sprite(haybale, 0, 0, 64, 64, new Vector2(150 + 128 + 45, 400 - 64 - 35)), farmer);//+75
+            _floatinghayBale2 = new SquareBlock(new Sprite(haybale, 0, 0, 64, 64, new Vector2(600 - 64 - 45, 400 - 64 - 35)), farmer);//-75
 
             haybales = new List<SquareBlock>();
             haybales.Add(_hayBale1);
@@ -107,14 +105,14 @@ namespace Wheats_and_Wands.Levels
             //else
             //    _farmer.HorizontalVelocity.X = 0f;
 
-            
+
 
 
             _farmer.Update(gameTime);
             _farmer._groundY = _farmerStartPos.Y;
 
             int movmentspeed = 0;
-            
+
             if ((int)gameTime.TotalGameTime.TotalSeconds % 4 == 0)
             {
                 movmentspeed = 2;
@@ -124,7 +122,7 @@ namespace Wheats_and_Wands.Levels
                 movmentspeed = -2;
             }
 
-            if (_floatinghayBale1._sprite.position.X + movmentspeed > 150 + 64 + 64 && _floatinghayBale1._sprite.position.X + movmentspeed + 64 < 150 + 64 + 225 )
+            if (_floatinghayBale1._sprite.position.X + movmentspeed > 150 + 64 + 64 && _floatinghayBale1._sprite.position.X + movmentspeed + 64 < 150 + 64 + 225)
             {
                 _floatinghayBale1._sprite.position = new Vector2(_floatinghayBale1._sprite.position.X + movmentspeed, _floatinghayBale1._sprite.position.Y);
                 if (_floatinghayBale1.TopCollision(_farmer))
@@ -137,7 +135,7 @@ namespace Wheats_and_Wands.Levels
                     _farmer.Position = new Vector2(_farmer.Position.X - movmentspeed, _farmer.Position.Y);
                 }
             }
-            
+
             if (_farmer.Position.Y + _farmer._sprite.Height > 400 &&
                 _farmer.Position.X > 150 + 64 &&
                 _farmer.Position.X < 600)
@@ -145,7 +143,7 @@ namespace Wheats_and_Wands.Levels
                 _farmer.IsAlive = false;
                 _farmer.Respawn();
             }
-            
+
             foreach (SquareBlock haybale in haybales)
             {
                 haybale.Update(gameTime);

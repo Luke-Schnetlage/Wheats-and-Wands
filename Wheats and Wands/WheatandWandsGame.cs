@@ -4,7 +4,6 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using System;
-using System.Collections.Generic;
 using Wheats_and_Wands.Entities;
 using Wheats_and_Wands.Graphics;
 using Wheats_and_Wands.Levels;
@@ -23,7 +22,7 @@ namespace Wheats_and_Wands
 
         public static Game _game;
 
-        
+
         //level systems
         GameState _gameState;
         GameState _playerProgress;
@@ -110,7 +109,7 @@ namespace Wheats_and_Wands
         //Farmer _player;
         Vector2 playerPosition;
 
-        
+
         public SpriteFont _font { get; private set; } //Added
         //SpriteFont _artFont; //Added, Not implemented
         //SpriteFont _musicFont; //Added, Not implemented
@@ -148,11 +147,11 @@ namespace Wheats_and_Wands
 
         protected override void Initialize()
         {
-            
+
             _graphics.PreferredBackBufferHeight = WINDOW_HEIGHT;
             _graphics.PreferredBackBufferWidth = WINDOW_WIDTH;
             _graphics.ApplyChanges();
-            
+
             _gameState = new GameState();
             _playerProgress = new GameState();
             _levelTimer = 0;
@@ -161,17 +160,17 @@ namespace Wheats_and_Wands
             //_gameState.state = States.CaveToCastle;
             //IMPORTANT!!! REMOVE AFTER CASTLE TESTING
 
-            playerPosition = new Vector2(100 , (_graphics.PreferredBackBufferHeight / 2) + 15 ); //defaults player to center of the screen
+            playerPosition = new Vector2(100, (_graphics.PreferredBackBufferHeight / 2) + 15); //defaults player to center of the screen
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            
+
             //backgrounds
             _titleScreenSprite = Content.Load<Texture2D>("Backgrounds/Title screen");
-            _creditScreenSprite = Content.Load<Texture2D>("Backgrounds/Credits Screen"); 
+            _creditScreenSprite = Content.Load<Texture2D>("Backgrounds/Credits Screen");
             _caveBackGround = Content.Load<Texture2D>("Backgrounds/Cave Background");
 
             //Farm Background Layers (and Tutorial too)
@@ -197,7 +196,7 @@ namespace Wheats_and_Wands
             _castleFloor = Content.Load<Texture2D>("Backgrounds/CastleLayer/CastleFloor");
             _castleFirstLayer = Content.Load<Texture2D>("Backgrounds/CastleLayer/CastleFirstLayer");
             _castleSecondLayer = Content.Load<Texture2D>("Backgrounds/CastleLayer/CastleSecondLayer");
-            _castleThirdLayer= Content.Load<Texture2D>("Backgrounds/CastleLayer/CastleThirdLayer");
+            _castleThirdLayer = Content.Load<Texture2D>("Backgrounds/CastleLayer/CastleThirdLayer");
             _castleFourthLayer = Content.Load<Texture2D>("Backgrounds/CastleLayer/CastleFourthLayer");
             _castleFifthLayer = Content.Load<Texture2D>("Backgrounds/CastleLayer/CastleFifthLayer");
             _castleSixthLayer = Content.Load<Texture2D>("Backgrounds/CastleLayer/CastleSixthLayer");
@@ -240,7 +239,7 @@ namespace Wheats_and_Wands
             _wizardFarmerSheet = Content.Load<Texture2D>("AltSkin walk cycle");
 
             //fonts
-            _font = Content.Load<SpriteFont>("Spritefonts/Credits"); 
+            _font = Content.Load<SpriteFont>("Spritefonts/Credits");
 
             //music
             _tutorialTheme = Content.Load<Song>("music_orlamusic_Happy+006");
@@ -256,24 +255,24 @@ namespace Wheats_and_Wands
 
             //system controls
             _displayOptions = new Display_Options(_graphics);
-            _inputController = new InputController(_farmer, _displayOptions,_jumpSound);
+            _inputController = new InputController(_farmer, _displayOptions, _jumpSound);
             _musicManager = new MusicManager(_gameState, _titleTheme, _tutorialTheme, _caveTheme, _castleTheme, _dragonTheme);
             _skipLevelButton = new Button(new Sprite(_titleScreenSprite, 357, 644, 250, 70, new Vector2(25, 25 + 540)));
             _skipLevelButton.Click += _skipLevelButton_Click;
 
             //levels
             _titleScreen = new TitleScreen(_titleScreenSprite, _gameState);
-            _creditScreen = new CreditScreen(_creditScreenSprite,_font,_titleScreenSprite,_gameState);
+            _creditScreen = new CreditScreen(_creditScreenSprite, _font, _titleScreenSprite, _gameState);
             _stageSelectMenu = new StageSelectMenu(_playerProgress, _gameState, _creditScreenSprite, _miniFarm, _miniCave, _miniCastle);
-            _optionScreen = new OptionScreen(_gameState,_creditScreenSprite, _titleScreenSprite, _font);
-            _tutorial = new TutorialFarm(_farmer, _sign, _textbox, _hayBale ,_font,_gameState, _barn, _tutorialFarmBackground,
+            _optionScreen = new OptionScreen(_gameState, _creditScreenSprite, _titleScreenSprite, _font);
+            _tutorial = new TutorialFarm(_farmer, _sign, _textbox, _hayBale, _font, _gameState, _barn, _tutorialFarmBackground,
                 _tutorialSecondLayer, _tutorialThirdLayer, _tutorialLastLayer, _farClouds, _fastClouds);
             _cave = new Cave(_farmer, _gameState, _caveFloor, _caveFirstLayer, _caveSecondLayer, _caveThirdLayer, _caveFourthLayer,
-                _caveFifthLayer, _caveSixthLayer, _spikes, _cavePits,_orb);
+                _caveFifthLayer, _caveSixthLayer, _spikes, _cavePits, _orb);
             _castle = new Castle(_farmer, _gameState, _castleFloor, _castleFirstLayer, _castleSecondLayer, _castleThirdLayer,
-                _castleFourthLayer, _castleFifthLayer, _castleSixthLayer, _castleSeventhLayer, _castleEighthLayer,_lava, _fireball,_orb);
-            _farmToCave = new FarmToCave(_farmer, _gameState, _ftc, _tutorialSecondLayer, _tutorialThirdLayer, _farClouds, 
-                _fastClouds, _tutorialLastLayer,_hayBale);
+                _castleFourthLayer, _castleFifthLayer, _castleSixthLayer, _castleSeventhLayer, _castleEighthLayer, _lava, _fireball, _orb);
+            _farmToCave = new FarmToCave(_farmer, _gameState, _ftc, _tutorialSecondLayer, _tutorialThirdLayer, _farClouds,
+                _fastClouds, _tutorialLastLayer, _hayBale);
             _caveToCastle = new CaveToCastle(_farmer, _gameState, _ctcFront, _ctcBack, _caveSecondLayer, _caveThirdLayer, _caveFourthLayer,
                 _caveFifthLayer, _caveSixthLayer, _spikes, _totemHead, _textbox, _font);
             _dragonLevel = new DragonLevel(_farmer, _gameState, _castleFloor, _castleFirstLayer, _castleSecondLayer, _castleThirdLayer,
@@ -286,7 +285,8 @@ namespace Wheats_and_Wands
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape)) {
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            {
                 _gameState.state = States.TitleScreen;
             }
             _prevLevel = _level;
@@ -362,7 +362,7 @@ namespace Wheats_and_Wands
             _level.Update(gameTime);
 
             base.Update(gameTime);
-            
+
             _musicManager.Play();
         }
 
@@ -373,18 +373,18 @@ namespace Wheats_and_Wands
             // TODO: Add your drawing code here
             _spriteBatch.Begin(SpriteSortMode.BackToFront);
             GraphicsDevice.Clear(Color.Black);
-            
+
 
             _level.Draw(_spriteBatch, gameTime);
 
 
-            if  (_gameState.state > States.OptionsScreen && _levelTimer > 10)
+            if (_gameState.state > States.OptionsScreen && _levelTimer > 10)
             {
                 _skipLevelButton.Draw(gameTime, _spriteBatch);
                 _spriteBatch.DrawString(_font, "SKIP", new Vector2(130, 50), Color.White);
             }
 
-            
+
             _spriteBatch.End();
             base.Draw(gameTime);
         }

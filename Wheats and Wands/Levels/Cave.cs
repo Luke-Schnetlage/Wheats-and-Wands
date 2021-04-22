@@ -1,8 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using Wheats_and_Wands.Entities;
 using Wheats_and_Wands.Graphics;
 using Wheats_and_Wands.System;
@@ -26,9 +24,9 @@ namespace Wheats_and_Wands.Levels
         private List<Pit> pits;
 
         SkinSwapOrb _orb;
-        
+
         float _speed;
-        
+
 
         private List<ScrollBackground> _scrollBackgrounds;
         public Cave(Farmer farmer, GameState gameState, Texture2D floor, Texture2D firstLayer, Texture2D secondLayer,
@@ -38,7 +36,7 @@ namespace Wheats_and_Wands.Levels
             _gameState = gameState;
             _farmer = farmer;
             _farmerStartPos = new Vector2(50, 290);//290
-            _smallSpike = new Spike(new Sprite(spikeTextures, 0, 0, 87, 63, new Vector2(603, WheatandWandsGame.WINDOW_HEIGHT-63)),_farmer);
+            _smallSpike = new Spike(new Sprite(spikeTextures, 0, 0, 87, 63, new Vector2(603, WheatandWandsGame.WINDOW_HEIGHT - 63)), _farmer);
             _bigSpike = new Spike(new Sprite(spikeTextures, 122, 0, 81, 69, new Vector2(330, WheatandWandsGame.WINDOW_HEIGHT - 69)), _farmer);
 
             _smallPit = new Pit(new Sprite(pitTextures, 330, 408, 75, 132, new Vector2(330, 408)), _farmer);
@@ -106,14 +104,14 @@ namespace Wheats_and_Wands.Levels
                 p.Draw(spriteBatch, gameTime);
 
             }
-            
+
 
 
 
             foreach (var scrollBackground in _scrollBackgrounds)
                 scrollBackground.Draw(gameTime, spriteBatch);
 
-            
+
         }
 
         public override void Update(GameTime gameTime)
@@ -125,7 +123,7 @@ namespace Wheats_and_Wands.Levels
 
             _farmer._groundY = _farmerStartPos.Y;
 
-            
+
 
             int smallPitEdge = (int)_smallPit._sprite.position.X;
             int bigPitEdge = (int)_bigPit._sprite.position.X;
@@ -137,7 +135,7 @@ namespace Wheats_and_Wands.Levels
             {
                 _farmer._groundY = WheatandWandsGame.WINDOW_HEIGHT - 10;
             }
-            if(smallPitEdge < _farmerStartPos.X + _farmer._sprite.Width && smallPitEdge + _smallPit._sprite.Width > _farmerStartPos.X) //+ _farmer._sprite.Width/2)
+            if (smallPitEdge < _farmerStartPos.X + _farmer._sprite.Width && smallPitEdge + _smallPit._sprite.Width > _farmerStartPos.X) //+ _farmer._sprite.Width/2)
             {
                 _farmerStartPos = new Vector2(smallPitEdge + _smallPit._sprite.Width + 50, _farmerStartPos.Y);
             }
@@ -169,7 +167,7 @@ namespace Wheats_and_Wands.Levels
 
                 s._sprite.position = new Vector2(s._sprite.position.X - _speed, s._sprite.position.Y);
             }
-            
+
             foreach (Pit p in pits)
             {
                 p.Update(gameTime);

@@ -2,8 +2,6 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using Wheats_and_Wands.Graphics;
 
 namespace Wheats_and_Wands.System
@@ -22,9 +20,9 @@ namespace Wheats_and_Wands.System
         public string Text { get; set; }
         public Rectangle Rectangle //Size of the button
         {
-           get
+            get
             {
-                return new Rectangle((int)_sprite.position.X , (int)_sprite.position.Y - 540, _sprite.Width, _sprite.Height);
+                return new Rectangle((int)_sprite.position.X, (int)_sprite.position.Y - 540, _sprite.Width, _sprite.Height);
             }
         }
 
@@ -44,11 +42,11 @@ namespace Wheats_and_Wands.System
             _sprite.Draw(spriteBatch, new Vector2(_sprite.position.X, _sprite.position.Y - 540));
         }
 
-        public void Draw(GameTime gameTime, SpriteBatch spriteBatch,Color color)
+        public void Draw(GameTime gameTime, SpriteBatch spriteBatch, Color color)
         {
-            
-             _sprite.TintColor = color;
-            
+
+            _sprite.TintColor = color;
+
 
             _sprite.Draw(spriteBatch, new Vector2(_sprite.position.X, _sprite.position.Y - 540));
         }

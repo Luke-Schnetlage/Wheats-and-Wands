@@ -1,8 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using Wheats_and_Wands.Graphics;
 using Wheats_and_Wands.System;
 
@@ -16,14 +14,14 @@ namespace Wheats_and_Wands.Levels
         Button _caveButton;
         Button _castleButton;
         Texture2D _background;
-        public StageSelectMenu(GameState playerProgress, GameState gameState,Texture2D background, Texture2D farm, Texture2D Cave, Texture2D Castle)
+        public StageSelectMenu(GameState playerProgress, GameState gameState, Texture2D background, Texture2D farm, Texture2D Cave, Texture2D Castle)
         {
             _playerProgress = playerProgress;
             _gameState = gameState;
             _background = background;
-            _farmButton = new Button(new Sprite(farm, 0, 0, 320, 180, new Vector2(0,540)));
+            _farmButton = new Button(new Sprite(farm, 0, 0, 320, 180, new Vector2(0, 540)));
             _farmButton.Click += _farmButton_Click;
-            _caveButton = new Button(new Sprite(Cave, 0, 0, 320, 180, new Vector2(320, 180+ 540)));
+            _caveButton = new Button(new Sprite(Cave, 0, 0, 320, 180, new Vector2(320, 180 + 540)));
             _caveButton.Click += _caveButton_Click;
             _castleButton = new Button(new Sprite(Castle, 0, 0, 320, 180, new Vector2(640, 360 + 540)));
             _castleButton.Click += _castleButton_Click;
@@ -53,8 +51,8 @@ namespace Wheats_and_Wands.Levels
             _farmButton.Update(gameTime);
             _caveButton.Update(gameTime);
             _castleButton.Update(gameTime);
-            
-            
+
+
         }
 
 
@@ -66,8 +64,8 @@ namespace Wheats_and_Wands.Levels
         {
             if (_playerProgress.state >= States.Cave)
                 _gameState.state = States.Cave;
-            
-                
+
+
         }
         public void _castleButton_Click(object sender, EventArgs e)
         {

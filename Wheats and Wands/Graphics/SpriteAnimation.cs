@@ -1,9 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Linq;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace Wheats_and_Wands.Graphics
 {
@@ -46,7 +45,7 @@ namespace Wheats_and_Wands.Graphics
         public bool IsPlaying { get; private set; }
         public bool ShouldLoop { get; set; } = true;
 
-        
+
         public void AddFrame(Sprite sprite, float timeStamp)
         {
             SpriteAnimationFrame frame = new SpriteAnimationFrame(sprite, timeStamp);
@@ -60,7 +59,7 @@ namespace Wheats_and_Wands.Graphics
             {
                 PlaybackProgress += (float)gametime.ElapsedGameTime.TotalSeconds;
 
-                if(PlaybackProgress > Duration)
+                if (PlaybackProgress > Duration)
                 {
                     if (ShouldLoop)
                     {
@@ -78,10 +77,10 @@ namespace Wheats_and_Wands.Graphics
         {
             SpriteAnimationFrame frame = CurrentFrame;
 
-            if(frame != null)
+            if (frame != null)
             {
-                frame.Sprite.Draw(spriteBatch, position,effect);
-                
+                frame.Sprite.Draw(spriteBatch, position, effect);
+
             }
         }
 
@@ -98,19 +97,19 @@ namespace Wheats_and_Wands.Graphics
 
         public SpriteAnimationFrame GetFrame(int index)
         {
-            if(index < 0 || index >= _frames.Count)
+            if (index < 0 || index >= _frames.Count)
             {
                 throw new ArgumentOutOfRangeException(nameof(index), "A frame with index " + index + " does not exist in this animation");
             }
 
             return _frames[index];
         }
-        
+
         public void Clear()
         {
             Stop();
             _frames.Clear();
-            
+
         }
     }
 }

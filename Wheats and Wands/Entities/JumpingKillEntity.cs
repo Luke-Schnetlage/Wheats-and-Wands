@@ -1,8 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Wheats_and_Wands.Graphics;
 
 namespace Wheats_and_Wands.Entities
@@ -35,7 +32,7 @@ namespace Wheats_and_Wands.Entities
 
         public override void Update(GameTime gameTime)
         {
-            
+
             Kill(_farmer);
             if (_sprite.position.Y > 420)
             {

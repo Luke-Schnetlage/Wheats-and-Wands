@@ -1,9 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Wheats_and_Wands.Graphics;
 
 namespace Wheats_and_Wands.Entities
@@ -23,7 +19,7 @@ namespace Wheats_and_Wands.Entities
         public FarmerState State { get; set; }
         public Skins skin { get; set; }
         public Rectangle rectangle { get; set; }
-        
+
         public int DrawOrder { set; get; }
         public bool IsAlive { get; set; }
         public bool OnGround { get; set; }
@@ -47,7 +43,7 @@ namespace Wheats_and_Wands.Entities
         private float _verticalVelocity;
         public float _groundY { get; set; }
 
-        
+
 
 
         public Farmer(Texture2D spriteSheet, Vector2 position, Texture2D _heartSheet, Texture2D _fancyFarmerSheet, Texture2D _wizardFarmerSheet)
@@ -72,15 +68,15 @@ namespace Wheats_and_Wands.Entities
             skin = Skins.farmer;
 
             _farmerWalkCycle = new SpriteAnimation();
-            _farmerWalkCycle.AddFrame(new Sprite(spriteSheet, (64 * 1)  ,0, 64, 128), 0);
-            _farmerWalkCycle.AddFrame(new Sprite(spriteSheet, (64 * 2) , 0, 64, 128), 1/10f);
-            _farmerWalkCycle.AddFrame(new Sprite(spriteSheet, (64 * 3) , 0, 64, 128), 2/10f);
-            _farmerWalkCycle.AddFrame(new Sprite(spriteSheet, (64 * 0) , (128 * 1), 64, 128), 3/10f);
-            _farmerWalkCycle.AddFrame(new Sprite(spriteSheet, (64 * 1) , (128 * 1), 64, 128), 4/10f);
-            _farmerWalkCycle.AddFrame(new Sprite(spriteSheet, (64 * 2) , (128 * 1), 64, 128), 5/10f);
-            _farmerWalkCycle.AddFrame(new Sprite(spriteSheet, (64 * 3) , (128 * 1), 64, 128), 6/10f);
-            _farmerWalkCycle.AddFrame(new Sprite(spriteSheet, (64 * 0) , (128 * 2), 64, 128), 7/10f);
-            _farmerWalkCycle.AddFrame(_farmerWalkCycle[0].Sprite, 8/10f);
+            _farmerWalkCycle.AddFrame(new Sprite(spriteSheet, (64 * 1), 0, 64, 128), 0);
+            _farmerWalkCycle.AddFrame(new Sprite(spriteSheet, (64 * 2), 0, 64, 128), 1 / 10f);
+            _farmerWalkCycle.AddFrame(new Sprite(spriteSheet, (64 * 3), 0, 64, 128), 2 / 10f);
+            _farmerWalkCycle.AddFrame(new Sprite(spriteSheet, (64 * 0), (128 * 1), 64, 128), 3 / 10f);
+            _farmerWalkCycle.AddFrame(new Sprite(spriteSheet, (64 * 1), (128 * 1), 64, 128), 4 / 10f);
+            _farmerWalkCycle.AddFrame(new Sprite(spriteSheet, (64 * 2), (128 * 1), 64, 128), 5 / 10f);
+            _farmerWalkCycle.AddFrame(new Sprite(spriteSheet, (64 * 3), (128 * 1), 64, 128), 6 / 10f);
+            _farmerWalkCycle.AddFrame(new Sprite(spriteSheet, (64 * 0), (128 * 2), 64, 128), 7 / 10f);
+            _farmerWalkCycle.AddFrame(_farmerWalkCycle[0].Sprite, 8 / 10f);
             _farmerWalkCycle.Play();
 
             _fancyWalkCycle = new SpriteAnimation();
@@ -125,7 +121,7 @@ namespace Wheats_and_Wands.Entities
             _deathAnimation.AddFrame(new Sprite(_heartSheet, (3 * 120), (2 * 120), 120, 120), 12 / 7f);
             _deathAnimation.AddFrame(new Sprite(_heartSheet, (0 * 120), (3 * 120), 120, 120), 13 / 7f);
             _deathAnimation.AddFrame(new Sprite(_heartSheet, (1 * 120), (3 * 120), 120, 120), 14 / 7f);
-            
+
             _deathAnimation.ShouldLoop = false;
 
 
@@ -153,7 +149,7 @@ namespace Wheats_and_Wands.Entities
             }
             else if (State == FarmerState.Jumping || State == FarmerState.Falling)
             {
-                IdlePose.Draw(spriteBatch, Position,_effect);
+                IdlePose.Draw(spriteBatch, Position, _effect);
                 _sprite = IdlePose;
             }
             if (State == FarmerState.Running)
@@ -161,11 +157,11 @@ namespace Wheats_and_Wands.Entities
                 _WalkCycle.Draw(spriteBatch, Position, _effect);
                 _sprite = _WalkCycle.CurrentFrame.Sprite;
             }
-            
-            
-            if (_deathAnimation.PlaybackProgress == _deathAnimation.Duration )
+
+
+            if (_deathAnimation.PlaybackProgress == _deathAnimation.Duration)
                 _deathAnimation.Stop();
-            
+
             _deathAnimation.Draw(spriteBatch, new Vector2(960 / 2 - 60, 540 / 2 - 60), SpriteEffects.None);
         }
 
@@ -189,7 +185,7 @@ namespace Wheats_and_Wands.Entities
 
             _deathAnimation.Update(gameTime);
             IsAlive = true;
-            if (Position.Y  < _groundY)
+            if (Position.Y < _groundY)
             {
                 OnGround = false;
             }
@@ -212,12 +208,12 @@ namespace Wheats_and_Wands.Entities
         }
         public bool BeginJump()
         {
-            
+
             if (State == FarmerState.Jumping || State == FarmerState.Falling)
             {
                 return false;
             }
-            
+
             State = FarmerState.Jumping;
             OnGround = false;
             _verticalVelocity = JUMP_START_VELOCITY;
@@ -274,7 +270,7 @@ namespace Wheats_and_Wands.Entities
 
         public void Respawn()
         {
-            if(IsAlive == false)
+            if (IsAlive == false)
             {
                 Position = SpawnPosition;
                 _deathAnimation.Stop();

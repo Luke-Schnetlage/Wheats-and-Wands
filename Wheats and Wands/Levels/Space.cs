@@ -1,8 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using Wheats_and_Wands.Entities;
 using Wheats_and_Wands.Graphics;
 using Wheats_and_Wands.System;
@@ -32,7 +30,7 @@ namespace Wheats_and_Wands.Levels
             };
 
 
-        } 
+        }
 
         public override void Update(GameTime gameTime)
         {

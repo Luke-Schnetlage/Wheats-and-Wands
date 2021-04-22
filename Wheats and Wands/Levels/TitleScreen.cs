@@ -1,10 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Media;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using Wheats_and_Wands.Graphics;
 using Wheats_and_Wands.System;
 
@@ -35,7 +32,7 @@ namespace Wheats_and_Wands.Levels
         private List<Component> _buttonList;
 
 
-        public TitleScreen (Texture2D spriteSheet, GameState gameState)
+        public TitleScreen(Texture2D spriteSheet, GameState gameState)
         {
             _spriteSheet = spriteSheet;
             _gameState = gameState;
@@ -48,12 +45,12 @@ namespace Wheats_and_Wands.Levels
             _creditsButtonSprite = new Sprite(spriteSheet, 590, 800, 250, 70, new Vector2(590, 800));
             _optionsButtonSprite = new Sprite(spriteSheet, 590, 885, 250, 70, new Vector2(590, 885));
             _quitButtonSprite = new Sprite(spriteSheet, 120, 885, 250, 70, new Vector2(120, 885));
-            _stageSelectSprite = new Sprite(spriteSheet, 59, 637, 250, 70, new Vector2(960/2 - 125 , 885 + 85));
+            _stageSelectSprite = new Sprite(spriteSheet, 59, 637, 250, 70, new Vector2(960 / 2 - 125, 885 + 85));
 
 
             _newButton = new Button(_newButtonSprite);
             _newButton.Click += NewButton_Click;
-            
+
 
             _optionsButton = new Button(_optionsButtonSprite);
             _optionsButton.Click += OptionsButton_Click;
@@ -77,13 +74,13 @@ namespace Wheats_and_Wands.Levels
             };
 
         }
-    
+
 
         public override void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
             _spriteBatch = spriteBatch;
             _backGround.Draw(spriteBatch, new Vector2(0, 0));
-            foreach(Button button in _buttonList)
+            foreach (Button button in _buttonList)
             {
                 button.Draw(gameTime, spriteBatch);
             }
@@ -119,7 +116,7 @@ namespace Wheats_and_Wands.Levels
             {
                 componenet.Update(gameTime);
             }
-            
+
         }
 
     }
