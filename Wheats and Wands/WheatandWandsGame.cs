@@ -157,7 +157,7 @@ namespace Wheats_and_Wands
             _levelTimer = 0;
 
             //IMPORTANT!!! REMOVE AFTER CASTLE TESTING
-            //_gameState.state = States.CaveToCastle;
+            _gameState.state = States.Castle2;
             //IMPORTANT!!! REMOVE AFTER CASTLE TESTING
 
             playerPosition = new Vector2(100, (_graphics.PreferredBackBufferHeight / 2) + 15); //defaults player to center of the screen
@@ -355,7 +355,7 @@ namespace Wheats_and_Wands
                 _levelTimer = 0;
             }
 
-            if (_gameState.state > States.OptionsScreen && _levelTimer > 10)
+            if (_gameState.state > States.OptionsScreen && _levelTimer > 45 && _gameState.state < States.Castle2)
                 _skipLevelButton.Update(gameTime);
 
             _inputController.ProcessControls(gameTime);

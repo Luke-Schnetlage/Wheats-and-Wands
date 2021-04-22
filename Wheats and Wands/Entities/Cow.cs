@@ -6,37 +6,48 @@ namespace Wheats_and_Wands.Entities
 {
     class Cow : IGameEntity
     {
-        private const float MIN_JUMP_HEIGHT = 20f;
+       
         public const float GRAVITY = 1600f;
         private const float JUMP_START_VELOCITY = -500f;
-        private const float CANCEL_JUMP_VELOCITY = -100f;
 
-        public Sprite _cow;
+        public Sprite _sprite;
+        SpriteEffects effect = SpriteEffects.None;
 
-        public Vector2 Position { get; set; }
         public int DrawOrder { get; set; }
-        bool goingUp;
+        public Vector2 Position { get; set; }
         public float _verticalVelocity;
 
-        public Cow(Texture2D cow, Vector2 position)
+        public Cow(Sprite sprite)
         {
-            _cow = new Sprite(cow, 0, 0, 102, 65);
-            Position = position;
+
+            _sprite = sprite;
         }
 
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
-            _cow.Draw(spriteBatch, Position, SpriteEffects.None);
+            
+            if (gameTime.TotalGameTime.TotalSeconds % 2 == 0)
+                if (effect == SpriteEffects.None)
+                {
+                    effect = SpriteEffects.FlipHorizontally;
+                }
+                else
+                {
+                    effect = SpriteEffects.None;
+                }
+            _sprite.Draw(spriteBatch, _sprite.position, effect);
         }
 
         public void Update(GameTime gameTime)
         {
-            if (_cow.position.Y > 290)
+            //_verticalVelocity = 0;
+
+            if (_sprite.position.Y > 340)
             {
                 _verticalVelocity = JUMP_START_VELOCITY;
             }
             _verticalVelocity += GRAVITY * (float)gameTime.ElapsedGameTime.TotalSeconds;
-            _cow.position = new Vector2(_cow.position.X, _cow.position.Y + _verticalVelocity * (float)gameTime.ElapsedGameTime.TotalSeconds);
+            _sprite.position = new Vector2(_sprite.position.X, _sprite.position.Y + _verticalVelocity * (float)gameTime.ElapsedGameTime.TotalSeconds);
         }
 
 
