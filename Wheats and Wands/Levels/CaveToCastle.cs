@@ -74,7 +74,7 @@ namespace Wheats_and_Wands.Levels
         }
         public override void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
-
+            _farmer.Draw(spriteBatch, gameTime);
 
             _wideStalactite.Draw(spriteBatch, gameTime);
             _skinnyStalactite.Draw(spriteBatch, gameTime);
@@ -87,7 +87,6 @@ namespace Wheats_and_Wands.Levels
             }
             foreach (var scrollBackground in _scrollBackgrounds)
                 scrollBackground.Draw(gameTime, spriteBatch);
-            _farmer.Draw(spriteBatch, gameTime);
         }
         public override void Update(GameTime gameTime)
         {

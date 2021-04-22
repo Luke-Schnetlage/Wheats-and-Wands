@@ -155,7 +155,7 @@ namespace Wheats_and_Wands
             _spriteBatch = new SpriteBatch(GraphicsDevice); //initalizes spriteBatch
 
             //IMPORTANT!!! REMOVE AFTER CASTLE TESTING
-            //_gameState.state = States.Castle2;
+            //_gameState.state = States.Castle;
             //IMPORTANT!!! REMOVE AFTER CASTLE TESTING
 
             playerPosition = new Vector2(100, (_graphics.PreferredBackBufferHeight / 2) + 15); //defaults player to 100,495
@@ -278,7 +278,7 @@ namespace Wheats_and_Wands
             _dragonLevel = new DragonLevel(_farmer, _gameState, _castleFloor, _castleFirstLayer, _castleSecondLayer, _castleThirdLayer,
                 _castleFourthLayer, _castleFifthLayer, _castleSixthLayer, _castleSeventhLayer, _castleEighthLayer, _dragon, _fireBreath);
             _castle2 = new Castle2(_farmer, _gameState, _castleFloor, _castleFirstLayer, _castleSecondLayer, _castleThirdLayer,
-                _castleFourthLayer, _castleFifthLayer, _castleSixthLayer, _castleSeventhLayer, _castleEighthLayer, _cow);
+                _castleFourthLayer, _castleFifthLayer, _castleSixthLayer, _castleSeventhLayer, _castleEighthLayer, _cow, _font);
             _spaceLevel = new Space(_spaceBackground, _farmer, _gameState, _asteroid, _font);
 
         }
