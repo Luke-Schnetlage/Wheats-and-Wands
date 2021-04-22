@@ -26,6 +26,7 @@ namespace Wheats_and_Wands
         
         //level systems
         GameState _gameState;
+        GameState _playerProgress;
         Level _level;
         Level _prevLevel;
         TitleScreen _titleScreen;
@@ -151,6 +152,7 @@ namespace Wheats_and_Wands
             _graphics.ApplyChanges();
             
             _gameState = new GameState();
+            _playerProgress = new GameState();
             _levelTimer = 0;
 
             //IMPORTANT!!! REMOVE AFTER CASTLE TESTING
@@ -259,7 +261,7 @@ namespace Wheats_and_Wands
             //levels
             _titleScreen = new TitleScreen(_titleScreenSprite, _gameState);
             _creditScreen = new CreditScreen(_creditScreenSprite,_font,_titleScreenSprite,_gameState);
-            _stageSelectMenu = new StageSelectMenu(_gameState, _creditScreenSprite, _miniFarm, _miniCave, _miniCastle);
+            _stageSelectMenu = new StageSelectMenu(_playerProgress, _gameState, _creditScreenSprite, _miniFarm, _miniCave, _miniCastle);
             _optionScreen = new OptionScreen(_gameState,_creditScreenSprite, _titleScreenSprite, _font);
             _tutorial = new TutorialFarm(_farmer, _sign, _textbox, _hayBale ,_font,_gameState, _barn, _tutorialFarmBackground,
                 _tutorialSecondLayer, _tutorialThirdLayer, _tutorialLastLayer, _farClouds, _fastClouds);
@@ -311,6 +313,10 @@ namespace Wheats_and_Wands
             }
             if (_gameState.state == States.Cave)
             {
+                if (_playerProgress.state < States.Cave)
+                {
+                    _playerProgress.state = States.Cave;
+                }
                 _level = _cave;
             }
             if (_gameState.state == States.CaveToCastle)
@@ -319,6 +325,10 @@ namespace Wheats_and_Wands
             }
             if (_gameState.state == States.Castle)
             {
+                if (_playerProgress.state < States.Castle)
+                {
+                    _playerProgress.state = States.Castle;
+                }
                 _level = _castle;
             }
             if (_gameState.state == States.DragonLevel)

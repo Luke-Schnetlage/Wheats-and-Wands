@@ -44,6 +44,17 @@ namespace Wheats_and_Wands.System
             _sprite.Draw(spriteBatch, new Vector2(_sprite.position.X, _sprite.position.Y - 540));
         }
 
+        public void Draw(GameTime gameTime, SpriteBatch spriteBatch,Color color)
+        {
+            
+             _sprite.TintColor = color;
+            
+
+            _sprite.Draw(spriteBatch, new Vector2(_sprite.position.X, _sprite.position.Y - 540));
+        }
+
+
+
         public override void Update(GameTime gameTime)
         {
             _previousMouse = _currentMouse;

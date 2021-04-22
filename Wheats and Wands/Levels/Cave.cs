@@ -125,7 +125,7 @@ namespace Wheats_and_Wands.Levels
 
             _farmer._groundY = _farmerStartPos.Y;
 
-
+            
 
             int smallPitEdge = (int)_smallPit._sprite.position.X;
             int bigPitEdge = (int)_bigPit._sprite.position.X;

@@ -92,6 +92,7 @@ namespace Wheats_and_Wands.Levels
         }
         public override void Update(GameTime gameTime)
         {
+            _farmer.SpawnPosition = _farmerStartPos;
             _farmer.Update(gameTime);
 
             _wideStalactite.Update(gameTime);

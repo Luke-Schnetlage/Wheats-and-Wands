@@ -11,12 +11,14 @@ namespace Wheats_and_Wands.Levels
     class StageSelectMenu : Level
     {
         GameState _gameState;
+        GameState _playerProgress;
         Button _farmButton;
         Button _caveButton;
         Button _castleButton;
         Texture2D _background;
-        public StageSelectMenu(GameState gameState,Texture2D background, Texture2D farm, Texture2D Cave, Texture2D Castle)
+        public StageSelectMenu(GameState playerProgress, GameState gameState,Texture2D background, Texture2D farm, Texture2D Cave, Texture2D Castle)
         {
+            _playerProgress = playerProgress;
             _gameState = gameState;
             _background = background;
             _farmButton = new Button(new Sprite(farm, 0, 0, 320, 180, new Vector2(0,540)));
@@ -31,8 +33,17 @@ namespace Wheats_and_Wands.Levels
         {
             spriteBatch.Draw(_background, new Vector2(0, 0), Color.Black);
             _farmButton.Draw(gameTime, spriteBatch);
-            _caveButton.Draw(gameTime, spriteBatch);
-            _castleButton.Draw(gameTime, spriteBatch);
+
+
+            if (_playerProgress.state >= States.Cave)
+                _caveButton.Draw(gameTime, spriteBatch);
+            else
+                _caveButton.Draw(gameTime, spriteBatch, Color.DarkOrchid);
+
+            if (_playerProgress.state >= States.Castle)
+                _castleButton.Draw(gameTime, spriteBatch);
+            else
+                _castleButton.Draw(gameTime, spriteBatch, Color.DarkRed);
 
         }
 
@@ -53,11 +64,15 @@ namespace Wheats_and_Wands.Levels
         }
         public void _caveButton_Click(object sender, EventArgs e)
         {
-            _gameState.state = States.Cave;
+            if (_playerProgress.state >= States.Cave)
+                _gameState.state = States.Cave;
+            
+                
         }
         public void _castleButton_Click(object sender, EventArgs e)
         {
-            _gameState.state = States.Castle;
+            if (_playerProgress.state >= States.Castle)
+                _gameState.state = States.Castle;
         }
 
     }
