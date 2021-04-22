@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
 using Wheats_and_Wands.Entities;
 using Wheats_and_Wands.Graphics;
@@ -12,7 +13,9 @@ namespace Wheats_and_Wands.Levels
         private Vector2 _farmerStartPos;
         private GameState _gameState;
         private Farmer _farmer;
-        private Cow _cow;
+        Cow _cow;
+        SpriteFont _font;
+        TimeSpan _levelTime;
 
         private List<ScrollBackground> _scrollBackgrounds;
         public Castle2(Farmer farmer,
@@ -26,10 +29,12 @@ namespace Wheats_and_Wands.Levels
                       Texture2D sixthLayer,
                       Texture2D seventhLayer,
                       Texture2D lastLayer,
-                      Texture2D cowTexture)
+                      Texture2D cowTexture,
+                      SpriteFont font)
         {
             _gameState = gameState;
             _farmer = farmer;
+            _font = font;
             _farmerStartPos = new Vector2(50, 325 - 35);
 
             _cow = new Cow(new Sprite(cowTexture, 0, 0, 102, 65, new Vector2(450, 341)));
@@ -80,6 +85,10 @@ namespace Wheats_and_Wands.Levels
             _farmer.Draw(spriteBatch, gameTime);
             _cow.Draw(spriteBatch, gameTime);
 
+            spriteBatch.DrawString(_font, "CONGRATULATIONS!", new Vector2(400, 150), Color.White);
+            spriteBatch.DrawString(_font, "IT TOOK YOU", new Vector2(435, 170), Color.White);
+            spriteBatch.DrawString(_font, (gameTime.TotalGameTime - _levelTime).ToString(@"hh\:mm\:ss"), new Vector2(460, 190), Color.White);
+            spriteBatch.DrawString(_font, "TO FIND YOUR COW", new Vector2(400, 210), Color.White);
             foreach (var scrollBackground in _scrollBackgrounds)
                 scrollBackground.Draw(gameTime, spriteBatch);
 
@@ -90,6 +99,9 @@ namespace Wheats_and_Wands.Levels
             _farmer.Update(gameTime);
             _farmer._groundY = _farmerStartPos.Y;
             _cow.Update(gameTime);
+
+            _levelTime += gameTime.ElapsedGameTime;
+
 
             foreach (var scrollBackground in _scrollBackgrounds)
                 scrollBackground.Update(gameTime);

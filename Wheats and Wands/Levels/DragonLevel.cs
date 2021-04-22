@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
 using Wheats_and_Wands.Entities;
 using Wheats_and_Wands.Graphics;
@@ -19,8 +20,9 @@ namespace Wheats_and_Wands.Levels
         private SquareBlock _platform1;
         private SquareBlock _platform2;
         private SquareBlock _platform3;
-
+        private bool goingUp;
         private List<ScrollBackground> _scrollBackgrounds;
+        TimeSpan _levelTime;
 
         public DragonLevel(Farmer farmer, GameState gameState, Texture2D floor, Texture2D firstLayer, Texture2D secondLayer, Texture2D thirdLayer,
             Texture2D fourthLayer, Texture2D fifthLayer, Texture2D sixthLayer, Texture2D seventhLayer, Texture2D lastLayer, Texture2D dragonTexture,
@@ -36,6 +38,7 @@ namespace Wheats_and_Wands.Levels
             _platform1 = new SquareBlock(new Sprite(floor, 430, 408, 145, 30, new Vector2(200, 325)), _farmer);
             _platform2 = new SquareBlock(new Sprite(floor, 430, 408, 115, 30, new Vector2(425, 245)), _farmer);
             _platform3 = new SquareBlock(new Sprite(floor, 430, 408, 100, 30, new Vector2(600, 235)), _farmer);
+            goingUp = true;
 
             _scrollBackgrounds = new List<ScrollBackground>()
             {
@@ -100,6 +103,9 @@ namespace Wheats_and_Wands.Levels
             else
                 _farmer.HorizontalVelocity.X = 0f;
 
+            
+
+
             _farmer.Update(gameTime);
             _farmer._groundY = _farmerStartPos.Y;
 
@@ -109,7 +115,7 @@ namespace Wheats_and_Wands.Levels
                 _farmer.Position = new Vector2(50, 325 - 35);
             }
 
-            if ((int)gameTime.TotalGameTime.TotalSeconds % 3 == 0)
+            if ((int)gameTime.TotalGameTime.TotalSeconds % 3 == 0 && _dragon.IsAlive)
             {
                 _fire.BreathFire();
             }
@@ -122,13 +128,23 @@ namespace Wheats_and_Wands.Levels
             _platform2.Update(gameTime);
             _platform3.Update(gameTime);
 
-            if ((int)gameTime.TotalGameTime.TotalSeconds % 2 == 0)
+            
+            _levelTime += gameTime.ElapsedGameTime;
+            if ((int)_levelTime.TotalSeconds % 2 == 1)
+            {
+                goingUp = false;
+            }
+            if ((int)_levelTime.TotalSeconds % 2 == 0)
+            {
+                goingUp = true;
+            }
+            if (goingUp)
             {
                 _platform1._sprite.position = new Vector2(_platform1._sprite.position.X, _platform1._sprite.position.Y - (float)1.8);
                 _platform2._sprite.position = new Vector2(_platform2._sprite.position.X, _platform2._sprite.position.Y + (float)3);
                 _platform3._sprite.position = new Vector2(_platform3._sprite.position.X, _platform3._sprite.position.Y - (float)1.8);
             }
-            if ((int)gameTime.TotalGameTime.TotalSeconds % 2 == 1)
+            if (!goingUp)
             {
                 _platform1._sprite.position = new Vector2(_platform1._sprite.position.X, _platform1._sprite.position.Y + (float)1.8);
                 _platform2._sprite.position = new Vector2(_platform2._sprite.position.X, _platform2._sprite.position.Y - (float)3);

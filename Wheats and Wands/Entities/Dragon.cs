@@ -54,7 +54,7 @@ namespace Wheats_and_Wands.Entities
 
             if (Collision(_farmer))
             {
-                if (!TopCollision(_farmer))
+                if (!TopCollision(_farmer) && IsAlive)
                 {
                     Kill(_farmer);
                 }

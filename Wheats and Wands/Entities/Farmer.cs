@@ -59,9 +59,9 @@ namespace Wheats_and_Wands.Entities
             _fancyIdlePose = new Sprite(_fancyFarmerSheet, 0, 0, 64, 128);
             _wizardIdlePose = new Sprite(_wizardFarmerSheet, 0, 0, 64, 128);
 
-            heart1 = new Sprite(_heartSheet, 166, 396, 33, 31, new Vector2(930, 10));
-            heart2 = new Sprite(_heartSheet, 166, 396, 33, 31, new Vector2(895, 10));
-            heart3 = new Sprite(_heartSheet, 166, 396, 33, 31, new Vector2(860, 10));
+            heart1 = new Sprite(_heartSheet,166, 396, 33, 31, new Vector2(920, 10));
+            heart2 = new Sprite(_heartSheet, 166, 396, 33, 31, new Vector2(885, 10));
+            heart3 = new Sprite(_heartSheet, 166, 396, 33, 31, new Vector2(850, 10));
 
             IdlePose = _FarmerIdlePose;
             _sprite = IdlePose;
