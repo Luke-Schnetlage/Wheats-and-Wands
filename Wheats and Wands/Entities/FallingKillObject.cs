@@ -36,7 +36,7 @@ namespace Wheats_and_Wands.Entities
                 _farmer.IsAlive = false;
             }
             Kill(_farmer);
-            _farmer.Respawn();
+            //_farmer.Respawn();
             Reset();
         }
 

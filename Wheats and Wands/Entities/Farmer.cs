@@ -21,6 +21,7 @@ namespace Wheats_and_Wands.Entities
         public Rectangle rectangle { get; set; }
 
         public int DrawOrder { set; get; }
+        public int lives = 3;
         public bool IsAlive { get; set; }
         public bool OnGround { get; set; }
         public bool doubleJump { get; set; }
@@ -37,6 +38,10 @@ namespace Wheats_and_Wands.Entities
         private SpriteAnimation _WalkCycle;
 
         private SpriteAnimation _deathAnimation;
+        private Sprite heart1;
+        private Sprite heart2;
+        private Sprite heart3;
+
         public Sprite _sprite { get; private set; }
 
 
@@ -53,6 +58,10 @@ namespace Wheats_and_Wands.Entities
             _FarmerIdlePose = new Sprite(spriteSheet, 0, 0, 64, 128);
             _fancyIdlePose = new Sprite(_fancyFarmerSheet, 0, 0, 64, 128);
             _wizardIdlePose = new Sprite(_wizardFarmerSheet, 0, 0, 64, 128);
+
+            heart1 = new Sprite(_heartSheet,166, 396, 33, 31, new Vector2(930, 10));
+            heart2 = new Sprite(_heartSheet, 166, 396, 33, 31, new Vector2(895, 10));
+            heart3 = new Sprite(_heartSheet, 166, 396, 33, 31, new Vector2(860, 10));
 
             IdlePose = _FarmerIdlePose;
             _sprite = IdlePose;
@@ -158,6 +167,18 @@ namespace Wheats_and_Wands.Entities
                 _sprite = _WalkCycle.CurrentFrame.Sprite;
             }
 
+            if (lives >= 3)
+            {
+                heart1.Draw(spriteBatch, heart1.position);
+            }
+            if (lives >= 2)
+            {
+                heart2.Draw(spriteBatch, heart2.position);
+            }
+            if (lives >= 1)
+            {
+                heart3.Draw(spriteBatch, heart3.position);
+            }
 
             if (_deathAnimation.PlaybackProgress == _deathAnimation.Duration)
                 _deathAnimation.Stop();
@@ -272,9 +293,11 @@ namespace Wheats_and_Wands.Entities
         {
             if (IsAlive == false)
             {
+                
                 Position = SpawnPosition;
                 _deathAnimation.Stop();
                 _deathAnimation.Play();
+                lives--;
             }
         }
 

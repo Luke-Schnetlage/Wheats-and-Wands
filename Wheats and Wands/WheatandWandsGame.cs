@@ -131,7 +131,7 @@ namespace Wheats_and_Wands
         InputController _inputController;
         Display_Options _displayOptions;
 
-        double _levelTimer;
+        
 
         public GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
@@ -155,10 +155,10 @@ namespace Wheats_and_Wands
 
             _gameState = new GameState();
             _playerProgress = new GameState();
-            _levelTimer = 0;
+            
 
             //IMPORTANT!!! REMOVE AFTER CASTLE TESTING
-            _gameState.state = States.Space;
+            //_gameState.state = States.Space;
             //IMPORTANT!!! REMOVE AFTER CASTLE TESTING
 
             playerPosition = new Vector2(100, (_graphics.PreferredBackBufferHeight / 2) + 15); //defaults player to center of the screen
@@ -292,7 +292,7 @@ namespace Wheats_and_Wands
                 _gameState.state = States.TitleScreen;
             }
             _prevLevel = _level;
-            _levelTimer += gameTime.ElapsedGameTime.TotalSeconds;
+            //_levelTimer += gameTime.ElapsedGameTime.TotalSeconds;
 
             if (_gameState.state == States.TitleScreen)
             {
@@ -354,10 +354,10 @@ namespace Wheats_and_Wands
 
             if (_prevLevel != _level)
             {
-                _levelTimer = 0;
+                _farmer.lives = 3;
             }
 
-            if (_gameState.state > States.OptionsScreen && _levelTimer > 45 && _gameState.state < States.Castle2)
+            if (_gameState.state > States.OptionsScreen && _farmer.lives <= 0 && _gameState.state < States.Castle2)
                 _skipLevelButton.Update(gameTime);
 
             _inputController.ProcessControls(gameTime);
@@ -380,7 +380,7 @@ namespace Wheats_and_Wands
             _level.Draw(_spriteBatch, gameTime);
 
 
-            if (_gameState.state > States.OptionsScreen && _levelTimer > 10)
+            if (_gameState.state > States.OptionsScreen && _farmer.lives <= 0 && _gameState.state < States.Castle2)
             {
                 _skipLevelButton.Draw(gameTime, _spriteBatch);
                 _spriteBatch.DrawString(_font, "SKIP", new Vector2(130, 50), Color.White);
