@@ -18,7 +18,9 @@ namespace Wheats_and_Wands.Entities
 
         public Vector2 Position { get; set; }
         public int DrawOrder { get; set; }
-        public bool OnGround { get; set; }
+        bool goingUp;
+        public float _verticalVelocity;
+
         public Cow(Texture2D cow, Vector2 position)
         {
             _cow = new Sprite(cow, 0, 0, 102, 65);
@@ -32,7 +34,14 @@ namespace Wheats_and_Wands.Entities
 
         public void Update(GameTime gameTime)
         {
-            
+            if (_cow.position.Y > 290)
+            {
+                _verticalVelocity = JUMP_START_VELOCITY;
+            }
+            _verticalVelocity += GRAVITY * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            _cow.position = new Vector2(_cow.position.X, _cow.position.Y + _verticalVelocity * (float)gameTime.ElapsedGameTime.TotalSeconds);
         }
+
+
     }
 }

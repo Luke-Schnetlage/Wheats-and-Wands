@@ -34,7 +34,7 @@ namespace Wheats_and_Wands.Levels
             _farmer = farmer;
             _farmerStartPos = new Vector2(50, 325 - 35);
 
-            _cow = new Cow(cowTexture, new Vector2(450, 250));
+            _cow = new Cow(cowTexture, new Vector2(450, 350));
 
             _scrollBackgrounds = new List<ScrollBackground>()
             {
@@ -91,9 +91,18 @@ namespace Wheats_and_Wands.Levels
         {
             _farmer.Update(gameTime);
             _farmer._groundY = _farmerStartPos.Y;
+            _cow.Update(gameTime);
 
+            if (_cow.Position.X > 290)
+            {
+                _cow._verticalVelocity = 0;
+                if (gameTime.ElapsedGameTime.TotalSeconds % 3 == 0)
+                {
+                    _cow._verticalVelocity = (float)(-540f * gameTime.ElapsedGameTime.TotalSeconds);
+                    _cow.Position = new Vector2(_cow.Position.X, _cow.Position.Y * _cow._verticalVelocity);
+                }
 
-
+            }
             foreach (var scrollBackground in _scrollBackgrounds)
                 scrollBackground.Update(gameTime);
         }
