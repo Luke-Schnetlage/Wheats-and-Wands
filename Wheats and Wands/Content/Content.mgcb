@@ -31,6 +31,12 @@
 /processorParam:Quality=Best
 /build:audio_hero_911_SIPML_J-0501.mp3
 
+#begin audio_hero_Your-Choice_SIPML_B-0420.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:audio_hero_Your-Choice_SIPML_B-0420.mp3
+
 #begin Backgrounds/CastleLayer/CastleFifthLayer.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -475,12 +481,6 @@
 /processorParam:TextureFormat=Color
 /build:Farmer walk cycle.png
 
-#begin little_robot_sound_factory_fantasy_Dragon_Growl_01.mp3
-/importer:Mp3Importer
-/processor:SongProcessor
-/processorParam:Quality=Best
-/build:little_robot_sound_factory_fantasy_Dragon_Growl_01.mp3
-
 #begin music_orlamusic_Happy+006.mp3
 /importer:Mp3Importer
 /processor:SongProcessor
@@ -691,12 +691,6 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:TextureFormat=Compressed
 /build:Spritefonts/Credits.spritefont
-
-#begin zapsplat_fantasy_dragon_large_wings_flap_flying_002_26703.mp3
-/importer:Mp3Importer
-/processor:SongProcessor
-/processorParam:Quality=Best
-/build:zapsplat_fantasy_dragon_large_wings_flap_flying_002_26703.mp3
 
 #begin zapsplat_multimedia_game-sound_classic_retro_jump_006_65126.mp3
 /importer:Mp3Importer

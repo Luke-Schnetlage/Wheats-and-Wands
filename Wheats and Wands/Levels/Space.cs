@@ -20,6 +20,9 @@ namespace Wheats_and_Wands.Levels
         FallingKillObject _asteroid4;
         FallingKillObject _asteroid5;
 
+        HorizontalKillObject _a1;
+        HorizontalKillObject _a2;
+
         private List<ScrollBackground> _scrollBackgrounds;
 
         Random rand;
@@ -36,7 +39,10 @@ namespace Wheats_and_Wands.Levels
             _asteroid2 = new FallingKillObject(new Sprite(asteroid, 0, 0, 100, 115, new Vector2(350, -120)), _farmer, new TimeSpan(0, 0, rand.Next(1, 4)));
             _asteroid3 = new FallingKillObject(new Sprite(asteroid, 0, 0, 100, 115, new Vector2(480, -120)), _farmer, new TimeSpan(0, 0, rand.Next(2, 3)));
             _asteroid4 = new FallingKillObject(new Sprite(asteroid, 0, 0, 100, 115, new Vector2(600, -120)), _farmer, new TimeSpan(0, 0, rand.Next(1, 1)));
-            _asteroid5 = new FallingKillObject(new Sprite(asteroid, 0, 0, 100, 115, new Vector2(640, -120)), _farmer, new TimeSpan(0, 0, rand.Next(2, 6)));
+            _asteroid5 = new FallingKillObject(new Sprite(asteroid, 0, 0, 100, 115, new Vector2(640, -120)), _farmer, new TimeSpan(0, 0, rand.Next(5, 8)));
+
+            _a1 = new HorizontalKillObject(new Sprite(asteroid, 0, 0, 100, 115, new Vector2(1000, 150)), _farmer, new TimeSpan(0, 0, rand.Next(1, 1)));
+            _a2 = new HorizontalKillObject(new Sprite(asteroid, 0, 0, 100, 115, new Vector2(1000, 400)), _farmer, new TimeSpan(0, 0, rand.Next(5, 8)));
 
 
             _scrollBackgrounds = new List<ScrollBackground>()
@@ -65,6 +71,8 @@ namespace Wheats_and_Wands.Levels
             _asteroid4.Update(gameTime);
             _asteroid5.Update(gameTime);
 
+            _a1.Update(gameTime);
+            _a2.Update(gameTime);
             foreach (var scrollBackground in _scrollBackgrounds)
                 scrollBackground.Update(gameTime);
         }
@@ -78,6 +86,9 @@ namespace Wheats_and_Wands.Levels
             _asteroid3.Draw(spriteBatch, gameTime);
             _asteroid4.Draw(spriteBatch, gameTime);
             _asteroid5.Draw(spriteBatch, gameTime);
+
+            _a1.Draw(spriteBatch, gameTime);
+            _a2.Draw(spriteBatch, gameTime);
 
             foreach (var scrollBackground in _scrollBackgrounds)
                 scrollBackground.Draw(gameTime, spriteBatch);
