@@ -17,11 +17,7 @@ namespace Wheats_and_Wands
         public const int WINDOW_WIDTH = 960;
         public const int WINDOW_HEIGHT = 540;
 
-        //960x540
-
-
         public static Game _game;
-
 
         //level systems
         GameState _gameState;
@@ -41,12 +37,13 @@ namespace Wheats_and_Wands
         Castle2 _castle2;
         Space _spaceLevel;
 
+        //A button that tops up if the player dies 3 times on 1 level
         Button _skipLevelButton;
 
         //Sprites
         Texture2D _titleScreenSprite;
         Texture2D _creditScreenSprite;
-        Texture2D _caveBackGround;
+        //Texture2D _caveBackGround;
         Texture2D _farmerSpriteSheet;
         Texture2D _fancyFarmerSheet;
         Texture2D _wizardFarmerSheet;
@@ -76,7 +73,7 @@ namespace Wheats_and_Wands
 
         //Cave Textures
         Texture2D _caveFloor;
-        Texture2D _cavePitFloor;
+        //Texture2D _cavePitFloor;
         Texture2D _caveFirstLayer;
         Texture2D _caveSecondLayer;
         Texture2D _caveThirdLayer;
@@ -111,41 +108,38 @@ namespace Wheats_and_Wands
         Vector2 playerPosition;
 
 
-        public SpriteFont _font { get; private set; } //Added
-        //SpriteFont _artFont; //Added, Not implemented
-        //SpriteFont _musicFont; //Added, Not implemented
-        //SpriteFont _programFont; //Added, Not implemented
-        //SpriteFont _scottFont; //Added, Not implemented
-        //SpriteFont _lukeFont; //Added, Not implemented
+        public SpriteFont _font { get; private set; } 
 
-
+        //Music/Sound System
         MusicManager _musicManager;
         Song _titleTheme;
         Song _tutorialTheme;
         Song _caveTheme;
         Song _castleTheme;
         Song _dragonTheme;
-
         SoundEffect _jumpSound;
 
+        //User imput handeling
         InputController _inputController;
         Display_Options _displayOptions;
 
         
-
+        //graphics managment
         public GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
+        //player character
         private Farmer _farmer;
 
         public WheatandWandsGame()
         {
             _graphics = new GraphicsDeviceManager(this);
-            Content.RootDirectory = "Content";
+            Content.RootDirectory = "Content";          
             IsMouseVisible = true;
             _game = this;
         }
 
+        // Initialize fundemental system elements
         protected override void Initialize()
         {
 
@@ -155,24 +149,24 @@ namespace Wheats_and_Wands
 
             _gameState = new GameState();
             _playerProgress = new GameState();
-            
+            _spriteBatch = new SpriteBatch(GraphicsDevice); //initalizes spriteBatch
 
             //IMPORTANT!!! REMOVE AFTER CASTLE TESTING
             //_gameState.state = States.Space;
             //IMPORTANT!!! REMOVE AFTER CASTLE TESTING
 
-            playerPosition = new Vector2(100, (_graphics.PreferredBackBufferHeight / 2) + 15); //defaults player to center of the screen
+            playerPosition = new Vector2(100, (_graphics.PreferredBackBufferHeight / 2) + 15); //defaults player to 100,495
             base.Initialize();
         }
 
-        protected override void LoadContent()
+        protected override void LoadContent() //this loads in content and classes that can't be initalized without content
         {
-            _spriteBatch = new SpriteBatch(GraphicsDevice);
+            
 
             //backgrounds
             _titleScreenSprite = Content.Load<Texture2D>("Backgrounds/Title screen");
             _creditScreenSprite = Content.Load<Texture2D>("Backgrounds/Credits Screen");
-            _caveBackGround = Content.Load<Texture2D>("Backgrounds/Cave Background");
+            //_caveBackGround = Content.Load<Texture2D>("Backgrounds/Cave Background");
 
             //Farm Background Layers (and Tutorial too)
             _barn = Content.Load<Texture2D>("Backgrounds/FarmLayer/Barn");
@@ -185,7 +179,7 @@ namespace Wheats_and_Wands
 
             //Cave Background Layer
             _caveFloor = Content.Load<Texture2D>("Backgrounds/CaveLayer/Cave Floor");
-            _cavePitFloor = Content.Load<Texture2D>("Backgrounds/CastleLayer/CaveFloorPits");
+            //_cavePitFloor = Content.Load<Texture2D>("Backgrounds/CastleLayer/CaveFloorPits");
             _caveFirstLayer = Content.Load<Texture2D>("Backgrounds/CaveLayer/CaveFirstLayer");
             _caveSecondLayer = Content.Load<Texture2D>("Backgrounds/CaveLayer/CaveSecondLayer");
             _caveThirdLayer = Content.Load<Texture2D>("Backgrounds/CaveLayer/CaveThirdLayer");
@@ -252,7 +246,7 @@ namespace Wheats_and_Wands
 
             _jumpSound = Content.Load<SoundEffect>("zapsplat_multimedia_game-sound_classic_retro_jump_006_65126");
 
-
+            //Player character
             _farmer = new Farmer(_farmerSpriteSheet, playerPosition, _heartSheet, _fancyFarmerSheet, _wizardFarmerSheet);
 
             //system controls
@@ -285,14 +279,18 @@ namespace Wheats_and_Wands
 
         }
 
+        //contains universal update logic
+        //uses the game state system to determin which level is marked as "_level" and only updates the level currently being viewed
         protected override void Update(GameTime gameTime)
         {
+            //takes the user to the main menu
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             {
                 _gameState.state = States.TitleScreen;
             }
+            //_prevLevel is used detect if any level chanes have occured in the middle of update
             _prevLevel = _level;
-            //_levelTimer += gameTime.ElapsedGameTime.TotalSeconds;
+            
 
             if (_gameState.state == States.TitleScreen)
             {
@@ -320,9 +318,10 @@ namespace Wheats_and_Wands
             }
             if (_gameState.state == States.Cave)
             {
+                //1 way update to unlock the 2nd load state
                 if (_playerProgress.state < States.Cave)
                 {
-                    _playerProgress.state = States.Cave;
+                    _playerProgress.state = States.Cave; 
                 }
                 _level = _cave;
             }
@@ -332,6 +331,7 @@ namespace Wheats_and_Wands
             }
             if (_gameState.state == States.Castle)
             {
+                //1 way update to unlock the 3rd load state
                 if (_playerProgress.state < States.Castle)
                 {
                     _playerProgress.state = States.Castle;
@@ -351,12 +351,13 @@ namespace Wheats_and_Wands
                 _level = _spaceLevel;
             }
 
-
+            //resets the players health to full once the enter a new level
             if (_prevLevel != _level)
             {
                 _farmer.lives = 3;
             }
 
+            //updates the skip button if the player dies 3 times in a level and are in a valid level to skip
             if (_gameState.state > States.OptionsScreen && _farmer.lives <= 0 && _gameState.state < States.Castle2)
                 _skipLevelButton.Update(gameTime);
 
@@ -371,21 +372,19 @@ namespace Wheats_and_Wands
         protected override void Draw(GameTime gameTime)
         {
 
-
-            // TODO: Add your drawing code here
+            //layers all sprites ontop and draw them in a batch
             _spriteBatch.Begin(SpriteSortMode.BackToFront);
             GraphicsDevice.Clear(Color.Black);
 
-
+            //draws the current level
             _level.Draw(_spriteBatch, gameTime);
 
-
+            //draws the skip button if the player dies 3 times in a level and are in a valid level to skip
             if (_gameState.state > States.OptionsScreen && _farmer.lives <= 0 && _gameState.state < States.Castle2)
             {
                 _skipLevelButton.Draw(gameTime, _spriteBatch);
                 _spriteBatch.DrawString(_font, "SKIP", new Vector2(130, 50), Color.White);
             }
-
 
             _spriteBatch.End();
             base.Draw(gameTime);
@@ -393,6 +392,7 @@ namespace Wheats_and_Wands
 
         public void _skipLevelButton_Click(object sender, EventArgs e)
         {
+            //incriments the game state to the next level
             _gameState.state++;
             _farmer.Position = new Vector2(50, 290);
         }
