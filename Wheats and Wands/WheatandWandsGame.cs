@@ -117,6 +117,8 @@ namespace Wheats_and_Wands
         Song _caveTheme;
         Song _castleTheme;
         Song _dragonTheme;
+        Song _cowTheme;
+
         SoundEffect _jumpSound;
 
         //User imput handeling
@@ -152,7 +154,7 @@ namespace Wheats_and_Wands
             _spriteBatch = new SpriteBatch(GraphicsDevice); //initalizes spriteBatch
 
             //IMPORTANT!!! REMOVE AFTER CASTLE TESTING
-            //_gameState.state = States.Space;
+            _gameState.state = States.Castle2;
             //IMPORTANT!!! REMOVE AFTER CASTLE TESTING
 
             playerPosition = new Vector2(100, (_graphics.PreferredBackBufferHeight / 2) + 15); //defaults player to 100,495
@@ -243,6 +245,7 @@ namespace Wheats_and_Wands
             _caveTheme = Content.Load<Song>("music_zapsplat_deep_investigation_126");
             _castleTheme = Content.Load<Song>("music_zapsplat_last_chance_103");
             _dragonTheme = Content.Load<Song>("audio_hero_911_SIPML_J-0501");
+            _cowTheme = Content.Load<Song>("audio_hero_Your-Choice_SIPML_B-0420");
 
             _jumpSound = Content.Load<SoundEffect>("zapsplat_multimedia_game-sound_classic_retro_jump_006_65126");
 
@@ -252,7 +255,7 @@ namespace Wheats_and_Wands
             //system controls
             _displayOptions = new Display_Options(_graphics);
             _inputController = new InputController(_farmer, _displayOptions, _jumpSound);
-            _musicManager = new MusicManager(_gameState, _titleTheme, _tutorialTheme, _caveTheme, _castleTheme, _dragonTheme);
+            _musicManager = new MusicManager(_gameState, _titleTheme, _tutorialTheme, _caveTheme, _castleTheme, _dragonTheme, _cowTheme);
             _skipLevelButton = new Button(new Sprite(_titleScreenSprite, 357, 644, 250, 70, new Vector2(25, 25 + 540)));
             _skipLevelButton.Click += _skipLevelButton_Click;
 

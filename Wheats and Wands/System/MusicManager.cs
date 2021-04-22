@@ -10,9 +10,10 @@ namespace Wheats_and_Wands.System
         Song _caveTheme;
         Song _castleTheme;
         Song _dragonTheme;
+        Song _cowTheme;
         GameState _gameState;
 
-        public MusicManager(GameState gameState, Song titleTheme, Song farmtheme, Song caveTheme, Song castleTheme, Song dragonTheme)
+        public MusicManager(GameState gameState, Song titleTheme, Song farmtheme, Song caveTheme, Song castleTheme, Song dragonTheme, Song cowTheme)
         {
             _gameState = gameState;
             _titleTheme = titleTheme;
@@ -20,6 +21,7 @@ namespace Wheats_and_Wands.System
             _caveTheme = caveTheme;
             _castleTheme = castleTheme;
             _dragonTheme = dragonTheme;
+            _cowTheme = cowTheme;
         }
 
         public void Play()
@@ -45,6 +47,14 @@ namespace Wheats_and_Wands.System
             else if (_gameState.state == States.DragonLevel)
             {
                 _song = _dragonTheme;
+            }
+            else if(_gameState.state == States.Castle2)
+            {
+                _song = _cowTheme;
+            }
+            else if(_gameState.state == States.Space)
+            {
+                _song = _titleTheme;
             }
             if (temp != _song)
             {
