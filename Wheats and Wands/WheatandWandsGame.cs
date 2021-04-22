@@ -39,6 +39,7 @@ namespace Wheats_and_Wands
         FarmToCave _farmToCave;
         CaveToCastle _caveToCastle;
         DragonLevel _dragonLevel;
+        Castle2 _castle2;
         Space _spaceLevel;
 
         Button _skipLevelButton;
@@ -62,6 +63,7 @@ namespace Wheats_and_Wands
         Texture2D _fireball;
         Texture2D _totemHead;
         Texture2D _orb;
+        Texture2D _cow;
 
         //Tutorial and Farm Textures
         Texture2D _barn;
@@ -230,6 +232,7 @@ namespace Wheats_and_Wands
             _fireball = Content.Load<Texture2D>("PNG Objects/Fireball");
             _totemHead = Content.Load<Texture2D>("PNG Objects/Island Head");
             _orb = Content.Load<Texture2D>("ORB");
+            _cow = Content.Load<Texture2D>("PNG Objects/Cow");
 
             //farmer animations
             _farmerSpriteSheet = Content.Load<Texture2D>("Farmer walk cycle");
@@ -275,6 +278,8 @@ namespace Wheats_and_Wands
                 _caveFifthLayer, _caveSixthLayer, _spikes, _totemHead, _textbox, _font);
             _dragonLevel = new DragonLevel(_farmer, _gameState, _castleFloor, _castleFirstLayer, _castleSecondLayer, _castleThirdLayer,
                 _castleFourthLayer, _castleFifthLayer, _castleSixthLayer, _castleSeventhLayer, _castleEighthLayer, _dragon, _fireBreath);
+            _castle2 = new Castle2(_farmer, _gameState, _castleFloor, _castleFirstLayer, _castleSecondLayer, _castleThirdLayer,
+                _castleFourthLayer, _castleFifthLayer, _castleSixthLayer, _castleSeventhLayer, _castleEighthLayer, _cow);
             _spaceLevel = new Space(_spaceBackground, _farmer, _gameState, _font);
 
         }
@@ -335,9 +340,14 @@ namespace Wheats_and_Wands
             {
                 _level = _dragonLevel;
             }
-
-
+            if (_gameState.state == States.Castle2)
+            {
+                _level = _castle2;
+            }
             if (_gameState.state == States.Space)
+            {
+                _level = _spaceLevel;
+            }
 
 
             if (_prevLevel != _level)

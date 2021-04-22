@@ -137,6 +137,7 @@ namespace Wheats_and_Wands.Levels
             _farmer._groundY = _farmerStartPos.Y;
 
 
+
             _speed = (float)(_farmer.HorizontalVelocity.X * gameTime.ElapsedGameTime.TotalSeconds * 5f);
             _speed *= _farmer.HorizontalVelocity.X;
 
