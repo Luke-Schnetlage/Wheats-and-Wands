@@ -397,6 +397,18 @@
 /processorParam:TextureFormat=Color
 /build:Backgrounds/PreviewFolder/FarmerBackground2DPreview.png
 
+#begin Backgrounds/PreviewFolder/SpaceBackgroundPreview.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Backgrounds/PreviewFolder/SpaceBackgroundPreview.png
+
 #begin Backgrounds/SpaceBackground.png
 /importer:TextureImporter
 /processor:TextureProcessor
