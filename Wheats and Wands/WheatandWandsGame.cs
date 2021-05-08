@@ -286,70 +286,63 @@ namespace Wheats_and_Wands
             //_prevLevel is used detect if any level chanes have occured in the middle of update
             _prevLevel = _level;
 
+            switch (_gameState.state)
+            {
+                //menu options
+                case (States.TitleScreen):
+                    _level = _titleScreen;
+                    break;
+                case (States.CreditScreen):
+                    _level = _creditScreen;
+                    break;
+                case (States.StageSelectMenu):
+                    _level = _stageSelectMenu;
+                    break;
+                case (States.OptionsScreen):
+                    _level = _optionScreen;
+                    break;
+                //playable levels
+                case (States.Tutorial):
+                    _level = _tutorial;
+                    break;
+                case (States.FarmToCave):
+                    _level = _farmToCave;
+                    break;
+                case (States.Cave):
+                    //1 way update to unlock the 2nd load state
+                    if (_playerProgress.state < States.Cave)
+                    {
+                        _playerProgress.state = States.Cave;
+                    }
+                    _level = _cave;
+                    break;
+                case (States.CaveToCastle):
+                    _level = _caveToCastle;
+                    break;
+                case (States.Castle):
+                    //1 way update to unlock the 3rd load state
+                    if (_playerProgress.state < States.Castle)
+                    {
+                        _playerProgress.state = States.Castle;
+                    }
+                    _level = _castle;
+                    break;
+                case (States.DragonLevel):
+                    _level = _dragonLevel;
+                    break;
+                case (States.Castle2):
+                    //1 way update to unlock the hidden 4th load state
+                    if (_playerProgress.state < States.Castle2)
+                    {
+                        _playerProgress.state = States.Castle2;
+                    }
+                    _level = _castle2;
+                    break;
+                case (States.Space):
+                    _level = _spaceLevel;
+                    break;
+            }
 
-            if (_gameState.state == States.TitleScreen)
-            {
-                _level = _titleScreen;
-            }
-            if (_gameState.state == States.Tutorial)
-            {
-                _level = _tutorial;
-            }
-            if (_gameState.state == States.CreditScreen)
-            {
-                _level = _creditScreen;
-            }
-            if (_gameState.state == States.StageSelectMenu)
-            {
-                _level = _stageSelectMenu;
-            }
-            if (_gameState.state == States.OptionsScreen)
-            {
-                _level = _optionScreen;
-            }
-            if (_gameState.state == States.FarmToCave)
-            {
-                _level = _farmToCave;
-            }
-            if (_gameState.state == States.Cave)
-            {
-                //1 way update to unlock the 2nd load state
-                if (_playerProgress.state < States.Cave)
-                {
-                    _playerProgress.state = States.Cave;
-                }
-                _level = _cave;
-            }
-            if (_gameState.state == States.CaveToCastle)
-            {
-                _level = _caveToCastle;
-            }
-            if (_gameState.state == States.Castle)
-            {
-                //1 way update to unlock the 3rd load state
-                if (_playerProgress.state < States.Castle)
-                {
-                    _playerProgress.state = States.Castle;
-                }
-                _level = _castle;
-            }
-            if (_gameState.state == States.DragonLevel)
-            {
-                _level = _dragonLevel;
-            }
-            if (_gameState.state == States.Castle2)
-            {
-                //1 way update to unlock the hidden 4th load state
-                if (_playerProgress.state < States.Castle2)
-                {
-                    _playerProgress.state = States.Castle2;
-                }
-                _level = _castle2;
-            }
-            if (_gameState.state == States.Space)
-            {
-                _level = _spaceLevel;
-            }
 
             //resets the players health to full once the enter a new level
             if (_prevLevel != _level)
